@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Portfolio | AZ Custom Knives Ltd.</title>
+  <meta name="description" content="Blacksmithing portfolio — hand-forged railings, gates, sculptures, stainless steel art, tombac animals, and copper range hoods by Alessio Zilli.">
+  <link rel="stylesheet" href="../css/style.css">
+  <link rel="icon" href="../images/favicon.ico" type="image/x-icon">
+  <style>
+    .gallery { display: grid; grid-template-columns: repeat(3, 1fr); gap: 8px; }
+    .gallery__item {
+      position: relative; overflow: hidden; aspect-ratio: 1/1; cursor: pointer;
+    }
+    .gallery__item img {
+      width: 100%; height: 100%; object-fit: cover;
+      transition: transform 0.4s ease;
+    }
+    .gallery__item:hover img { transform: scale(1.06); }
+    .gallery__item--wide { grid-column: span 2; aspect-ratio: 2/1; }
+    @media (max-width: 600px) {
+      .gallery { grid-template-columns: repeat(2, 1fr); }
+      .gallery__item--wide { grid-column: span 2; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- HEADER -->
+  <header class="header">
+    <div class="header__inner">
+      <a href="../index.html" class="header__logo-text">AZ Custom <span>Knives</span></a>
+      <nav class="nav">
+        <a href="../index.html" class="nav__link">Home</a>
+        <a href="about.html" class="nav__link">About</a>
+        <a href="classes.html" class="nav__link">Classes & Services</a>
+        <a href="portfolio.html" class="nav__link active">Portfolio</a>
+        <a href="quadfang.html" class="nav__link">QuadFang</a>
+        <a href="contact.html" class="nav__link">Contact</a>
+        <a href="https://www.azcustomknives.com/shop" class="btn btn--primary btn--small" target="_blank" rel="noopener">Shop</a>
+      </nav>
+      <button class="menu-toggle" aria-label="Menu"><span></span><span></span><span></span></button>
+    </div>
+  </header>
+
+  <!-- HERO -->
+  <section class="hero" style="min-height: 50vh;">
+    <div class="hero__bg" style="background-image: url('https://static.wixstatic.com/media/44b4b1_portfolio_hero.jpg/v1/fill/w_1920,h_800,al_c,q_85/portfolio.jpg');"></div>
+    <div class="hero__overlay"></div>
+    <div class="hero__content">
+      <p class="hero__subtitle">Our Work</p>
+      <h1 class="hero__title">Portfolio</h1>
+    </div>
+  </section>
+
+  <!-- BLACKSMITHING -->
+  <section class="section">
+    <div class="container">
+      <div class="section__header fade-in">
+        <h2>Artistic Blacksmithing</h2>
+        <div class="section__line"></div>
+        <p>Hand-forged with passion and attention to detail. Railings, gates, sculptures, hardware, and custom architectural elements.</p>
+      </div>
+
+      <!-- Hand-Forged Items -->
+      <div class="fade-in" style="margin-bottom: 48px;">
+        <h3 style="margin-bottom: 8px;">Hand-Forged Items</h3>
+        <p style="color: var(--text-light); margin-bottom: 24px;">Drawer pulls, doorknobs, door handles, fireplace doors, fireplace tools, BBQ tools, mirror frames, picture frames, dinner bells, candle holders, window gates, hinges, barn door latches, and more.</p>
+        <div class="gallery">
+          <div class="gallery__item"><img src="https://static.wixstatic.com/media/44b4b1_bs1.jpg/v1/fill/w_400,h_400,al_c,q_80/bs1.jpg" alt="Hand-forged item" loading="lazy"></div>
+          <div class="gallery__item"><img src="https://static.wixstatic.com/media/44b4b1_bs2.jpg/v1/fill/w_400,h_400,al_c,q_80/bs2.jpg" alt="Hand-forged item" loading="lazy"></div>
+          <div class="gallery__item"><img src="https://static.wixstatic.com/media/44b4b1_bs3.jpg/v1/fill/w_400,h_400,al_c,q_80/bs3.jpg" alt="Hand-forged item" loading="lazy"></div>
+          <div class="gallery__item"><img src="https://static.wixstatic.com/media/44b4b1_bs4.jpg/v1/fill/w_400,h_400,al_c,q_80/bs4.jpg" alt="Hand-forged item" loading="lazy"></div>
+          <div class="gallery__item"><img src="https://static.wixstatic.com/media/44b4b1_bs5.jpg/v1/fill/w_400,h_400,al_c,q_80/bs5.jpg" alt="Hand-forged item" loading="lazy"></div>
+          <div class="gallery__item"><img src="https://static.wixstatic.com/media/44b4b1_bs6.jpg/v1/fill/w_400,h_400,al_c,q_80/bs6.jpg" alt="Hand-forged item" loading="lazy"></div>
+        </div>
+      </div>
+
+      <!-- Railings & Gates -->
+      <div class="fade-in" style="margin-bottom: 48px;">
+        <h3 style="margin-bottom: 8px;">High-End Railings & Gates</h3>
+        <p style="color: var(--text-light); margin-bottom: 24px;">High quality railings approached with ingenuity and attention to detail, with the customer's vision in mind. The alternative to mass-produced aluminum.</p>
+        <div class="gallery">
+          <div class="gallery__item gallery__item--wide"><img src="https://static.wixstatic.com/media/44b4b1_rail1.jpg/v1/fill/w_800,h_400,al_c,q_80/railing.jpg" alt="Hand-forged railing" loading="lazy"></div>
+          <div class="gallery__item"><img src="https://static.wixstatic.com/media/44b4b1_rail2.jpg/v1/fill/w_400,h_400,al_c,q_80/railing2.jpg" alt="Hand-forged gate" loading="lazy"></div>
+          <div class="gallery__item"><img src="https://static.wixstatic.com/media/44b4b1_rail3.jpg/v1/fill/w_400,h_400,al_c,q_80/railing3.jpg" alt="Railing detail" loading="lazy"></div>
+          <div class="gallery__item"><img src="https://static.wixstatic.com/media/44b4b1_rail4.jpg/v1/fill/w_400,h_400,al_c,q_80/railing4.jpg" alt="Gate detail" loading="lazy"></div>
+        </div>
+      </div>
+
+      <!-- Copper Range Hood -->
+      <div class="fade-in" style="margin-bottom: 48px;">
+        <h3 style="margin-bottom: 8px;">Featured: 60" Copper Range Hood</h3>
+        <p style="color: var(--text-light); margin-bottom: 24px;">Alessio hand-punched the five control emblems in the centre of the front. A high-end fan filters and vents the air. Nicely rusted steel strips give a brilliant contrast.</p>
+        <div class="gallery">
+          <div class="gallery__item gallery__item--wide"><img src="https://static.wixstatic.com/media/44b4b1_copper1.jpg/v1/fill/w_800,h_400,al_c,q_80/copper-hood.jpg" alt="Copper range hood" loading="lazy"></div>
+          <div class="gallery__item"><img src="https://static.wixstatic.com/media/44b4b1_copper2.jpg/v1/fill/w_400,h_400,al_c,q_80/copper-detail.jpg" alt="Hood detail" loading="lazy"></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ART / SCULPTURES -->
+  <section class="section section--gray">
+    <div class="container">
+      <div class="section__header fade-in">
+        <h2>Sculptures & Fine Art</h2>
+        <div class="section__line"></div>
+        <p>Precision in design and elegance in fabrication.</p>
+      </div>
+
+      <!-- Stainless Steel -->
+      <div class="fade-in" style="margin-bottom: 48px;">
+        <h3 style="margin-bottom: 8px;">Stainless Steel Sculptures</h3>
+        <p style="color: var(--text-light); margin-bottom: 24px;">The beauty of stainless steel is undeniable. Projects ranging from commissioned public art to personal studio pieces.</p>
+        <div class="gallery">
+          <div class="gallery__item"><img src="https://static.wixstatic.com/media/44b4b1_ss1.jpg/v1/fill/w_400,h_400,al_c,q_80/stainless1.jpg" alt="Stainless steel sculpture" loading="lazy"></div>
+          <div class="gallery__item"><img src="https://static.wixstatic.com/media/44b4b1_ss2.jpg/v1/fill/w_400,h_400,al_c,q_80/stainless2.jpg" alt="Stainless steel art" loading="lazy"></div>
+          <div class="gallery__item"><img src="https://static.wixstatic.com/media/44b4b1_ss3.jpg/v1/fill/w_400,h_400,al_c,q_80/stainless3.jpg" alt="Stainless steel piece" loading="lazy"></div>
+        </div>
+      </div>
+
+      <!-- Tombac -->
+      <div class="fade-in">
+        <h3 style="margin-bottom: 8px;">Tombac Animals & More</h3>
+        <p style="color: var(--text-light); margin-bottom: 24px;">Profiling and hammering tombac into intricate shapes — a skill learned from master craftsmen. Proud to produce these detailed forms.</p>
+        <div class="gallery">
+          <div class="gallery__item"><img src="https://static.wixstatic.com/media/44b4b1_tb1.jpg/v1/fill/w_400,h_400,al_c,q_80/tombac1.jpg" alt="Tombac animal" loading="lazy"></div>
+          <div class="gallery__item"><img src="https://static.wixstatic.com/media/44b4b1_tb2.jpg/v1/fill/w_400,h_400,al_c,q_80/tombac2.jpg" alt="Tombac art" loading="lazy"></div>
+          <div class="gallery__item"><img src="https://static.wixstatic.com/media/44b4b1_tb3.jpg/v1/fill/w_400,h_400,al_c,q_80/tombac3.jpg" alt="Tombac piece" loading="lazy"></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="section" style="background: var(--forge-red); color: #fff; text-align: center;">
+    <div class="container fade-in">
+      <h2 style="color: #fff; margin-bottom: 16px;">Have a Project in Mind?</h2>
+      <p style="color: rgba(255,255,255,0.85); max-width: 500px; margin: 0 auto 28px;">Every project starts with a conversation. Tell us what you're envisioning.</p>
+      <a href="contact.html" class="btn btn--white-outline">Get in Touch</a>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer__grid">
+        <div>
+          <p class="header__logo-text" style="margin-bottom: 16px; font-size: 1.2rem;">AZ Custom <span>Knives</span></p>
+          <p class="footer__text">Swiss-trained craftsmanship in the heart of Alberta.</p>
+        </div>
+        <div>
+          <p class="footer__heading">Navigate</p>
+          <a href="about.html" class="footer__link">About</a>
+          <a href="classes.html" class="footer__link">Classes & Services</a>
+          <a href="portfolio.html" class="footer__link">Portfolio</a>
+          <a href="quadfang.html" class="footer__link">QuadFang</a>
+          <a href="https://www.azcustomknives.com/shop" class="footer__link" target="_blank">Shop</a>
+        </div>
+        <div>
+          <p class="footer__heading">Services</p>
+          <a href="classes.html#sharpening" class="footer__link">Knife Sharpening</a>
+          <a href="classes.html#classes" class="footer__link">Classes</a>
+          <a href="classes.html#restorations" class="footer__link">Restorations</a>
+          <a href="contact.html" class="footer__link">Custom Projects</a>
+        </div>
+        <div>
+          <p class="footer__heading">Contact</p>
+          <p class="footer__text">9602 115 Street #104<br>Grande Prairie, AB T8V 5W2</p>
+          <p class="footer__text" style="margin-top: 8px;">(780) 831-2987</p>
+          <a href="mailto:admin@azcustomknives.com" class="footer__link" style="margin-top: 4px;">admin@azcustomknives.com</a>
+        </div>
+      </div>
+      <div class="footer__bottom">
+        <p>&copy; 2026 AZ Custom Knives Ltd. All rights reserved.</p>
+        <div class="footer__socials">
+          <a href="https://www.facebook.com/azcustomknives" target="_blank" rel="noopener">FB</a>
+          <a href="https://www.instagram.com/azcustomknives" target="_blank" rel="noopener">IG</a>
+          <a href="https://www.youtube.com/@azcustomknives" target="_blank" rel="noopener">YT</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <script src="../js/main.js"></script>
+</body>
+</html>

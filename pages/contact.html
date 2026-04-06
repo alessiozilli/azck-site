@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Contact | AZ Custom Knives Ltd.</title>
+  <meta name="description" content="Get in touch with AZ Custom Knives Ltd. in Grande Prairie, Alberta. Custom projects, sharpening, classes, and more.">
+  <link rel="stylesheet" href="../css/style.css">
+  <link rel="icon" href="../images/favicon.ico" type="image/x-icon">
+  <style>
+    .contact-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 48px; align-items: start; }
+    .form-group { margin-bottom: 20px; }
+    .form-group label {
+      display: block; font-family: 'Oswald', sans-serif; font-size: 0.8rem;
+      letter-spacing: 0.1em; text-transform: uppercase; color: var(--dark-gray);
+      margin-bottom: 6px;
+    }
+    .form-group input,
+    .form-group textarea,
+    .form-group select {
+      width: 100%; padding: 12px 16px; border: 1px solid #ddd;
+      font-family: inherit; font-size: 0.95rem; background: var(--white);
+      transition: border-color var(--transition);
+    }
+    .form-group input:focus,
+    .form-group textarea:focus,
+    .form-group select:focus {
+      outline: none; border-color: var(--forge-red);
+    }
+    .form-group textarea { resize: vertical; min-height: 120px; }
+    .info-block { margin-bottom: 28px; }
+    .info-block h3 { color: var(--forge-red); margin-bottom: 8px; font-size: 1rem; }
+    .info-block p { color: var(--text-light); font-size: 0.95rem; }
+    .hours-table { width: 100%; }
+    .hours-table td { padding: 4px 0; font-size: 0.9rem; color: var(--text-light); }
+    .hours-table td:first-child { font-weight: 500; color: var(--text); width: 100px; }
+    @media (max-width: 768px) { .contact-grid { grid-template-columns: 1fr; } }
+  </style>
+</head>
+<body>
+
+  <!-- HEADER -->
+  <header class="header">
+    <div class="header__inner">
+      <a href="../index.html" class="header__logo-text">AZ Custom <span>Knives</span></a>
+      <nav class="nav">
+        <a href="../index.html" class="nav__link">Home</a>
+        <a href="about.html" class="nav__link">About</a>
+        <a href="classes.html" class="nav__link">Classes & Services</a>
+        <a href="portfolio.html" class="nav__link">Portfolio</a>
+        <a href="quadfang.html" class="nav__link">QuadFang</a>
+        <a href="contact.html" class="nav__link active">Contact</a>
+        <a href="https://www.azcustomknives.com/shop" class="btn btn--primary btn--small" target="_blank" rel="noopener">Shop</a>
+      </nav>
+      <button class="menu-toggle" aria-label="Menu"><span></span><span></span><span></span></button>
+    </div>
+  </header>
+
+  <!-- HERO -->
+  <section class="hero" style="min-height: 40vh;">
+    <div class="hero__bg" style="background-image: url('https://static.wixstatic.com/media/44b4b1_contact_hero.jpg/v1/fill/w_1920,h_600,al_c,q_85/contact.jpg');"></div>
+    <div class="hero__overlay"></div>
+    <div class="hero__content">
+      <h1 class="hero__title">Contact Us</h1>
+    </div>
+  </section>
+
+  <!-- CONTACT CONTENT -->
+  <section class="section">
+    <div class="container">
+      <div class="contact-grid">
+        <!-- Form -->
+        <div class="fade-in">
+          <h2 style="margin-bottom: 8px;">Get in Touch</h2>
+          <p style="color: var(--text-light); margin-bottom: 28px;">Have a request for a custom project? Want to give us feedback? Let us know how we can be of service.</p>
+          <form action="#" method="POST" onsubmit="event.preventDefault(); alert('Form submissions will be connected once the site is live. For now, email admin@azcustomknives.com or call (780) 831-2987.');">
+            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 16px;">
+              <div class="form-group">
+                <label for="fname">First Name</label>
+                <input type="text" id="fname" name="fname" required>
+              </div>
+              <div class="form-group">
+                <label for="lname">Last Name</label>
+                <input type="text" id="lname" name="lname" required>
+              </div>
+            </div>
+            <div class="form-group">
+              <label for="email">Email</label>
+              <input type="email" id="email" name="email" required>
+            </div>
+            <div class="form-group">
+              <label for="phone">Phone (optional)</label>
+              <input type="tel" id="phone" name="phone">
+            </div>
+            <div class="form-group">
+              <label for="subject">Subject</label>
+              <select id="subject" name="subject">
+                <option value="">Select a topic...</option>
+                <option value="custom-knife">Custom Knife Request</option>
+                <option value="blacksmithing">Blacksmithing Project</option>
+                <option value="sharpening">Sharpening Service</option>
+                <option value="classes">Classes & Team Building</option>
+                <option value="restoration">Restoration / Regrind</option>
+                <option value="quadfang">QuadFang</option>
+                <option value="other">Other</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label for="message">Message</label>
+              <textarea id="message" name="message" rows="5" required></textarea>
+            </div>
+            <button type="submit" class="btn btn--primary">Send Message</button>
+          </form>
+        </div>
+
+        <!-- Info -->
+        <div class="fade-in">
+          <div class="info-block">
+            <h3>Location</h3>
+            <p>9602 115 Street #104<br>Grande Prairie, Alberta T8V 5W2<br>Canada</p>
+          </div>
+          <div class="info-block">
+            <h3>Phone</h3>
+            <p><a href="tel:+17808312987" style="color: var(--forge-red);">(780) 831-2987</a></p>
+          </div>
+          <div class="info-block">
+            <h3>Email</h3>
+            <p><a href="mailto:admin@azcustomknives.com" style="color: var(--forge-red);">admin@azcustomknives.com</a></p>
+          </div>
+          <div class="info-block">
+            <h3>Hours</h3>
+            <table class="hours-table">
+              <tr><td>Monday</td><td>9am – 4pm</td></tr>
+              <tr><td>Tuesday</td><td>9am – 4pm</td></tr>
+              <tr><td>Wednesday</td><td>9am – 6pm</td></tr>
+              <tr><td>Thursday</td><td>9am – 4pm</td></tr>
+              <tr><td>Friday</td><td>9am – 6pm</td></tr>
+              <tr><td>Saturday</td><td>Closed</td></tr>
+              <tr><td>Sunday</td><td>Closed</td></tr>
+            </table>
+          </div>
+
+          <!-- Google Maps Embed -->
+          <div style="margin-top: 16px;">
+            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2338.5!2d-118.7886!3d55.1707!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zNTXCsDEwJzE0LjUiTiAxMTjCsDQ3JzE5LjAiVw!5e0!3m2!1sen!2sca!4v1" width="100%" height="250" style="border: 0;" allowfullscreen loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer__grid">
+        <div>
+          <p class="header__logo-text" style="margin-bottom: 16px; font-size: 1.2rem;">AZ Custom <span>Knives</span></p>
+          <p class="footer__text">Swiss-trained craftsmanship in the heart of Alberta.</p>
+        </div>
+        <div>
+          <p class="footer__heading">Navigate</p>
+          <a href="about.html" class="footer__link">About</a>
+          <a href="classes.html" class="footer__link">Classes & Services</a>
+          <a href="portfolio.html" class="footer__link">Portfolio</a>
+          <a href="quadfang.html" class="footer__link">QuadFang</a>
+          <a href="https://www.azcustomknives.com/shop" class="footer__link" target="_blank">Shop</a>
+        </div>
+        <div>
+          <p class="footer__heading">Services</p>
+          <a href="classes.html#sharpening" class="footer__link">Knife Sharpening</a>
+          <a href="classes.html#classes" class="footer__link">Classes</a>
+          <a href="classes.html#restorations" class="footer__link">Restorations</a>
+          <a href="contact.html" class="footer__link">Custom Projects</a>
+        </div>
+        <div>
+          <p class="footer__heading">Contact</p>
+          <p class="footer__text">9602 115 Street #104<br>Grande Prairie, AB T8V 5W2</p>
+          <p class="footer__text" style="margin-top: 8px;">(780) 831-2987</p>
+          <a href="mailto:admin@azcustomknives.com" class="footer__link" style="margin-top: 4px;">admin@azcustomknives.com</a>
+        </div>
+      </div>
+      <div class="footer__bottom">
+        <p>&copy; 2026 AZ Custom Knives Ltd. All rights reserved.</p>
+        <div class="footer__socials">
+          <a href="https://www.facebook.com/azcustomknives" target="_blank" rel="noopener">FB</a>
+          <a href="https://www.instagram.com/azcustomknives" target="_blank" rel="noopener">IG</a>
+          <a href="https://www.youtube.com/@azcustomknives" target="_blank" rel="noopener">YT</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <script src="../js/main.js"></script>
+</body>
+</html>

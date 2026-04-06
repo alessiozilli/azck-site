@@ -1,0 +1,413 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>AZCK Home — Preview</title>
+  <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+    html { scroll-behavior: smooth; font-size: 16px; }
+    body {
+      font-family: 'Segoe UI', Arial, sans-serif;
+      color: #1a1a1a;
+      background: #FAFAFA;
+      line-height: 1.7;
+      -webkit-font-smoothing: antialiased;
+    }
+    a { color: inherit; text-decoration: none; }
+    img { max-width: 100%; height: auto; display: block; }
+    ul { list-style: none; }
+    button { cursor: pointer; border: none; background: none; font-family: inherit; }
+
+    :root {
+      --black: #000000;
+      --white: #FFFFFF;
+      --forge-red: #990000;
+      --steel-gray: #78909C;
+      --off-white: #FAFAFA;
+      --light-gray: #F0F0F0;
+      --dark-gray: #333333;
+      --text: #1a1a1a;
+      --text-light: #555555;
+      --transition: 0.3s ease;
+      --shadow-sm: 0 2px 8px rgba(0,0,0,0.06);
+      --shadow-md: 0 4px 20px rgba(0,0,0,0.08);
+      --max-width: 1200px;
+      --header-height: 80px;
+    }
+
+    h1, h2, h3 {
+      font-family: 'Oswald', sans-serif;
+      font-weight: 400;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+      line-height: 1.2;
+    }
+    h1 { font-size: clamp(2.2rem, 5vw, 3.5rem); }
+    h2 { font-size: clamp(1.6rem, 3.5vw, 2.4rem); }
+    h3 { font-size: clamp(1.2rem, 2.5vw, 1.6rem); }
+
+    /* --- Header --- */
+    .header {
+      position: fixed; top: 0; left: 0; width: 100%;
+      height: var(--header-height);
+      background: rgba(255,255,255,0.97);
+      backdrop-filter: blur(10px);
+      z-index: 1000;
+      border-bottom: 1px solid rgba(0,0,0,0.06);
+    }
+    .header__inner {
+      display: flex; align-items: center; justify-content: space-between;
+      height: 100%; max-width: var(--max-width); margin: 0 auto; padding: 0 24px;
+    }
+    .header__logo-text {
+      font-family: 'Oswald', sans-serif; font-size: 1.4rem; font-weight: 600;
+      letter-spacing: 0.08em; text-transform: uppercase; color: var(--black);
+    }
+    .header__logo-text span { color: var(--forge-red); }
+
+    .nav { display: flex; align-items: center; gap: 32px; }
+    .nav__link {
+      font-family: 'Oswald', sans-serif; font-size: 0.85rem; font-weight: 400;
+      letter-spacing: 0.12em; text-transform: uppercase; color: var(--dark-gray);
+      position: relative; padding: 4px 0; transition: color var(--transition);
+    }
+    .nav__link::after {
+      content: ''; position: absolute; bottom: -2px; left: 0;
+      width: 0; height: 2px; background: var(--forge-red);
+      transition: width var(--transition);
+    }
+    .nav__link:hover, .nav__link.active { color: var(--black); }
+    .nav__link:hover::after, .nav__link.active::after { width: 100%; }
+
+    .btn {
+      display: inline-block; padding: 12px 28px;
+      font-family: 'Oswald', sans-serif; font-size: 0.85rem; font-weight: 500;
+      letter-spacing: 0.12em; text-transform: uppercase;
+      border: 2px solid transparent; transition: all var(--transition);
+    }
+    .btn--primary { background: var(--forge-red); color: var(--white); border-color: var(--forge-red); }
+    .btn--primary:hover { background: #7a0000; border-color: #7a0000; }
+    .btn--outline { background: transparent; color: var(--black); border-color: var(--black); }
+    .btn--outline:hover { background: var(--black); color: var(--white); }
+    .btn--white-outline { background: transparent; color: var(--white); border-color: var(--white); }
+    .btn--white-outline:hover { background: var(--white); color: var(--black); }
+    .btn--small { padding: 8px 20px; font-size: 0.8rem; }
+
+    .menu-toggle { display: none; flex-direction: column; gap: 5px; padding: 8px; }
+    .menu-toggle span { display: block; width: 24px; height: 2px; background: var(--black); }
+
+    /* --- Hero --- */
+    .hero {
+      position: relative; min-height: 85vh;
+      display: flex; align-items: center; justify-content: center; text-align: center;
+      color: var(--white); margin-top: var(--header-height); overflow: hidden;
+    }
+    .hero__bg {
+      position: absolute; inset: 0;
+      background-size: cover; background-position: center;
+    }
+    .hero__overlay {
+      position: absolute; inset: 0;
+      background: linear-gradient(180deg, rgba(0,0,0,0.55) 0%, rgba(0,0,0,0.35) 100%);
+    }
+    .hero__content { position: relative; z-index: 2; max-width: 700px; padding: 40px 24px; }
+    .hero__subtitle {
+      font-size: 0.95rem; letter-spacing: 0.2em; text-transform: uppercase;
+      margin-bottom: 16px; opacity: 0.9;
+    }
+    .hero__title { color: var(--white); margin-bottom: 20px; font-weight: 500; }
+    .hero__desc { font-size: 1.05rem; line-height: 1.8; margin-bottom: 32px; opacity: 0.92; }
+    .hero__buttons { display: flex; gap: 16px; justify-content: center; flex-wrap: wrap; }
+
+    /* --- Sections --- */
+    .section { padding: 80px 0; }
+    .section--gray { background: var(--light-gray); }
+    .container { width: 100%; max-width: var(--max-width); margin: 0 auto; padding: 0 24px; }
+    .section__header { text-align: center; margin-bottom: 48px; }
+    .section__header p { color: var(--text-light); max-width: 600px; margin: 0 auto; }
+    .section__line { width: 50px; height: 2px; background: var(--forge-red); margin: 16px auto 0; }
+
+    /* --- Cards --- */
+    .grid { display: grid; gap: 32px; }
+    .grid--3 { grid-template-columns: repeat(3, 1fr); }
+    .card {
+      background: var(--white); border-radius: 2px; overflow: hidden;
+      box-shadow: var(--shadow-sm); transition: transform var(--transition), box-shadow var(--transition);
+    }
+    .card:hover { transform: translateY(-4px); box-shadow: var(--shadow-md); }
+    .card__img-wrap { position: relative; overflow: hidden; aspect-ratio: 4/3; }
+    .card__img-wrap img {
+      width: 100%; height: 100%; object-fit: cover; transition: transform 0.5s ease;
+    }
+    .card:hover .card__img-wrap img { transform: scale(1.05); }
+    .card__body { padding: 24px; }
+    .card__tag {
+      font-family: 'Oswald', sans-serif; font-size: 0.7rem;
+      letter-spacing: 0.15em; text-transform: uppercase; color: var(--forge-red); margin-bottom: 8px;
+    }
+    .card__title { font-size: 1.1rem; margin-bottom: 8px; }
+    .card__desc { font-size: 0.9rem; color: var(--text-light); line-height: 1.6; }
+
+    /* --- Two-col layout --- */
+    .split { display: grid; grid-template-columns: 1fr 1fr; gap: 48px; align-items: center; }
+
+    /* --- Footer --- */
+    .footer { background: var(--black); color: var(--white); padding: 60px 0 24px; }
+    .footer__grid {
+      display: grid; grid-template-columns: 2fr 1fr 1fr 1fr; gap: 40px; margin-bottom: 40px;
+    }
+    .footer__heading {
+      font-family: 'Oswald', sans-serif; font-size: 0.8rem;
+      letter-spacing: 0.15em; text-transform: uppercase; margin-bottom: 16px; color: var(--steel-gray);
+    }
+    .footer__text { font-size: 0.9rem; line-height: 1.7; color: rgba(255,255,255,0.7); }
+    .footer__link {
+      display: block; font-size: 0.9rem; color: rgba(255,255,255,0.7);
+      padding: 4px 0; transition: color var(--transition);
+    }
+    .footer__link:hover { color: var(--white); }
+    .footer__bottom {
+      border-top: 1px solid rgba(255,255,255,0.1); padding-top: 24px;
+      display: flex; justify-content: space-between; align-items: center;
+      font-size: 0.8rem; color: rgba(255,255,255,0.5);
+    }
+    .footer__socials { display: flex; gap: 16px; }
+    .footer__socials a { color: rgba(255,255,255,0.5); transition: color var(--transition); }
+    .footer__socials a:hover { color: var(--white); }
+
+    /* --- Image placeholders for preview --- */
+    .img-placeholder {
+      width: 100%; height: 100%; display: flex; align-items: center; justify-content: center;
+      font-family: 'Oswald', sans-serif; font-size: 0.75rem; letter-spacing: 0.1em;
+      text-transform: uppercase; color: rgba(255,255,255,0.6);
+    }
+
+    /* --- Responsive --- */
+    @media (max-width: 968px) {
+      .nav { display: none; }
+      .menu-toggle { display: flex; }
+      .grid--3 { grid-template-columns: repeat(2, 1fr); }
+      .split { grid-template-columns: 1fr; }
+      .footer__grid { grid-template-columns: 1fr 1fr; }
+    }
+    @media (max-width: 600px) {
+      .grid--3 { grid-template-columns: 1fr; }
+      .footer__grid { grid-template-columns: 1fr; }
+      .section { padding: 56px 0; }
+      .hero { min-height: 60vh; }
+      .hero__buttons { flex-direction: column; align-items: center; }
+      .footer__bottom { flex-direction: column; gap: 12px; text-align: center; }
+    }
+
+    /* Fade-in animation */
+    .fade-in { opacity: 0; transform: translateY(24px); transition: opacity 0.6s ease, transform 0.6s ease; }
+    .fade-in.visible { opacity: 1; transform: translateY(0); }
+  </style>
+</head>
+<body>
+
+  <!-- HEADER -->
+  <header class="header">
+    <div class="header__inner">
+      <a href="#" class="header__logo-text">AZ Custom <span>Knives</span></a>
+      <nav class="nav">
+        <a href="#" class="nav__link active">Home</a>
+        <a href="#" class="nav__link">About</a>
+        <a href="#" class="nav__link">Classes & Services</a>
+        <a href="#" class="nav__link">Portfolio</a>
+        <a href="#" class="nav__link">QuadFang</a>
+        <a href="#" class="nav__link">Contact</a>
+        <a href="#" class="btn btn--primary btn--small">Shop</a>
+      </nav>
+      <button class="menu-toggle" aria-label="Menu"><span></span><span></span><span></span></button>
+    </div>
+  </header>
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="hero__bg" style="background: linear-gradient(135deg, #1a1a1a 0%, #333 40%, #4a3020 70%, #990000 100%);"></div>
+    <div class="hero__overlay"></div>
+    <div class="hero__content">
+      <p class="hero__subtitle">Grande Prairie, Alberta</p>
+      <h1 class="hero__title">Hand-Forged<br>With Passion</h1>
+      <p class="hero__desc">Custom knives, artistic blacksmithing, and professional sharpening by Swiss-trained Journeyman Artistic Blacksmith Alessio Zilli.</p>
+      <div class="hero__buttons">
+        <a href="#" class="btn btn--primary">Book a Class</a>
+        <a href="#" class="btn btn--white-outline">View Portfolio</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- INTRO: THE ART OF STEEL -->
+  <section class="section">
+    <div class="container">
+      <div class="section__header fade-in">
+        <h2>The Art of Steel</h2>
+        <div class="section__line"></div>
+        <p>Where Swiss precision meets Canadian craftsmanship. Every blade, every forging — shaped by hand, finished with pride.</p>
+      </div>
+
+      <div class="grid grid--3 fade-in" style="margin-top: 16px;">
+        <div class="card">
+          <div class="card__img-wrap">
+            <div class="img-placeholder" style="background: linear-gradient(135deg, #5a3e2b, #8B6914);">Forge Class Photo</div>
+          </div>
+          <div class="card__body">
+            <p class="card__tag">Experience</p>
+            <h3 class="card__title">Classes & Team Building</h3>
+            <p class="card__desc">Corporate team building, blacksmithing courses, knife making, sheath making, and sharpening workshops. Learn from a master.</p>
+          </div>
+        </div>
+
+        <div class="card">
+          <div class="card__img-wrap">
+            <div class="img-placeholder" style="background: linear-gradient(135deg, #4a4a4a, #78909C);">Sharpening Photo</div>
+          </div>
+          <div class="card__body">
+            <p class="card__tag">Services</p>
+            <h3 class="card__title">Professional Sharpening</h3>
+            <p class="card__desc">Knives, scissors, chisels, specialty folders. The best professional sharpening service in the Peace Country, guaranteed.</p>
+          </div>
+        </div>
+
+        <div class="card">
+          <div class="card__img-wrap">
+            <div class="img-placeholder" style="background: linear-gradient(135deg, #2c2c2c, #990000);">Blacksmith Photo</div>
+          </div>
+          <div class="card__body">
+            <p class="card__tag">Craft</p>
+            <h3 class="card__title">Artistic Blacksmithing</h3>
+            <p class="card__desc">Railings, gates, sculptures, fireplace tools, custom hardware. Hand-forged with precision and elegance by a trained artisan.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- QUADFANG TEASER (DARK) -->
+  <section class="section" style="background: #0A0A0A; color: #fff;">
+    <div class="container">
+      <div class="split">
+        <div class="fade-in">
+          <p style="font-family: 'Oswald', sans-serif; font-size: 0.75rem; letter-spacing: 0.2em; text-transform: uppercase; color: #78909C; margin-bottom: 12px;">Product Line</p>
+          <h2 style="color: #fff; margin-bottom: 16px;">QuadFang</h2>
+          <p style="color: rgba(255,255,255,0.7); margin-bottom: 8px; font-size: 1.05rem;">Built to Kill Clean.</p>
+          <p style="color: rgba(255,255,255,0.6); margin-bottom: 28px;">The QuadFang hunting knife line — purpose-built for ethical hunters who demand a clean kill and efficient processing. Four models engineered for every stage of the hunt.</p>
+          <a href="#" class="btn btn--white-outline">Explore QuadFang</a>
+        </div>
+        <div class="fade-in" style="text-align: center;">
+          <img src="https://quadfang.com/cdn/shop/files/QF-allknives-front-LESS_SHADOW.png?v=1722649180&width=800" alt="QuadFang hunting knife lineup" style="max-width: 100%; height: auto; filter: drop-shadow(0 8px 32px rgba(0,0,0,0.5));" loading="lazy"
+            onerror="this.outerHTML='<div class=\'img-placeholder\' style=\'background:linear-gradient(135deg,#1a1a1a,#333);height:320px;border-radius:4px;\'>QuadFang 4-Knife Lineup</div>'">
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ABOUT TEASER -->
+  <section class="section section--gray">
+    <div class="container">
+      <div class="split">
+        <div class="fade-in" style="text-align: center;">
+          <div style="width: 100%; max-width: 400px; margin: 0 auto; aspect-ratio: 4/5; background: linear-gradient(180deg, #78909C 0%, #4a4a4a 100%); border-radius: 2px; display: flex; align-items: center; justify-content: center; color: rgba(255,255,255,0.6); font-family: 'Oswald', sans-serif; font-size: 0.75rem; letter-spacing: 0.1em; text-transform: uppercase; box-shadow: 0 4px 20px rgba(0,0,0,0.08);">Alessio Portrait Photo</div>
+        </div>
+        <div class="fade-in">
+          <p style="font-family: 'Oswald', sans-serif; font-size: 0.75rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--forge-red); margin-bottom: 12px;">The Maker</p>
+          <h2 style="margin-bottom: 16px;">Alessio Zilli</h2>
+          <p style="font-style: italic; color: var(--steel-gray); margin-bottom: 16px;">Journeyman Artistic Blacksmith</p>
+          <p style="color: var(--text-light);">Born in Switzerland, trained under master blacksmiths in a rigorous 4-year apprenticeship. Now based in Grande Prairie, Alberta, Alessio combines old-world technique with purpose-driven design — forging knives, tools, and art for those who value craft over convenience.</p>
+          <a href="#" class="btn btn--outline" style="margin-top: 24px;">Read the Full Story</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- RED CTA -->
+  <section class="section" style="background: #990000; color: #fff; text-align: center;">
+    <div class="container fade-in">
+      <h2 style="color: #fff; margin-bottom: 16px;">Ready to Get Started?</h2>
+      <p style="color: rgba(255,255,255,0.85); max-width: 500px; margin: 0 auto 28px;">Whether it's a custom project, a class, or a blade that needs sharpening — we'd love to hear from you.</p>
+      <div style="display: flex; gap: 16px; justify-content: center; flex-wrap: wrap;">
+        <a href="#" class="btn btn--white-outline">Contact Us</a>
+        <a href="#" class="btn" style="background: #fff; color: #990000; border: 2px solid #fff;">Book Online</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer__grid">
+        <div>
+          <p class="header__logo-text" style="margin-bottom: 16px; font-size: 1.2rem;">AZ Custom <span>Knives</span></p>
+          <p class="footer__text">Swiss-trained craftsmanship in the heart of Alberta. Custom knives, artistic blacksmithing, professional sharpening, and hands-on classes.</p>
+        </div>
+        <div>
+          <p class="footer__heading">Navigate</p>
+          <a href="#" class="footer__link">About</a>
+          <a href="#" class="footer__link">Classes & Services</a>
+          <a href="#" class="footer__link">Portfolio</a>
+          <a href="#" class="footer__link">QuadFang</a>
+          <a href="#" class="footer__link">Shop</a>
+        </div>
+        <div>
+          <p class="footer__heading">Services</p>
+          <a href="#" class="footer__link">Knife Sharpening</a>
+          <a href="#" class="footer__link">Classes</a>
+          <a href="#" class="footer__link">Restorations</a>
+          <a href="#" class="footer__link">Custom Projects</a>
+        </div>
+        <div>
+          <p class="footer__heading">Contact</p>
+          <p class="footer__text">9602 115 Street #104<br>Grande Prairie, AB T8V 5W2</p>
+          <p class="footer__text" style="margin-top: 8px;">(780) 831-2987</p>
+          <a href="#" class="footer__link" style="margin-top: 4px;">admin@azcustomknives.com</a>
+        </div>
+      </div>
+      <div class="footer__bottom">
+        <p>&copy; 2026 AZ Custom Knives Ltd. All rights reserved.</p>
+        <div class="footer__socials">
+          <a href="#">FB</a>
+          <a href="#">IG</a>
+          <a href="#">YT</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      // Fade-in on scroll
+      const faders = document.querySelectorAll('.fade-in');
+      if ('IntersectionObserver' in window) {
+        const obs = new IntersectionObserver(entries => {
+          entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); obs.unobserve(e.target); } });
+        }, { threshold: 0.15 });
+        faders.forEach(el => obs.observe(el));
+      } else { faders.forEach(el => el.classList.add('visible')); }
+
+      // Header scroll
+      const header = document.querySelector('.header');
+      window.addEventListener('scroll', () => {
+        header.style.boxShadow = window.scrollY > 20 ? '0 2px 8px rgba(0,0,0,0.06)' : 'none';
+      });
+
+      // Mobile menu
+      const toggle = document.querySelector('.menu-toggle');
+      const nav = document.querySelector('.nav');
+      toggle.addEventListener('click', () => {
+        const open = nav.style.display === 'flex';
+        nav.style.display = open ? 'none' : 'flex';
+        nav.style.flexDirection = open ? '' : 'column';
+        nav.style.position = open ? '' : 'fixed';
+        nav.style.top = open ? '' : '0'; nav.style.right = open ? '' : '0';
+        nav.style.width = open ? '' : '280px'; nav.style.height = open ? '' : '100vh';
+        nav.style.background = open ? '' : '#fff'; nav.style.padding = open ? '' : '100px 32px 40px';
+        nav.style.gap = open ? '' : '24px'; nav.style.zIndex = open ? '' : '999';
+        nav.style.boxShadow = open ? '' : '0 8px 40px rgba(0,0,0,0.12)';
+      });
+    });
+  </script>
+</body>
+</html>
