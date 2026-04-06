@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Oswald:wght@300;400;500;600;700&display=swap');
+
 /* ============================================
    AZCK Brand Website — Global Styles
    Brand: AZ Custom Knives Ltd.
@@ -20,8 +22,7 @@ img { max-width: 100%; height: auto; display: block; }
 ul { list-style: none; }
 button { cursor: pointer; border: none; background: none; font-family: inherit; }
 
-/* --- Font Imports (Google fallbacks + brand) --- */
-@import url('https://fonts.googleapis.com/css2?family=Oswald:wght@300;400;500;600;700&display=swap');
+/* --- Font loaded via @import at top of file --- */
 
 /* --- Brand Colors as CSS vars --- */
 :root {
@@ -221,6 +222,7 @@ p { margin-bottom: 1rem; }
 .hero__bg {
   position: absolute;
   inset: 0;
+  background-color: #1a1a1a;
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
@@ -278,6 +280,7 @@ p { margin-bottom: 1rem; }
   position: relative;
   overflow: hidden;
   aspect-ratio: 4/3;
+  background: linear-gradient(135deg, #78909C 0%, #4a4a4a 100%);
 }
 .card__img-wrap img {
   width: 100%;
