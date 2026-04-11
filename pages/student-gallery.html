@@ -1,0 +1,284 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AZCK — Student Gallery</title>
+<link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{--forge-red:#990000;--forge-red-hover:#770000;--steel-gray:#78909C;--black:#000;--white:#FFF;--off-white:#FAFAFA;--light-gray:#F0F0F0;--dark-gray:#333;--text:#1a1a1a;--max-width:1100px;--header-height:72px}
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:'Effra','Segoe UI',Arial,sans-serif;font-size:15.2px;line-height:25.84px;color:var(--text);background:var(--off-white)}
+header{background:var(--black);height:var(--header-height);display:flex;align-items:center;justify-content:center;position:sticky;top:0;z-index:100}
+.logo{font-family:'Oswald',sans-serif;font-size:22px;font-weight:500;letter-spacing:3px;color:var(--white);text-transform:uppercase;text-decoration:none}
+.logo span{color:var(--forge-red)}
+main{max-width:var(--max-width);margin:0 auto;padding:40px 20px 80px}
+.section-tag{font-family:'Oswald',sans-serif;font-size:11.2px;letter-spacing:1.68px;text-transform:uppercase;color:var(--forge-red);margin-bottom:8px}
+h2{font-family:'Oswald',sans-serif;font-size:36px;font-weight:400;letter-spacing:1.5px;text-transform:uppercase;color:var(--text);margin-bottom:10px}
+.subtitle{color:var(--steel-gray);font-size:15.5px;margin-bottom:32px;max-width:620px;line-height:24px}
+
+/* Filter tabs */
+.filters{display:flex;gap:8px;margin-bottom:24px;flex-wrap:wrap}
+.filter-btn{font-family:'Oswald',sans-serif;font-size:12px;letter-spacing:1px;text-transform:uppercase;padding:8px 16px;border:1px solid var(--light-gray);background:var(--white);color:var(--dark-gray);cursor:pointer;transition:all .2s}
+.filter-btn:hover{border-color:var(--steel-gray)}
+.filter-btn.active{background:var(--forge-red);color:var(--white);border-color:var(--forge-red)}
+
+/* Gallery grid */
+.gallery{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:16px;margin-bottom:32px}
+.gallery-item{background:var(--white);border:2px solid var(--light-gray);overflow:hidden;cursor:pointer;transition:border-color .2s,box-shadow .2s}
+.gallery-item:hover{border-color:var(--steel-gray);box-shadow:0 4px 16px rgba(0,0,0,.08)}
+.gi-photo{background:var(--light-gray);height:240px;display:flex;align-items:center;justify-content:center;color:var(--steel-gray);font-family:'Oswald',sans-serif;font-size:13px;letter-spacing:1px;text-transform:uppercase;position:relative;overflow:hidden}
+.gi-photo img{width:100%;height:100%;object-fit:cover}
+.gi-badge{position:absolute;top:10px;right:10px;background:var(--forge-red);color:var(--white);font-family:'Oswald',sans-serif;font-size:10px;letter-spacing:1px;text-transform:uppercase;padding:3px 8px}
+.gi-info{padding:14px 16px}
+.gi-name{font-family:'Oswald',sans-serif;font-size:15px;font-weight:500;text-transform:uppercase;color:var(--text);margin-bottom:2px}
+.gi-meta{font-size:12px;color:var(--steel-gray);margin-bottom:6px}
+.gi-caption{font-size:13px;color:var(--dark-gray);line-height:19px}
+
+/* Upload section */
+.upload-section{background:var(--white);border:2px dashed var(--steel-gray);padding:40px 24px;text-align:center;margin:32px 0}
+.upload-icon{font-size:40px;margin-bottom:12px}
+.upload-title{font-family:'Oswald',sans-serif;font-size:20px;text-transform:uppercase;color:var(--dark-gray);margin-bottom:8px}
+.upload-desc{color:var(--steel-gray);font-size:14px;max-width:460px;margin:0 auto 20px;line-height:22px}
+.upload-form{max-width:400px;margin:0 auto;text-align:left}
+.field{margin-bottom:14px}
+.field label{display:block;font-size:13px;color:var(--dark-gray);margin-bottom:4px;font-weight:500}
+.field input,.field textarea,.field select{width:100%;padding:10px 12px;border:1px solid var(--light-gray);font-family:inherit;font-size:14px;color:var(--text)}
+.field input:focus,.field textarea:focus,.field select:focus{outline:none;border-color:var(--forge-red)}
+.field input[type="file"]{padding:8px;font-size:13px}
+.field textarea{resize:vertical;min-height:60px}
+
+.btn{font-family:'Oswald',sans-serif;font-size:13.6px;font-weight:500;text-transform:uppercase;letter-spacing:1.2px;border:none;padding:12px 28px;cursor:pointer;display:inline-block;text-decoration:none;text-align:center;transition:background .2s}
+.btn-p{background:var(--forge-red);color:var(--white)}
+.btn-p:hover{background:var(--forge-red-hover)}
+
+.share-btn{display:inline-flex;align-items:center;gap:6px;background:none;border:1px solid var(--steel-gray);padding:6px 14px;cursor:pointer;font-family:'Oswald',sans-serif;font-size:11px;letter-spacing:1.2px;text-transform:uppercase;color:var(--steel-gray);transition:all .2s}
+.share-btn:hover{border-color:var(--forge-red);color:var(--forge-red)}
+
+/* Lightbox */
+.lightbox{display:none;position:fixed;top:0;left:0;width:100%;height:100%;background:rgba(0,0,0,.85);z-index:200;align-items:center;justify-content:center;padding:40px}
+.lightbox.open{display:flex}
+.lb-content{background:var(--white);max-width:700px;width:100%;max-height:90vh;overflow-y:auto}
+.lb-photo{background:var(--light-gray);height:400px;display:flex;align-items:center;justify-content:center;color:var(--steel-gray);font-family:'Oswald',sans-serif;font-size:14px}
+.lb-photo img{width:100%;height:100%;object-fit:cover}
+.lb-info{padding:24px}
+.lb-close{position:absolute;top:16px;right:20px;font-size:28px;color:var(--white);cursor:pointer;background:none;border:none}
+.lb-close:hover{color:var(--forge-red)}
+
+.info{border-left:4px solid var(--forge-red);padding:12px 16px;background:#fdf5f5;margin:14px 0;font-size:13px;line-height:20px;color:var(--dark-gray)}
+
+.cta-section{text-align:center;padding:40px 20px}
+.cta-section p{color:var(--steel-gray);margin-bottom:16px}
+
+footer{background:var(--black);padding:36px 20px;text-align:center;color:var(--steel-gray);font-size:13px}
+footer a{color:var(--forge-red);text-decoration:none}
+@media(max-width:640px){h2{font-size:26px}.gallery{grid-template-columns:1fr 1fr}.lb-photo{height:250px}}
+@media(max-width:400px){.gallery{grid-template-columns:1fr}}
+</style>
+</head>
+<body>
+
+<header><a href="../index.html" class="logo"><span>AZ</span> Custom Knives</a></header>
+
+<main>
+  <div class="section-tag">Made by Students</div>
+  <h2>Student Gallery</h2>
+  <p class="subtitle">Every knife here was made by someone who walked in with no experience and walked out with a blade they built themselves. This could be you.</p>
+
+  <!-- Filters -->
+  <div class="filters">
+    <button class="filter-btn active" onclick="filterGallery('all', this)">All</button>
+    <button class="filter-btn" onclick="filterGallery('knifemaking', this)">Knife Making</button>
+    <button class="filter-btn" onclick="filterGallery('blacksmithing', this)">Blacksmithing</button>
+    <button class="filter-btn" onclick="filterGallery('group', this)">Group Classes</button>
+    <button class="filter-btn" onclick="filterGallery('1on1', this)">1-on-1</button>
+  </div>
+
+  <!-- Gallery Grid -->
+  <!-- In production, these are populated from Supabase. For now, placeholder items show the layout. -->
+  <div class="gallery" id="gallery-grid">
+
+    <div class="gallery-item" data-cat="knifemaking 1on1" onclick="openLightbox(this)">
+      <div class="gi-photo">
+        [ Student Photo ]
+        <div class="gi-badge">1-on-1</div>
+      </div>
+      <div class="gi-info">
+        <div class="gi-name">Bulldog in 1084</div>
+        <div class="gi-meta">1-on-1 Full Day &middot; March 2026</div>
+        <div class="gi-caption">"First knife I ever made. Can't believe I did this in one day."</div>
+      </div>
+    </div>
+
+    <div class="gallery-item" data-cat="knifemaking group" onclick="openLightbox(this)">
+      <div class="gi-photo">
+        [ Student Photo ]
+        <div class="gi-badge">Group</div>
+      </div>
+      <div class="gi-info">
+        <div class="gi-name">Falcon in 1084</div>
+        <div class="gi-meta">3-Person Group Class &middot; February 2026</div>
+        <div class="gi-caption">"The tanto grind was tricky but Alessio walked me through every step."</div>
+      </div>
+    </div>
+
+    <div class="gallery-item" data-cat="blacksmithing 1on1" onclick="openLightbox(this)">
+      <div class="gi-photo">
+        [ Student Photo ]
+        <div class="gi-badge">Blacksmithing</div>
+      </div>
+      <div class="gi-info">
+        <div class="gi-name">Forged Fire Poker</div>
+        <div class="gi-meta">Blacksmithing Full Day &middot; January 2026</div>
+        <div class="gi-caption">"Working with hot steel is addictive. Already booked my next session."</div>
+      </div>
+    </div>
+
+    <div class="gallery-item" data-cat="knifemaking 1on1" onclick="openLightbox(this)">
+      <div class="gi-photo">
+        [ Student Photo ]
+        <div class="gi-badge">1-on-1</div>
+      </div>
+      <div class="gi-info">
+        <div class="gi-name">Badger in 80CrV2</div>
+        <div class="gi-meta">1-on-1 Full Day &middot; March 2026</div>
+        <div class="gi-caption">"Compact, sharp, and mine. Best gift I ever gave myself."</div>
+      </div>
+    </div>
+
+    <div class="gallery-item" data-cat="knifemaking group" onclick="openLightbox(this)">
+      <div class="gi-photo">
+        [ Student Photo ]
+        <div class="gi-badge">Group</div>
+      </div>
+      <div class="gi-info">
+        <div class="gi-name">Bulldog in 1084</div>
+        <div class="gi-meta">2-Person Class &middot; February 2026</div>
+        <div class="gi-caption">"Did this with my dad. We both have matching Bulldogs now."</div>
+      </div>
+    </div>
+
+    <div class="gallery-item" data-cat="blacksmithing group" onclick="openLightbox(this)">
+      <div class="gi-photo">
+        [ Student Photo ]
+        <div class="gi-badge">Blacksmithing</div>
+      </div>
+      <div class="gi-info">
+        <div class="gi-name">Hand-Forged Bottle Opener</div>
+        <div class="gi-meta">Blacksmithing Half Day &middot; December 2025</div>
+        <div class="gi-caption">"Brought the whole team for a half day. Everyone made something different."</div>
+      </div>
+    </div>
+
+  </div>
+
+  <div style="text-align:right;margin-bottom:24px;">
+    <button class="share-btn" onclick="shareThis()">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="width:14px;height:14px;"><path d="M4 12v8a2 2 0 002 2h12a2 2 0 002-2v-8"/><polyline points="16 6 12 2 8 6"/><line x1="12" y1="2" x2="12" y2="15"/></svg>
+      Share Gallery
+    </button>
+  </div>
+
+  <!-- Upload Section -->
+  <div class="upload-section">
+    <div class="upload-icon">📸</div>
+    <div class="upload-title">Share Your Work</div>
+    <div class="upload-desc">Made something in one of our classes? Show it off! Upload a photo and tell us about your experience. All submissions are reviewed before being published.</div>
+    <div class="upload-form">
+      <div class="field">
+        <label>Your Name</label>
+        <input type="text" placeholder="First name or nickname">
+      </div>
+      <div class="field">
+        <label>Photo</label>
+        <input type="file" accept="image/*">
+      </div>
+      <div class="field">
+        <label>What did you make?</label>
+        <input type="text" placeholder="e.g., Bulldog in 1084">
+      </div>
+      <div class="field">
+        <label>Class Type</label>
+        <select>
+          <option value="">Select...</option>
+          <option>1-on-1 Knife Making</option>
+          <option>Group Knife Making</option>
+          <option>Blacksmithing</option>
+          <option>Team Building</option>
+          <option>Family Event</option>
+          <option>Workshop</option>
+        </select>
+      </div>
+      <div class="field">
+        <label>Your Experience (short caption)</label>
+        <textarea placeholder="Tell us how it went..."></textarea>
+      </div>
+      <div style="text-align:center;margin-top:16px;">
+        <button class="btn btn-p" onclick="submitPhoto()">Submit Photo</button>
+      </div>
+    </div>
+  </div>
+
+  <div class="info">Submissions are moderated. Your photo will appear in the gallery after review. By uploading, you grant AZCK permission to display your photo on the website and social media.</div>
+
+  <div class="cta-section">
+    <p>Inspired? Make your own.</p>
+    <a href="booking.html" class="btn btn-p">Book a Class</a>
+  </div>
+</main>
+
+<!-- Lightbox -->
+<div class="lightbox" id="lightbox" onclick="closeLightbox(event)">
+  <button class="lb-close" onclick="closeLightbox()">&times;</button>
+  <div class="lb-content" onclick="event.stopPropagation()">
+    <div class="lb-photo" id="lb-photo">[ Full Size Photo ]</div>
+    <div class="lb-info" id="lb-info"></div>
+  </div>
+</div>
+
+<footer>
+  <p>&copy; 2026 AZ Custom Knives Ltd. &mdash; <a href="https://azcustomknives.com">azcustomknives.com</a></p>
+  <p style="margin-top:8px;"><a href="booking.html">Book a Class</a> &middot; <a href="blade-models.html">Blade Models</a> &middot; <a href="gift-certificates.html">Gift Certificates</a></p>
+</footer>
+
+<script>
+function filterGallery(cat, btn) {
+  document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+  btn.classList.add('active');
+  document.querySelectorAll('.gallery-item').forEach(item => {
+    if (cat === 'all' || item.dataset.cat.includes(cat)) {
+      item.style.display = 'block';
+    } else {
+      item.style.display = 'none';
+    }
+  });
+}
+
+function openLightbox(item) {
+  const info = item.querySelector('.gi-info').innerHTML;
+  document.getElementById('lb-info').innerHTML = info;
+  document.getElementById('lightbox').classList.add('open');
+  document.body.style.overflow = 'hidden';
+}
+
+function closeLightbox(e) {
+  if (e && e.target !== document.getElementById('lightbox') && !e.target.classList.contains('lb-close')) return;
+  document.getElementById('lightbox').classList.remove('open');
+  document.body.style.overflow = '';
+}
+
+function submitPhoto() {
+  alert('Photo submission would be sent to Supabase for moderation.\n\n(Test mode — no actual upload)');
+}
+
+function shareThis() {
+  const url = window.location.href;
+  const text = 'Check out what students have made at AZ Custom Knives!';
+  if (navigator.share) { navigator.share({ title: 'AZCK Student Gallery', text, url }).catch(() => {}); }
+  else { navigator.clipboard.writeText(url).then(() => alert('Link copied!')).catch(() => prompt('Copy:', url)); }
+}
+
+document.addEventListener('keydown', e => { if (e.key === 'Escape') closeLightbox(); });
+</script>
+</body>
+</html>

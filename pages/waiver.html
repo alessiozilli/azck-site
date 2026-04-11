@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AZCK — Waivers & Safety</title>
+<link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{--forge-red:#990000;--forge-red-hover:#770000;--steel-gray:#78909C;--black:#000;--white:#FFF;--off-white:#FAFAFA;--light-gray:#F0F0F0;--dark-gray:#333;--text:#1a1a1a;--max-width:920px;--header-height:72px}
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:'Effra','Segoe UI',Arial,sans-serif;font-size:15.2px;line-height:25.84px;color:var(--text);background:var(--off-white)}
+header{background:var(--black);height:var(--header-height);display:flex;align-items:center;justify-content:center;position:sticky;top:0;z-index:100}
+.logo{font-family:'Oswald',sans-serif;font-size:22px;font-weight:500;letter-spacing:3px;color:var(--white);text-transform:uppercase;text-decoration:none}
+.logo span{color:var(--forge-red)}
+main{max-width:var(--max-width);margin:0 auto;padding:40px 20px 80px}
+.section-tag{font-family:'Oswald',sans-serif;font-size:11.2px;letter-spacing:1.68px;text-transform:uppercase;color:var(--forge-red);margin-bottom:8px}
+h2{font-family:'Oswald',sans-serif;font-size:36px;font-weight:400;letter-spacing:1.5px;text-transform:uppercase;color:var(--text);margin-bottom:10px}
+.subtitle{color:var(--steel-gray);font-size:15.5px;margin-bottom:32px;max-width:620px;line-height:24px}
+.info{border-left:4px solid var(--forge-red);padding:12px 16px;background:#fdf5f5;margin:14px 0;font-size:13px;line-height:20px;color:var(--dark-gray)}
+
+.waiver-section{background:var(--white);border:2px solid var(--light-gray);margin-bottom:20px;overflow:hidden}
+.ws-header{padding:20px 24px;display:flex;justify-content:space-between;align-items:center;cursor:pointer;user-select:none}
+.ws-header:hover{background:var(--off-white)}
+.ws-title{font-family:'Oswald',sans-serif;font-size:18px;font-weight:500;text-transform:uppercase;letter-spacing:1px;color:var(--text)}
+.ws-arrow{font-size:14px;color:var(--steel-gray);transition:transform .2s}
+.waiver-section.open .ws-arrow{transform:rotate(180deg)}
+.ws-body{max-height:0;overflow:hidden;transition:max-height .5s ease}
+.waiver-section.open .ws-body{max-height:2000px}
+.ws-content{padding:0 24px 24px;border-top:1px solid var(--light-gray);padding-top:20px}
+.ws-content p{margin-bottom:10px;font-size:14px;line-height:22px;color:var(--dark-gray)}
+.ws-content p strong{color:var(--text)}
+.ws-dl{display:flex;align-items:center;gap:12px;padding:16px 24px;border-top:1px solid var(--light-gray);background:var(--off-white)}
+.ws-dl a{font-family:'Oswald',sans-serif;font-size:12px;letter-spacing:1px;text-transform:uppercase;color:var(--forge-red);text-decoration:none;font-weight:500}
+.ws-dl a:hover{text-decoration:underline}
+.ws-dl span{font-size:12px;color:var(--steel-gray)}
+
+.minor-box{background:var(--white);border:2px solid var(--forge-red);padding:24px;margin:24px 0}
+.minor-title{font-family:'Oswald',sans-serif;font-size:18px;font-weight:500;text-transform:uppercase;letter-spacing:1px;color:var(--forge-red);margin-bottom:12px}
+.minor-box p{font-size:14px;line-height:22px;color:var(--dark-gray);margin-bottom:10px}
+
+.btn{font-family:'Oswald',sans-serif;font-size:13.6px;font-weight:500;text-transform:uppercase;letter-spacing:1.2px;border:none;padding:12px 28px;cursor:pointer;display:inline-block;text-decoration:none;text-align:center}
+.btn-p{background:var(--forge-red);color:var(--white)}
+.btn-p:hover{background:var(--forge-red-hover)}
+.cta-section{text-align:center;padding:40px 20px;margin-top:12px}
+.cta-section p{color:var(--steel-gray);margin-bottom:16px}
+
+.contact-bar{background:var(--white);border-top:1px solid var(--light-gray);padding:16px 20px;display:flex;align-items:center;justify-content:center;gap:24px;flex-wrap:wrap;font-size:13.5px;color:var(--steel-gray)}
+.contact-bar a{color:var(--forge-red);text-decoration:none;font-weight:500}
+footer{background:var(--black);padding:36px 20px;text-align:center;color:var(--steel-gray);font-size:13px}
+footer a{color:var(--forge-red);text-decoration:none}
+@media(max-width:640px){h2{font-size:26px}}
+</style>
+</head>
+<body>
+
+<header><a href="../index.html" class="logo"><span>AZ</span> Custom Knives</a></header>
+
+<div class="contact-bar">
+  <span>Questions about our safety policies?</span>
+  <a href="tel:+14035551234">Call Us</a>
+  <a href="mailto:admin@azcustomknives.com">Email Us</a>
+</div>
+
+<main>
+  <div class="section-tag">Safety First</div>
+  <h2>Waivers & Safety Information</h2>
+  <p class="subtitle">Your safety is our priority. Review the waiver for your activity below. You'll agree to these terms during booking, and receive a formal copy for signature after purchase.</p>
+
+  <div class="info">You do not need to print or sign anything before booking. The booking wizard includes checkboxes for agreement. After purchase, you'll receive a formal waiver document by email. If you prefer to read the waiver before booking, you can review the full text below.</div>
+
+  <!-- Drop-Off Services -->
+  <div class="waiver-section" id="w-sharp">
+    <div class="ws-header" onclick="toggle('w-sharp')">
+      <span class="ws-title">Drop-Off Services (Sharpening & Restorations)</span>
+      <span class="ws-arrow">&#9660;</span>
+    </div>
+    <div class="ws-body">
+      <div class="ws-content">
+        <p><strong>DROP-OFF TERMS:</strong> By dropping off items for sharpening or restoration at AZ Custom Knives Ltd ("AZCK"), I acknowledge that the process involves grinding, honing, and material removal which may alter the blade profile. I accept that while every care is taken, minor cosmetic changes may occur during professional sharpening.</p>
+        <p><strong>LIABILITY:</strong> AZCK is not liable for pre-existing damage, defects in the blade, or items left beyond 30 days of completion notification.</p>
+      </div>
+      <div class="ws-dl">
+        <a href="#">Download PDF</a>
+        <span>(Available after booking)</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- Knife Making -->
+  <div class="waiver-section" id="w-km">
+    <div class="ws-header" onclick="toggle('w-km')">
+      <span class="ws-title">Knife Making Classes</span>
+      <span class="ws-arrow">&#9660;</span>
+    </div>
+    <div class="ws-body">
+      <div class="ws-content">
+        <p><strong>CONSIDERATION:</strong> In consideration of being permitted to participate in knife making activities at AZ Custom Knives Ltd ("AZCK"), I acknowledge and agree to the following terms.</p>
+        <p><strong>DETAILS OF ACTIVITY:</strong> Activities include grinding, shaping, drilling, heat treating, handle fitting, and finishing of knives and bladed tools using power tools, hand tools, and related equipment. Participants may be exposed to sharp edges, rotating machinery, hot materials, metal dust, noise, and other workshop hazards.</p>
+        <p><strong>ASSUMPTION OF RISK:</strong> I understand that knife making involves inherent risks of injury including cuts, burns, eye injury, hearing damage, and other bodily harm. I voluntarily assume all risks associated with my participation.</p>
+        <p><strong>RELEASE OF LIABILITY:</strong> I release, waive, and discharge AZCK, its owners, employees, and agents from any and all liability, claims, demands, and causes of action arising out of or related to any loss, damage, or injury that may be sustained during my participation.</p>
+        <p><strong>FITNESS TO PARTICIPATE:</strong> I confirm that I am physically and mentally fit to participate in the activities described and that I have disclosed any relevant medical conditions.</p>
+        <p><strong>GOVERNING LAW:</strong> This waiver is governed by the laws of the Province of Alberta, Canada.</p>
+      </div>
+      <div class="ws-dl">
+        <a href="#">Download PDF</a>
+        <span>(Available after booking)</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- Blacksmithing -->
+  <div class="waiver-section" id="w-bs">
+    <div class="ws-header" onclick="toggle('w-bs')">
+      <span class="ws-title">Blacksmithing Classes</span>
+      <span class="ws-arrow">&#9660;</span>
+    </div>
+    <div class="ws-body">
+      <div class="ws-content">
+        <p><strong>CONSIDERATION:</strong> In consideration of being permitted to participate in blacksmithing activities at AZ Custom Knives Ltd ("AZCK"), I acknowledge and agree to the following terms.</p>
+        <p><strong>DETAILS OF ACTIVITY:</strong> Activities include working with a coal or gas forge, anvil, hammers, tongs, and other smithing tools. Materials will be heated to extreme temperatures. Participants will be working with open flame, hot metals, and heavy tools.</p>
+        <p><strong>ASSUMPTION OF RISK:</strong> I understand that blacksmithing involves inherent risks including burns from hot metal and forge, impact injuries from hammers and tools, eye injury from sparks and scale, and other bodily harm. I voluntarily assume all risks.</p>
+        <p><strong>RELEASE OF LIABILITY:</strong> I release, waive, and discharge AZCK, its owners, employees, and agents from any and all liability arising from my participation.</p>
+        <p><strong>FITNESS TO PARTICIPATE:</strong> I confirm that I am physically fit and able to stand for extended periods and handle heavy tools safely.</p>
+        <p><strong>GOVERNING LAW:</strong> This waiver is governed by the laws of the Province of Alberta, Canada.</p>
+      </div>
+      <div class="ws-dl">
+        <a href="#">Download PDF</a>
+        <span>(Available after booking)</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- Team Building / Family Events -->
+  <div class="waiver-section" id="w-events">
+    <div class="ws-header" onclick="toggle('w-events')">
+      <span class="ws-title">Team Building & Family Events</span>
+      <span class="ws-arrow">&#9660;</span>
+    </div>
+    <div class="ws-body">
+      <div class="ws-content">
+        <p><strong>CONSIDERATION:</strong> In consideration of being permitted to participate in group activities at AZ Custom Knives Ltd ("AZCK"), I acknowledge and agree to the following terms.</p>
+        <p><strong>DETAILS OF ACTIVITY:</strong> Activities may include knife sharpening, blade assembly, knife making, and/or blacksmithing depending on the event package selected. Each involves workshop tools and materials that present inherent risks.</p>
+        <p><strong>ASSUMPTION OF RISK:</strong> I understand the risks involved in workshop activities and voluntarily assume all risks associated with my participation.</p>
+        <p><strong>RELEASE OF LIABILITY:</strong> I release, waive, and discharge AZCK, its owners, employees, and agents from any and all liability arising from my or my group's participation.</p>
+        <p><strong>GOVERNING LAW:</strong> This waiver is governed by the laws of the Province of Alberta, Canada.</p>
+      </div>
+      <div class="ws-dl">
+        <a href="#">Download PDF</a>
+        <span>(Available after booking)</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- Minor Clause -->
+  <div class="minor-box">
+    <div class="minor-title">Participants Under 18</div>
+    <p>AZ Custom Knives welcomes participants of all ages. There is no minimum age requirement — the determining factor is the comprehension level of the participant.</p>
+    <p>For participants under 18, a parent or legal guardian must complete the following before the class:</p>
+    <p><strong>1. Acknowledgment of Risk:</strong> The parent/guardian confirms they understand the specific risks involved in the activity (sharp tools, hot materials, heavy equipment, rotating machinery).</p>
+    <p><strong>2. Indemnity Agreement:</strong> The parent/guardian agrees to indemnify AZCK against any claims arising from the minor's participation.</p>
+    <p>No adult is required to be on-site during the activity, provided these agreements have been completed.</p>
+    <p style="margin-bottom:0;"><em style="color:var(--steel-gray);font-size:13px;">Note: We recommend having this clause reviewed by a lawyer before relying on it. This is our best-effort approach based on Alberta law.</em></p>
+  </div>
+
+  <div class="cta-section">
+    <p>Ready to book?</p>
+    <a href="booking.html" class="btn btn-p">Go to Booking Wizard</a>
+  </div>
+</main>
+
+<footer>
+  <p>&copy; 2026 AZ Custom Knives Ltd. &mdash; <a href="https://azcustomknives.com">azcustomknives.com</a></p>
+  <p style="margin-top:8px;"><a href="booking.html">Book a Class</a> &middot; <a href="blade-models.html">Blade Models</a> &middot; <a href="student-gallery.html">Student Gallery</a></p>
+</footer>
+
+<script>
+function toggle(id) { document.getElementById(id).classList.toggle('open'); }
+</script>
+</body>
+</html>

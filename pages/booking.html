@@ -1,0 +1,1461 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AZCK — Book Your Experience</title>
+<link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+/* ══════════════════════════════════════════════
+   AZCK DESIGN SYSTEM
+   Fonts: Oswald (headings/buttons), Effra→Arial (body)
+   Colours: Forge Red, Steel Gray, Black, White
+   ══════════════════════════════════════════════ */
+:root {
+  --forge-red: #990000;
+  --forge-red-hover: #770000;
+  --steel-gray: #78909C;
+  --black: #000000;
+  --white: #FFFFFF;
+  --off-white: #FAFAFA;
+  --light-gray: #F0F0F0;
+  --dark-gray: #333333;
+  --text: #1a1a1a;
+  --max-width: 920px;
+  --header-height: 72px;
+}
+*, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+body {
+  font-family: 'Effra', 'Segoe UI', Arial, sans-serif;
+  font-size: 15.2px; font-weight: 400; line-height: 25.84px;
+  color: var(--text); background: var(--off-white);
+}
+
+/* ── Header ── */
+header {
+  background: var(--black); height: var(--header-height);
+  display: flex; align-items: center; justify-content: center;
+  position: sticky; top: 0; z-index: 100;
+}
+.logo {
+  font-family: 'Oswald', sans-serif; font-size: 22px; font-weight: 500;
+  letter-spacing: 3px; color: var(--white); text-transform: uppercase;
+  text-decoration: none;
+}
+.logo span { color: var(--forge-red); }
+
+/* ── Progress Bar ── */
+.progress-bar { background: var(--light-gray); padding: 14px 0; border-bottom: 1px solid #ddd; }
+.progress-inner {
+  max-width: var(--max-width); margin: 0 auto; display: flex;
+  justify-content: space-between; padding: 0 20px;
+}
+.step-ind { display: flex; align-items: center; gap: 8px; opacity: 0.3; transition: opacity 0.3s; }
+.step-ind.active { opacity: 1; }
+.step-ind.done { opacity: 0.65; }
+.step-num {
+  width: 28px; height: 28px; border-radius: 50%; background: var(--steel-gray);
+  color: var(--white); font-family: 'Oswald', sans-serif; font-size: 14px;
+  display: flex; align-items: center; justify-content: center; flex-shrink: 0;
+}
+.step-ind.active .step-num { background: var(--forge-red); }
+.step-ind.done .step-num { background: var(--dark-gray); }
+.step-lbl {
+  font-family: 'Oswald', sans-serif; font-size: 11.2px;
+  letter-spacing: 1.68px; text-transform: uppercase; color: var(--dark-gray);
+}
+
+/* ── Main ── */
+main { max-width: var(--max-width); margin: 0 auto; padding: 36px 20px 80px; }
+
+/* ── Typography ── */
+.section-tag {
+  font-family: 'Oswald', sans-serif; font-size: 11.2px; font-weight: 400;
+  letter-spacing: 1.68px; text-transform: uppercase; color: var(--forge-red); margin-bottom: 8px;
+}
+h2 {
+  font-family: 'Oswald', sans-serif; font-size: 36px; font-weight: 400;
+  letter-spacing: 1.5px; text-transform: uppercase; color: var(--text); margin-bottom: 10px;
+}
+.subtitle { color: var(--steel-gray); font-size: 15.5px; margin-bottom: 28px; max-width: 620px; line-height: 24px; }
+
+/* ── Cards ── */
+.cards { display: grid; grid-template-columns: repeat(auto-fill, minmax(250px, 1fr)); gap: 14px; margin-bottom: 28px; }
+.card {
+  background: var(--white); border: 2px solid var(--light-gray); padding: 24px 20px;
+  cursor: pointer; transition: border-color 0.2s, box-shadow 0.2s; position: relative;
+}
+.card:hover { border-color: var(--steel-gray); box-shadow: 0 2px 12px rgba(0,0,0,0.06); }
+.card.selected { border-color: var(--forge-red); box-shadow: 0 2px 16px rgba(153,0,0,0.12); }
+.card-icon { font-size: 26px; margin-bottom: 10px; }
+.card-title {
+  font-family: 'Oswald', sans-serif; font-size: 17px; font-weight: 500;
+  text-transform: uppercase; letter-spacing: 1px; color: var(--text); margin-bottom: 5px;
+}
+.card-desc { font-size: 13px; color: var(--steel-gray); line-height: 19px; }
+.card-price {
+  font-family: 'Oswald', sans-serif; font-size: 13px; color: var(--forge-red);
+  letter-spacing: 0.8px; margin-top: 8px;
+}
+
+/* ── Option buttons ── */
+.opt-row { display: flex; gap: 12px; margin-bottom: 20px; flex-wrap: wrap; }
+.opt-btn {
+  flex: 1; min-width: 200px; background: var(--white); border: 2px solid var(--light-gray);
+  padding: 18px; cursor: pointer; transition: all 0.2s; text-align: left;
+}
+.opt-btn:hover { border-color: var(--steel-gray); }
+.opt-btn.selected { border-color: var(--forge-red); background: #fdf5f5; }
+.opt-btn .ot { font-family: 'Oswald', sans-serif; font-size: 15px; font-weight: 500; text-transform: uppercase; color: var(--text); margin-bottom: 3px; }
+.opt-btn .od { font-size: 12.5px; color: var(--steel-gray); line-height: 17px; }
+.opt-btn .otag {
+  display: inline-block; font-family: 'Oswald', sans-serif; font-size: 10px;
+  letter-spacing: 1.4px; text-transform: uppercase; color: var(--forge-red); margin-top: 6px;
+}
+
+/* ── Blade cards ── */
+.blade-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(195px, 1fr)); gap: 12px; margin-bottom: 20px; }
+.blade-card {
+  background: var(--white); border: 2px solid var(--light-gray); padding: 18px;
+  cursor: pointer; transition: all 0.2s;
+}
+.blade-card:hover { border-color: var(--steel-gray); }
+.blade-card.selected { border-color: var(--forge-red); background: #fdf5f5; }
+.bn { font-family: 'Oswald', sans-serif; font-size: 17px; font-weight: 500; text-transform: uppercase; color: var(--text); margin-bottom: 3px; }
+.bs { font-size: 12px; color: var(--steel-gray); line-height: 17px; }
+.bd {
+  display: inline-block; font-size: 10px; font-family: 'Oswald', sans-serif;
+  letter-spacing: 1px; text-transform: uppercase; padding: 2px 8px; margin-top: 6px;
+  background: var(--light-gray); color: var(--dark-gray);
+}
+.bd.int { background: #fff3e0; color: #e65100; }
+.bd.adv { background: #fce4ec; color: var(--forge-red); }
+
+/* ── Summary box ── */
+.summary-box { background: var(--white); border: 2px solid var(--light-gray); padding: 24px; margin: 28px 0; }
+.summary-title {
+  font-family: 'Oswald', sans-serif; font-size: 13px; letter-spacing: 1.68px;
+  text-transform: uppercase; color: var(--forge-red); margin-bottom: 14px;
+}
+.sum-line { display: flex; justify-content: space-between; padding: 7px 0; border-bottom: 1px solid var(--light-gray); font-size: 14px; }
+.sum-line:last-child { border-bottom: none; }
+.sum-line .sl { color: var(--steel-gray); }
+.sum-line .sv { font-weight: 600; color: var(--text); }
+.sum-total {
+  display: flex; justify-content: space-between; padding: 14px 0 0; margin-top: 8px;
+  border-top: 2px solid var(--text);
+}
+.sum-total .sl { font-family: 'Oswald', sans-serif; font-size: 15px; text-transform: uppercase; letter-spacing: 1px; }
+.sum-total .sv { font-family: 'Oswald', sans-serif; font-size: 22px; color: var(--forge-red); font-weight: 600; }
+
+/* ── Waiver blocks ── */
+.waiver-block { background: var(--white); border: 1px solid var(--light-gray); margin-bottom: 14px; }
+.waiver-hdr {
+  padding: 14px 18px; cursor: pointer; display: flex; justify-content: space-between;
+  align-items: center; user-select: none;
+}
+.waiver-hdr:hover { background: var(--off-white); }
+.wt {
+  font-family: 'Oswald', sans-serif; font-size: 13px; letter-spacing: 1px;
+  text-transform: uppercase; color: var(--dark-gray);
+}
+.warr { font-size: 12px; color: var(--steel-gray); transition: transform 0.2s; }
+.waiver-block.open .warr { transform: rotate(180deg); }
+.waiver-body { max-height: 0; overflow: hidden; transition: max-height 0.4s ease; }
+.waiver-block.open .waiver-body { max-height: 800px; }
+.wtxt { padding: 0 18px 18px; font-size: 13px; line-height: 20px; color: var(--steel-gray); border-top: 1px solid var(--light-gray); padding-top: 14px; }
+.wtxt p { margin-bottom: 8px; }
+.wtxt p:last-child { margin-bottom: 0; }
+
+/* ── Checkboxes ── */
+.chk-row { display: flex; align-items: flex-start; gap: 10px; padding: 10px 0; }
+.chk-row input[type="checkbox"] { width: 18px; height: 18px; margin-top: 2px; accent-color: var(--forge-red); cursor: pointer; flex-shrink: 0; }
+.chk-row label { font-size: 14px; color: var(--text); cursor: pointer; line-height: 20px; }
+
+/* ── Buttons ── */
+.btn {
+  font-family: 'Oswald', sans-serif; font-size: 13.6px; font-weight: 500;
+  text-transform: uppercase; letter-spacing: 1.2px; border: none;
+  padding: 12px 28px; cursor: pointer; transition: background 0.2s, opacity 0.2s;
+  display: inline-block; text-decoration: none; text-align: center;
+}
+.btn-p { background: var(--forge-red); color: var(--white); }
+.btn-p:hover { background: var(--forge-red-hover); }
+.btn-p:disabled { background: var(--steel-gray); cursor: not-allowed; opacity: 0.5; }
+.btn-s { background: transparent; color: var(--dark-gray); border: 1px solid var(--steel-gray); }
+.btn-s:hover { background: var(--light-gray); }
+.btn-row { display: flex; justify-content: space-between; align-items: center; margin-top: 28px; gap: 12px; }
+
+/* ── Info / Note ── */
+.info { border-left: 4px solid var(--forge-red); padding: 12px 16px; background: #fdf5f5; margin: 14px 0; font-size: 13px; line-height: 20px; color: var(--dark-gray); }
+.note-box {
+  background: var(--white); border: 1px dashed var(--steel-gray); padding: 18px; margin: 18px 0;
+  font-size: 13.5px; color: var(--dark-gray); line-height: 21px;
+}
+.note-box strong {
+  font-family: 'Oswald', sans-serif; font-size: 11px; letter-spacing: 1.2px;
+  text-transform: uppercase; color: var(--forge-red); display: block; margin-bottom: 5px;
+}
+
+/* ── Headcount / Catering ── */
+.config-section { margin: 20px 0; }
+.config-label {
+  font-family: 'Oswald', sans-serif; font-size: 13px; letter-spacing: 1px;
+  text-transform: uppercase; color: var(--dark-gray); margin-bottom: 8px;
+}
+.hc-control { display: flex; align-items: center; gap: 16px; margin-bottom: 8px; }
+.hc-btn {
+  width: 36px; height: 36px; border: 1px solid var(--steel-gray); background: var(--white);
+  font-family: 'Oswald', sans-serif; font-size: 20px; cursor: pointer; display: flex;
+  align-items: center; justify-content: center; color: var(--dark-gray);
+}
+.hc-btn:hover { background: var(--light-gray); }
+.hc-val { font-family: 'Oswald', sans-serif; font-size: 28px; color: var(--text); min-width: 40px; text-align: center; }
+.hc-msg { font-size: 12.5px; color: var(--steel-gray); line-height: 18px; min-height: 18px; }
+.hc-warn { color: #e65100; font-weight: 500; }
+
+/* ── Toggle ── */
+.toggle-row { display: flex; align-items: center; gap: 12px; margin: 12px 0; }
+.toggle {
+  width: 44px; height: 24px; background: var(--steel-gray); border-radius: 12px;
+  cursor: pointer; position: relative; transition: background 0.2s; flex-shrink: 0;
+}
+.toggle.on { background: var(--forge-red); }
+.toggle::after {
+  content: ''; position: absolute; top: 2px; left: 2px; width: 20px; height: 20px;
+  background: var(--white); border-radius: 50%; transition: left 0.2s;
+}
+.toggle.on::after { left: 22px; }
+.toggle-label { font-size: 14px; color: var(--dark-gray); }
+
+/* ── Contact Fallback ── */
+.contact-bar {
+  background: var(--white); border-top: 1px solid var(--light-gray); padding: 16px 20px;
+  display: flex; align-items: center; justify-content: center; gap: 24px; flex-wrap: wrap;
+  font-size: 13.5px; color: var(--steel-gray);
+}
+.contact-bar a { color: var(--forge-red); text-decoration: none; font-weight: 500; }
+.contact-bar a:hover { text-decoration: underline; }
+
+/* ── Share Button ── */
+.share-btn {
+  display: inline-flex; align-items: center; gap: 6px; background: none; border: 1px solid var(--steel-gray);
+  padding: 6px 14px; cursor: pointer; font-family: 'Oswald', sans-serif; font-size: 11px;
+  letter-spacing: 1.2px; text-transform: uppercase; color: var(--steel-gray); transition: all 0.2s;
+}
+.share-btn:hover { border-color: var(--forge-red); color: var(--forge-red); }
+.share-btn svg { width: 14px; height: 14px; }
+
+/* ── Confirmation ── */
+.confirm-box {
+  text-align: center; padding: 48px 24px; background: var(--white); border: 2px solid var(--forge-red);
+}
+.confirm-icon { font-size: 48px; margin-bottom: 16px; }
+.confirm-box h2 { color: var(--forge-red); margin-bottom: 16px; }
+
+/* ── Gift banner ── */
+.gift-banner {
+  display: flex; align-items: center; justify-content: center; gap: 12px;
+  background: var(--white); border: 1px solid var(--light-gray); padding: 14px 20px;
+  margin: 24px 0; font-size: 14px; color: var(--dark-gray);
+}
+.gift-banner a { color: var(--forge-red); text-decoration: none; font-weight: 600; }
+
+/* ── Footer ── */
+footer {
+  background: var(--black); padding: 36px 20px; text-align: center;
+  color: var(--steel-gray); font-size: 13px;
+}
+footer a { color: var(--forge-red); text-decoration: none; }
+
+/* ── Wizard steps ── */
+.wiz { display: none; }
+.wiz.vis { display: block; animation: fadeIn 0.3s ease; }
+@keyframes fadeIn { from { opacity: 0; transform: translateY(6px); } to { opacity: 1; transform: translateY(0); } }
+
+/* ── Responsive ── */
+@media (max-width: 640px) {
+  h2 { font-size: 26px; }
+  .step-lbl { display: none; }
+  .opt-row { flex-direction: column; }
+  .blade-grid { grid-template-columns: 1fr 1fr; }
+  .cards { grid-template-columns: 1fr; }
+  .contact-bar { flex-direction: column; gap: 8px; text-align: center; }
+}
+@media (max-width: 400px) {
+  .blade-grid { grid-template-columns: 1fr; }
+}
+</style>
+</head>
+<body>
+
+<!-- ═══════ HEADER ═══════ -->
+<header>
+  <a href="../index.html" class="logo"><span>AZ</span> Custom Knives</a>
+</header>
+
+<!-- ═══════ PROGRESS BAR ═══════ -->
+<div class="progress-bar">
+  <div class="progress-inner">
+    <div class="step-ind active" data-step="1"><div class="step-num">1</div><span class="step-lbl">Experience</span></div>
+    <div class="step-ind" data-step="2"><div class="step-num">2</div><span class="step-lbl">Configure</span></div>
+    <div class="step-ind" data-step="3"><div class="step-num">3</div><span class="step-lbl">Review</span></div>
+    <div class="step-ind" data-step="4"><div class="step-num">4</div><span class="step-lbl">Agree & Book</span></div>
+  </div>
+</div>
+
+<!-- ═══════ CONTACT FALLBACK (persistent) ═══════ -->
+<div class="contact-bar">
+  <span>Prefer to talk first?</span>
+  <a href="tel:+14035551234">Call Us</a>
+  <a href="mailto:admin@azcustomknives.com">Email Us</a>
+  <span style="color:var(--light-gray);">|</span>
+  <span>We'll help you figure it out.</span>
+</div>
+
+<main>
+
+<!-- ╔══════════════════════════════════════════╗
+     ║  STEP 1 — CHOOSE YOUR EXPERIENCE        ║
+     ╚══════════════════════════════════════════╝ -->
+<div class="wiz vis" id="step1">
+  <div class="section-tag">Step 1 of 4</div>
+  <h2>Choose Your Experience</h2>
+  <p class="subtitle">Whether you're sharpening a kitchen knife, making one from scratch, or planning a team event — pick a category to get started.</p>
+
+  <div class="cards" id="cat-cards">
+    <div class="card" onclick="pickCat('sharpening')" data-cat="sharpening">
+      <div class="card-icon">🔪</div>
+      <div class="card-title">Sharpening & Restorations</div>
+      <div class="card-desc">Drop off your knives, scissors, or axes. We bring them back to life.</div>
+      <div class="card-price">From $25</div>
+    </div>
+    <div class="card" onclick="pickCat('knifemaking')" data-cat="knifemaking">
+      <div class="card-icon">🗡️</div>
+      <div class="card-title">Knife Making</div>
+      <div class="card-desc">Build a custom knife from raw steel. 1-on-1 or group classes available.</div>
+      <div class="card-price">From $400</div>
+    </div>
+    <div class="card" onclick="pickCat('blacksmithing')" data-cat="blacksmithing">
+      <div class="card-icon">⚒️</div>
+      <div class="card-title">Blacksmithing</div>
+      <div class="card-desc">Forge hot steel into functional art. The real deal — fire, hammer, anvil.</div>
+      <div class="card-price">From $350</div>
+    </div>
+    <div class="card" onclick="pickCat('teambuilding')" data-cat="teambuilding">
+      <div class="card-icon">🏢</div>
+      <div class="card-title">Team Building</div>
+      <div class="card-desc">Corporate events and client appreciation. Interactive, memorable, hands-on.</div>
+      <div class="card-price">From $260 / person</div>
+    </div>
+    <div class="card" onclick="pickCat('family')" data-cat="family">
+      <div class="card-icon">👨‍👩‍👧‍👦</div>
+      <div class="card-title">Family Events</div>
+      <div class="card-desc">Bring the whole family. Homeschool groups welcome. An experience they'll never forget.</div>
+      <div class="card-price">From $260 / person</div>
+    </div>
+  </div>
+
+  <!-- Gift banner -->
+  <div class="gift-banner">
+    🎁 <span>Looking for a gift? <a href="gift-certificates.html">Buy a gift certificate</a> for any class or service.</span>
+  </div>
+
+  <!-- Share -->
+  <div style="text-align:right; margin-top:12px;">
+    <button class="share-btn" onclick="shareThis('Check out AZ Custom Knives — you can make your own knife here!', '')">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 12v8a2 2 0 002 2h12a2 2 0 002-2v-8"/><polyline points="16 6 12 2 8 6"/><line x1="12" y1="2" x2="12" y2="15"/></svg>
+      Share
+    </button>
+  </div>
+</div>
+
+<!-- ╔══════════════════════════════════════════╗
+     ║  STEP 2 — CONFIGURE                     ║
+     ╚══════════════════════════════════════════╝ -->
+
+<!-- ── 2A: Sharpening ── -->
+<div class="wiz" id="step2-sharpening">
+  <div class="section-tag">Sharpening & Restorations</div>
+  <h2>Select a Service</h2>
+  <p class="subtitle">Choose what you need sharpened or restored. Drop it off, we handle the rest.</p>
+
+  <div class="cards" id="sharp-cards">
+    <div class="card" onclick="pickSharp('knife')" data-svc="knife">
+      <div class="card-title">Knife Sharpening</div>
+      <div class="card-desc">Kitchen, pocket, hunting — any knife, any steel.</div>
+    </div>
+    <div class="card" onclick="pickSharp('scissor')" data-svc="scissor">
+      <div class="card-title">Scissor Sharpening</div>
+      <div class="card-desc">Household, salon, or professional scissors.</div>
+    </div>
+    <div class="card" onclick="pickSharp('axe')" data-svc="axe">
+      <div class="card-title">Axe Sharpening</div>
+      <div class="card-desc">Hatchets, axes, and splitting tools.</div>
+    </div>
+    <div class="card" onclick="pickSharp('restoration')" data-svc="restoration">
+      <div class="card-title">Blade Regrind / Restoration</div>
+      <div class="card-desc">Full blade restoration — regrind, polish, and reshape.</div>
+    </div>
+  </div>
+
+  <div style="text-align:right; margin-top:8px;">
+    <button class="share-btn" onclick="shareThis('Check out the sharpening services at AZ Custom Knives!', '#sharpening')">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 12v8a2 2 0 002 2h12a2 2 0 002-2v-8"/><polyline points="16 6 12 2 8 6"/><line x1="12" y1="2" x2="12" y2="15"/></svg>
+      Share
+    </button>
+  </div>
+
+  <div class="btn-row">
+    <button class="btn btn-s" onclick="goStep(1)">&#8592; Back</button>
+    <button class="btn btn-p" id="sharp-next" disabled onclick="goStep(3)">Continue &#8594;</button>
+  </div>
+</div>
+
+<!-- ── 2B: Knife Making ── -->
+<div class="wiz" id="step2-knifemaking">
+  <div class="section-tag">Knife Making</div>
+  <h2>Configure Your Experience</h2>
+  <p class="subtitle">Choose your class type, then customise the details.</p>
+
+  <!-- Class type -->
+  <div class="config-label" style="margin-top:4px;">Class Type</div>
+  <div class="opt-row" id="km-type-row">
+    <div class="opt-btn selected" onclick="pickKmType('1on1', this)">
+      <div class="ot">1-on-1</div>
+      <div class="od">Private session. Full day, your vision, your knife.</div>
+      <div class="otag">The Premium Experience</div>
+    </div>
+    <div class="opt-btn" onclick="pickKmType('group', this)">
+      <div class="ot">Group Class</div>
+      <div class="od">2–5 people. Pre-made blanks. Everyone finishes a knife.</div>
+      <div class="otag">Shared Experience</div>
+    </div>
+  </div>
+
+  <!-- 1-on-1 config -->
+  <div id="km-1on1">
+    <div class="config-label">Starting Point</div>
+    <div class="opt-row">
+      <div class="opt-btn selected" onclick="pickKmPath('scratch', this)">
+        <div class="ot">Start From Scratch</div>
+        <div class="od">Shape raw steel into a finished blade over a 10-hour day.</div>
+        <div class="otag">The Classic</div>
+      </div>
+      <div class="opt-btn" onclick="pickKmPath('blank', this)">
+        <div class="ot">Premium Blank</div>
+        <div class="od">Start with a blade I've already heat treated and ground. Focus on handle work.</div>
+        <div class="otag">Bigger Knives, Fancier Steels</div>
+      </div>
+    </div>
+
+    <!-- Scratch options -->
+    <div id="km-scratch">
+      <div class="config-label">Steel</div>
+      <div class="opt-row">
+        <div class="opt-btn selected" onclick="pickSteel('1084', this)">
+          <div class="ot">1084 Carbon Steel</div>
+          <div class="od">Our standard. Tough, forgiving, great edge. You will finish in one day.</div>
+          <div class="otag">Included</div>
+        </div>
+        <div class="opt-btn" onclick="pickSteel('80crv2', this)">
+          <div class="ot">80CrV2</div>
+          <div class="od">Better edge retention. Chromium + vanadium. Still one day.</div>
+          <div class="otag">Upgrade</div>
+        </div>
+      </div>
+      <div class="info">A basic knife is always finishable in one 10-hour day with 1084 or 80CrV2 — that's our promise. Want premium steels like Cruwear, MagnaCut, or Damascus? We'll plan that in your free consultation after booking.</div>
+
+      <div class="config-label" style="margin-top:18px;">Blade Style</div>
+      <p style="font-size:12.5px; color:var(--steel-gray); margin-bottom:10px;">Pick a proven design or bring your own idea. <a href="blade-models.html" style="color:var(--forge-red);">Learn more about each model</a></p>
+      <div class="blade-grid" id="km-blades">
+        <div class="blade-card selected" onclick="pickBlade('bulldog', this)">
+          <div class="bn">Bulldog</div>
+          <div class="bs">4" handle / 4" blade<br>Palm drop point hunter</div>
+          <div class="bd">Standard</div>
+        </div>
+        <div class="blade-card" onclick="pickBlade('falcon', this)">
+          <div class="bn">Falcon</div>
+          <div class="bs">4" handle / 4" blade<br>Tanto-style blade</div>
+          <div class="bd int">Intermediate</div>
+        </div>
+        <div class="blade-card" onclick="pickBlade('badger', this)">
+          <div class="bn">Badger</div>
+          <div class="bs">4.5" handle / 3.5" blade<br>Compact utility</div>
+          <div class="bd">Standard</div>
+        </div>
+        <div class="blade-card" onclick="pickBlade('custom', this)">
+          <div class="bn">Custom Idea</div>
+          <div class="bs">Bring your vision<br>We'll plan it together</div>
+          <div class="bd">Consultation</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Blank options -->
+    <div id="km-blank" style="display:none;">
+      <div class="note-box">
+        <strong>How Premium Blanks Work</strong>
+        I prepare the blank beforehand — heat treated, ground, and potentially stonewashed or finished in a steel of your choice (including Cruwear, MagnaCut, Damascus). You come in and we build the handle and do final assembly. Bigger knives, fancier steels, no multi-day commitment. Blank pricing varies.
+      </div>
+      <a href="available-blanks.html" class="btn btn-s" style="margin-top:8px;">Browse Available Blanks</a>
+      <div class="info" style="margin-top:14px;">Not sure which blank to pick? No worries — we'll go through your options in the consultation after you book.</div>
+    </div>
+
+    <div class="note-box" style="margin-top:20px;">
+      <strong>Free Preliminary Consultation Included</strong>
+      After you book, we'll schedule a quick meeting to dial in exactly what you want — blade design, steel choice, any upgrades. Book now, details later.
+    </div>
+
+    <!-- 1-on-1 class selection -->
+    <div class="config-label" style="margin-top:18px;">Session Length</div>
+    <div class="cards" id="km-1on1-svc">
+      <div class="card selected" onclick="pickKm1Svc('fullday', this)">
+        <div class="card-title">Full Day</div>
+        <div class="card-desc">10 hours. The complete experience from scratch.</div>
+        <div class="card-price">$850</div>
+      </div>
+      <div class="card" onclick="pickKm1Svc('halfday', this)">
+        <div class="card-title">Half Day Project</div>
+        <div class="card-desc">Shorter session. Great for premium blanks or smaller projects.</div>
+        <div class="card-price">$450</div>
+      </div>
+      <div class="card" onclick="pickKm1Svc('continuation', this)">
+        <div class="card-title">Continuation</div>
+        <div class="card-desc">Coming back to finish a multi-day project.</div>
+        <div class="card-price">$400</div>
+      </div>
+      <div class="card" onclick="pickKm1Svc('afterhours', this)">
+        <div class="card-title">After Hours Intro</div>
+        <div class="card-desc">Evening session. A taste of knife making.</div>
+        <div class="card-price">$799</div>
+      </div>
+      <div class="card" onclick="pickKm1Svc('makeup', this)">
+        <div class="card-title">After Hours Make-Up</div>
+        <div class="card-desc">Finish what you started in a previous session.</div>
+        <div class="card-price">$150</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Group config -->
+  <div id="km-group" style="display:none;">
+    <div class="info">Group classes use pre-made 1084 steel blanks. Students grind the blade in the hardened state and finish a complete knife including the handle. Everyone goes home with a finished blade.</div>
+
+    <div class="config-label" style="margin-top:18px;">Blade Model (1084 Blanks)</div>
+    <div class="blade-grid" id="km-grp-blades">
+      <div class="blade-card selected" onclick="pickGrpBlade('bulldog', this)">
+        <div class="bn">Bulldog</div>
+        <div class="bs">4" handle / 4" blade<br>Palm drop point hunter</div>
+        <div class="bd">Standard</div>
+      </div>
+      <div class="blade-card" onclick="pickGrpBlade('falcon', this)">
+        <div class="bn">Falcon</div>
+        <div class="bs">4" handle / 4" blade<br>Tanto-style blade</div>
+        <div class="bd int">Intermediate</div>
+      </div>
+      <div class="blade-card" onclick="pickGrpBlade('badger', this)">
+        <div class="bn">Badger</div>
+        <div class="bs">4.5" handle / 3.5" blade<br>Compact utility</div>
+        <div class="bd">Standard</div>
+      </div>
+    </div>
+
+    <div class="config-label">Group Size</div>
+    <div class="cards" id="km-grp-svc">
+      <div class="card selected" onclick="pickKmGrpSvc('2person', this)">
+        <div class="card-title">2 People — Full Day</div>
+        <div class="card-price">$1,500 total</div>
+      </div>
+      <div class="card" onclick="pickKmGrpSvc('3to5', this)">
+        <div class="card-title">3–5 People — Full Day</div>
+        <div class="card-price">$1,950 total</div>
+      </div>
+    </div>
+  </div>
+
+  <div style="text-align:right; margin-top:8px;">
+    <button class="share-btn" onclick="shareThis('Check out the knife making classes at AZ Custom Knives!', '#knifemaking')">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 12v8a2 2 0 002 2h12a2 2 0 002-2v-8"/><polyline points="16 6 12 2 8 6"/><line x1="12" y1="2" x2="12" y2="15"/></svg>
+      Share
+    </button>
+  </div>
+
+  <div class="btn-row">
+    <button class="btn btn-s" onclick="goStep(1)">&#8592; Back</button>
+    <button class="btn btn-p" onclick="goStep(3)">Review Your Booking &#8594;</button>
+  </div>
+</div>
+
+<!-- ── 2C: Blacksmithing ── -->
+<div class="wiz" id="step2-blacksmithing">
+  <div class="section-tag">Blacksmithing</div>
+  <h2>Choose Your Class</h2>
+  <p class="subtitle">Work with hot steel. Hammer, anvil, forge. The real thing.</p>
+
+  <div class="cards" id="bs-cards">
+    <div class="card" onclick="pickBs('1half', this)">
+      <div class="card-title">1 Person — Half Day</div>
+      <div class="card-desc">Solo session, half day at the forge.</div>
+      <div class="card-price">$450</div>
+    </div>
+    <div class="card" onclick="pickBs('1full', this)">
+      <div class="card-title">1 Person — Full Day</div>
+      <div class="card-desc">Full day. More time, bigger projects.</div>
+      <div class="card-price">$700</div>
+    </div>
+    <div class="card" onclick="pickBs('2half', this)">
+      <div class="card-title">2 People — Half Day</div>
+      <div class="card-desc">Bring a friend. Half day together.</div>
+      <div class="card-price">$700</div>
+    </div>
+    <div class="card" onclick="pickBs('2full', this)">
+      <div class="card-title">2 People — Full Day</div>
+      <div class="card-desc">Two people, full day at the anvil.</div>
+      <div class="card-price">$1,200</div>
+    </div>
+    <div class="card" onclick="pickBs('3half', this)">
+      <div class="card-title">3 People — Half Day</div>
+      <div class="card-desc">Small group, half day.</div>
+      <div class="card-price">$750</div>
+    </div>
+    <div class="card" onclick="pickBs('3full', this)">
+      <div class="card-title">3 People — Full Day</div>
+      <div class="card-desc">Three at the forge, full day.</div>
+      <div class="card-price">$1,500</div>
+    </div>
+  </div>
+
+  <div style="text-align:right; margin-top:8px;">
+    <button class="share-btn" onclick="shareThis('Check out the blacksmithing classes at AZ Custom Knives!', '#blacksmithing')">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 12v8a2 2 0 002 2h12a2 2 0 002-2v-8"/><polyline points="16 6 12 2 8 6"/><line x1="12" y1="2" x2="12" y2="15"/></svg>
+      Share
+    </button>
+  </div>
+
+  <div class="btn-row">
+    <button class="btn btn-s" onclick="goStep(1)">&#8592; Back</button>
+    <button class="btn btn-p" id="bs-next" disabled onclick="goStep(3)">Review Your Booking &#8594;</button>
+  </div>
+</div>
+
+<!-- ── 2D: Team Building ── -->
+<div class="wiz" id="step2-teambuilding">
+  <div class="section-tag">Corporate Team Building</div>
+  <h2>Build Your Event</h2>
+  <p class="subtitle">Choose an activity, set your headcount, add catering. We'll handle the rest.</p>
+
+  <div class="config-label">Activity</div>
+  <div class="cards" id="tb-act-cards">
+    <div class="card" onclick="pickTbAct('sharpsem', this)">
+      <div class="card-title">Sharpening Seminar</div>
+      <div class="card-desc">4 hours. Everyone learns proper sharpening technique.</div>
+      <div class="card-price">$260 / person — up to 20 people</div>
+    </div>
+    <div class="card" onclick="pickTbAct('assembly', this)">
+      <div class="card-title">Knife Assembly</div>
+      <div class="card-desc">5–6 hours. Assemble a real knife from a pre-made blank.</div>
+      <div class="card-price">$450 / person — up to 15 people</div>
+    </div>
+    <div class="card" onclick="pickTbAct('knifemaking', this)">
+      <div class="card-title">Knife Making</div>
+      <div class="card-desc">10 hours. The full experience. Start to finish.</div>
+      <div class="card-price">$650 / person — up to 6 per day</div>
+    </div>
+    <div class="card" onclick="pickTbAct('blacksmithing', this)">
+      <div class="card-title">Blacksmithing</div>
+      <div class="card-desc">4 hours. Hot steel, hammer, anvil. Unforgettable.</div>
+      <div class="card-price">$350 / person — up to 6 people</div>
+    </div>
+  </div>
+
+  <!-- Headcount (shown after activity selected) -->
+  <div id="tb-config" style="display:none;">
+    <div class="config-section">
+      <div class="config-label">Headcount</div>
+      <div class="hc-control">
+        <button class="hc-btn" onclick="tbHc(-1)">−</button>
+        <div class="hc-val" id="tb-hc-val">4</div>
+        <button class="hc-btn" onclick="tbHc(1)">+</button>
+      </div>
+      <div class="hc-msg" id="tb-hc-msg"></div>
+    </div>
+
+    <!-- Catering toggle -->
+    <div class="config-section">
+      <div class="config-label">Catering</div>
+      <div class="toggle-row">
+        <div class="toggle" id="tb-cat-toggle" onclick="toggleCatering('tb')"></div>
+        <span class="toggle-label">Add catering for your group</span>
+      </div>
+      <div id="tb-cat-opts" style="display:none;">
+        <div class="opt-row" style="margin-top:10px;">
+          <div class="opt-btn selected" onclick="pickCater('subway', this, 'tb')">
+            <div class="ot">Subway</div>
+            <div class="od">$20–$40 / person</div>
+            <div class="otag">Standard</div>
+          </div>
+          <div class="opt-btn" onclick="pickCater('jeffreys', this, 'tb')">
+            <div class="ot">Jeffrey's Cafe Co</div>
+            <div class="od">$40–$70 / person</div>
+            <div class="otag">Premium</div>
+          </div>
+          <div class="opt-btn" onclick="pickCater('custom', this, 'tb')">
+            <div class="ot">Custom Catering</div>
+            <div class="od">Tell us what you want</div>
+            <div class="otag">Quote on Request</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Live total -->
+    <div class="summary-box" id="tb-live-total">
+      <div class="summary-title">Estimated Total</div>
+      <div class="sum-line"><span class="sl">Activity</span><span class="sv" id="tb-act-cost">$0</span></div>
+      <div class="sum-line" id="tb-cat-line" style="display:none;"><span class="sl">Catering</span><span class="sv" id="tb-cat-cost">$0</span></div>
+      <div class="sum-total"><span class="sl">Total</span><span class="sv" id="tb-total">$0</span></div>
+    </div>
+  </div>
+
+  <div class="note-box">
+    <strong>Planning Something Special?</strong>
+    Every team is different. If you'd rather talk it through before booking — customise the agenda, ask questions, or just get a feel for the space — give us a call or send an email. We'll make it happen.
+  </div>
+
+  <div style="text-align:right; margin-top:8px;">
+    <button class="share-btn" onclick="shareThis('Check out Team Building at AZ Custom Knives!', '#teambuilding')">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 12v8a2 2 0 002 2h12a2 2 0 002-2v-8"/><polyline points="16 6 12 2 8 6"/><line x1="12" y1="2" x2="12" y2="15"/></svg>
+      Share
+    </button>
+  </div>
+
+  <div class="btn-row">
+    <button class="btn btn-s" onclick="goStep(1)">&#8592; Back</button>
+    <button class="btn btn-p" id="tb-next" disabled onclick="goStep(3)">Review Your Event &#8594;</button>
+  </div>
+</div>
+
+<!-- ── 2E: Family Events ── -->
+<div class="wiz" id="step2-family">
+  <div class="section-tag">Family Events</div>
+  <h2>Plan Your Family Experience</h2>
+  <p class="subtitle">Bring the whole crew — families, homeschool groups, or a close circle of friends. Everyone's welcome.</p>
+
+  <div class="config-label">Activity</div>
+  <div class="cards" id="fam-act-cards">
+    <div class="card" onclick="pickFamAct('sharpsem', this)">
+      <div class="card-title">Sharpening Seminar</div>
+      <div class="card-desc">4 hours. Learn proper sharpening as a family.</div>
+      <div class="card-price">$260 / person — up to 12 people</div>
+    </div>
+    <div class="card" onclick="pickFamAct('assembly', this)">
+      <div class="card-title">Knife Assembly</div>
+      <div class="card-desc">5–6 hours. Everyone builds a knife from a pre-made blank.</div>
+      <div class="card-price">$450 / person — up to 12 people</div>
+    </div>
+    <div class="card" onclick="pickFamAct('knifemaking', this)">
+      <div class="card-title">Knife Making</div>
+      <div class="card-desc">10 hours. The full experience.</div>
+      <div class="card-price">$650 / person — up to 6 per day</div>
+    </div>
+    <div class="card" onclick="pickFamAct('blacksmithing', this)">
+      <div class="card-title">Blacksmithing</div>
+      <div class="card-desc">4 hours. Hot steel, hammer, anvil.</div>
+      <div class="card-price">$350 / person — up to 6 people</div>
+    </div>
+  </div>
+
+  <div id="fam-config" style="display:none;">
+    <div class="config-section">
+      <div class="config-label">Headcount</div>
+      <div class="hc-control">
+        <button class="hc-btn" onclick="famHc(-1)">−</button>
+        <div class="hc-val" id="fam-hc-val">4</div>
+        <button class="hc-btn" onclick="famHc(1)">+</button>
+      </div>
+      <div class="hc-msg" id="fam-hc-msg"></div>
+    </div>
+
+    <div class="config-section">
+      <div class="config-label">Catering</div>
+      <div class="toggle-row">
+        <div class="toggle" id="fam-cat-toggle" onclick="toggleCatering('fam')"></div>
+        <span class="toggle-label">Add catering for your group</span>
+      </div>
+      <div id="fam-cat-opts" style="display:none;">
+        <div class="opt-row" style="margin-top:10px;">
+          <div class="opt-btn selected" onclick="pickCater('subway', this, 'fam')">
+            <div class="ot">Subway</div>
+            <div class="od">$20–$40 / person</div>
+            <div class="otag">Standard</div>
+          </div>
+          <div class="opt-btn" onclick="pickCater('jeffreys', this, 'fam')">
+            <div class="ot">Jeffrey's Cafe Co</div>
+            <div class="od">$40–$70 / person</div>
+            <div class="otag">Premium</div>
+          </div>
+          <div class="opt-btn" onclick="pickCater('custom', this, 'fam')">
+            <div class="ot">Custom Catering</div>
+            <div class="od">Tell us what you want</div>
+            <div class="otag">Quote on Request</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="summary-box" id="fam-live-total">
+      <div class="summary-title">Estimated Total</div>
+      <div class="sum-line"><span class="sl">Activity</span><span class="sv" id="fam-act-cost">$0</span></div>
+      <div class="sum-line" id="fam-cat-line" style="display:none;"><span class="sl">Catering</span><span class="sv" id="fam-cat-cost">$0</span></div>
+      <div class="sum-total"><span class="sl">Total</span><span class="sv" id="fam-total">$0</span></div>
+    </div>
+  </div>
+
+  <div class="note-box">
+    <strong>Planning a Family Outing?</strong>
+    Not sure what's right for your group? Call or email us and we'll help you pick the perfect experience for all ages.
+  </div>
+
+  <div style="text-align:right; margin-top:8px;">
+    <button class="share-btn" onclick="shareThis('Check out Family Events at AZ Custom Knives!', '#family')">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 12v8a2 2 0 002 2h12a2 2 0 002-2v-8"/><polyline points="16 6 12 2 8 6"/><line x1="12" y1="2" x2="12" y2="15"/></svg>
+      Share
+    </button>
+  </div>
+
+  <div class="btn-row">
+    <button class="btn btn-s" onclick="goStep(1)">&#8592; Back</button>
+    <button class="btn btn-p" id="fam-next" disabled onclick="goStep(3)">Review Your Event &#8594;</button>
+  </div>
+</div>
+
+<!-- ── 2F: Workshop ── -->
+<div class="wiz" id="step2-workshop">
+  <div class="section-tag">Workshop</div>
+  <h2>Group Whetstone Workshop</h2>
+  <p class="subtitle">Learn proper whetstone sharpening technique in a group setting.</p>
+  <div class="summary-box">
+    <div class="summary-title">Details</div>
+    <div class="sum-line"><span class="sl">Price</span><span class="sv">$260</span></div>
+    <div class="sum-line"><span class="sl">Format</span><span class="sv">Group workshop</span></div>
+  </div>
+  <div class="btn-row">
+    <button class="btn btn-s" onclick="goStep(1)">&#8592; Back</button>
+    <button class="btn btn-p" onclick="goStep(3)">Review &#8594;</button>
+  </div>
+</div>
+
+<!-- ╔══════════════════════════════════════════╗
+     ║  STEP 3 — REVIEW                        ║
+     ╚══════════════════════════════════════════╝ -->
+<div class="wiz" id="step3">
+  <div class="section-tag">Almost There</div>
+  <h2>Review Your Booking</h2>
+  <p class="subtitle">Make sure everything looks right before you proceed.</p>
+
+  <div class="summary-box">
+    <div class="summary-title">Your Experience</div>
+    <div id="review-lines"></div>
+    <div class="sum-total"><span class="sl">Total</span><span class="sv" id="rev-total">$0</span></div>
+  </div>
+
+  <div class="info">Payment is processed securely through our booking system powered by Square. After payment, you'll receive a confirmation email with next steps.</div>
+
+  <div style="text-align:right; margin-top:12px;">
+    <button class="share-btn" onclick="shareThis('I\'m about to book an experience at AZ Custom Knives!', '')">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 12v8a2 2 0 002 2h12a2 2 0 002-2v-8"/><polyline points="16 6 12 2 8 6"/><line x1="12" y1="2" x2="12" y2="15"/></svg>
+      Share
+    </button>
+  </div>
+
+  <div class="btn-row">
+    <button class="btn btn-s" onclick="goStep(2)">&#8592; Modify</button>
+    <button class="btn btn-p" onclick="goStep(4)">Continue to Agreement &#8594;</button>
+  </div>
+</div>
+
+<!-- ╔══════════════════════════════════════════╗
+     ║  STEP 4 — AGREE & BOOK                  ║
+     ╚══════════════════════════════════════════╝ -->
+<div class="wiz" id="step4">
+  <div class="section-tag">Final Step</div>
+  <h2>Agree & Book</h2>
+  <p class="subtitle">Read the waiver and instructions, then check the boxes to book.</p>
+
+  <!-- Waiver (dynamic based on category) -->
+  <div id="waiver-container"></div>
+
+  <!-- Minor checkbox -->
+  <div style="background:var(--white); border:1px solid var(--light-gray); padding:18px; margin:14px 0;">
+    <div class="chk-row">
+      <input type="checkbox" id="chk-minor" onchange="toggleMinor()">
+      <label for="chk-minor">A participant is under 18 years of age</label>
+    </div>
+    <div id="minor-section" style="display:none; padding-top:12px; border-top:1px solid var(--light-gray); margin-top:12px;">
+      <div class="info" style="margin-top:0;">
+        <strong style="font-family:'Oswald',sans-serif; font-size:11px; letter-spacing:1.2px; text-transform:uppercase; color:var(--forge-red); display:block; margin-bottom:4px;">Parent / Guardian Required</strong>
+        A parent or legal guardian must agree to the Acknowledgment of Risk and Indemnity Agreement. No adult is required on-site during the activity, but these agreements must be completed before the class.
+      </div>
+      <div class="chk-row" style="padding-top:8px;">
+        <input type="checkbox" id="chk-minor-risk" onchange="updateBook()">
+        <label for="chk-minor-risk">As parent/guardian, I acknowledge the risks and accept responsibility for the minor's participation</label>
+      </div>
+      <div class="chk-row">
+        <input type="checkbox" id="chk-minor-indemnity" onchange="updateBook()">
+        <label for="chk-minor-indemnity">As parent/guardian, I agree to indemnify AZCK against any claims arising from the minor's participation</label>
+      </div>
+    </div>
+  </div>
+
+  <!-- Agreement checkboxes -->
+  <div style="margin:20px 0;">
+    <div class="chk-row">
+      <input type="checkbox" id="chk-waiver" onchange="updateBook()">
+      <label for="chk-waiver"><strong>I have read and agree to the Liability Waiver</strong></label>
+    </div>
+    <div class="chk-row">
+      <input type="checkbox" id="chk-instr" onchange="updateBook()">
+      <label for="chk-instr"><strong>I have read the Preparation Instructions</strong></label>
+    </div>
+  </div>
+
+  <div class="info">After booking, you'll receive a full waiver document by email for formal signature. If you haven't returned it before your class, you'll sign a paper copy on arrival.</div>
+
+  <div class="btn-row">
+    <button class="btn btn-s" onclick="goStep(3)">&#8592; Back</button>
+    <button class="btn btn-p" id="book-btn" disabled onclick="doBook()">Book Now</button>
+  </div>
+</div>
+
+<!-- ╔══════════════════════════════════════════╗
+     ║  STEP 5 — CONFIRMATION                  ║
+     ╚══════════════════════════════════════════╝ -->
+<div class="wiz" id="step5">
+  <div class="confirm-box">
+    <div class="confirm-icon">&#10003;</div>
+    <h2>You're Booked!</h2>
+    <p class="subtitle" style="margin:0 auto 20px; text-align:center;">Redirecting you to checkout now. After payment, check your email for confirmation and next steps.</p>
+    <button class="share-btn" onclick="shareThis('I just booked a class at AZ Custom Knives! 🔥🗡️', '')" style="margin:0 auto;">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 12v8a2 2 0 002 2h12a2 2 0 002-2v-8"/><polyline points="16 6 12 2 8 6"/><line x1="12" y1="2" x2="12" y2="15"/></svg>
+      Tell a Friend
+    </button>
+  </div>
+</div>
+
+</main>
+
+<footer>
+  <p>&copy; 2026 AZ Custom Knives Ltd. &mdash; <a href="https://azcustomknives.com">azcustomknives.com</a></p>
+  <p style="margin-top:8px;"><a href="waiver.html">Download Waivers</a> &middot; <a href="student-gallery.html">Student Gallery</a> &middot; <a href="blade-models.html">Blade Models</a></p>
+</footer>
+
+<script>
+/* ══════════════════════════════════════════════
+   BOOKING WIZARD — CONFIGURATION
+   Edit these objects to add/remove/change services.
+   No other code changes needed.
+   ══════════════════════════════════════════════ */
+
+const URLS = {
+  // Sharpening
+  knife: 'https://shop.azcustomknives.com/booking-calendar/knife-sharpening-service',
+  scissor: 'https://shop.azcustomknives.com/booking-calendar/scissor-sharpening-service',
+  axe: 'https://shop.azcustomknives.com/booking-calendar/axe-sharpening-service',
+  restoration: 'https://shop.azcustomknives.com/booking-calendar/blade-regrind-or-restoration-service',
+  // Knife Making 1-on-1
+  fullday: 'https://shop.azcustomknives.com/booking-calendar/1-person-full-day-knife-making-class',
+  halfday: 'https://shop.azcustomknives.com/booking-calendar/1-person-1-2-day-project-class',
+  continuation: 'https://shop.azcustomknives.com/booking-calendar/1-person-1-2-day-continuation-class',
+  afterhours: 'https://shop.azcustomknives.com/booking-calendar/after-hours-intro-to-knife-making',
+  makeup: 'https://shop.azcustomknives.com/booking-calendar/after-hours-program-make-up-class',
+  // Knife Making Group
+  '2person': 'https://shop.azcustomknives.com/booking-calendar/2-person-full-day-knife-making-class',
+  '3to5': 'https://shop.azcustomknives.com/booking-calendar/3-5-person-full-day-knife-making-class',
+  // Blacksmithing
+  '1half': 'https://shop.azcustomknives.com/booking-calendar/1-person-1-2-day-blacksmithing-class',
+  '1full': 'https://shop.azcustomknives.com/booking-calendar/1-person-full-day-blacksmithing-class',
+  '2half': 'https://shop.azcustomknives.com/booking-calendar/2-person-1-2-day-blacksmithing-class',
+  '2full': 'https://shop.azcustomknives.com/booking-calendar/2-person-full-day-blacksmithing-class',
+  '3half': 'https://shop.azcustomknives.com/booking-calendar/3-person-1-2-day-blacksmithing-class',
+  '3full': 'https://shop.azcustomknives.com/booking-calendar/3-person-full-day-blacksmithing-class',
+  // Workshop
+  whetstone: 'https://shop.azcustomknives.com/booking-calendar/group-sharpening-workshop-whetstone',
+  // Team Building / Family — these need to be created in Wix
+  'tb-sharpsem': 'https://shop.azcustomknives.com/booking-calendar/team-building-sharpening-seminar',
+  'tb-assembly': 'https://shop.azcustomknives.com/booking-calendar/team-building-knife-assembly',
+  'tb-knifemaking': 'https://shop.azcustomknives.com/booking-calendar/team-building-knife-making',
+  'tb-blacksmithing': 'https://shop.azcustomknives.com/booking-calendar/team-building-blacksmithing',
+  'fam-sharpsem': 'https://shop.azcustomknives.com/booking-calendar/family-sharpening-seminar',
+  'fam-assembly': 'https://shop.azcustomknives.com/booking-calendar/family-knife-assembly',
+  'fam-knifemaking': 'https://shop.azcustomknives.com/booking-calendar/family-knife-making',
+  'fam-blacksmithing': 'https://shop.azcustomknives.com/booking-calendar/family-blacksmithing',
+};
+
+const PRICES = {
+  fullday: 850, halfday: 450, continuation: 400, afterhours: 799, makeup: 150,
+  '2person': 1500, '3to5': 1950,
+  '1half': 450, '1full': 700, '2half': 700, '2full': 1200, '3half': 750, '3full': 1500,
+  whetstone: 260,
+};
+
+const TB_PRICES = { sharpsem: 260, assembly: 450, knifemaking: 650, blacksmithing: 350 };
+const TB_MAX = { sharpsem: 20, assembly: 15, knifemaking: 6, blacksmithing: 6 };
+const TB_NAMES = { sharpsem: 'Sharpening Seminar', assembly: 'Knife Assembly', knifemaking: 'Knife Making', blacksmithing: 'Blacksmithing' };
+const CATER_EST = { subway: 30, jeffreys: 55, custom: 0 };
+const CATER_NAMES = { subway: 'Subway', jeffreys: "Jeffrey's Cafe Co", custom: 'Custom (quote)' };
+
+const STEEL_NAMES = { '1084': '1084 Carbon Steel', '80crv2': '80CrV2' };
+const BLADE_NAMES = { bulldog: 'Bulldog', falcon: 'Falcon', badger: 'Badger', custom: 'Custom (Consultation)' };
+const SVC_NAMES = {
+  fullday: 'Full Day (10hrs)', halfday: 'Half Day Project', continuation: 'Continuation',
+  afterhours: 'After Hours Intro', makeup: 'After Hours Make-Up',
+  '2person': '2 Person Full Day', '3to5': '3–5 Person Full Day',
+  '1half': '1 Person Half Day', '1full': '1 Person Full Day',
+  '2half': '2 People Half Day', '2full': '2 People Full Day',
+  '3half': '3 People Half Day', '3full': '3 People Full Day',
+  knife: 'Knife Sharpening', scissor: 'Scissor Sharpening', axe: 'Axe Sharpening',
+  restoration: 'Blade Regrind / Restoration', whetstone: 'Group Whetstone Workshop',
+};
+
+/* ── Waiver Text (by category) ── */
+const WAIVERS = {
+  sharpening: {
+    waiver: `<p><strong>DROP-OFF TERMS:</strong> By dropping off items for sharpening or restoration at AZ Custom Knives Ltd ("AZCK"), I acknowledge that the process involves grinding, honing, and material removal which may alter the blade profile. I accept that while every care is taken, minor cosmetic changes may occur during professional sharpening.</p><p><strong>LIABILITY:</strong> AZCK is not liable for pre-existing damage, defects in the blade, or items left beyond 30 days of completion notification.</p>`,
+    instructions: `<p><strong>DROP-OFF:</strong> Bring your items clean and dry. Remove any sheaths or covers.</p><p><strong>PICKUP:</strong> You'll receive a notification when your items are ready. Please collect within 30 days.</p>`
+  },
+  knifemaking: {
+    waiver: `<p><strong>CONSIDERATION:</strong> In consideration of being permitted to participate in knife making activities at AZ Custom Knives Ltd ("AZCK"), I acknowledge and agree to the following terms.</p><p><strong>DETAILS OF ACTIVITY:</strong> Activities include grinding, shaping, drilling, heat treating, handle fitting, and finishing of knives using power tools, hand tools, and related equipment. Participants may be exposed to sharp edges, rotating machinery, hot materials, metal dust, noise, and other workshop hazards.</p><p><strong>ASSUMPTION OF RISK:</strong> I understand that knife making involves inherent risks of injury including cuts, burns, eye injury, hearing damage, and other bodily harm. I voluntarily assume all risks.</p><p><strong>RELEASE OF LIABILITY:</strong> I release, waive, and discharge AZCK, its owners, employees, and agents from any and all liability, claims, and demands arising from my participation.</p><p><strong>FITNESS TO PARTICIPATE:</strong> I confirm that I am physically and mentally fit to participate and have disclosed any relevant medical conditions.</p><p><strong>GOVERNING LAW:</strong> This waiver is governed by the laws of the Province of Alberta, Canada.</p>`,
+    instructions: `<p><strong>WHAT TO WEAR:</strong> Closed-toe shoes (steel-toe preferred), long pants, cotton or natural fibre clothing. No loose jewellery, no synthetic fabrics near the grinder.</p><p><strong>WHAT TO BRING:</strong> Water bottle, lunch/snacks (no meal breaks in 10-hour sessions — every minute is blade time). Safety glasses and ear protection are provided.</p><p><strong>WHAT TO EXPECT:</strong> A full hands-on day. You will leave with a finished knife.</p><p><strong>ARRIVAL:</strong> Please arrive 10 minutes early. Late arrivals reduce your making time.</p>`
+  },
+  blacksmithing: {
+    waiver: `<p><strong>CONSIDERATION:</strong> In consideration of being permitted to participate in blacksmithing activities at AZ Custom Knives Ltd ("AZCK"), I acknowledge and agree to the following terms.</p><p><strong>DETAILS OF ACTIVITY:</strong> Activities include working with a coal or gas forge, anvil, hammers, tongs, and other smithing tools. Materials will be heated to extreme temperatures. Participants will be working with open flame, hot metals, and heavy tools.</p><p><strong>ASSUMPTION OF RISK:</strong> I understand that blacksmithing involves inherent risks including burns from hot metal and forge, impact injuries from hammers and tools, eye injury from sparks and scale, and other bodily harm. I voluntarily assume all risks.</p><p><strong>RELEASE OF LIABILITY:</strong> I release, waive, and discharge AZCK, its owners, employees, and agents from any and all liability arising from my participation.</p><p><strong>FITNESS TO PARTICIPATE:</strong> I confirm that I am physically fit and able to stand for extended periods and handle heavy tools safely.</p><p><strong>GOVERNING LAW:</strong> This waiver is governed by the laws of the Province of Alberta, Canada.</p>`,
+    instructions: `<p><strong>WHAT TO WEAR:</strong> Closed-toe boots (steel-toe required), long pants, cotton or natural fibre long sleeves. Absolutely no synthetic fabrics — they melt. Tie back long hair.</p><p><strong>WHAT TO BRING:</strong> Water bottle (you will sweat). Safety equipment is provided.</p><p><strong>WHAT TO EXPECT:</strong> Working with a live forge at 2000°F+. Physical work. You'll shape hot steel with your own hands.</p><p><strong>ARRIVAL:</strong> 10 minutes early. The forge takes time to reach temperature.</p>`
+  },
+  events: {
+    waiver: `<p><strong>CONSIDERATION:</strong> In consideration of being permitted to participate in group activities at AZ Custom Knives Ltd ("AZCK"), I acknowledge and agree to the following terms.</p><p><strong>DETAILS OF ACTIVITY:</strong> Activities may include knife sharpening, blade assembly, knife making, and/or blacksmithing depending on the event package selected. Each involves workshop tools and materials that present inherent risks.</p><p><strong>ASSUMPTION OF RISK:</strong> I understand the risks involved in workshop activities and voluntarily assume all risks associated with participation.</p><p><strong>RELEASE OF LIABILITY:</strong> I release, waive, and discharge AZCK, its owners, employees, and agents from any and all liability arising from my or my group's participation.</p><p><strong>GOVERNING LAW:</strong> This waiver is governed by the laws of the Province of Alberta, Canada.</p>`,
+    instructions: `<p><strong>WHAT TO WEAR:</strong> Closed-toe shoes, long pants, natural fibre clothing. Specific requirements depend on the activity selected and will be confirmed after booking.</p><p><strong>WHAT TO BRING:</strong> Water bottles for all participants. Catering is available if selected.</p><p><strong>ARRIVAL:</strong> Please arrive 15 minutes early as a group so we can do a safety briefing before starting.</p>`
+  }
+};
+
+/* ══════════════════════════════════════════════
+   STATE
+   ══════════════════════════════════════════════ */
+let S = {
+  cat: null,         // sharpening, knifemaking, blacksmithing, teambuilding, family
+  // Sharpening
+  sharp: null,       // knife, scissor, axe, restoration
+  // Knife Making
+  kmType: '1on1',    // 1on1, group
+  kmPath: 'scratch', // scratch, blank
+  steel: '1084',
+  blade: 'bulldog',
+  km1Svc: 'fullday',
+  grpBlade: 'bulldog',
+  kmGrpSvc: '2person',
+  // Blacksmithing
+  bsSvc: null,
+  // Team Building / Family
+  tbAct: null, tbHc: 4, tbCatering: false, tbCater: 'subway',
+  famAct: null, famHc: 4, famCatering: false, famCater: 'subway',
+};
+
+/* ══════════════════════════════════════════════
+   NAVIGATION
+   ══════════════════════════════════════════════ */
+function goStep(n) {
+  // Hide all
+  document.querySelectorAll('.wiz').forEach(el => el.classList.remove('vis'));
+
+  if (n === 1) {
+    show('step1');
+  } else if (n === 2) {
+    show('step2-' + S.cat);
+  } else if (n === 3) {
+    buildReview();
+    show('step3');
+  } else if (n === 4) {
+    buildWaivers();
+    resetChecks();
+    show('step4');
+  } else if (n === 5) {
+    show('step5');
+  }
+
+  // Progress bar
+  document.querySelectorAll('.step-ind').forEach(el => {
+    const s = +el.dataset.step;
+    el.classList.remove('active', 'done');
+    if (s < n) el.classList.add('done');
+    else if (s === n) el.classList.add('active');
+  });
+
+  window.scrollTo({ top: 0, behavior: 'smooth' });
+}
+
+function show(id) { document.getElementById(id).classList.add('vis'); }
+
+/* ══════════════════════════════════════════════
+   STEP 1 — CATEGORY
+   ══════════════════════════════════════════════ */
+function pickCat(cat) {
+  S.cat = cat;
+  document.querySelectorAll('#cat-cards .card').forEach(c => c.classList.remove('selected'));
+  document.querySelector(`[data-cat="${cat}"]`).classList.add('selected');
+  // Handle deep links
+  if (window.location.hash) history.replaceState(null, '', '#' + cat);
+  setTimeout(() => goStep(2), 200);
+}
+
+/* ══════════════════════════════════════════════
+   STEP 2A — SHARPENING
+   ══════════════════════════════════════════════ */
+function pickSharp(svc) {
+  S.sharp = svc;
+  document.querySelectorAll('#sharp-cards .card').forEach(c => c.classList.remove('selected'));
+  document.querySelector(`[data-svc="${svc}"]`).classList.add('selected');
+  document.getElementById('sharp-next').disabled = false;
+}
+
+/* ══════════════════════════════════════════════
+   STEP 2B — KNIFE MAKING
+   ══════════════════════════════════════════════ */
+function pickKmType(type, el) {
+  S.kmType = type;
+  el.parentElement.querySelectorAll('.opt-btn').forEach(b => b.classList.remove('selected'));
+  el.classList.add('selected');
+  document.getElementById('km-1on1').style.display = type === '1on1' ? 'block' : 'none';
+  document.getElementById('km-group').style.display = type === 'group' ? 'block' : 'none';
+}
+
+function pickKmPath(path, el) {
+  S.kmPath = path;
+  el.parentElement.querySelectorAll('.opt-btn').forEach(b => b.classList.remove('selected'));
+  el.classList.add('selected');
+  document.getElementById('km-scratch').style.display = path === 'scratch' ? 'block' : 'none';
+  document.getElementById('km-blank').style.display = path === 'blank' ? 'block' : 'none';
+}
+
+function pickSteel(steel, el) {
+  S.steel = steel;
+  el.parentElement.querySelectorAll('.opt-btn').forEach(b => b.classList.remove('selected'));
+  el.classList.add('selected');
+}
+
+function pickBlade(blade, el) {
+  S.blade = blade;
+  document.querySelectorAll('#km-blades .blade-card').forEach(b => b.classList.remove('selected'));
+  el.classList.add('selected');
+}
+
+function pickKm1Svc(svc, el) {
+  S.km1Svc = svc;
+  document.querySelectorAll('#km-1on1-svc .card').forEach(c => c.classList.remove('selected'));
+  el.classList.add('selected');
+}
+
+function pickGrpBlade(blade, el) {
+  S.grpBlade = blade;
+  document.querySelectorAll('#km-grp-blades .blade-card').forEach(b => b.classList.remove('selected'));
+  el.classList.add('selected');
+}
+
+function pickKmGrpSvc(svc, el) {
+  S.kmGrpSvc = svc;
+  document.querySelectorAll('#km-grp-svc .card').forEach(c => c.classList.remove('selected'));
+  el.classList.add('selected');
+}
+
+/* ══════════════════════════════════════════════
+   STEP 2C — BLACKSMITHING
+   ══════════════════════════════════════════════ */
+function pickBs(svc, el) {
+  S.bsSvc = svc;
+  document.querySelectorAll('#bs-cards .card').forEach(c => c.classList.remove('selected'));
+  el.classList.add('selected');
+  document.getElementById('bs-next').disabled = false;
+}
+
+/* ══════════════════════════════════════════════
+   STEP 2D/E — TEAM BUILDING & FAMILY EVENTS
+   ══════════════════════════════════════════════ */
+function pickTbAct(act, el) {
+  S.tbAct = act;
+  document.querySelectorAll('#tb-act-cards .card').forEach(c => c.classList.remove('selected'));
+  el.classList.add('selected');
+  document.getElementById('tb-config').style.display = 'block';
+  document.getElementById('tb-next').disabled = false;
+  S.tbHc = Math.min(S.tbHc, TB_MAX[act] + 6); // reasonable start
+  updateTbTotal();
+}
+
+function tbHc(d) {
+  S.tbHc = Math.max(1, S.tbHc + d);
+  document.getElementById('tb-hc-val').textContent = S.tbHc;
+  const max = TB_MAX[S.tbAct];
+  const msg = document.getElementById('tb-hc-msg');
+  if (S.tbHc > max) {
+    const days = Math.ceil(S.tbHc / max);
+    msg.innerHTML = `<span class="hc-warn">This will be split across ${days} days (max ${max} per session). With each person you add, you limit your one-on-one time with the instructor.</span>`;
+  } else {
+    msg.textContent = '';
+  }
+  updateTbTotal();
+}
+
+function toggleCatering(prefix) {
+  const key = prefix + 'Catering';
+  S[key] = !S[key];
+  const toggle = document.getElementById(prefix + '-cat-toggle');
+  const opts = document.getElementById(prefix + '-cat-opts');
+  toggle.classList.toggle('on', S[key]);
+  opts.style.display = S[key] ? 'block' : 'none';
+  if (prefix === 'tb') updateTbTotal(); else updateFamTotal();
+}
+
+function pickCater(opt, el, prefix) {
+  S[prefix + 'Cater'] = opt;
+  el.parentElement.querySelectorAll('.opt-btn').forEach(b => b.classList.remove('selected'));
+  el.classList.add('selected');
+  if (prefix === 'tb') updateTbTotal(); else updateFamTotal();
+}
+
+function updateTbTotal() {
+  if (!S.tbAct) return;
+  const actCost = TB_PRICES[S.tbAct] * S.tbHc;
+  document.getElementById('tb-act-cost').textContent = '$' + actCost.toLocaleString();
+  let catCost = 0;
+  if (S.tbCatering && S.tbCater !== 'custom') {
+    catCost = CATER_EST[S.tbCater] * S.tbHc;
+  }
+  document.getElementById('tb-cat-line').style.display = S.tbCatering ? 'flex' : 'none';
+  document.getElementById('tb-cat-cost').textContent = S.tbCater === 'custom' ? 'Quote' : '$' + catCost.toLocaleString();
+  const total = actCost + catCost;
+  document.getElementById('tb-total').textContent = S.tbCater === 'custom' && S.tbCatering ? '$' + actCost.toLocaleString() + ' + catering' : '$' + total.toLocaleString();
+}
+
+function pickFamAct(act, el) {
+  S.famAct = act;
+  document.querySelectorAll('#fam-act-cards .card').forEach(c => c.classList.remove('selected'));
+  el.classList.add('selected');
+  document.getElementById('fam-config').style.display = 'block';
+  document.getElementById('fam-next').disabled = false;
+  updateFamTotal();
+}
+
+function famHc(d) {
+  S.famHc = Math.max(1, S.famHc + d);
+  document.getElementById('fam-hc-val').textContent = S.famHc;
+  const max = TB_MAX[S.famAct] || 12;
+  const msg = document.getElementById('fam-hc-msg');
+  if (S.famHc > max) {
+    const days = Math.ceil(S.famHc / max);
+    msg.innerHTML = `<span class="hc-warn">Groups over ${max} will be split across ${days} sessions. More people = less individual instruction time.</span>`;
+  } else if (S.famHc > 6) {
+    msg.textContent = 'Larger group — instruction time per person will be shared.';
+  } else {
+    msg.textContent = '';
+  }
+  updateFamTotal();
+}
+
+function updateFamTotal() {
+  if (!S.famAct) return;
+  const actCost = TB_PRICES[S.famAct] * S.famHc;
+  document.getElementById('fam-act-cost').textContent = '$' + actCost.toLocaleString();
+  let catCost = 0;
+  if (S.famCatering && S.famCater !== 'custom') {
+    catCost = CATER_EST[S.famCater] * S.famHc;
+  }
+  document.getElementById('fam-cat-line').style.display = S.famCatering ? 'flex' : 'none';
+  document.getElementById('fam-cat-cost').textContent = S.famCater === 'custom' ? 'Quote' : '$' + catCost.toLocaleString();
+  const total = actCost + catCost;
+  document.getElementById('fam-total').textContent = S.famCater === 'custom' && S.famCatering ? '$' + actCost.toLocaleString() + ' + catering' : '$' + total.toLocaleString();
+}
+
+/* ══════════════════════════════════════════════
+   STEP 3 — REVIEW
+   ══════════════════════════════════════════════ */
+function buildReview() {
+  const c = document.getElementById('review-lines');
+  c.innerHTML = '';
+  let total = 0;
+  let url = '';
+
+  function line(label, value) { c.innerHTML += `<div class="sum-line"><span class="sl">${label}</span><span class="sv">${value}</span></div>`; }
+
+  if (S.cat === 'sharpening') {
+    line('Service', SVC_NAMES[S.sharp]);
+    line('Type', 'Drop-off');
+    url = URLS[S.sharp];
+    total = 0; // price set at drop-off
+
+  } else if (S.cat === 'knifemaking') {
+    if (S.kmType === '1on1') {
+      line('Class', '1-on-1 Knife Making');
+      line('Session', SVC_NAMES[S.km1Svc]);
+      line('Starting Point', S.kmPath === 'scratch' ? 'From Scratch' : 'Premium Blank');
+      if (S.kmPath === 'scratch') {
+        line('Steel', STEEL_NAMES[S.steel]);
+        line('Blade Style', BLADE_NAMES[S.blade]);
+      } else {
+        line('Steel', 'Based on blank selection');
+      }
+      line('Consultation', 'Included (after booking)');
+      total = PRICES[S.km1Svc];
+      url = URLS[S.km1Svc];
+    } else {
+      line('Class', 'Group Knife Making');
+      line('Group Size', SVC_NAMES[S.kmGrpSvc]);
+      line('Blade Model', BLADE_NAMES[S.grpBlade]);
+      line('Steel', '1084 (pre-made blanks)');
+      total = PRICES[S.kmGrpSvc];
+      url = URLS[S.kmGrpSvc];
+    }
+
+  } else if (S.cat === 'blacksmithing') {
+    line('Class', SVC_NAMES[S.bsSvc]);
+    line('Activity', 'Blacksmithing');
+    total = PRICES[S.bsSvc];
+    url = URLS[S.bsSvc];
+
+  } else if (S.cat === 'teambuilding' || S.cat === 'family') {
+    const prefix = S.cat === 'teambuilding' ? 'tb' : 'fam';
+    const act = S[prefix + 'Act'];
+    const hc = S[prefix + 'Hc'];
+    const hasCater = S[prefix + 'Catering'];
+    const cater = S[prefix + 'Cater'];
+
+    line('Event Type', S.cat === 'teambuilding' ? 'Corporate Team Building' : 'Family Event');
+    line('Activity', TB_NAMES[act]);
+    line('Headcount', hc + ' people');
+    const actCost = TB_PRICES[act] * hc;
+    line('Activity Cost', '$' + actCost.toLocaleString());
+    if (hasCater) {
+      if (cater === 'custom') {
+        line('Catering', 'Custom (quote on request)');
+      } else {
+        const catCost = CATER_EST[cater] * hc;
+        line('Catering', CATER_NAMES[cater] + ' — $' + catCost.toLocaleString());
+        total = actCost + catCost;
+      }
+    }
+    if (!hasCater || cater !== 'custom') total = total || actCost;
+    url = URLS[prefix + '-' + act];
+
+    const max = TB_MAX[act];
+    if (hc > max) {
+      line('Schedule', Math.ceil(hc / max) + ' sessions (max ' + max + ' per session)');
+    }
+  }
+
+  S._total = total;
+  S._url = url;
+  document.getElementById('rev-total').textContent = total > 0 ? '$' + total.toLocaleString() : 'See service page';
+  document.getElementById('book-btn').textContent = total > 0 ? 'Book Now — $' + total.toLocaleString() : 'Book Now';
+}
+
+/* ══════════════════════════════════════════════
+   STEP 4 — WAIVERS
+   ══════════════════════════════════════════════ */
+function getWaiverCat() {
+  if (S.cat === 'sharpening') return 'sharpening';
+  if (S.cat === 'knifemaking') return 'knifemaking';
+  if (S.cat === 'blacksmithing') return 'blacksmithing';
+  return 'events';
+}
+
+function buildWaivers() {
+  const cat = getWaiverCat();
+  const w = WAIVERS[cat];
+  const container = document.getElementById('waiver-container');
+  container.innerHTML = `
+    <div class="waiver-block" id="wb1">
+      <div class="waiver-hdr" onclick="document.getElementById('wb1').classList.toggle('open')">
+        <span class="wt">Liability Waiver</span><span class="warr">&#9660;</span>
+      </div>
+      <div class="waiver-body"><div class="wtxt">${w.waiver}</div></div>
+    </div>
+    <div class="waiver-block" id="wb2">
+      <div class="waiver-hdr" onclick="document.getElementById('wb2').classList.toggle('open')">
+        <span class="wt">Preparation Instructions</span><span class="warr">&#9660;</span>
+      </div>
+      <div class="waiver-body"><div class="wtxt">${w.instructions}</div></div>
+    </div>
+  `;
+}
+
+function resetChecks() {
+  ['chk-waiver', 'chk-instr', 'chk-minor', 'chk-minor-risk', 'chk-minor-indemnity'].forEach(id => {
+    const el = document.getElementById(id);
+    if (el) el.checked = false;
+  });
+  document.getElementById('minor-section').style.display = 'none';
+  updateBook();
+}
+
+function toggleMinor() {
+  const isMinor = document.getElementById('chk-minor').checked;
+  document.getElementById('minor-section').style.display = isMinor ? 'block' : 'none';
+  if (!isMinor) {
+    document.getElementById('chk-minor-risk').checked = false;
+    document.getElementById('chk-minor-indemnity').checked = false;
+  }
+  updateBook();
+}
+
+function updateBook() {
+  const w = document.getElementById('chk-waiver').checked;
+  const i = document.getElementById('chk-instr').checked;
+  const isMinor = document.getElementById('chk-minor').checked;
+  let minorOk = true;
+  if (isMinor) {
+    minorOk = document.getElementById('chk-minor-risk').checked && document.getElementById('chk-minor-indemnity').checked;
+  }
+  document.getElementById('book-btn').disabled = !(w && i && minorOk);
+}
+
+/* ══════════════════════════════════════════════
+   BOOKING
+   ══════════════════════════════════════════════ */
+function doBook() {
+  if (S._url) {
+    // In production, this redirects to Wix checkout
+    // For now, show confirmation and alert the URL
+    goStep(5);
+    setTimeout(() => {
+      // window.location.href = S._url;
+      alert('REDIRECT TO:\n' + S._url + '\n\n(Test mode — no actual redirect)');
+    }, 500);
+  }
+}
+
+/* ══════════════════════════════════════════════
+   SHARE
+   ══════════════════════════════════════════════ */
+function shareThis(text, hash) {
+  const url = window.location.origin + window.location.pathname + hash;
+  if (navigator.share) {
+    navigator.share({ title: 'AZ Custom Knives', text, url }).catch(() => {});
+  } else {
+    navigator.clipboard.writeText(url).then(() => {
+      alert('Link copied to clipboard!');
+    }).catch(() => {
+      prompt('Copy this link:', url);
+    });
+  }
+}
+
+/* ══════════════════════════════════════════════
+   DEEP LINKS
+   ══════════════════════════════════════════════ */
+window.addEventListener('DOMContentLoaded', () => {
+  const hash = window.location.hash.replace('#', '');
+  if (hash && ['sharpening', 'knifemaking', 'blacksmithing', 'teambuilding', 'family'].includes(hash)) {
+    pickCat(hash);
+  }
+});
+</script>
+
+</body>
+</html>

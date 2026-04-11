@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AZCK — Gift Certificates</title>
+<link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{--forge-red:#990000;--forge-red-hover:#770000;--steel-gray:#78909C;--black:#000;--white:#FFF;--off-white:#FAFAFA;--light-gray:#F0F0F0;--dark-gray:#333;--text:#1a1a1a;--max-width:920px;--header-height:72px}
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+body{font-family:'Effra','Segoe UI',Arial,sans-serif;font-size:15.2px;line-height:25.84px;color:var(--text);background:var(--off-white)}
+header{background:var(--black);height:var(--header-height);display:flex;align-items:center;justify-content:center;position:sticky;top:0;z-index:100}
+.logo{font-family:'Oswald',sans-serif;font-size:22px;font-weight:500;letter-spacing:3px;color:var(--white);text-transform:uppercase;text-decoration:none}
+.logo span{color:var(--forge-red)}
+main{max-width:var(--max-width);margin:0 auto;padding:40px 20px 80px}
+.section-tag{font-family:'Oswald',sans-serif;font-size:11.2px;letter-spacing:1.68px;text-transform:uppercase;color:var(--forge-red);margin-bottom:8px}
+h2{font-family:'Oswald',sans-serif;font-size:36px;font-weight:400;letter-spacing:1.5px;text-transform:uppercase;color:var(--text);margin-bottom:10px}
+.subtitle{color:var(--steel-gray);font-size:15.5px;margin-bottom:28px;max-width:620px;line-height:24px}
+.cards{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:14px;margin-bottom:28px}
+.card{background:var(--white);border:2px solid var(--light-gray);padding:24px 20px;cursor:pointer;transition:border-color .2s,box-shadow .2s}
+.card:hover{border-color:var(--steel-gray);box-shadow:0 2px 12px rgba(0,0,0,.06)}
+.card.selected{border-color:var(--forge-red);box-shadow:0 2px 16px rgba(153,0,0,.12)}
+.card-title{font-family:'Oswald',sans-serif;font-size:17px;font-weight:500;text-transform:uppercase;letter-spacing:1px;color:var(--text);margin-bottom:5px}
+.card-desc{font-size:13px;color:var(--steel-gray);line-height:19px}
+.card-price{font-family:'Oswald',sans-serif;font-size:13px;color:var(--forge-red);letter-spacing:.8px;margin-top:8px}
+.form-section{background:var(--white);border:2px solid var(--light-gray);padding:28px;margin:24px 0}
+.form-title{font-family:'Oswald',sans-serif;font-size:13px;letter-spacing:1.68px;text-transform:uppercase;color:var(--forge-red);margin-bottom:16px}
+.field{margin-bottom:16px}
+.field label{display:block;font-size:13px;color:var(--dark-gray);margin-bottom:4px;font-weight:500}
+.field input,.field textarea{width:100%;padding:10px 12px;border:1px solid var(--light-gray);font-family:inherit;font-size:14px;color:var(--text)}
+.field input:focus,.field textarea:focus{outline:none;border-color:var(--forge-red)}
+.field textarea{resize:vertical;min-height:80px}
+.radio-row{display:flex;gap:12px;margin:12px 0}
+.radio-opt{flex:1;padding:14px;border:2px solid var(--light-gray);cursor:pointer;text-align:center;transition:all .2s;font-family:'Oswald',sans-serif;font-size:13px;letter-spacing:1px;text-transform:uppercase;color:var(--dark-gray)}
+.radio-opt:hover{border-color:var(--steel-gray)}
+.radio-opt.selected{border-color:var(--forge-red);color:var(--forge-red);background:#fdf5f5}
+.btn{font-family:'Oswald',sans-serif;font-size:13.6px;font-weight:500;text-transform:uppercase;letter-spacing:1.2px;border:none;padding:12px 28px;cursor:pointer;transition:background .2s}
+.btn-p{background:var(--forge-red);color:var(--white)}
+.btn-p:hover{background:var(--forge-red-hover)}
+.btn-p:disabled{background:var(--steel-gray);cursor:not-allowed;opacity:.5}
+.btn-s{background:transparent;color:var(--dark-gray);border:1px solid var(--steel-gray)}
+.info{border-left:4px solid var(--forge-red);padding:12px 16px;background:#fdf5f5;margin:14px 0;font-size:13px;line-height:20px;color:var(--dark-gray)}
+.contact-bar{background:var(--white);border-top:1px solid var(--light-gray);padding:16px 20px;display:flex;align-items:center;justify-content:center;gap:24px;flex-wrap:wrap;font-size:13.5px;color:var(--steel-gray)}
+.contact-bar a{color:var(--forge-red);text-decoration:none;font-weight:500}
+footer{background:var(--black);padding:36px 20px;text-align:center;color:var(--steel-gray);font-size:13px}
+footer a{color:var(--forge-red);text-decoration:none}
+.share-btn{display:inline-flex;align-items:center;gap:6px;background:none;border:1px solid var(--steel-gray);padding:6px 14px;cursor:pointer;font-family:'Oswald',sans-serif;font-size:11px;letter-spacing:1.2px;text-transform:uppercase;color:var(--steel-gray);transition:all .2s}
+.share-btn:hover{border-color:var(--forge-red);color:var(--forge-red)}
+@media(max-width:640px){h2{font-size:26px}.cards{grid-template-columns:1fr}.radio-row{flex-direction:column}}
+</style>
+</head>
+<body>
+
+<header><a href="../index.html" class="logo"><span>AZ</span> Custom Knives</a></header>
+
+<div class="contact-bar">
+  <span>Questions about gift certificates?</span>
+  <a href="tel:+14035551234">Call Us</a>
+  <a href="mailto:admin@azcustomknives.com">Email Us</a>
+</div>
+
+<main>
+  <div class="section-tag">Give the Gift of Making</div>
+  <h2>Gift Certificates</h2>
+  <p class="subtitle">Give someone the experience of making something with their own hands. Choose a class or service, and we'll send a branded gift certificate to you or directly to the recipient.</p>
+
+  <div class="config-label" style="font-family:'Oswald',sans-serif;font-size:13px;letter-spacing:1px;text-transform:uppercase;color:var(--dark-gray);margin-bottom:10px;">Choose an Experience</div>
+  <div class="cards" id="gift-cards">
+    <div class="card" onclick="pickGift('km-fullday', this)">
+      <div class="card-title">1-on-1 Knife Making — Full Day</div>
+      <div class="card-desc">10 hours. Build a knife from scratch. The ultimate experience.</div>
+      <div class="card-price">$850</div>
+    </div>
+    <div class="card" onclick="pickGift('km-halfday', this)">
+      <div class="card-title">1-on-1 Knife Making — Half Day</div>
+      <div class="card-desc">Shorter session. Great for premium blanks or smaller projects.</div>
+      <div class="card-price">$450</div>
+    </div>
+    <div class="card" onclick="pickGift('bs-halfday', this)">
+      <div class="card-title">Blacksmithing — Half Day</div>
+      <div class="card-desc">Solo session at the forge. Hammer, anvil, fire.</div>
+      <div class="card-price">$450</div>
+    </div>
+    <div class="card" onclick="pickGift('bs-fullday', this)">
+      <div class="card-title">Blacksmithing — Full Day</div>
+      <div class="card-desc">Full day at the forge. Bigger projects, more time.</div>
+      <div class="card-price">$700</div>
+    </div>
+    <div class="card" onclick="pickGift('km-afterhours', this)">
+      <div class="card-title">After Hours Intro to Knife Making</div>
+      <div class="card-desc">Evening session. A taste of the craft.</div>
+      <div class="card-price">$799</div>
+    </div>
+    <div class="card" onclick="pickGift('sharp', this)">
+      <div class="card-title">Sharpening Service</div>
+      <div class="card-desc">Get any blade professionally sharpened.</div>
+      <div class="card-price">Varies</div>
+    </div>
+    <div class="card" onclick="pickGift('workshop', this)">
+      <div class="card-title">Group Whetstone Workshop</div>
+      <div class="card-desc">Learn proper sharpening technique.</div>
+      <div class="card-price">$260</div>
+    </div>
+  </div>
+
+  <div id="gift-form" style="display:none;">
+    <div class="form-section">
+      <div class="form-title">Recipient Details</div>
+
+      <div style="margin-bottom:14px;">
+        <div style="font-size:13px;color:var(--dark-gray);margin-bottom:8px;font-weight:500;">Send certificate to:</div>
+        <div class="radio-row">
+          <div class="radio-opt selected" onclick="pickSendTo('me', this)">Send to Me</div>
+          <div class="radio-opt" onclick="pickSendTo('them', this)">Send to Recipient</div>
+        </div>
+      </div>
+
+      <div class="field">
+        <label>Your Name</label>
+        <input type="text" id="gift-from" placeholder="Your name">
+      </div>
+      <div class="field">
+        <label>Your Email</label>
+        <input type="email" id="gift-email" placeholder="your@email.com">
+      </div>
+      <div id="recip-fields" style="display:none;">
+        <div class="field">
+          <label>Recipient's Name</label>
+          <input type="text" id="gift-to" placeholder="Their name">
+        </div>
+        <div class="field">
+          <label>Recipient's Email</label>
+          <input type="email" id="gift-to-email" placeholder="their@email.com">
+        </div>
+      </div>
+      <div class="field">
+        <label>Personal Message (optional)</label>
+        <textarea id="gift-msg" placeholder="Happy birthday! I thought you'd love this..."></textarea>
+      </div>
+    </div>
+
+    <div class="info">You'll receive a branded PDF gift certificate with a unique redemption code. The recipient uses this code when booking through our wizard — it pre-fills the service and skips payment.</div>
+
+    <div style="display:flex;justify-content:space-between;align-items:center;margin-top:24px;gap:12px;">
+      <a href="booking.html" class="btn btn-s" style="text-decoration:none;">&#8592; Book for Yourself Instead</a>
+      <button class="btn btn-p" id="gift-buy" onclick="buyGift()">Purchase Gift Certificate</button>
+    </div>
+  </div>
+
+  <div style="text-align:right;margin-top:16px;">
+    <button class="share-btn" onclick="shareThis('Give the gift of making — gift certificates from AZ Custom Knives!')">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="width:14px;height:14px;"><path d="M4 12v8a2 2 0 002 2h12a2 2 0 002-2v-8"/><polyline points="16 6 12 2 8 6"/><line x1="12" y1="2" x2="12" y2="15"/></svg>
+      Share
+    </button>
+  </div>
+</main>
+
+<footer>
+  <p>&copy; 2026 AZ Custom Knives Ltd. &mdash; <a href="https://azcustomknives.com">azcustomknives.com</a></p>
+  <p style="margin-top:8px;"><a href="booking.html">Book a Class</a> &middot; <a href="student-gallery.html">Student Gallery</a></p>
+</footer>
+
+<script>
+let giftChoice = null;
+let sendTo = 'me';
+
+function pickGift(id, el) {
+  giftChoice = id;
+  document.querySelectorAll('#gift-cards .card').forEach(c => c.classList.remove('selected'));
+  el.classList.add('selected');
+  document.getElementById('gift-form').style.display = 'block';
+  el.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+}
+
+function pickSendTo(to, el) {
+  sendTo = to;
+  el.parentElement.querySelectorAll('.radio-opt').forEach(o => o.classList.remove('selected'));
+  el.classList.add('selected');
+  document.getElementById('recip-fields').style.display = to === 'them' ? 'block' : 'none';
+}
+
+function buyGift() {
+  alert('Gift certificate purchase flow would connect to Wix/Square here.\n\nSelected: ' + giftChoice + '\nSend to: ' + sendTo + '\n\n(Test mode — no actual purchase)');
+}
+
+function shareThis(text) {
+  const url = window.location.href;
+  if (navigator.share) { navigator.share({ title: 'AZCK Gift Certificates', text, url }).catch(() => {}); }
+  else { navigator.clipboard.writeText(url).then(() => alert('Link copied!')).catch(() => prompt('Copy:', url)); }
+}
+</script>
+</body>
+</html>
