@@ -325,59 +325,107 @@ footer a { color: var(--forge-red); text-decoration: none; }
   <h2>What Can We Do For You?</h2>
   <p class="subtitle">Book a hands-on experience at the forge, or drop off an item for one of our services.</p>
 
-  <!-- ── EXPERIENCES ── -->
-  <div style="font-family:'Oswald',sans-serif;font-size:13px;letter-spacing:1.68px;text-transform:uppercase;color:var(--forge-red);margin:20px 0 10px;">🔥 Experiences</div>
-  <p style="font-size:13.5px;color:var(--steel-gray);margin-bottom:14px;">Hands-on classes and events. You're here, you're making something, you're part of it.</p>
+  <!-- ── EXPERIENCES SECTION ── -->
+  <div id="sec-classes">
+    <div id="sec-classes-label" style="font-family:'Oswald',sans-serif;font-size:13px;letter-spacing:1.68px;text-transform:uppercase;color:var(--forge-red);margin:20px 0 10px;">🔥 Experiences</div>
+    <p id="sec-classes-desc" style="font-size:13.5px;color:var(--steel-gray);margin-bottom:14px;">Hands-on classes and events. You're here, you're making something, you're part of it.</p>
 
-  <div class="cards" id="cat-cards">
-    <div class="card" onclick="pickCat('knifemaking')" data-cat="knifemaking">
-      <div class="card-icon">🗡️</div>
-      <div class="card-title">Knife Making</div>
-      <div class="card-desc">Build a custom knife from raw steel. 1-on-1 or group classes available.</div>
-      <div class="card-price">From $400</div>
-    </div>
-    <div class="card" onclick="pickCat('blacksmithing')" data-cat="blacksmithing">
-      <div class="card-icon">⚒️</div>
-      <div class="card-title">Blacksmithing</div>
-      <div class="card-desc">Forge hot steel into functional art. The real deal — fire, hammer, anvil.</div>
-      <div class="card-price">From $350</div>
-    </div>
-    <div class="card" onclick="pickCat('teambuilding')" data-cat="teambuilding">
-      <div class="card-icon">🏢</div>
-      <div class="card-title">Team Building</div>
-      <div class="card-desc">Corporate events and client appreciation. Interactive, memorable, hands-on.</div>
-      <div class="card-price">From $260 / person</div>
-    </div>
-    <div class="card" onclick="pickCat('family')" data-cat="family">
-      <div class="card-icon">👨‍👩‍👧‍👦</div>
-      <div class="card-title">Family Events</div>
-      <div class="card-desc">Bring the whole family. Homeschool groups welcome. An experience they'll never forget.</div>
-      <div class="card-price">From $260 / person</div>
-    </div>
-    <div class="card" onclick="pickCat('special')" data-cat="special">
-      <div class="card-icon">⭐</div>
-      <div class="card-title">Special Events</div>
-      <div class="card-desc">Weddings, birthdays, anniversaries, or something completely unique. Tell us your vision — we'll make it happen at the forge.</div>
-      <div class="card-price">Custom Quote</div>
+    <div class="cards" id="cat-cards">
+      <div class="card" onclick="pickCat('knifemaking')" data-cat="knifemaking">
+        <div class="card-icon">🗡️</div>
+        <div class="card-title">Knife Making</div>
+        <div class="card-desc">Build a custom knife from raw steel. 1-on-1 or group classes available.</div>
+        <div class="card-price">From $400</div>
+      </div>
+      <div class="card" onclick="pickCat('blacksmithing')" data-cat="blacksmithing">
+        <div class="card-icon">⚒️</div>
+        <div class="card-title">Blacksmithing</div>
+        <div class="card-desc">Forge hot steel into functional art. The real deal — fire, hammer, anvil.</div>
+        <div class="card-price">From $350</div>
+      </div>
+      <div class="card" onclick="pickCat('teambuilding')" data-cat="teambuilding">
+        <div class="card-icon">🏢</div>
+        <div class="card-title">Team Building</div>
+        <div class="card-desc">Corporate events and client appreciation. Interactive, memorable, hands-on.</div>
+        <div class="card-price">From $260 / person</div>
+      </div>
+      <div class="card" onclick="pickCat('family')" data-cat="family">
+        <div class="card-icon">👨‍👩‍👧‍👦</div>
+        <div class="card-title">Family Events</div>
+        <div class="card-desc">Bring the whole family. Homeschool groups welcome. An experience they'll never forget.</div>
+        <div class="card-price">From $260 / person</div>
+      </div>
+      <div class="card" onclick="pickCat('special')" data-cat="special">
+        <div class="card-icon">⭐</div>
+        <div class="card-title">Special Events</div>
+        <div class="card-desc">Weddings, birthdays, anniversaries, or something completely unique. Tell us your vision — we'll make it happen at the forge.</div>
+        <div class="card-price">Custom Quote</div>
+      </div>
     </div>
   </div>
 
-  <!-- ── SERVICES ── -->
-  <div style="font-family:'Oswald',sans-serif;font-size:13px;letter-spacing:1.68px;text-transform:uppercase;color:var(--forge-red);margin:28px 0 10px;">🛠️ Services</div>
-  <p style="font-size:13.5px;color:var(--steel-gray);margin-bottom:14px;">Drop-off services. Bring it in, we take care of it, you pick it up.</p>
+  <!-- ── SERVICES SECTION ── -->
+  <div id="sec-services">
+    <div id="sec-services-label" style="font-family:'Oswald',sans-serif;font-size:13px;letter-spacing:1.68px;text-transform:uppercase;color:var(--forge-red);margin:28px 0 10px;">🛠️ Services</div>
+    <p id="sec-services-desc" style="font-size:13.5px;color:var(--steel-gray);margin-bottom:14px;">Drop-off services. Bring it in, we take care of it, you pick it up.</p>
 
-  <div class="cards">
-    <div class="card" onclick="pickCat('sharpening')" data-cat="sharpening">
-      <div class="card-icon">🔪</div>
-      <div class="card-title">Sharpening & Restorations</div>
-      <div class="card-desc">Drop off your knives, scissors, or axes. We bring them back to life.</div>
-      <div class="card-price">From $25</div>
+    <div class="cards" id="svc-cards">
+      <div class="card" onclick="pickCat('sharpening')" data-cat="sharpening">
+        <div class="card-icon">🔪</div>
+        <div class="card-title">Sharpening & Restorations</div>
+        <div class="card-desc">Drop off your knives, scissors, or axes. We bring them back to life.</div>
+        <div class="card-price">From $25</div>
+      </div>
+      <div class="card" onclick="pickCat('engraving')" data-cat="engraving">
+        <div class="card-icon">✒️</div>
+        <div class="card-title">Engraving</div>
+        <div class="card-desc">Custom laser engraving on knives, tools, and personal items. Names, logos, artwork — permanent and precise.</div>
+        <div class="card-price">From $50</div>
+      </div>
     </div>
-    <div class="card" onclick="pickCat('engraving')" data-cat="engraving">
-      <div class="card-icon">✒️</div>
-      <div class="card-title">Engraving</div>
-      <div class="card-desc">Custom laser engraving on knives, tools, and personal items. Names, logos, artwork — permanent and precise.</div>
-      <div class="card-price">From $50</div>
+  </div>
+
+  <!-- ── BOOK-MODE: compact grid (hidden by default, shown for #book) ── -->
+  <div id="sec-book" style="display:none;">
+    <div style="font-family:'Oswald',sans-serif;font-size:13px;letter-spacing:1.68px;text-transform:uppercase;color:var(--forge-red);margin:20px 0 10px;">📋 All Options</div>
+    <p style="font-size:13.5px;color:var(--steel-gray);margin-bottom:14px;">Pick what you need — we'll take it from there.</p>
+
+    <div class="cards" id="book-cards">
+      <div class="card" onclick="pickCat('knifemaking')" data-cat="knifemaking">
+        <div class="card-icon">🗡️</div>
+        <div class="card-title">Knife Making</div>
+        <div class="card-price">From $400</div>
+      </div>
+      <div class="card" onclick="pickCat('blacksmithing')" data-cat="blacksmithing">
+        <div class="card-icon">⚒️</div>
+        <div class="card-title">Blacksmithing</div>
+        <div class="card-price">From $350</div>
+      </div>
+      <div class="card" onclick="pickCat('teambuilding')" data-cat="teambuilding">
+        <div class="card-icon">🏢</div>
+        <div class="card-title">Team Building</div>
+        <div class="card-price">From $260/person</div>
+      </div>
+      <div class="card" onclick="pickCat('family')" data-cat="family">
+        <div class="card-icon">👨‍👩‍👧‍👦</div>
+        <div class="card-title">Family Events</div>
+        <div class="card-price">From $260/person</div>
+      </div>
+      <div class="card" onclick="pickCat('special')" data-cat="special">
+        <div class="card-icon">⭐</div>
+        <div class="card-title">Special Events</div>
+        <div class="card-price">Custom Quote</div>
+      </div>
+      <div class="card" onclick="pickCat('sharpening')" data-cat="sharpening">
+        <div class="card-icon">🔪</div>
+        <div class="card-title">Sharpening</div>
+        <div class="card-price">From $25</div>
+      </div>
+      <div class="card" onclick="pickCat('engraving')" data-cat="engraving">
+        <div class="card-icon">✒️</div>
+        <div class="card-title">Engraving</div>
+        <div class="card-price">From $50</div>
+      </div>
     </div>
   </div>
 
@@ -1853,11 +1901,80 @@ function shareThis(text, hash) {
 }
 
 /* ══════════════════════════════════════════════
-   DEEP LINKS
+   ENTRY MODES & DEEP LINKS
    ══════════════════════════════════════════════ */
+let entryMode = 'default'; // 'default', 'classes', 'services', 'book'
+
+function applyEntryMode(mode) {
+  entryMode = mode;
+  const step1 = document.getElementById('step1');
+  const secClasses = document.getElementById('sec-classes');
+  const secServices = document.getElementById('sec-services');
+  const secBook = document.getElementById('sec-book');
+  const heading = step1.querySelector('h2');
+  const subtitle = step1.querySelector('.subtitle');
+
+  // Reset all sections visible
+  secClasses.style.display = 'block';
+  secServices.style.display = 'block';
+  secBook.style.display = 'none';
+
+  if (mode === 'classes') {
+    // Classes first, services below as secondary
+    heading.textContent = 'Classes & Experiences';
+    subtitle.textContent = 'Learn a trade, build something real, or bring your team for an experience they won\'t forget.';
+    step1.insertBefore(secClasses, secServices);
+    document.getElementById('sec-classes-label').textContent = '🔥 Our Classes';
+    document.getElementById('sec-classes-desc').textContent = 'Hands-on, instructor-led. You\'re here, you\'re making something, you\'re part of it.';
+    document.getElementById('sec-services-label').textContent = '🛠️ We Also Offer';
+    document.getElementById('sec-services-desc').textContent = 'Not looking for a class? We also do drop-off sharpening and laser engraving.';
+    secServices.style.marginTop = '12px';
+
+  } else if (mode === 'services') {
+    // Services first, classes below as secondary
+    heading.textContent = 'Our Services';
+    subtitle.textContent = 'Professional sharpening, restorations, and laser engraving. Drop it off, we take care of it.';
+    step1.insertBefore(secServices, secClasses);
+    document.getElementById('sec-services-label').textContent = '🛠️ Services';
+    document.getElementById('sec-services-desc').textContent = 'Drop-off services. Bring it in, we take care of it, you pick it up.';
+    document.getElementById('sec-classes-label').textContent = '🔥 Looking for a Hands-On Experience?';
+    document.getElementById('sec-classes-desc').textContent = 'We also teach knife making, blacksmithing, and host team events at the forge.';
+    secServices.style.marginTop = '0';
+
+  } else if (mode === 'book') {
+    // Compact all-in-one grid, no browsing — just pick and go
+    heading.textContent = 'Book Now';
+    subtitle.textContent = 'Pick what you need and we\'ll get you set up.';
+    secClasses.style.display = 'none';
+    secServices.style.display = 'none';
+    secBook.style.display = 'block';
+
+  } else {
+    // Default: balanced view
+    heading.textContent = 'What Can We Do For You?';
+    subtitle.textContent = 'Book a hands-on experience at the forge, or drop off an item for one of our services.';
+    step1.insertBefore(secClasses, secServices);
+    document.getElementById('sec-classes-label').textContent = '🔥 Experiences';
+    document.getElementById('sec-classes-desc').textContent = 'Hands-on classes and events. You\'re here, you\'re making something, you\'re part of it.';
+    document.getElementById('sec-services-label').textContent = '🛠️ Services';
+    document.getElementById('sec-services-desc').textContent = 'Drop-off services. Bring it in, we take care of it, you pick it up.';
+    secServices.style.marginTop = '0';
+  }
+}
+
 window.addEventListener('DOMContentLoaded', () => {
   const hash = window.location.hash.replace('#', '');
-  if (hash && ['sharpening', 'knifemaking', 'blacksmithing', 'teambuilding', 'family', 'special', 'engraving'].includes(hash)) {
+
+  // Entry mode hashes
+  if (hash === 'classes') {
+    applyEntryMode('classes');
+  } else if (hash === 'services') {
+    applyEntryMode('services');
+  } else if (hash === 'book') {
+    applyEntryMode('book');
+  }
+  // Direct category deep links
+  else if (['sharpening', 'knifemaking', 'blacksmithing', 'teambuilding', 'family', 'special', 'engraving'].includes(hash)) {
     deepLinked = true;
     pickCat(hash);
   }
