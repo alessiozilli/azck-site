@@ -3,52 +3,114 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>AZCK — Waivers & Safety</title>
+<title>AZCK — Engraving Proof Approval</title>
 <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;500;600&display=swap" rel="stylesheet">
 <style>
-:root{--forge-red:#990000;--forge-red-hover:#770000;--steel-gray:#78909C;--black:#000;--white:#FFF;--off-white:#FAFAFA;--light-gray:#F0F0F0;--dark-gray:#333;--text:#1a1a1a;--max-width:920px;--header-height:72px}
-*{margin:0;padding:0;box-sizing:border-box}
+:root{--forge-red:#990000;--forge-red-hover:#770000;--steel-gray:#78909C;--black:#000;--white:#FFF;--off-white:#FAFAFA;--light-gray:#F0F0F0;--dark-gray:#333;--text:#1a1a1a;--max-width:720px;--header-height:72px}
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
 body{font-family:'Effra','Segoe UI',Arial,sans-serif;font-size:15.2px;line-height:25.84px;color:var(--text);background:var(--off-white)}
 header{background:var(--black);height:var(--header-height);display:flex;align-items:center;justify-content:center;position:sticky;top:0;z-index:100}
 .logo{font-family:'Oswald',sans-serif;font-size:22px;font-weight:500;letter-spacing:3px;color:var(--white);text-transform:uppercase;text-decoration:none}
 .logo span{color:var(--forge-red)}
 main{max-width:var(--max-width);margin:0 auto;padding:40px 20px 80px}
 .section-tag{font-family:'Oswald',sans-serif;font-size:11.2px;letter-spacing:1.68px;text-transform:uppercase;color:var(--forge-red);margin-bottom:8px}
-h2{font-family:'Oswald',sans-serif;font-size:36px;font-weight:400;letter-spacing:1.5px;text-transform:uppercase;color:var(--text);margin-bottom:10px}
-.subtitle{color:var(--steel-gray);font-size:15.5px;margin-bottom:32px;max-width:620px;line-height:24px}
+h2{font-family:'Oswald',sans-serif;font-size:32px;font-weight:400;letter-spacing:1.5px;text-transform:uppercase;color:var(--text);margin-bottom:10px}
+.subtitle{color:var(--steel-gray);font-size:15px;margin-bottom:28px;line-height:24px}
 .info{border-left:4px solid var(--forge-red);padding:12px 16px;background:#fdf5f5;margin:14px 0;font-size:13px;line-height:20px;color:var(--dark-gray)}
 
-.waiver-section{background:var(--white);border:2px solid var(--light-gray);margin-bottom:20px;overflow:hidden}
-.ws-header{padding:20px 24px;display:flex;justify-content:space-between;align-items:center;cursor:pointer;user-select:none}
-.ws-header:hover{background:var(--off-white)}
-.ws-title{font-family:'Oswald',sans-serif;font-size:18px;font-weight:500;text-transform:uppercase;letter-spacing:1px;color:var(--text)}
-.ws-arrow{font-size:14px;color:var(--steel-gray);transition:transform .2s}
-.waiver-section.open .ws-arrow{transform:rotate(180deg)}
-.ws-body{max-height:0;overflow:hidden;transition:max-height .5s ease}
-.waiver-section.open .ws-body{max-height:2000px}
-.ws-content{padding:0 24px 24px;border-top:1px solid var(--light-gray);padding-top:20px}
-.ws-content p{margin-bottom:10px;font-size:14px;line-height:22px;color:var(--dark-gray)}
-.ws-content p strong{color:var(--text)}
-.ws-dl{display:flex;align-items:center;gap:12px;padding:16px 24px;border-top:1px solid var(--light-gray);background:var(--off-white)}
-.ws-dl a{font-family:'Oswald',sans-serif;font-size:12px;letter-spacing:1px;text-transform:uppercase;color:var(--forge-red);text-decoration:none;font-weight:500}
-.ws-dl a:hover{text-decoration:underline}
-.ws-dl span{font-size:12px;color:var(--steel-gray)}
+/* Proof display */
+.proof-box{background:var(--white);border:2px solid var(--light-gray);margin:24px 0;overflow:hidden}
+.proof-header{padding:18px 24px;border-bottom:1px solid var(--light-gray);display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:10px}
+.proof-title{font-family:'Oswald',sans-serif;font-size:18px;font-weight:500;text-transform:uppercase;letter-spacing:1px;color:var(--text)}
+.proof-id{font-size:12px;color:var(--steel-gray);font-family:'Oswald',sans-serif;letter-spacing:.8px}
+.proof-image-wrap{background:var(--light-gray);min-height:300px;display:flex;align-items:center;justify-content:center;position:relative}
+.proof-image-wrap img{max-width:100%;max-height:500px;display:block}
+.proof-placeholder{text-align:center;padding:60px 20px;color:var(--steel-gray)}
+.proof-placeholder .icon{font-size:48px;margin-bottom:12px}
+.proof-placeholder p{font-size:14px}
+.proof-details{padding:18px 24px;border-top:1px solid var(--light-gray)}
+.proof-detail-row{display:flex;gap:8px;margin-bottom:6px;font-size:13.5px}
+.proof-detail-row .label{color:var(--steel-gray);min-width:100px;font-weight:500}
+.proof-detail-row .value{color:var(--text)}
+.zoom-hint{font-size:11px;color:var(--steel-gray);text-align:center;padding:8px;border-top:1px solid var(--light-gray)}
 
-.minor-box{background:var(--white);border:2px solid var(--forge-red);padding:24px;margin:24px 0}
-.minor-title{font-family:'Oswald',sans-serif;font-size:18px;font-weight:500;text-transform:uppercase;letter-spacing:1px;color:var(--forge-red);margin-bottom:12px}
-.minor-box p{font-size:14px;line-height:22px;color:var(--dark-gray);margin-bottom:10px}
+/* Decision buttons */
+.decision-section{margin:28px 0}
+.decision-title{font-family:'Oswald',sans-serif;font-size:13px;letter-spacing:1.68px;text-transform:uppercase;color:var(--forge-red);margin-bottom:16px}
+.decision-btns{display:flex;gap:12px;margin-bottom:20px;flex-wrap:wrap}
+.d-btn{flex:1;min-width:140px;padding:16px 20px;border:2px solid var(--light-gray);background:var(--white);cursor:pointer;text-align:center;transition:all .2s;font-family:'Oswald',sans-serif;font-size:14px;letter-spacing:1px;text-transform:uppercase;color:var(--dark-gray)}
+.d-btn:hover{border-color:var(--steel-gray)}
+.d-btn.approve{border-color:#2e7d32;color:#2e7d32;background:#f1f8f1}
+.d-btn.approve:hover,.d-btn.approve.active{background:#2e7d32;color:var(--white)}
+.d-btn.changes{border-color:#e65100;color:#e65100;background:#fff8f0}
+.d-btn.changes:hover,.d-btn.changes.active{background:#e65100;color:var(--white)}
+.d-btn.decline{border-color:var(--forge-red);color:var(--forge-red);background:#fdf5f5}
+.d-btn.decline:hover,.d-btn.decline.active{background:var(--forge-red);color:var(--white)}
 
-.btn{font-family:'Oswald',sans-serif;font-size:13.6px;font-weight:500;text-transform:uppercase;letter-spacing:1.2px;border:none;padding:12px 28px;cursor:pointer;display:inline-block;text-decoration:none;text-align:center}
+/* Panels */
+.panel{display:none;background:var(--white);border:2px solid var(--light-gray);padding:24px;margin-bottom:20px}
+.panel.visible{display:block}
+.panel-title{font-family:'Oswald',sans-serif;font-size:13px;letter-spacing:1.68px;text-transform:uppercase;color:var(--forge-red);margin-bottom:14px}
+
+/* Fields */
+.field{margin-bottom:16px}
+.field label{display:block;font-size:13px;color:var(--dark-gray);margin-bottom:4px;font-weight:500}
+.field input,.field textarea,.field select{width:100%;padding:10px 12px;border:1px solid var(--light-gray);font-family:inherit;font-size:14px;color:var(--text)}
+.field input:focus,.field textarea:focus{outline:none;border-color:var(--forge-red)}
+.field textarea{resize:vertical;min-height:100px}
+.field .hint{font-size:11.5px;color:var(--steel-gray);margin-top:3px}
+
+/* Upload area */
+.upload-area{border:2px dashed var(--light-gray);padding:28px 20px;text-align:center;cursor:pointer;transition:all .2s;margin-bottom:12px}
+.upload-area:hover,.upload-area.dragover{border-color:var(--forge-red);background:#fdf5f5}
+.upload-icon{font-size:32px;margin-bottom:8px;color:var(--steel-gray)}
+.upload-text{font-size:13px;color:var(--steel-gray)}
+.upload-text strong{color:var(--forge-red)}
+.upload-preview{display:flex;flex-wrap:wrap;gap:10px;margin-top:10px}
+.upload-thumb{width:80px;height:80px;object-fit:cover;border:1px solid var(--light-gray)}
+.upload-file{display:flex;align-items:center;gap:8px;background:var(--light-gray);padding:6px 12px;font-size:12px;color:var(--dark-gray)}
+.upload-file .remove{cursor:pointer;color:var(--forge-red);font-weight:bold;margin-left:auto}
+
+/* Waiver agreement */
+.waiver-box{background:var(--off-white);border:1px solid var(--light-gray);padding:18px;margin:16px 0;font-size:12.5px;line-height:20px;color:var(--dark-gray);max-height:200px;overflow-y:auto}
+.waiver-box p{margin-bottom:8px}
+.waiver-box p:last-child{margin-bottom:0}
+.agree-row{display:flex;align-items:flex-start;gap:10px;margin:14px 0}
+.agree-row input[type="checkbox"]{margin-top:3px;accent-color:var(--forge-red)}
+.agree-row label{font-size:13px;color:var(--dark-gray);cursor:pointer}
+
+/* Buttons */
+.btn{font-family:'Oswald',sans-serif;font-size:13.6px;font-weight:500;text-transform:uppercase;letter-spacing:1.2px;border:none;padding:12px 28px;cursor:pointer;transition:background .2s;display:inline-block;text-align:center}
 .btn-p{background:var(--forge-red);color:var(--white)}
 .btn-p:hover{background:var(--forge-red-hover)}
-.cta-section{text-align:center;padding:40px 20px;margin-top:12px}
-.cta-section p{color:var(--steel-gray);margin-bottom:16px}
+.btn-p:disabled{background:var(--steel-gray);cursor:not-allowed;opacity:.5}
+.btn-s{background:transparent;color:var(--dark-gray);border:1px solid var(--steel-gray)}
+
+/* Confirmation */
+.confirm-box{background:var(--white);border:2px solid #2e7d32;padding:32px;text-align:center;margin:24px 0;display:none}
+.confirm-box.visible{display:block}
+.confirm-icon{font-size:48px;margin-bottom:12px}
+.confirm-title{font-family:'Oswald',sans-serif;font-size:22px;text-transform:uppercase;color:#2e7d32;margin-bottom:8px}
+.confirm-desc{font-size:14px;color:var(--dark-gray);line-height:22px;max-width:480px;margin:0 auto}
+.decline-box{background:var(--white);border:2px solid var(--forge-red);padding:32px;text-align:center;margin:24px 0;display:none}
+.decline-box.visible{display:block}
+.changes-box{background:var(--white);border:2px solid #e65100;padding:32px;text-align:center;margin:24px 0;display:none}
+.changes-box.visible{display:block}
+
+/* Timestamp */
+.timestamp{font-size:11px;color:var(--steel-gray);margin-top:8px;font-style:italic}
 
 .contact-bar{background:var(--white);border-top:1px solid var(--light-gray);padding:16px 20px;display:flex;align-items:center;justify-content:center;gap:24px;flex-wrap:wrap;font-size:13.5px;color:var(--steel-gray)}
 .contact-bar a{color:var(--forge-red);text-decoration:none;font-weight:500}
 footer{background:var(--black);padding:36px 20px;text-align:center;color:var(--steel-gray);font-size:13px}
 footer a{color:var(--forge-red);text-decoration:none}
-@media(max-width:640px){h2{font-size:26px}}
+
+/* Customer instructions section */
+.instructions-section{background:var(--white);border:2px solid var(--light-gray);padding:24px;margin:20px 0}
+.instructions-title{font-family:'Oswald',sans-serif;font-size:13px;letter-spacing:1.68px;text-transform:uppercase;color:var(--forge-red);margin-bottom:6px}
+.instructions-desc{font-size:13px;color:var(--steel-gray);margin-bottom:16px;line-height:20px}
+
+@media(max-width:640px){h2{font-size:24px}.decision-btns{flex-direction:column}.proof-header{flex-direction:column;align-items:flex-start}}
 </style>
 </head>
 <body>
@@ -56,150 +118,416 @@ footer a{color:var(--forge-red);text-decoration:none}
 <header><a href="../index.html" class="logo"><span>AZ</span> Custom Knives</a></header>
 
 <div class="contact-bar">
-  <span>Questions about our safety policies?</span>
+  <span>Questions about your engraving?</span>
   <a href="tel:+17808312987">(780) 831-2987</a>
   <a href="mailto:admin@azcustomknives.com">Email Us</a>
 </div>
 
 <main>
-  <div class="section-tag">Safety First</div>
-  <h2>Waivers & Safety Information</h2>
-  <p class="subtitle">Your safety is our priority. Review the waiver for your activity below. You'll agree to these terms during booking, and receive a formal copy for signature after purchase.</p>
+  <div class="section-tag">Engraving Service</div>
+  <h2>Proof Approval</h2>
+  <p class="subtitle">Review the engraving proof below. Once you approve, we'll proceed with the engraving. If anything needs adjusting, request changes and we'll send a revised proof.</p>
 
-  <div class="info">You do not need to print or sign anything before booking. The booking wizard includes checkboxes for agreement. After purchase, you'll receive a formal waiver document by email. If you prefer to read the waiver before booking, you can review the full text below.</div>
-
-  <!-- Drop-Off Services -->
-  <div class="waiver-section" id="w-sharp">
-    <div class="ws-header" onclick="toggle('w-sharp')">
-      <span class="ws-title">Drop-Off Services (Sharpening & Restorations)</span>
-      <span class="ws-arrow">&#9660;</span>
+  <!-- ══ PROOF DISPLAY ══ -->
+  <div class="proof-box" id="proof-display">
+    <div class="proof-header">
+      <span class="proof-title" id="proof-order-name">Engraving Proof</span>
+      <span class="proof-id" id="proof-order-id">Order #—</span>
     </div>
-    <div class="ws-body">
-      <div class="ws-content">
-        <p><strong>DROP-OFF TERMS:</strong> By dropping off items for sharpening or restoration at AZ Custom Knives Ltd ("AZCK"), I acknowledge that the process involves grinding, honing, and material removal which may alter the blade profile. I accept that while every care is taken, minor cosmetic changes may occur during professional sharpening.</p>
-        <p><strong>LIABILITY:</strong> AZCK is not liable for pre-existing damage, defects in the blade, or items left beyond 30 days of completion notification.</p>
+    <div class="proof-image-wrap" id="proof-img-wrap">
+      <div class="proof-placeholder">
+        <div class="icon">🔍</div>
+        <p>Proof image will appear here once uploaded by AZCK.</p>
+        <p style="margin-top:6px;font-size:12px;">You'll receive a link when your proof is ready for review.</p>
       </div>
-      <div class="ws-dl">
-        <a href="#">Download PDF</a>
-        <span>(Available after booking)</span>
+    </div>
+    <div class="proof-details" id="proof-details">
+      <div class="proof-detail-row">
+        <span class="label">Item:</span>
+        <span class="value" id="proof-item">—</span>
+      </div>
+      <div class="proof-detail-row">
+        <span class="label">Engraving:</span>
+        <span class="value" id="proof-desc">—</span>
+      </div>
+      <div class="proof-detail-row">
+        <span class="label">Placement:</span>
+        <span class="value" id="proof-placement">—</span>
+      </div>
+      <div class="proof-detail-row">
+        <span class="label">Proof Sent:</span>
+        <span class="value" id="proof-date">—</span>
+      </div>
+    </div>
+    <div class="zoom-hint">Click image to enlarge. Positioning is accurate to ±2–3 mm.</div>
+  </div>
+
+  <div class="info">
+    <strong>Important:</strong> The proof shows the intended position and design on your item as captured by our laser camera. Positioning accuracy is within ±2–3 mm of what's shown. Engraving is permanent and cannot be undone once started. Please review carefully before approving.
+  </div>
+
+  <!-- ══ CUSTOMER INSTRUCTIONS (upload reference + notes) ══ -->
+  <div class="instructions-section" id="instructions-section">
+    <div class="instructions-title">Your Instructions</div>
+    <div class="instructions-desc">If you have a specific image or design you'd like engraved, upload it here along with placement instructions. We'll use this to prepare your proof.</div>
+
+    <div class="field">
+      <label>Reference Image</label>
+      <div class="upload-area" id="ref-upload" onclick="document.getElementById('ref-input').click()">
+        <div class="upload-icon">📎</div>
+        <div class="upload-text"><strong>Click to upload</strong> or drag and drop<br>PNG, JPG, SVG, or PDF — max 10 MB</div>
+      </div>
+      <input type="file" id="ref-input" accept=".png,.jpg,.jpeg,.svg,.pdf" multiple style="display:none" onchange="handleRefUpload(this)">
+      <div class="upload-preview" id="ref-preview"></div>
+      <div class="hint">Upload the image, logo, text design, or vector file you want engraved.</div>
+    </div>
+
+    <div class="field">
+      <label>Placement & Instructions</label>
+      <textarea id="ref-instructions" placeholder="Describe where and how you want the engraving placed. For example: 'Centered on the right side of the blade, about 1 inch from the handle. Text should read left to right when blade faces up.'"></textarea>
+      <div class="hint">Be as specific as possible about positioning, size, and orientation.</div>
+    </div>
+
+    <div style="text-align:right;margin-top:8px;">
+      <button class="btn btn-p" onclick="submitInstructions()">Submit Instructions</button>
+    </div>
+  </div>
+
+  <!-- ══ DECISION SECTION ══ -->
+  <div class="decision-section" id="decision-section">
+    <div class="decision-title">Your Decision</div>
+    <div class="decision-btns">
+      <div class="d-btn approve" onclick="pickDecision('approve', this)">✓ Approve</div>
+      <div class="d-btn changes" onclick="pickDecision('changes', this)">✎ Request Changes</div>
+      <div class="d-btn decline" onclick="pickDecision('decline', this)">✕ Decline</div>
+    </div>
+
+    <!-- ── APPROVE PANEL ── -->
+    <div class="panel" id="panel-approve">
+      <div class="panel-title">Approve Engraving</div>
+      <p style="font-size:14px;color:var(--dark-gray);margin-bottom:14px;">By approving, you confirm that the proof matches your expectations and authorize us to proceed with the engraving.</p>
+
+      <div class="waiver-box">
+        <p><strong>ENGRAVING DISCLAIMER & AUTHORIZATION</strong></p>
+        <p>I, the undersigned customer, authorize AZ Custom Knives Ltd ("AZCK") to proceed with laser engraving on my item as shown in the proof above.</p>
+        <p><strong>ACCURACY:</strong> I understand that laser positioning is accurate to approximately ±2–3 mm of the proof shown. Minor variations in final placement are inherent to the process and do not constitute a defect.</p>
+        <p><strong>PERMANENT PROCESS:</strong> I understand that laser engraving is a permanent, irreversible process. Once engraving begins, it cannot be undone, corrected, or removed without potentially damaging the item.</p>
+        <p><strong>EQUIPMENT RISK:</strong> I acknowledge that laser engraving equipment, while maintained to professional standards, may occasionally produce results that differ from the proof due to equipment behaviour, material inconsistencies, or other factors beyond AZCK's reasonable control.</p>
+        <p><strong>LIABILITY:</strong> I agree that AZCK's liability for any engraving error is limited to the cost of the engraving service itself (setup fee + per-piece fee). AZCK is not responsible for the replacement value of the item being engraved, regardless of its value. I am choosing to have my item engraved at my own risk.</p>
+        <p><strong>CUSTOM ITEMS:</strong> For items of significant personal or monetary value, I understand that I am proceeding at my own risk and that AZCK strongly recommends testing on a sample piece first where possible.</p>
+        <p><strong>PROOF APPROVAL:</strong> By approving this proof, I confirm that the design, text, spelling, positioning, and orientation shown are correct and as intended. AZCK is not responsible for errors present in the approved proof.</p>
+        <p><strong>GOVERNING LAW:</strong> This agreement is governed by the laws of the Province of Alberta, Canada.</p>
+      </div>
+
+      <div class="agree-row">
+        <input type="checkbox" id="agree-waiver" onchange="checkApproveReady()">
+        <label for="agree-waiver">I have reviewed the proof and read the engraving disclaimer above. I understand the risks and authorize AZCK to proceed.</label>
+      </div>
+
+      <div class="field">
+        <label>Your Full Name (as signature)</label>
+        <input type="text" id="approve-name" placeholder="Type your full legal name" oninput="checkApproveReady()">
+      </div>
+
+      <div class="field">
+        <label>Your Email</label>
+        <input type="email" id="approve-email" placeholder="your@email.com" oninput="checkApproveReady()">
+      </div>
+
+      <div style="display:flex;justify-content:flex-end;gap:12px;margin-top:8px;">
+        <button class="btn btn-p" id="btn-confirm-approve" disabled onclick="confirmApprove()">Confirm Approval</button>
+      </div>
+    </div>
+
+    <!-- ── CHANGES PANEL ── -->
+    <div class="panel" id="panel-changes">
+      <div class="panel-title">Request Changes</div>
+      <p style="font-size:14px;color:var(--dark-gray);margin-bottom:14px;">Tell us what needs adjusting. We'll revise the proof and send you a new one for review.</p>
+
+      <div class="field">
+        <label>What needs to change?</label>
+        <textarea id="changes-msg" placeholder="Describe the changes you'd like. For example: 'Move the text 5mm to the left and make it slightly smaller.' or 'The spelling of the name is wrong — it should be McKenzie not MacKenzie.'"></textarea>
+      </div>
+
+      <div class="field">
+        <label>Updated Reference Image (optional)</label>
+        <div class="upload-area" id="changes-upload" onclick="document.getElementById('changes-input').click()">
+          <div class="upload-icon">📎</div>
+          <div class="upload-text"><strong>Click to upload</strong> a revised reference image</div>
+        </div>
+        <input type="file" id="changes-input" accept=".png,.jpg,.jpeg,.svg,.pdf" style="display:none" onchange="handleChangesUpload(this)">
+        <div class="upload-preview" id="changes-preview"></div>
+      </div>
+
+      <div class="field">
+        <label>Your Name</label>
+        <input type="text" id="changes-name" placeholder="Your name">
+      </div>
+      <div class="field">
+        <label>Your Email</label>
+        <input type="email" id="changes-email" placeholder="your@email.com">
+      </div>
+
+      <div style="display:flex;justify-content:flex-end;gap:12px;margin-top:8px;">
+        <button class="btn btn-p" onclick="submitChanges()">Submit Change Request</button>
+      </div>
+    </div>
+
+    <!-- ── DECLINE PANEL ── -->
+    <div class="panel" id="panel-decline">
+      <div class="panel-title">Decline Engraving</div>
+      <p style="font-size:14px;color:var(--dark-gray);margin-bottom:14px;">If you've decided not to proceed with the engraving, let us know. No charges will be applied beyond the setup fee if work hasn't started.</p>
+
+      <div class="field">
+        <label>Reason (optional)</label>
+        <textarea id="decline-msg" placeholder="Let us know why, so we can improve our service."></textarea>
+      </div>
+
+      <div class="field">
+        <label>Your Name</label>
+        <input type="text" id="decline-name" placeholder="Your name">
+      </div>
+      <div class="field">
+        <label>Your Email</label>
+        <input type="email" id="decline-email" placeholder="your@email.com">
+      </div>
+
+      <div style="display:flex;justify-content:flex-end;gap:12px;margin-top:8px;">
+        <button class="btn btn-s" onclick="resetDecision()">Cancel</button>
+        <button class="btn btn-p" onclick="submitDecline()">Confirm Decline</button>
       </div>
     </div>
   </div>
 
-  <!-- Knife Making -->
-  <div class="waiver-section" id="w-km">
-    <div class="ws-header" onclick="toggle('w-km')">
-      <span class="ws-title">Knife Making Classes</span>
-      <span class="ws-arrow">&#9660;</span>
-    </div>
-    <div class="ws-body">
-      <div class="ws-content">
-        <p><strong>CONSIDERATION:</strong> In consideration of being permitted to participate in knife making activities at AZ Custom Knives Ltd ("AZCK"), I acknowledge and agree to the following terms.</p>
-        <p><strong>DETAILS OF ACTIVITY:</strong> Activities include grinding, shaping, drilling, heat treating, handle fitting, and finishing of knives and bladed tools using power tools, hand tools, and related equipment. Participants may be exposed to sharp edges, rotating machinery, hot materials, metal dust, noise, and other workshop hazards.</p>
-        <p><strong>ASSUMPTION OF RISK:</strong> I understand that knife making involves inherent risks of injury including cuts, burns, eye injury, hearing damage, and other bodily harm. I voluntarily assume all risks associated with my participation.</p>
-        <p><strong>RELEASE OF LIABILITY:</strong> I release, waive, and discharge AZCK, its owners, employees, and agents from any and all liability, claims, demands, and causes of action arising out of or related to any loss, damage, or injury that may be sustained during my participation.</p>
-        <p><strong>FITNESS TO PARTICIPATE:</strong> I confirm that I am physically and mentally fit to participate in the activities described and that I have disclosed any relevant medical conditions.</p>
-        <p><strong>GOVERNING LAW:</strong> This waiver is governed by the laws of the Province of Alberta, Canada.</p>
-      </div>
-      <div class="ws-dl">
-        <a href="#">Download PDF</a>
-        <span>(Available after booking)</span>
-      </div>
-    </div>
+  <!-- ══ CONFIRMATION STATES ══ -->
+  <div class="confirm-box" id="confirm-approved">
+    <div class="confirm-icon">✅</div>
+    <div class="confirm-title">Proof Approved</div>
+    <div class="confirm-desc">Your approval has been recorded. We'll proceed with the engraving and notify you when it's complete. A confirmation has been sent to your email.</div>
+    <div class="timestamp" id="approved-time"></div>
   </div>
 
-  <!-- Blacksmithing -->
-  <div class="waiver-section" id="w-bs">
-    <div class="ws-header" onclick="toggle('w-bs')">
-      <span class="ws-title">Blacksmithing Classes</span>
-      <span class="ws-arrow">&#9660;</span>
-    </div>
-    <div class="ws-body">
-      <div class="ws-content">
-        <p><strong>CONSIDERATION:</strong> In consideration of being permitted to participate in blacksmithing activities at AZ Custom Knives Ltd ("AZCK"), I acknowledge and agree to the following terms.</p>
-        <p><strong>DETAILS OF ACTIVITY:</strong> Activities include working with a coal or gas forge, anvil, hammers, tongs, and other smithing tools. Materials will be heated to extreme temperatures. Participants will be working with open flame, hot metals, and heavy tools.</p>
-        <p><strong>ASSUMPTION OF RISK:</strong> I understand that blacksmithing involves inherent risks including burns from hot metal and forge, impact injuries from hammers and tools, eye injury from sparks and scale, and other bodily harm. I voluntarily assume all risks.</p>
-        <p><strong>RELEASE OF LIABILITY:</strong> I release, waive, and discharge AZCK, its owners, employees, and agents from any and all liability arising from my participation.</p>
-        <p><strong>FITNESS TO PARTICIPATE:</strong> I confirm that I am physically fit and able to stand for extended periods and handle heavy tools safely.</p>
-        <p><strong>GOVERNING LAW:</strong> This waiver is governed by the laws of the Province of Alberta, Canada.</p>
-      </div>
-      <div class="ws-dl">
-        <a href="#">Download PDF</a>
-        <span>(Available after booking)</span>
-      </div>
-    </div>
+  <div class="changes-box" id="confirm-changes">
+    <div class="confirm-icon" style="font-size:48px;">✎</div>
+    <div style="font-family:'Oswald',sans-serif;font-size:22px;text-transform:uppercase;color:#e65100;margin-bottom:8px;">Changes Requested</div>
+    <div class="confirm-desc">We've received your change request. We'll revise the proof and send you a new one for review. You'll receive an email when the updated proof is ready.</div>
+    <div class="timestamp" id="changes-time"></div>
   </div>
 
-  <!-- Team Building / Family Events -->
-  <div class="waiver-section" id="w-events">
-    <div class="ws-header" onclick="toggle('w-events')">
-      <span class="ws-title">Team Building & Family Events</span>
-      <span class="ws-arrow">&#9660;</span>
-    </div>
-    <div class="ws-body">
-      <div class="ws-content">
-        <p><strong>CONSIDERATION:</strong> In consideration of being permitted to participate in group activities at AZ Custom Knives Ltd ("AZCK"), I acknowledge and agree to the following terms.</p>
-        <p><strong>DETAILS OF ACTIVITY:</strong> Activities may include knife sharpening, blade assembly, knife making, and/or blacksmithing depending on the event package selected. Each involves workshop tools and materials that present inherent risks.</p>
-        <p><strong>ASSUMPTION OF RISK:</strong> I understand the risks involved in workshop activities and voluntarily assume all risks associated with my participation.</p>
-        <p><strong>RELEASE OF LIABILITY:</strong> I release, waive, and discharge AZCK, its owners, employees, and agents from any and all liability arising from my or my group's participation.</p>
-        <p><strong>GOVERNING LAW:</strong> This waiver is governed by the laws of the Province of Alberta, Canada.</p>
-      </div>
-      <div class="ws-dl">
-        <a href="#">Download PDF</a>
-        <span>(Available after booking)</span>
-      </div>
-    </div>
+  <div class="decline-box" id="confirm-declined">
+    <div class="confirm-icon" style="font-size:48px;">—</div>
+    <div style="font-family:'Oswald',sans-serif;font-size:22px;text-transform:uppercase;color:var(--forge-red);margin-bottom:8px;">Engraving Declined</div>
+    <div class="confirm-desc">The engraving has been cancelled. If you change your mind, contact us and we'll set up a new proof for you.</div>
+    <div class="timestamp" id="declined-time"></div>
   </div>
 
-  <!-- Engraving Services -->
-  <div class="waiver-section" id="w-engrave">
-    <div class="ws-header" onclick="toggle('w-engrave')">
-      <span class="ws-title">Laser Engraving Services</span>
-      <span class="ws-arrow">&#9660;</span>
+  <!-- ══ PRICING REFERENCE ══ -->
+  <div style="background:var(--white);border:2px solid var(--light-gray);padding:20px 24px;margin-top:28px;">
+    <div style="font-family:'Oswald',sans-serif;font-size:13px;letter-spacing:1.68px;text-transform:uppercase;color:var(--forge-red);margin-bottom:10px;">Engraving Pricing</div>
+    <div style="font-size:13.5px;color:var(--dark-gray);line-height:22px;">
+      ⚙️ <strong>Setup Fee:</strong> $35 (laser calibration + proof preparation)<br>
+      🔖 <strong>Per Piece:</strong> $15 per item engraved<br>
+      ⚡ <strong>Rush Order:</strong> +$35 (need it done now? Jump the queue)<br>
+      <span style="display:block;border-top:1px solid var(--light-gray);margin:8px 0;padding-top:8px;font-size:12px;color:var(--steel-gray);text-transform:uppercase;letter-spacing:1px;font-family:'Oswald',sans-serif;">Artwork Fees (if applicable)</span>
+      🎨 <strong>Artwork Fee:</strong> +$25 (we find or prepare artwork for you)<br>
+      🔄 <strong>Logo Redesign:</strong> +$50 (your logo needs tracing or rebuilding)<br>
+      ✏️ <strong>Custom Artwork:</strong> +$65 (we create original artwork from scratch)<br>
+      <span style="display:block;margin-top:8px;font-size:12.5px;color:var(--steel-gray);">💡 Text only (names, dates, quotes) = $50 first piece, $15 each after. No artwork fee.</span>
     </div>
-    <div class="ws-body">
-      <div class="ws-content">
-        <p><strong>AUTHORIZATION:</strong> By submitting an item for laser engraving at AZ Custom Knives Ltd ("AZCK"), I authorize AZCK to perform laser engraving on my property as described in the approved proof.</p>
-        <p><strong>PROOF APPROVAL:</strong> I understand that no engraving work will begin until I have reviewed and approved a digital proof. By approving the proof, I confirm that the design, text, spelling, positioning, and orientation are correct and as intended. AZCK is not responsible for errors present in the approved proof.</p>
-        <p><strong>POSITIONING ACCURACY:</strong> I understand that laser positioning is accurate to approximately ±2–3 mm of the approved proof. Minor variations in final placement are inherent to the engraving process and do not constitute a defect or error.</p>
-        <p><strong>PERMANENT PROCESS:</strong> I acknowledge that laser engraving is a permanent, irreversible process. Once engraving begins, it cannot be undone, corrected, or removed without potentially damaging the item.</p>
-        <p><strong>EQUIPMENT RISK:</strong> I acknowledge that laser engraving equipment, while professionally maintained, may occasionally produce results that differ from the approved proof due to equipment behaviour, material properties, surface inconsistencies, or other factors beyond AZCK's reasonable control.</p>
-        <p><strong>LIABILITY:</strong> I agree that AZCK's total liability for any engraving error — including equipment malfunction — is strictly limited to the cost of the engraving service (setup fee and per-piece fee). AZCK is not liable for the replacement value, sentimental value, or any other value of the item being engraved, regardless of its worth. I am choosing to have my item engraved at my own risk.</p>
-        <p><strong>HIGH-VALUE ITEMS:</strong> For items of significant personal or monetary value (including but not limited to custom knives, collector pieces, heirlooms, and firearms), AZCK strongly recommends testing on a sample piece first where possible. I understand that proceeding with engraving on high-value items is entirely at my own risk.</p>
-        <p><strong>ARTWORK & DESIGN FEES:</strong> Additional fees may apply for artwork preparation: Artwork Fee ($25) if AZCK sources or prepares artwork; Logo Redesign ($50) if a customer-provided logo requires tracing or rebuilding; Custom Artwork ($65) if AZCK creates original artwork from scratch. Designs created by AZCK remain the property of AZCK unless otherwise agreed in writing.</p>
-        <p><strong>GOVERNING LAW:</strong> This disclaimer is governed by the laws of the Province of Alberta, Canada.</p>
-      </div>
-      <div class="ws-dl">
-        <a href="engraving-proof.html">View Proof Portal</a>
-        <span>(Proofs sent by email with direct link)</span>
-      </div>
-    </div>
-  </div>
-
-  <!-- Minor Clause -->
-  <div class="minor-box">
-    <div class="minor-title">Participants Under 18</div>
-    <p>AZ Custom Knives welcomes participants of all ages. There is no minimum age requirement — the determining factor is the comprehension level of the participant.</p>
-    <p>For participants under 18, a parent or legal guardian must complete the following before the class:</p>
-    <p><strong>1. Acknowledgment of Risk:</strong> The parent/guardian confirms they understand the specific risks involved in the activity (sharp tools, hot materials, heavy equipment, rotating machinery).</p>
-    <p><strong>2. Indemnity Agreement:</strong> The parent/guardian agrees to indemnify AZCK against any claims arising from the minor's participation.</p>
-    <p>No adult is required to be on-site during the activity, provided these agreements have been completed.</p>
-    <p style="margin-bottom:0;"><em style="color:var(--steel-gray);font-size:13px;">Note: We recommend having this clause reviewed by a lawyer before relying on it. This is our best-effort approach based on Alberta law.</em></p>
-  </div>
-
-  <div class="cta-section">
-    <p>Ready to book?</p>
-    <a href="booking.html" class="btn btn-p">Go to Booking Wizard</a>
   </div>
 </main>
 
 <footer>
   <p>&copy; 2026 AZ Custom Knives Ltd. &mdash; <a href="https://azcustomknives.com">azcustomknives.com</a></p>
-  <p style="margin-top:8px;"><a href="booking.html">Book a Class</a> &middot; <a href="blade-models.html">Blade Models</a> &middot; <a href="student-gallery.html">Student Gallery</a></p>
+  <p style="margin-top:8px;"><a href="booking.html">Book a Class</a> &middot; <a href="available-blanks.html">Available Blanks</a> &middot; <a href="waiver.html">Waivers</a></p>
 </footer>
 
 <script>
-function toggle(id) { document.getElementById(id).classList.toggle('open'); }
+/* ══ State ══ */
+let decision = null;
+let refFiles = [];
+let changesFiles = [];
+
+/* ══ Decision logic ══ */
+function pickDecision(choice, el) {
+  decision = choice;
+  document.querySelectorAll('.d-btn').forEach(b => b.classList.remove('active'));
+  el.classList.add('active');
+  document.querySelectorAll('.panel').forEach(p => p.classList.remove('visible'));
+  const panel = document.getElementById('panel-' + choice);
+  if (panel) panel.classList.add('visible');
+  panel.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+}
+
+function resetDecision() {
+  decision = null;
+  document.querySelectorAll('.d-btn').forEach(b => b.classList.remove('active'));
+  document.querySelectorAll('.panel').forEach(p => p.classList.remove('visible'));
+}
+
+function checkApproveReady() {
+  const agreed = document.getElementById('agree-waiver').checked;
+  const name = document.getElementById('approve-name').value.trim();
+  const email = document.getElementById('approve-email').value.trim();
+  document.getElementById('btn-confirm-approve').disabled = !(agreed && name.length > 1 && email.includes('@'));
+}
+
+/* ══ Submissions ══ */
+function confirmApprove() {
+  const name = document.getElementById('approve-name').value.trim();
+  const email = document.getElementById('approve-email').value.trim();
+  const now = new Date().toLocaleString('en-CA', { dateStyle: 'long', timeStyle: 'short' });
+
+  // In production: POST to Supabase or API endpoint
+  console.log('APPROVED', { name, email, timestamp: now });
+
+  document.getElementById('decision-section').style.display = 'none';
+  document.getElementById('instructions-section').style.display = 'none';
+  const box = document.getElementById('confirm-approved');
+  box.classList.add('visible');
+  document.getElementById('approved-time').textContent = 'Approved by ' + name + ' on ' + now;
+  box.scrollIntoView({ behavior: 'smooth' });
+
+  alert('Proof approved! In production, this would send a confirmation email to ' + email + ' and notify AZCK to proceed.\n\n(Test mode — no actual submission)');
+}
+
+function submitChanges() {
+  const msg = document.getElementById('changes-msg').value.trim();
+  const name = document.getElementById('changes-name').value.trim();
+  const email = document.getElementById('changes-email').value.trim();
+  if (!msg) { alert('Please describe what changes you need.'); return; }
+  if (!name || !email.includes('@')) { alert('Please provide your name and email.'); return; }
+  const now = new Date().toLocaleString('en-CA', { dateStyle: 'long', timeStyle: 'short' });
+
+  console.log('CHANGES REQUESTED', { name, email, msg, files: changesFiles.length, timestamp: now });
+
+  document.getElementById('decision-section').style.display = 'none';
+  document.getElementById('instructions-section').style.display = 'none';
+  const box = document.getElementById('confirm-changes');
+  box.classList.add('visible');
+  document.getElementById('changes-time').textContent = 'Requested by ' + name + ' on ' + now;
+  box.scrollIntoView({ behavior: 'smooth' });
+
+  alert('Change request submitted! In production, this would notify AZCK with your feedback.\n\n(Test mode — no actual submission)');
+}
+
+function submitDecline() {
+  const name = document.getElementById('decline-name').value.trim();
+  const email = document.getElementById('decline-email').value.trim();
+  if (!name || !email.includes('@')) { alert('Please provide your name and email.'); return; }
+  const now = new Date().toLocaleString('en-CA', { dateStyle: 'long', timeStyle: 'short' });
+
+  console.log('DECLINED', { name, email, timestamp: now });
+
+  document.getElementById('decision-section').style.display = 'none';
+  document.getElementById('instructions-section').style.display = 'none';
+  const box = document.getElementById('confirm-declined');
+  box.classList.add('visible');
+  document.getElementById('declined-time').textContent = 'Declined by ' + name + ' on ' + now;
+  box.scrollIntoView({ behavior: 'smooth' });
+
+  alert('Engraving declined. In production, this would notify AZCK.\n\n(Test mode — no actual submission)');
+}
+
+function submitInstructions() {
+  const text = document.getElementById('ref-instructions').value.trim();
+  if (!text && refFiles.length === 0) {
+    alert('Please upload a reference image or provide placement instructions (or both).');
+    return;
+  }
+  console.log('INSTRUCTIONS SUBMITTED', { text, files: refFiles.length });
+  alert('Instructions submitted! In production, this would be sent to AZCK for proof preparation.\n\n(Test mode — no actual submission)');
+}
+
+/* ══ File uploads ══ */
+function handleRefUpload(input) {
+  const container = document.getElementById('ref-preview');
+  for (const file of input.files) {
+    if (file.size > 10 * 1024 * 1024) { alert(file.name + ' exceeds 10 MB limit.'); continue; }
+    refFiles.push(file);
+    renderThumb(file, container, refFiles, refFiles.length - 1);
+  }
+  input.value = '';
+}
+
+function handleChangesUpload(input) {
+  const container = document.getElementById('changes-preview');
+  for (const file of input.files) {
+    changesFiles.push(file);
+    renderThumb(file, container, changesFiles, changesFiles.length - 1);
+  }
+  input.value = '';
+}
+
+function renderThumb(file, container, arr, idx) {
+  if (file.type.startsWith('image/')) {
+    const reader = new FileReader();
+    reader.onload = e => {
+      const img = document.createElement('img');
+      img.src = e.target.result;
+      img.className = 'upload-thumb';
+      img.title = file.name;
+      container.appendChild(img);
+    };
+    reader.readAsDataURL(file);
+  } else {
+    const div = document.createElement('div');
+    div.className = 'upload-file';
+    div.innerHTML = '📄 ' + file.name + ' <span class="remove" title="Remove">×</span>';
+    div.querySelector('.remove').onclick = () => { arr.splice(idx, 1); div.remove(); };
+    container.appendChild(div);
+  }
+}
+
+/* ══ Drag and drop ══ */
+['ref-upload', 'changes-upload'].forEach(id => {
+  const el = document.getElementById(id);
+  if (!el) return;
+  el.addEventListener('dragover', e => { e.preventDefault(); el.classList.add('dragover'); });
+  el.addEventListener('dragleave', () => el.classList.remove('dragover'));
+  el.addEventListener('drop', e => {
+    e.preventDefault();
+    el.classList.remove('dragover');
+    const inputId = id === 'ref-upload' ? 'ref-input' : 'changes-input';
+    const dt = new DataTransfer();
+    for (const f of e.dataTransfer.files) dt.items.add(f);
+    document.getElementById(inputId).files = dt.files;
+    document.getElementById(inputId).dispatchEvent(new Event('change'));
+  });
+});
+
+/* ══ Image zoom (click to enlarge) ══ */
+document.getElementById('proof-img-wrap').addEventListener('click', function() {
+  const img = this.querySelector('img');
+  if (!img) return;
+  const overlay = document.createElement('div');
+  overlay.style.cssText = 'position:fixed;inset:0;background:rgba(0,0,0,.85);z-index:9999;display:flex;align-items:center;justify-content:center;cursor:zoom-out;padding:20px;';
+  const bigImg = document.createElement('img');
+  bigImg.src = img.src;
+  bigImg.style.cssText = 'max-width:95%;max-height:95%;object-fit:contain;';
+  overlay.appendChild(bigImg);
+  overlay.onclick = () => overlay.remove();
+  document.body.appendChild(overlay);
+});
+
+/* ══ URL parameters for pre-filling proof data ══ */
+(function() {
+  const params = new URLSearchParams(window.location.search);
+  if (params.get('order')) document.getElementById('proof-order-id').textContent = 'Order #' + params.get('order');
+  if (params.get('name')) document.getElementById('proof-order-name').textContent = params.get('name');
+  if (params.get('item')) document.getElementById('proof-item').textContent = params.get('item');
+  if (params.get('desc')) document.getElementById('proof-desc').textContent = params.get('desc');
+  if (params.get('placement')) document.getElementById('proof-placement').textContent = params.get('placement');
+  if (params.get('date')) document.getElementById('proof-date').textContent = params.get('date');
+  if (params.get('img')) {
+    const wrap = document.getElementById('proof-img-wrap');
+    wrap.innerHTML = '';
+    const img = document.createElement('img');
+    img.src = params.get('img');
+    img.alt = 'Engraving proof';
+    wrap.appendChild(img);
+  }
+})();
 </script>
 </body>
 </html>
