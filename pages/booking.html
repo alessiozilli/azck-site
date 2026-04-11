@@ -60,6 +60,8 @@ header {
 }
 .step-ind.active .step-num { background: var(--forge-red); }
 .step-ind.done .step-num { background: var(--dark-gray); }
+.step-ind.done { cursor: pointer; }
+.step-ind.done:hover { opacity: 0.85; }
 .step-lbl {
   font-family: 'Oswald', sans-serif; font-size: 11.2px;
   letter-spacing: 1.68px; text-transform: uppercase; color: var(--dark-gray);
@@ -407,7 +409,7 @@ footer a { color: var(--forge-red); text-decoration: none; }
   </div>
 
   <div class="btn-row">
-    <button class="btn btn-s" onclick="goStep(1)">&#8592; Back</button>
+    <button class="btn btn-s" onclick="goBack()">&#8592; Back</button>
     <button class="btn btn-p" id="sharp-next" disabled onclick="goStep(3)">Continue &#8594;</button>
   </div>
 </div>
@@ -582,7 +584,7 @@ footer a { color: var(--forge-red); text-decoration: none; }
   </div>
 
   <div class="btn-row">
-    <button class="btn btn-s" onclick="goStep(1)">&#8592; Back</button>
+    <button class="btn btn-s" onclick="goBack()">&#8592; Back</button>
     <button class="btn btn-p" onclick="goStep(3)">Review Your Booking &#8594;</button>
   </div>
 </div>
@@ -634,7 +636,7 @@ footer a { color: var(--forge-red); text-decoration: none; }
   </div>
 
   <div class="btn-row">
-    <button class="btn btn-s" onclick="goStep(1)">&#8592; Back</button>
+    <button class="btn btn-s" onclick="goBack()">&#8592; Back</button>
     <button class="btn btn-p" id="bs-next" disabled onclick="goStep(3)">Review Your Booking &#8594;</button>
   </div>
 </div>
@@ -731,7 +733,7 @@ footer a { color: var(--forge-red); text-decoration: none; }
   </div>
 
   <div class="btn-row">
-    <button class="btn btn-s" onclick="goStep(1)">&#8592; Back</button>
+    <button class="btn btn-s" onclick="goBack()">&#8592; Back</button>
     <button class="btn btn-p" id="tb-next" disabled onclick="goStep(3)">Review Your Event &#8594;</button>
   </div>
 </div>
@@ -825,7 +827,7 @@ footer a { color: var(--forge-red); text-decoration: none; }
   </div>
 
   <div class="btn-row">
-    <button class="btn btn-s" onclick="goStep(1)">&#8592; Back</button>
+    <button class="btn btn-s" onclick="goBack()">&#8592; Back</button>
     <button class="btn btn-p" id="fam-next" disabled onclick="goStep(3)">Review Your Event &#8594;</button>
   </div>
 </div>
@@ -841,7 +843,7 @@ footer a { color: var(--forge-red); text-decoration: none; }
     <div class="sum-line"><span class="sl">Format</span><span class="sv">Group workshop</span></div>
   </div>
   <div class="btn-row">
-    <button class="btn btn-s" onclick="goStep(1)">&#8592; Back</button>
+    <button class="btn btn-s" onclick="goBack()">&#8592; Back</button>
     <button class="btn btn-p" onclick="goStep(3)">Review &#8594;</button>
   </div>
 </div>
@@ -1041,6 +1043,15 @@ const WAIVERS = {
 /* ══════════════════════════════════════════════
    STATE
    ══════════════════════════════════════════════ */
+const CAT_NAMES = {
+  sharpening: 'Sharpening',
+  knifemaking: 'Knife Making',
+  blacksmithing: 'Blacksmithing',
+  teambuilding: 'Team Building',
+  family: 'Family Events'
+};
+let deepLinked = false;
+
 let S = {
   cat: null,         // sharpening, knifemaking, blacksmithing, teambuilding, family
   // Sharpening
@@ -1090,10 +1101,29 @@ function goStep(n) {
     else if (s === n) el.classList.add('active');
   });
 
+  // Option B: when deep-linked, show category name on Step 1 indicator
+  const step1El = document.querySelector('[data-step="1"]');
+  const step1Lbl = step1El.querySelector('.step-lbl');
+  if (deepLinked && S.cat && n > 1) {
+    step1El.querySelector('.step-num').textContent = '✓';
+    step1Lbl.textContent = CAT_NAMES[S.cat] || 'Experience';
+  } else {
+    step1El.querySelector('.step-num').textContent = '1';
+    step1Lbl.textContent = 'Experience';
+  }
+
   window.scrollTo({ top: 0, behavior: 'smooth' });
 }
 
 function show(id) { document.getElementById(id).classList.add('vis'); }
+
+function goBack() {
+  if (deepLinked) {
+    window.location.href = 'classes.html';
+  } else {
+    goStep(1);
+  }
+}
 
 /* ══════════════════════════════════════════════
    STEP 1 — CATEGORY
@@ -1452,8 +1482,18 @@ function shareThis(text, hash) {
 window.addEventListener('DOMContentLoaded', () => {
   const hash = window.location.hash.replace('#', '');
   if (hash && ['sharpening', 'knifemaking', 'blacksmithing', 'teambuilding', 'family'].includes(hash)) {
+    deepLinked = true;
     pickCat(hash);
   }
+
+  // Make completed progress steps clickable for fluid back-and-forth
+  document.querySelectorAll('.step-ind').forEach(el => {
+    el.addEventListener('click', () => {
+      if (el.classList.contains('done')) {
+        goStep(+el.dataset.step);
+      }
+    });
+  });
 });
 </script>
 
