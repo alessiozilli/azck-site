@@ -1,16 +1,103 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Book Online | AZ Custom Knives Ltd.</title>
-  <meta http-equiv="refresh" content="0; url=https://www.azcustomknives.com/bookings-checkout/book-a-service/book">
-  <link rel="stylesheet" href="../css/style.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="refresh" content="0;url=booking.html#book">
+    <title>Book a Class - AZ Custom Knives</title>
+    <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;500;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --forge-red: #990000;
+            --forge-red-hover: #770000;
+            --steel-gray: #78909C;
+            --black: #000;
+            --white: #FFF;
+            --off-white: #FAFAFA;
+            --light-gray: #F0F0F0;
+            --dark-gray: #333;
+            --text: #1a1a1a;
+            --header-height: 72px;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Effra, "Segoe UI", Arial, sans-serif;
+            color: var(--text);
+            background-color: var(--off-white);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh;
+        }
+
+        .redirect-container {
+            text-align: center;
+            padding: 2rem;
+            background: var(--white);
+            border-radius: 8px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+            max-width: 400px;
+        }
+
+        .logo {
+            font-family: Oswald, sans-serif;
+            font-size: 2rem;
+            font-weight: 700;
+            color: var(--text);
+            margin-bottom: 1.5rem;
+            letter-spacing: 1px;
+        }
+
+        .logo span {
+            color: var(--forge-red);
+        }
+
+        h1 {
+            font-family: Oswald, sans-serif;
+            font-size: 1.5rem;
+            color: var(--text);
+            margin-bottom: 1rem;
+        }
+
+        p {
+            color: var(--steel-gray);
+            margin-bottom: 1.5rem;
+            font-size: 0.95rem;
+        }
+
+        .fallback-link {
+            display: inline-block;
+            background-color: var(--forge-red);
+            color: var(--white);
+            padding: 0.85rem 2rem;
+            border-radius: 4px;
+            text-decoration: none;
+            font-weight: 600;
+            font-family: Oswald, sans-serif;
+            transition: background-color 0.3s ease;
+        }
+
+        .fallback-link:hover {
+            background-color: var(--forge-red-hover);
+        }
+    </style>
 </head>
-<body style="display: flex; align-items: center; justify-content: center; min-height: 100vh; text-align: center;">
-  <div>
-    <h2>Redirecting to Online Booking...</h2>
-    <p style="color: var(--text-light); margin-top: 12px;">If you're not redirected, <a href="https://www.azcustomknives.com/bookings-checkout/book-a-service/book" style="color: var(--forge-red);">click here</a>.</p>
-  </div>
+<body>
+    <script>
+        window.location.href = 'booking.html#book';
+    </script>
+
+    <div class="redirect-container">
+        <div class="logo"><span>AZ</span> Custom Knives</div>
+        <h1>Redirecting...</h1>
+        <p>If you're not redirected, click the link below to book your class.</p>
+        <a href="booking.html#book" class="fallback-link">Book a Class</a>
+    </div>
 </body>
 </html>
