@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AZCK — Available Blanks</title>
+<link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{--forge-red:#990000;--forge-red-hover:#770000;--steel-gray:#78909C;--black:#000;--white:#FFF;--off-white:#FAFAFA;--light-gray:#F0F0F0;--dark-gray:#333;--text:#1a1a1a;--max-width:920px;--header-height:72px}
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:'Effra','Segoe UI',Arial,sans-serif;font-size:15.2px;line-height:25.84px;color:var(--text);background:var(--off-white)}
+header{background:var(--black);height:var(--header-height);display:flex;align-items:center;justify-content:center;position:sticky;top:0;z-index:100}
+.logo{font-family:'Oswald',sans-serif;font-size:22px;font-weight:500;letter-spacing:3px;color:var(--white);text-transform:uppercase;text-decoration:none}
+.logo span{color:var(--forge-red)}
+main{max-width:var(--max-width);margin:0 auto;padding:40px 20px 80px}
+.section-tag{font-family:'Oswald',sans-serif;font-size:11.2px;letter-spacing:1.68px;text-transform:uppercase;color:var(--forge-red);margin-bottom:8px}
+h2{font-family:'Oswald',sans-serif;font-size:36px;font-weight:400;letter-spacing:1.5px;text-transform:uppercase;color:var(--text);margin-bottom:10px}
+.subtitle{color:var(--steel-gray);font-size:15.5px;margin-bottom:32px;max-width:620px;line-height:24px}
+.info{border-left:4px solid var(--forge-red);padding:12px 16px;background:#fdf5f5;margin:14px 0;font-size:13px;line-height:20px;color:var(--dark-gray)}
+.note-box{background:var(--white);border:1px dashed var(--steel-gray);padding:18px;margin:18px 0;font-size:13.5px;color:var(--dark-gray);line-height:21px}
+.note-box strong{font-family:'Oswald',sans-serif;font-size:11px;letter-spacing:1.2px;text-transform:uppercase;color:var(--forge-red);display:block;margin-bottom:5px}
+
+/* Blank cards - for when inventory is populated */
+.blank-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:16px;margin:24px 0}
+.blank-card{background:var(--white);border:2px solid var(--light-gray);overflow:hidden;transition:border-color .2s}
+.blank-card:hover{border-color:var(--steel-gray)}
+.blank-photo{background:var(--light-gray);height:200px;display:flex;align-items:center;justify-content:center;color:var(--steel-gray);font-family:'Oswald',sans-serif;font-size:12px;letter-spacing:1px;text-transform:uppercase}
+.blank-info{padding:18px}
+.blank-name{font-family:'Oswald',sans-serif;font-size:18px;font-weight:500;text-transform:uppercase;color:var(--text);margin-bottom:4px}
+.blank-steel{font-size:12.5px;color:var(--forge-red);font-family:'Oswald',sans-serif;letter-spacing:.8px;text-transform:uppercase;margin-bottom:8px}
+.blank-specs{font-size:12.5px;color:var(--steel-gray);line-height:18px}
+.blank-price{font-family:'Oswald',sans-serif;font-size:18px;color:var(--forge-red);margin-top:10px}
+.blank-book{display:block;width:100%;padding:10px;background:var(--forge-red);color:var(--white);text-align:center;font-family:'Oswald',sans-serif;font-size:12px;letter-spacing:1.2px;text-transform:uppercase;border:none;cursor:pointer;transition:background .2s;text-decoration:none}
+.blank-book:hover{background:var(--forge-red-hover)}
+
+/* Empty state */
+.empty-state{text-align:center;padding:60px 20px;background:var(--white);border:2px dashed var(--light-gray);margin:24px 0}
+.empty-icon{font-size:48px;margin-bottom:16px;color:var(--steel-gray)}
+.empty-title{font-family:'Oswald',sans-serif;font-size:22px;text-transform:uppercase;color:var(--dark-gray);margin-bottom:8px}
+.empty-desc{color:var(--steel-gray);font-size:14px;max-width:400px;margin:0 auto 20px;line-height:22px}
+
+.btn{font-family:'Oswald',sans-serif;font-size:13.6px;font-weight:500;text-transform:uppercase;letter-spacing:1.2px;border:none;padding:12px 28px;cursor:pointer;display:inline-block;text-decoration:none;text-align:center}
+.btn-p{background:var(--forge-red);color:var(--white)}
+.btn-p:hover{background:var(--forge-red-hover)}
+.btn-s{background:transparent;color:var(--dark-gray);border:1px solid var(--steel-gray)}
+
+.contact-bar{background:var(--white);border-top:1px solid var(--light-gray);padding:16px 20px;display:flex;align-items:center;justify-content:center;gap:24px;flex-wrap:wrap;font-size:13.5px;color:var(--steel-gray)}
+.contact-bar a{color:var(--forge-red);text-decoration:none;font-weight:500}
+footer{background:var(--black);padding:36px 20px;text-align:center;color:var(--steel-gray);font-size:13px}
+footer a{color:var(--forge-red);text-decoration:none}
+@media(max-width:640px){h2{font-size:26px}.blank-grid{grid-template-columns:1fr}}
+</style>
+</head>
+<body>
+
+<header><a href="../index.html" class="logo"><span>AZ</span> Custom Knives</a></header>
+
+<div class="contact-bar">
+  <span>Want a custom blank built to your specs?</span>
+  <a href="tel:+14035551234">Call Us</a>
+  <a href="mailto:admin@azcustomknives.com">Email Us</a>
+</div>
+
+<main>
+  <div class="section-tag">Premium Blanks</div>
+  <h2>Available Blanks</h2>
+  <p class="subtitle">Pre-made blades, already heat treated, ground, and finished. Pick one and book a 1-on-1 class to build the handle and complete your knife. Bigger knives, fancier steels, no multi-day commitment.</p>
+
+  <div class="info">Each blank is one-of-a-kind. Once it's sold, it's gone. Book quickly if you see something you like, or contact us to discuss a custom blank built to your specifications.</div>
+
+  <!-- ══ BLANK INVENTORY ══
+       To add a blank, copy a blank-card div and update the details.
+       To remove a sold blank, delete or comment out the blank-card div.
+       When all blanks are sold, uncomment the empty-state section below. -->
+
+  <!-- Example blanks (uncomment and populate when inventory exists) -->
+  <!--
+  <div class="blank-grid">
+    <div class="blank-card">
+      <div class="blank-photo">[ Photo ]</div>
+      <div class="blank-info">
+        <div class="blank-name">Drop Point Hunter</div>
+        <div class="blank-steel">Cruwear</div>
+        <div class="blank-specs">5" blade / 4.5" handle area<br>Cryogenic heat treat, stonewash finish</div>
+        <div class="blank-price">$275</div>
+      </div>
+      <a href="booking.html#knifemaking" class="blank-book">Book a Class With This Blank</a>
+    </div>
+    <div class="blank-card">
+      <div class="blank-photo">[ Photo ]</div>
+      <div class="blank-info">
+        <div class="blank-name">Tanto Utility</div>
+        <div class="blank-steel">MagnaCut</div>
+        <div class="blank-specs">4" blade / 4" handle area<br>Cryogenic heat treat, satin finish</div>
+        <div class="blank-price">$320</div>
+      </div>
+      <a href="booking.html#knifemaking" class="blank-book">Book a Class With This Blank</a>
+    </div>
+  </div>
+  -->
+
+  <!-- Empty state (shown when no blanks are in stock) -->
+  <div class="empty-state">
+    <div class="empty-icon">⚒️</div>
+    <div class="empty-title">No Blanks in Stock Right Now</div>
+    <div class="empty-desc">I'm always making new blanks. Check back soon, or contact me to discuss a custom blank built to your exact specifications.</div>
+    <a href="booking.html#knifemaking" class="btn btn-p" style="margin-right:8px;">Book a From-Scratch Class</a>
+    <a href="mailto:admin@azcustomknives.com" class="btn btn-s">Request a Custom Blank</a>
+  </div>
+
+  <div class="note-box" style="margin-top:28px;">
+    <strong>How It Works</strong>
+    Pick a blank from the inventory above, then book a 1-on-1 class. The blank cost is added to your class fee. During the class, we focus on handle design, fitting, and finishing — turning the blank into your complete, personalised knife. Since the blade is already done, you can work with premium steels that would normally require multiple days.
+  </div>
+</main>
+
+<footer>
+  <p>&copy; 2026 AZ Custom Knives Ltd. &mdash; <a href="https://azcustomknives.com">azcustomknives.com</a></p>
+  <p style="margin-top:8px;"><a href="booking.html">Book a Class</a> &middot; <a href="blade-models.html">Blade Models</a> &middot; <a href="student-gallery.html">Student Gallery</a></p>
+</footer>
+</body>
+</html>
