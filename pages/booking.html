@@ -299,7 +299,7 @@ footer a { color: var(--forge-red); text-decoration: none; }
 <!-- ═══════ PROGRESS BAR ═══════ -->
 <div class="progress-bar">
   <div class="progress-inner">
-    <div class="step-ind active" data-step="1"><div class="step-num">1</div><span class="step-lbl">Experience</span></div>
+    <div class="step-ind active" data-step="1"><div class="step-num">1</div><span class="step-lbl">Choose</span></div>
     <div class="step-ind" data-step="2"><div class="step-num">2</div><span class="step-lbl">Configure</span></div>
     <div class="step-ind" data-step="3"><div class="step-num">3</div><span class="step-lbl">Review</span></div>
     <div class="step-ind" data-step="4"><div class="step-num">4</div><span class="step-lbl">Agree & Book</span></div>
@@ -309,7 +309,7 @@ footer a { color: var(--forge-red); text-decoration: none; }
 <!-- ═══════ CONTACT FALLBACK (persistent) ═══════ -->
 <div class="contact-bar">
   <span>Prefer to talk first?</span>
-  <a href="tel:+14035551234">Call Us</a>
+  <a href="tel:+17808312987">(780) 831-2987</a>
   <a href="mailto:admin@azcustomknives.com">Email Us</a>
   <span style="color:var(--light-gray);">|</span>
   <span>We'll help you figure it out.</span>
@@ -322,16 +322,14 @@ footer a { color: var(--forge-red); text-decoration: none; }
      ╚══════════════════════════════════════════╝ -->
 <div class="wiz vis" id="step1">
   <div class="section-tag">Step 1 of 4</div>
-  <h2>Choose Your Experience</h2>
-  <p class="subtitle">Whether you're sharpening a kitchen knife, making one from scratch, or planning a team event — pick a category to get started.</p>
+  <h2>What Can We Do For You?</h2>
+  <p class="subtitle">Book a hands-on experience at the forge, or drop off an item for one of our services.</p>
+
+  <!-- ── EXPERIENCES ── -->
+  <div style="font-family:'Oswald',sans-serif;font-size:13px;letter-spacing:1.68px;text-transform:uppercase;color:var(--forge-red);margin:20px 0 10px;">🔥 Experiences</div>
+  <p style="font-size:13.5px;color:var(--steel-gray);margin-bottom:14px;">Hands-on classes and events. You're here, you're making something, you're part of it.</p>
 
   <div class="cards" id="cat-cards">
-    <div class="card" onclick="pickCat('sharpening')" data-cat="sharpening">
-      <div class="card-icon">🔪</div>
-      <div class="card-title">Sharpening & Restorations</div>
-      <div class="card-desc">Drop off your knives, scissors, or axes. We bring them back to life.</div>
-      <div class="card-price">From $25</div>
-    </div>
     <div class="card" onclick="pickCat('knifemaking')" data-cat="knifemaking">
       <div class="card-icon">🗡️</div>
       <div class="card-title">Knife Making</div>
@@ -355,6 +353,31 @@ footer a { color: var(--forge-red); text-decoration: none; }
       <div class="card-title">Family Events</div>
       <div class="card-desc">Bring the whole family. Homeschool groups welcome. An experience they'll never forget.</div>
       <div class="card-price">From $260 / person</div>
+    </div>
+    <div class="card" onclick="pickCat('special')" data-cat="special">
+      <div class="card-icon">⭐</div>
+      <div class="card-title">Special Events</div>
+      <div class="card-desc">Weddings, birthdays, anniversaries, or something completely unique. Tell us your vision — we'll make it happen at the forge.</div>
+      <div class="card-price">Custom Quote</div>
+    </div>
+  </div>
+
+  <!-- ── SERVICES ── -->
+  <div style="font-family:'Oswald',sans-serif;font-size:13px;letter-spacing:1.68px;text-transform:uppercase;color:var(--forge-red);margin:28px 0 10px;">🛠️ Services</div>
+  <p style="font-size:13.5px;color:var(--steel-gray);margin-bottom:14px;">Drop-off services. Bring it in, we take care of it, you pick it up.</p>
+
+  <div class="cards">
+    <div class="card" onclick="pickCat('sharpening')" data-cat="sharpening">
+      <div class="card-icon">🔪</div>
+      <div class="card-title">Sharpening & Restorations</div>
+      <div class="card-desc">Drop off your knives, scissors, or axes. We bring them back to life.</div>
+      <div class="card-price">From $25</div>
+    </div>
+    <div class="card" onclick="pickCat('engraving')" data-cat="engraving">
+      <div class="card-icon">✒️</div>
+      <div class="card-title">Engraving</div>
+      <div class="card-desc">Custom laser engraving on knives, tools, and personal items. Names, logos, artwork — permanent and precise.</div>
+      <div class="card-price">From $50</div>
     </div>
   </div>
 
@@ -432,6 +455,11 @@ footer a { color: var(--forge-red); text-decoration: none; }
       <div class="ot">Group Class</div>
       <div class="od">2–5 people. Pre-made blanks. Everyone finishes a knife.</div>
       <div class="otag">Shared Experience</div>
+    </div>
+    <div class="opt-btn" onclick="pickKmType('afterhours', this)">
+      <div class="ot">After Hours Program</div>
+      <div class="od">3–5 people. 6 evening sessions over 3 weeks. Build a knife from raw steel — same result, just spread across evenings.</div>
+      <div class="otag">Can't Take a Full Day Off?</div>
     </div>
   </div>
 
@@ -527,17 +555,83 @@ footer a { color: var(--forge-red); text-decoration: none; }
         <div class="card-desc">Coming back to finish a multi-day project.</div>
         <div class="card-price">$400</div>
       </div>
-      <div class="card" onclick="pickKm1Svc('afterhours', this)">
-        <div class="card-title">After Hours Intro</div>
-        <div class="card-desc">Evening session. A taste of knife making.</div>
-        <div class="card-price">$799</div>
+    </div>
+
+  </div>
+
+  <!-- After Hours config -->
+  <div id="km-afterhours" style="display:none;">
+    <div class="note-box" style="border-color:var(--forge-red); border-style:solid;">
+      <strong>After Hours Program — How It Works</strong>
+      Can't take a full day off? This 3-week evening program gets you the same result — a finished knife you built from raw steel. Small group, big experience.
+    </div>
+
+    <div class="summary-box" style="margin-top:14px;">
+      <div class="summary-title">Program Details</div>
+      <div class="sum-line"><span class="sl">Schedule</span><span class="sv">2 evenings/week for 3 weeks</span></div>
+      <div class="sum-line"><span class="sl">Session Length</span><span class="sv">2 hours (5:30–7:30 or 6:00–8:00 PM)</span></div>
+      <div class="sum-line"><span class="sl">Total Sessions</span><span class="sv">6</span></div>
+      <div class="sum-line"><span class="sl">Group Size</span><span class="sv">3–5 people</span></div>
+      <div class="sum-line"><span class="sl">Steel</span><span class="sv">1084 Carbon Steel</span></div>
+      <div class="sum-line"><span class="sl">Blade</span><span class="sv">Bulldog — Drop Point Fix-Blade</span></div>
+      <div class="sum-line"><span class="sl">Handle</span><span class="sv">G10 Scales</span></div>
+      <div class="sum-total"><span class="sl">Per Person</span><span class="sv">$799</span></div>
+    </div>
+
+    <!-- Headcount -->
+    <div class="config-section">
+      <div class="config-label">How Many People?</div>
+      <div class="hc-control">
+        <button class="hc-btn" onclick="ahHc(-1)">−</button>
+        <div class="hc-val" id="ah-hc-val">3</div>
+        <button class="hc-btn" onclick="ahHc(1)">+</button>
       </div>
-      <div class="card" onclick="pickKm1Svc('makeup', this)">
-        <div class="card-title">After Hours Make-Up</div>
-        <div class="card-desc">Finish what you started in a previous session.</div>
-        <div class="card-price">$150</div>
+      <div class="hc-msg" id="ah-hc-msg"></div>
+    </div>
+
+    <div class="summary-box" style="margin-top:14px;">
+      <div class="summary-title">Cost Estimate</div>
+      <div class="sum-line"><span class="sl">Per Person</span><span class="sv">$799</span></div>
+      <div class="sum-total"><span class="sl">Total</span><span class="sv" id="ah-total">$2,397</span></div>
+    </div>
+
+    <div style="margin-top:14px;">
+      <div class="config-label">6-Day Curriculum</div>
+      <div style="display:grid; grid-template-columns:repeat(auto-fill, minmax(250px, 1fr)); gap:10px; margin-top:8px;">
+        <div style="padding:14px; background:var(--white); border:1px solid var(--light-gray);">
+          <div style="font-family:'Oswald',sans-serif; font-size:11px; letter-spacing:1.2px; text-transform:uppercase; color:var(--forge-red); margin-bottom:4px;">Day 1</div>
+          <div style="font-family:'Oswald',sans-serif; font-size:14px; font-weight:500; text-transform:uppercase; margin-bottom:4px;">Profiling</div>
+          <div style="font-size:12.5px; color:var(--steel-gray); line-height:17px;">Choose your shape, transfer to steel, cut out with zip-cut, refine on belt grinder.</div>
+        </div>
+        <div style="padding:14px; background:var(--white); border:1px solid var(--light-gray);">
+          <div style="font-family:'Oswald',sans-serif; font-size:11px; letter-spacing:1.2px; text-transform:uppercase; color:var(--forge-red); margin-bottom:4px;">Day 2</div>
+          <div style="font-family:'Oswald',sans-serif; font-size:14px; font-weight:500; text-transform:uppercase; margin-bottom:4px;">Rough Grinding</div>
+          <div style="font-size:12.5px; color:var(--steel-gray); line-height:17px;">Establish bevel geometry, set the plunge line, grind to 1mm edge thickness.</div>
+        </div>
+        <div style="padding:14px; background:var(--white); border:1px solid var(--light-gray);">
+          <div style="font-family:'Oswald',sans-serif; font-size:11px; letter-spacing:1.2px; text-transform:uppercase; color:var(--forge-red); margin-bottom:4px;">Day 3</div>
+          <div style="font-family:'Oswald',sans-serif; font-size:14px; font-weight:500; text-transform:uppercase; margin-bottom:4px;">Heat Treatment</div>
+          <div style="font-size:12.5px; color:var(--steel-gray); line-height:17px;">Austenitize at 1465°F, quench in Park50 oil, temper at 400°F. The blade comes alive.</div>
+        </div>
+        <div style="padding:14px; background:var(--white); border:1px solid var(--light-gray);">
+          <div style="font-family:'Oswald',sans-serif; font-size:11px; letter-spacing:1.2px; text-transform:uppercase; color:var(--forge-red); margin-bottom:4px;">Day 4</div>
+          <div style="font-family:'Oswald',sans-serif; font-size:14px; font-weight:500; text-transform:uppercase; margin-bottom:4px;">Handle Work — Part 1</div>
+          <div style="font-size:12.5px; color:var(--steel-gray); line-height:17px;">Prep G10 scales, drill pin holes, mix and apply epoxy, clamp for cure.</div>
+        </div>
+        <div style="padding:14px; background:var(--white); border:1px solid var(--light-gray);">
+          <div style="font-family:'Oswald',sans-serif; font-size:11px; letter-spacing:1.2px; text-transform:uppercase; color:var(--forge-red); margin-bottom:4px;">Day 5</div>
+          <div style="font-family:'Oswald',sans-serif; font-size:14px; font-weight:500; text-transform:uppercase; margin-bottom:4px;">Handle Work — Part 2</div>
+          <div style="font-size:12.5px; color:var(--steel-gray); line-height:17px;">Shape the handle on the belt grinder, sand through grits, hand-finish to smooth.</div>
+        </div>
+        <div style="padding:14px; background:var(--white); border:1px solid var(--light-gray);">
+          <div style="font-family:'Oswald',sans-serif; font-size:11px; letter-spacing:1.2px; text-transform:uppercase; color:var(--forge-red); margin-bottom:4px;">Day 6</div>
+          <div style="font-family:'Oswald',sans-serif; font-size:14px; font-weight:500; text-transform:uppercase; margin-bottom:4px;">Sharpening</div>
+          <div style="font-size:12.5px; color:var(--steel-gray); line-height:17px;">Sharpen your blade to a working edge. Learn technique you can use for life. Take your knife home.</div>
+        </div>
       </div>
     </div>
+
+    <div class="info" style="margin-top:14px;">Make-up sessions available ($150/session) if you miss an evening. You don't fall behind — we'll get you caught up.</div>
   </div>
 
   <!-- Group config -->
@@ -832,6 +926,180 @@ footer a { color: var(--forge-red); text-decoration: none; }
   </div>
 </div>
 
+<!-- ── 2G: Special Events ── -->
+<div class="wiz" id="step2-special">
+  <div class="section-tag">Something Special</div>
+  <h2>Your Vision, Our Forge</h2>
+  <p class="subtitle">Weddings, birthdays, anniversaries, corporate retreats, couple's experiences, or something we haven't thought of yet. If it involves fire, steel, or a story worth telling — we're in.</p>
+
+  <div class="note-box" style="border-color:var(--forge-red); border-style:solid;">
+    <strong>How Special Events Work</strong>
+    Every special event starts with a conversation. Tell us what you're imagining and we'll design a custom experience around it. We've hosted everything from birthday forge sessions to wedding celebrations at the anvil. Pricing depends on the activity, group size, and duration — we'll put together a quote after we talk.
+  </div>
+
+  <div style="margin-top:20px;">
+    <div class="config-label">Some Ideas to Get You Started</div>
+    <div class="cards" style="margin-top:10px;">
+      <div class="card" style="cursor:default; border-color:var(--light-gray);">
+        <div class="card-icon">💍</div>
+        <div class="card-title">Wedding / Anniversary</div>
+        <div class="card-desc">Forge wedding bands, a commemorative blade, or host a rehearsal dinner experience your guests will never forget.</div>
+      </div>
+      <div class="card" style="cursor:default; border-color:var(--light-gray);">
+        <div class="card-icon">🎂</div>
+        <div class="card-title">Birthday / Celebration</div>
+        <div class="card-desc">A birthday at the forge. Make a knife, learn to blacksmith, or sharpen blades together. Ages 12+ with guardian.</div>
+      </div>
+      <div class="card" style="cursor:default; border-color:var(--light-gray);">
+        <div class="card-icon">💑</div>
+        <div class="card-title">Couple's Experience</div>
+        <div class="card-desc">Date night at the forge. Work side by side and each take home a blade you made together. Unforgettable.</div>
+      </div>
+      <div class="card" style="cursor:default; border-color:var(--light-gray);">
+        <div class="card-icon">🎓</div>
+        <div class="card-title">School / Youth Group</div>
+        <div class="card-desc">Hands-on trade education. Sharpening seminars, blade assembly, or intro blacksmithing for students and youth groups.</div>
+      </div>
+      <div class="card" style="cursor:default; border-color:var(--light-gray);">
+        <div class="card-icon">✨</div>
+        <div class="card-title">Something Else Entirely</div>
+        <div class="card-desc">Have an idea that doesn't fit the boxes? Perfect. That's exactly what this is for. Tell us what you're thinking.</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="info" style="margin-top:20px;">
+    All activities from our other categories (sharpening seminars, knife assembly, knife making, blacksmithing) are available for special events too — we just tailor the format, timing, and details to fit your occasion.
+  </div>
+
+  <div class="btn-row" style="margin-top:28px;">
+    <button class="btn btn-s" onclick="goBack()">&#8592; Back</button>
+    <a href="contact.html" class="btn btn-p">Contact Us to Plan Your Event &#8594;</a>
+  </div>
+</div>
+
+<!-- ── 2G: Engraving ── -->
+<div class="wiz" id="step2-engraving">
+  <div class="section-tag">Laser Engraving</div>
+  <h2>Custom Engraving</h2>
+  <p class="subtitle">Permanent laser engraving on knives, tools, and personal items. Names, logos, dates, artwork — precise and professional.</p>
+
+  <div class="info">
+    <strong>How it works:</strong> Tell us what you want engraved and on what. We'll prepare a digital proof using our laser camera system. You review and approve the proof before we engrave. Nothing happens until you say go.
+  </div>
+
+  <div style="margin-top:20px;">
+    <div class="config-label">Pricing</div>
+    <div style="background:var(--white);border:2px solid var(--light-gray);padding:20px;margin-top:10px;">
+      <div style="display:grid;grid-template-columns:1fr auto;gap:8px 20px;font-size:14px;color:var(--dark-gray);">
+        <span>⚙️ <strong>Setup Fee</strong> — laser calibration + proof preparation</span>
+        <span style="font-family:'Oswald',sans-serif;color:var(--forge-red);font-size:16px;">$35</span>
+        <span>🔖 <strong>Per Piece</strong> — each item engraved</span>
+        <span style="font-family:'Oswald',sans-serif;color:var(--forge-red);font-size:16px;">$15</span>
+        <span>⚡ <strong>Rush Order</strong> — need it done now? Jump the queue</span>
+        <span style="font-family:'Oswald',sans-serif;color:var(--forge-red);font-size:16px;">+$35</span>
+      </div>
+      <div style="border-top:1px solid var(--light-gray);margin-top:12px;padding-top:12px;">
+        <div style="font-size:12px;color:var(--steel-gray);text-transform:uppercase;letter-spacing:1px;margin-bottom:8px;font-family:'Oswald',sans-serif;">Artwork Fees (if applicable)</div>
+        <div style="display:grid;grid-template-columns:1fr auto;gap:6px 20px;font-size:13.5px;color:var(--dark-gray);">
+          <span>🎨 <strong>Artwork Fee</strong> — we find or prepare artwork for you</span>
+          <span style="font-family:'Oswald',sans-serif;color:var(--forge-red);">+$25</span>
+          <span>🔄 <strong>Logo Redesign</strong> — your logo needs tracing or rebuilding</span>
+          <span style="font-family:'Oswald',sans-serif;color:var(--forge-red);">+$50</span>
+          <span>✏️ <strong>Custom Artwork</strong> — we create original artwork from scratch</span>
+          <span style="font-family:'Oswald',sans-serif;color:var(--forge-red);">+$65</span>
+        </div>
+      </div>
+      <div style="margin-top:12px;font-size:12.5px;color:var(--steel-gray);line-height:18px;">
+        💡 <strong>Text only</strong> (names, dates, quotes in a standard font) = <strong>$50 for the first piece</strong>, $15 each after. No artwork fee.
+      </div>
+    </div>
+  </div>
+
+  <div style="margin-top:20px;">
+    <div class="config-label">What Do You Need Engraved?</div>
+    <div class="cards" style="margin-top:10px;">
+      <div class="card" style="cursor:pointer;" onclick="pickEngType('text', this)">
+        <div class="card-icon">📝</div>
+        <div class="card-title">Text Only</div>
+        <div class="card-desc">Names, initials, dates, quotes, dedications in a standard font. You provide the words, we engrave them.</div>
+        <div class="card-price">$50 first piece</div>
+      </div>
+      <div class="card" style="cursor:pointer;" onclick="pickEngType('yourart', this)">
+        <div class="card-icon">📎</div>
+        <div class="card-title">Your Artwork</div>
+        <div class="card-desc">You provide a print-ready image, logo, or vector file. We engrave exactly what you send — no changes needed.</div>
+        <div class="card-price">$50 first piece</div>
+      </div>
+      <div class="card" style="cursor:pointer;" onclick="pickEngType('artwork', this)">
+        <div class="card-icon">🎨</div>
+        <div class="card-title">Artwork Fee</div>
+        <div class="card-desc">You have an idea but need us to find or prepare the artwork. We source it and get it laser-ready.</div>
+        <div class="card-price">$75 first piece</div>
+      </div>
+      <div class="card" style="cursor:pointer;" onclick="pickEngType('logoredesign', this)">
+        <div class="card-icon">🔄</div>
+        <div class="card-title">Logo Redesign</div>
+        <div class="card-desc">Your logo isn't laser-ready — bad quality, wrong format, pixelated. We trace and rebuild it for engraving.</div>
+        <div class="card-price">$100 first piece</div>
+      </div>
+    </div>
+    <div class="cards" style="margin-top:10px;">
+      <div class="card" style="cursor:pointer;" onclick="pickEngType('custom', this)">
+        <div class="card-icon">✏️</div>
+        <div class="card-title">Custom Artwork</div>
+        <div class="card-desc">Nothing available works. We create original artwork from scratch — your vision, our design, completely custom.</div>
+        <div class="card-price">$115 first piece</div>
+      </div>
+    </div>
+  </div>
+
+  <div id="eng-config" style="display:none;margin-top:20px;">
+    <div class="config-label">How Many Pieces?</div>
+    <div style="display:flex;align-items:center;gap:16px;margin:10px 0;">
+      <button class="hc-btn" onclick="engPc(-1)">−</button>
+      <span id="eng-pc-val" style="font-family:'Oswald',sans-serif;font-size:24px;min-width:40px;text-align:center;">1</span>
+      <button class="hc-btn" onclick="engPc(1)">+</button>
+    </div>
+
+    <div class="field" style="margin-top:16px;">
+      <label>Describe the Item(s)</label>
+      <textarea id="eng-item-desc" rows="2" placeholder="e.g., 'Custom chef knife — 8 inch blade, Damascus steel' or 'Pocket knife my grandfather gave me'"></textarea>
+    </div>
+
+    <div class="field">
+      <label>What Should We Engrave?</label>
+      <textarea id="eng-content" rows="2" placeholder="The text, description of artwork, or instructions for the engraving."></textarea>
+    </div>
+
+    <div class="field">
+      <label>Reference Image (optional)</label>
+      <div style="font-size:13px;color:var(--steel-gray);margin-bottom:6px;">📎 If you have a logo, design, or reference photo, you can upload it on the proof approval page after we send you the link.</div>
+    </div>
+
+    <div class="agree-row" style="margin:14px 0;">
+      <input type="checkbox" id="eng-rush" onchange="updateEngTotal()">
+      <label for="eng-rush" style="font-size:14px;color:var(--dark-gray);cursor:pointer;">⚡ <strong>Rush Order (+$35)</strong> — I need this done as soon as possible</label>
+    </div>
+
+    <div style="background:var(--off-white);border:1px solid var(--light-gray);padding:16px;margin:14px 0;">
+      <div style="font-family:'Oswald',sans-serif;font-size:13px;letter-spacing:1px;text-transform:uppercase;color:var(--forge-red);margin-bottom:6px;">Estimated Total</div>
+      <div style="font-family:'Oswald',sans-serif;font-size:28px;color:var(--text);">$<span id="eng-total">50</span></div>
+      <div style="font-size:12px;color:var(--steel-gray);margin-top:4px;" id="eng-breakdown">$35 setup + 1 × $15</div>
+    </div>
+
+    <div class="note-box">
+      <strong>🔍 Proof Process</strong>
+      After booking, we'll contact you to arrange drop-off or shipping of your item. We photograph it in the laser, prepare a digital proof, and send you a link to our proof approval page. You review the proof, approve or request changes — no engraving starts until you give written approval.
+    </div>
+  </div>
+
+  <div class="btn-row" style="margin-top:28px;">
+    <button class="btn btn-s" onclick="goBack()">&#8592; Back</button>
+    <button class="btn btn-p" id="eng-next" style="display:none;" onclick="goStep(3)">Continue to Review &#8594;</button>
+  </div>
+</div>
+
 <!-- ── 2F: Workshop ── -->
 <div class="wiz" id="step2-workshop">
   <div class="section-tag">Workshop</div>
@@ -992,6 +1260,8 @@ const URLS = {
   'fam-assembly': 'https://shop.azcustomknives.com/booking-calendar/family-knife-assembly',
   'fam-knifemaking': 'https://shop.azcustomknives.com/booking-calendar/family-knife-making',
   'fam-blacksmithing': 'https://shop.azcustomknives.com/booking-calendar/family-blacksmithing',
+  // Engraving — needs to be created in Wix
+  engraving: 'https://shop.azcustomknives.com/booking-calendar/laser-engraving-service',
 };
 
 const PRICES = {
@@ -1003,6 +1273,8 @@ const PRICES = {
 
 const TB_PRICES = { sharpsem: 260, assembly: 450, knifemaking: 650, blacksmithing: 350 };
 const TB_MAX = { sharpsem: 20, assembly: 15, knifemaking: 6, blacksmithing: 6 };
+const TB_WARN = { sharpsem: 10, assembly: 10, knifemaking: 3, blacksmithing: 3 };
+const TB_HARD = { knifemaking: true, blacksmithing: true };  // hard-capped activities
 const TB_NAMES = { sharpsem: 'Sharpening Seminar', assembly: 'Knife Assembly', knifemaking: 'Knife Making', blacksmithing: 'Blacksmithing' };
 const CATER_EST = { subway: 30, jeffreys: 55, custom: 0 };
 const CATER_NAMES = { subway: 'Subway', jeffreys: "Jeffrey's Cafe Co", custom: 'Custom (quote)' };
@@ -1011,7 +1283,7 @@ const STEEL_NAMES = { '1084': '1084 Carbon Steel', '80crv2': '80CrV2' };
 const BLADE_NAMES = { bulldog: 'Bulldog', falcon: 'Falcon', badger: 'Badger', custom: 'Custom (Consultation)' };
 const SVC_NAMES = {
   fullday: 'Full Day (10hrs)', halfday: 'Half Day Project', continuation: 'Continuation',
-  afterhours: 'After Hours Intro', makeup: 'After Hours Make-Up',
+  afterhours: 'After Hours Program (6 evenings)', makeup: 'After Hours Make-Up',
   '2person': '2 Person Full Day', '3to5': '3–5 Person Full Day',
   '1half': '1 Person Half Day', '1full': '1 Person Full Day',
   '2half': '2 People Half Day', '2full': '2 People Full Day',
@@ -1037,6 +1309,10 @@ const WAIVERS = {
   events: {
     waiver: `<p><strong>CONSIDERATION:</strong> In consideration of being permitted to participate in group activities at AZ Custom Knives Ltd ("AZCK"), I acknowledge and agree to the following terms.</p><p><strong>DETAILS OF ACTIVITY:</strong> Activities may include knife sharpening, blade assembly, knife making, and/or blacksmithing depending on the event package selected. Each involves workshop tools and materials that present inherent risks.</p><p><strong>ASSUMPTION OF RISK:</strong> I understand the risks involved in workshop activities and voluntarily assume all risks associated with participation.</p><p><strong>RELEASE OF LIABILITY:</strong> I release, waive, and discharge AZCK, its owners, employees, and agents from any and all liability arising from my or my group's participation.</p><p><strong>GOVERNING LAW:</strong> This waiver is governed by the laws of the Province of Alberta, Canada.</p>`,
     instructions: `<p><strong>WHAT TO WEAR:</strong> Closed-toe shoes, long pants, natural fibre clothing. Specific requirements depend on the activity selected and will be confirmed after booking.</p><p><strong>WHAT TO BRING:</strong> Water bottles for all participants. Catering is available if selected.</p><p><strong>ARRIVAL:</strong> Please arrive 15 minutes early as a group so we can do a safety briefing before starting.</p>`
+  },
+  engraving: {
+    waiver: `<p><strong>AUTHORIZATION:</strong> By submitting an item for laser engraving at AZ Custom Knives Ltd ("AZCK"), I authorize AZCK to perform laser engraving on my property as described in the approved proof.</p><p><strong>PROOF APPROVAL:</strong> No engraving work will begin until I have reviewed and approved a digital proof. By approving the proof, I confirm that the design, text, spelling, positioning, and orientation are correct. AZCK is not responsible for errors present in the approved proof.</p><p><strong>POSITIONING ACCURACY:</strong> Laser positioning is accurate to approximately ±2–3 mm of the approved proof. Minor variations are inherent to the process and do not constitute a defect.</p><p><strong>PERMANENT PROCESS:</strong> Laser engraving is permanent and irreversible. Once started, it cannot be undone or removed without potentially damaging the item.</p><p><strong>EQUIPMENT RISK:</strong> Laser engraving equipment, while professionally maintained, may occasionally produce results that differ from the proof due to equipment behaviour, material properties, or factors beyond AZCK's reasonable control.</p><p><strong>LIABILITY:</strong> AZCK's total liability for any engraving error is strictly limited to the cost of the engraving service (setup fee + per-piece fee). AZCK is not liable for the replacement value, sentimental value, or any other value of the item being engraved. I proceed at my own risk.</p><p><strong>HIGH-VALUE ITEMS:</strong> For items of significant value, AZCK recommends testing on a sample piece first. Proceeding on high-value items is entirely at my own risk.</p><p><strong>GOVERNING LAW:</strong> This disclaimer is governed by the laws of the Province of Alberta, Canada.</p>`,
+    instructions: `<p><strong>DROP-OFF:</strong> Bring your item clean and dry. If there's a specific area for engraving, mark it with masking tape.</p><p><strong>PROOF PROCESS:</strong> We photograph your item on the laser table, prepare a digital proof, and send you a link to review. No work starts until you approve.</p><p><strong>TURNAROUND:</strong> Standard turnaround is 3–5 business days after proof approval, depending on workload.</p><p><strong>PICKUP:</strong> You'll receive a notification when your item is ready. Please collect within 30 days.</p>`
   }
 };
 
@@ -1048,7 +1324,9 @@ const CAT_NAMES = {
   knifemaking: 'Knife Making',
   blacksmithing: 'Blacksmithing',
   teambuilding: 'Team Building',
-  family: 'Family Events'
+  family: 'Family Events',
+  special: 'Special Events',
+  engraving: 'Engraving'
 };
 let deepLinked = false;
 
@@ -1069,6 +1347,10 @@ let S = {
   // Team Building / Family
   tbAct: null, tbHc: 4, tbCatering: false, tbCater: 'subway',
   famAct: null, famHc: 4, famCatering: false, famCater: 'subway',
+  // After Hours
+  ahHc: 3,
+  // Engraving
+  engType: null, engPc: 1,
 };
 
 /* ══════════════════════════════════════════════
@@ -1106,10 +1388,10 @@ function goStep(n) {
   const step1Lbl = step1El.querySelector('.step-lbl');
   if (deepLinked && S.cat && n > 1) {
     step1El.querySelector('.step-num').textContent = '✓';
-    step1Lbl.textContent = CAT_NAMES[S.cat] || 'Experience';
+    step1Lbl.textContent = CAT_NAMES[S.cat] || 'Choose';
   } else {
     step1El.querySelector('.step-num').textContent = '1';
-    step1Lbl.textContent = 'Experience';
+    step1Lbl.textContent = 'Choose';
   }
 
   window.scrollTo({ top: 0, behavior: 'smooth' });
@@ -1156,6 +1438,19 @@ function pickKmType(type, el) {
   el.classList.add('selected');
   document.getElementById('km-1on1').style.display = type === '1on1' ? 'block' : 'none';
   document.getElementById('km-group').style.display = type === 'group' ? 'block' : 'none';
+  document.getElementById('km-afterhours').style.display = type === 'afterhours' ? 'block' : 'none';
+}
+
+function ahHc(d) {
+  S.ahHc = Math.max(3, Math.min(5, S.ahHc + d));
+  document.getElementById('ah-hc-val').textContent = S.ahHc;
+  const msg = document.getElementById('ah-hc-msg');
+  if (S.ahHc >= 5) {
+    msg.innerHTML = '<span class="hc-warn">Maximum 5 people per program session.</span>';
+  } else {
+    msg.textContent = '';
+  }
+  document.getElementById('ah-total').textContent = '$' + (S.ahHc * 799).toLocaleString();
 }
 
 function pickKmPath(path, el) {
@@ -1215,7 +1510,10 @@ function pickTbAct(act, el) {
   el.classList.add('selected');
   document.getElementById('tb-config').style.display = 'block';
   document.getElementById('tb-next').disabled = false;
-  S.tbHc = Math.min(S.tbHc, TB_MAX[act] + 6); // reasonable start
+  // Reset headcount to reasonable default when switching activity
+  if (S.tbHc > TB_MAX[act]) S.tbHc = TB_MAX[act];
+  document.getElementById('tb-hc-val').textContent = S.tbHc;
+  document.getElementById('tb-hc-msg').textContent = '';
   updateTbTotal();
 }
 
@@ -1223,10 +1521,19 @@ function tbHc(d) {
   S.tbHc = Math.max(1, S.tbHc + d);
   document.getElementById('tb-hc-val').textContent = S.tbHc;
   const max = TB_MAX[S.tbAct];
+  const warn = TB_WARN[S.tbAct];
+  const hard = TB_HARD[S.tbAct];
   const msg = document.getElementById('tb-hc-msg');
+
   if (S.tbHc > max) {
-    const days = Math.ceil(S.tbHc / max);
-    msg.innerHTML = `<span class="hc-warn">This will be split across ${days} days (max ${max} per session). With each person you add, you limit your one-on-one time with the instructor.</span>`;
+    if (hard) {
+      const sessions = Math.ceil(S.tbHc / max);
+      msg.innerHTML = `<span class="hc-warn">Hard cap: ${max} people per session. Your group of ${S.tbHc} will be split across ${sessions} separate sessions.</span>`;
+    } else {
+      msg.innerHTML = `<span class="hc-warn">We recommend splitting into smaller groups for the best experience. Over ${max} people, we'll divide your group across sessions.</span>`;
+    }
+  } else if (S.tbHc > warn) {
+    msg.innerHTML = `<span style="color:#e65100;">Note: With ${S.tbHc} people, individual instruction time will be reduced. For the best hands-on experience, we recommend ${warn} or fewer.</span>`;
   } else {
     msg.textContent = '';
   }
@@ -1277,12 +1584,19 @@ function famHc(d) {
   S.famHc = Math.max(1, S.famHc + d);
   document.getElementById('fam-hc-val').textContent = S.famHc;
   const max = TB_MAX[S.famAct] || 12;
+  const warn = TB_WARN[S.famAct] || 6;
+  const hard = TB_HARD[S.famAct];
   const msg = document.getElementById('fam-hc-msg');
+
   if (S.famHc > max) {
-    const days = Math.ceil(S.famHc / max);
-    msg.innerHTML = `<span class="hc-warn">Groups over ${max} will be split across ${days} sessions. More people = less individual instruction time.</span>`;
-  } else if (S.famHc > 6) {
-    msg.textContent = 'Larger group — instruction time per person will be shared.';
+    if (hard) {
+      const sessions = Math.ceil(S.famHc / max);
+      msg.innerHTML = `<span class="hc-warn">Hard cap: ${max} people per session. Your group of ${S.famHc} will be split across ${sessions} separate sessions.</span>`;
+    } else {
+      msg.innerHTML = `<span class="hc-warn">We recommend splitting into smaller groups for the best experience. Over ${max} people, we'll divide your group across sessions.</span>`;
+    }
+  } else if (S.famHc > warn) {
+    msg.innerHTML = `<span style="color:#e65100;">Note: With ${S.famHc} people, individual instruction time will be reduced. For the best hands-on experience, we recommend ${warn} or fewer.</span>`;
   } else {
     msg.textContent = '';
   }
@@ -1301,6 +1615,40 @@ function updateFamTotal() {
   document.getElementById('fam-cat-cost').textContent = S.famCater === 'custom' ? 'Quote' : '$' + catCost.toLocaleString();
   const total = actCost + catCost;
   document.getElementById('fam-total').textContent = S.famCater === 'custom' && S.famCatering ? '$' + actCost.toLocaleString() + ' + catering' : '$' + total.toLocaleString();
+}
+
+/* ══════════════════════════════════════════════
+   STEP 2G — ENGRAVING
+   ══════════════════════════════════════════════ */
+function pickEngType(type, el) {
+  S.engType = type;
+  document.querySelectorAll('#step2-engraving .cards .card').forEach(c => c.classList.remove('selected'));
+  el.classList.add('selected');
+  document.getElementById('eng-config').style.display = 'block';
+  document.getElementById('eng-next').style.display = 'inline-block';
+  updateEngTotal();
+}
+
+function engPc(d) {
+  S.engPc = Math.max(1, S.engPc + d);
+  document.getElementById('eng-pc-val').textContent = S.engPc;
+  updateEngTotal();
+}
+
+const ENG_ART_FEE = { text: 0, yourart: 0, artwork: 25, logoredesign: 50, custom: 65 };
+const ENG_ART_LABEL = { text: '', yourart: '', artwork: ' + $25 artwork', logoredesign: ' + $50 logo redesign', custom: ' + $65 custom artwork' };
+
+function updateEngTotal() {
+  const setup = 35;
+  const perPiece = 15 * S.engPc;
+  const artFee = ENG_ART_FEE[S.engType] || 0;
+  const rush = document.getElementById('eng-rush').checked ? 35 : 0;
+  const total = setup + perPiece + artFee + rush;
+  document.getElementById('eng-total').textContent = total.toLocaleString();
+  let bd = '$35 setup + ' + S.engPc + ' × $15';
+  if (artFee) bd += ENG_ART_LABEL[S.engType];
+  if (rush) bd += ' + $35 rush';
+  document.getElementById('eng-breakdown').textContent = bd;
 }
 
 /* ══════════════════════════════════════════════
@@ -1334,6 +1682,16 @@ function buildReview() {
       line('Consultation', 'Included (after booking)');
       total = PRICES[S.km1Svc];
       url = URLS[S.km1Svc];
+    } else if (S.kmType === 'afterhours') {
+      line('Program', 'After Hours — Intro to Knife Making');
+      line('Schedule', '2 evenings/week × 3 weeks (6 sessions)');
+      line('Session Time', '2 hours (5:30–7:30 or 6:00–8:00 PM)');
+      line('Group Size', S.ahHc + ' people');
+      line('Steel', '1084 Carbon Steel');
+      line('Blade', 'Bulldog — Drop Point Fix-Blade');
+      line('Handle', 'G10 Scales');
+      total = S.ahHc * 799;
+      url = URLS['afterhours'];
     } else {
       line('Class', 'Group Knife Making');
       line('Group Size', SVC_NAMES[S.kmGrpSvc]);
@@ -1377,6 +1735,23 @@ function buildReview() {
     if (hc > max) {
       line('Schedule', Math.ceil(hc / max) + ' sessions (max ' + max + ' per session)');
     }
+
+  } else if (S.cat === 'engraving') {
+    const typeNames = { text: 'Text Only', yourart: 'Your Artwork', artwork: 'Artwork Fee', logoredesign: 'Logo Redesign', custom: 'Custom Artwork' };
+    line('Service', '✒️ Laser Engraving');
+    line('Type', typeNames[S.engType] || '—');
+    line('Pieces', S.engPc);
+    const setup = 35;
+    const perPiece = 15 * S.engPc;
+    const artFee = ENG_ART_FEE[S.engType] || 0;
+    const rush = document.getElementById('eng-rush').checked ? 35 : 0;
+    total = setup + perPiece + artFee + rush;
+    line('Setup Fee', '$35');
+    line('Engraving', S.engPc + ' × $15 = $' + perPiece);
+    if (artFee) line(typeNames[S.engType], '+$' + artFee);
+    if (rush) line('⚡ Rush Order', '+$35');
+    line('Proof', '🔍 Digital proof sent for approval before work begins');
+    url = URLS['engraving'] || '';
   }
 
   S._total = total;
@@ -1392,6 +1767,7 @@ function getWaiverCat() {
   if (S.cat === 'sharpening') return 'sharpening';
   if (S.cat === 'knifemaking') return 'knifemaking';
   if (S.cat === 'blacksmithing') return 'blacksmithing';
+  if (S.cat === 'engraving') return 'engraving';
   return 'events';
 }
 
@@ -1481,7 +1857,7 @@ function shareThis(text, hash) {
    ══════════════════════════════════════════════ */
 window.addEventListener('DOMContentLoaded', () => {
   const hash = window.location.hash.replace('#', '');
-  if (hash && ['sharpening', 'knifemaking', 'blacksmithing', 'teambuilding', 'family'].includes(hash)) {
+  if (hash && ['sharpening', 'knifemaking', 'blacksmithing', 'teambuilding', 'family', 'special', 'engraving'].includes(hash)) {
     deepLinked = true;
     pickCat(hash);
   }
