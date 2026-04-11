@@ -1,152 +1,571 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>About | AZ Custom Knives Ltd.</title>
-  <meta name="description" content="Meet Alessio Zilli — Swiss-trained Journeyman Artistic Blacksmith. The story behind AZ Custom Knives in Grande Prairie, Alberta.">
-  <link rel="stylesheet" href="../css/style.css">
-  <link rel="icon" href="../images/favicon.ico" type="image/x-icon">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About AZ Custom Knives - Grande Prairie, Alberta</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --forge-red: #990000;
+            --forge-red-hover: #770000;
+            --steel-gray: #78909C;
+            --black: #000;
+            --white: #FFF;
+            --off-white: #FAFAFA;
+            --light-gray: #F0F0F0;
+            --dark-gray: #333;
+            --text: #1a1a1a;
+            --max-width: 920px;
+            --header-height: 72px;
+        }
+
+        body {
+            font-family: 'Effra', 'Segoe UI', Arial, sans-serif;
+            color: var(--text);
+            background-color: var(--white);
+            line-height: 1.6;
+        }
+
+        /* Header */
+        header {
+            background-color: var(--black);
+            height: var(--header-height);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            display: flex;
+            align-items: center;
+            padding: 0 20px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        .logo {
+            font-family: 'Oswald', sans-serif;
+            font-size: 24px;
+            font-weight: bold;
+            color: var(--white);
+            text-decoration: none;
+            transition: opacity 0.3s ease;
+        }
+
+        .logo:hover {
+            opacity: 0.8;
+        }
+
+        .logo span {
+            color: var(--forge-red);
+        }
+
+        /* Navigation */
+        nav {
+            background-color: var(--white);
+            border-bottom: 1px solid var(--light-gray);
+            padding: 0 20px;
+            display: flex;
+            justify-content: center;
+        }
+
+        nav ul {
+            list-style: none;
+            display: flex;
+            max-width: var(--max-width);
+            width: 100%;
+            flex-wrap: wrap;
+        }
+
+        nav li {
+            margin: 0;
+        }
+
+        nav a {
+            display: block;
+            padding: 16px 20px;
+            text-decoration: none;
+            color: var(--text);
+            font-size: 14px;
+            font-weight: 500;
+            transition: color 0.3s ease;
+            border-bottom: 2px solid transparent;
+        }
+
+        nav a:hover {
+            color: var(--forge-red);
+        }
+
+        nav a.active {
+            color: var(--forge-red);
+            border-bottom-color: var(--forge-red);
+        }
+
+        /* Main Container */
+        .container {
+            max-width: var(--max-width);
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(135deg, var(--off-white) 0%, var(--light-gray) 100%);
+            padding: 60px 20px;
+            text-align: center;
+        }
+
+        .hero h1 {
+            font-family: 'Oswald', sans-serif;
+            font-size: 48px;
+            margin-bottom: 30px;
+            color: var(--text);
+        }
+
+        .hero-image {
+            font-size: 120px;
+            margin: 30px 0;
+            line-height: 1;
+        }
+
+        /* Section */
+        section {
+            padding: 60px 20px;
+            border-bottom: 1px solid var(--light-gray);
+        }
+
+        section:last-of-type {
+            border-bottom: none;
+        }
+
+        h2 {
+            font-family: 'Oswald', sans-serif;
+            font-size: 36px;
+            margin-bottom: 30px;
+            color: var(--text);
+        }
+
+        h3 {
+            font-family: 'Oswald', sans-serif;
+            font-size: 24px;
+            margin-bottom: 15px;
+            color: var(--text);
+        }
+
+        p {
+            margin-bottom: 15px;
+            font-size: 16px;
+            line-height: 1.8;
+        }
+
+        /* Alessio's Story */
+        .story-content {
+            max-width: 800px;
+            margin: 0 auto;
+            font-size: 16px;
+            line-height: 1.8;
+        }
+
+        /* Services Cards */
+        .services {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 30px;
+            margin-top: 40px;
+        }
+
+        .service-card {
+            background: var(--off-white);
+            padding: 30px;
+            border-radius: 8px;
+            border-left: 4px solid var(--forge-red);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .service-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+        }
+
+        .service-icon {
+            font-size: 48px;
+            margin-bottom: 15px;
+        }
+
+        .service-card h3 {
+            font-size: 20px;
+            margin-bottom: 12px;
+        }
+
+        .service-card p {
+            font-size: 14px;
+            color: var(--dark-gray);
+        }
+
+        /* Workshop Section */
+        .workshop-info {
+            background: var(--off-white);
+            padding: 40px;
+            border-radius: 8px;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .workshop-address {
+            font-family: 'Oswald', sans-serif;
+            font-size: 18px;
+            margin: 20px 0 10px 0;
+            color: var(--forge-red);
+        }
+
+        /* Team Section */
+        .team {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 40px;
+            margin-top: 40px;
+        }
+
+        .team-member {
+            text-align: center;
+        }
+
+        .team-photo {
+            font-size: 120px;
+            margin-bottom: 20px;
+            line-height: 1;
+        }
+
+        .team-member h3 {
+            font-size: 22px;
+            margin-bottom: 8px;
+        }
+
+        .team-member p {
+            font-size: 14px;
+            color: var(--dark-gray);
+        }
+
+        /* CTA Section */
+        .cta {
+            background: linear-gradient(135deg, var(--forge-red) 0%, var(--forge-red-hover) 100%);
+            color: var(--white);
+            text-align: center;
+            padding: 60px 20px;
+        }
+
+        .cta h2 {
+            color: var(--white);
+            margin-bottom: 30px;
+        }
+
+        .cta-buttons {
+            display: flex;
+            gap: 20px;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .btn {
+            font-family: 'Oswald', sans-serif;
+            padding: 14px 32px;
+            font-size: 16px;
+            font-weight: bold;
+            text-decoration: none;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            display: inline-block;
+        }
+
+        .btn-primary {
+            background-color: var(--white);
+            color: var(--forge-red);
+        }
+
+        .btn-primary:hover {
+            background-color: var(--light-gray);
+        }
+
+        .btn-secondary {
+            background-color: transparent;
+            color: var(--white);
+            border: 2px solid var(--white);
+        }
+
+        .btn-secondary:hover {
+            background-color: var(--white);
+            color: var(--forge-red);
+        }
+
+        /* Footer */
+        footer {
+            background-color: var(--black);
+            color: var(--white);
+            padding: 40px 20px;
+            text-align: center;
+            font-size: 14px;
+        }
+
+        .footer-content {
+            max-width: var(--max-width);
+            margin: 0 auto;
+        }
+
+        .footer-links {
+            margin: 20px 0;
+        }
+
+        .footer-links a {
+            color: var(--white);
+            text-decoration: none;
+            margin: 0 15px;
+            transition: color 0.3s ease;
+        }
+
+        .footer-links a:hover {
+            color: var(--forge-red);
+        }
+
+        .footer-contact {
+            margin: 20px 0;
+            font-size: 14px;
+        }
+
+        .footer-contact a {
+            color: var(--forge-red);
+            text-decoration: none;
+        }
+
+        .footer-contact a:hover {
+            text-decoration: underline;
+        }
+
+        /* Responsive */
+        @media (max-width: 640px) {
+            .logo {
+                font-size: 18px;
+            }
+
+            nav ul {
+                flex-direction: column;
+            }
+
+            nav a {
+                padding: 12px 15px;
+                font-size: 13px;
+            }
+
+            .hero h1 {
+                font-size: 32px;
+            }
+
+            .hero-image {
+                font-size: 80px;
+            }
+
+            h2 {
+                font-size: 28px;
+            }
+
+            h3 {
+                font-size: 20px;
+            }
+
+            section {
+                padding: 40px 20px;
+            }
+
+            .services {
+                grid-template-columns: 1fr;
+                gap: 20px;
+            }
+
+            .team {
+                grid-template-columns: 1fr;
+                gap: 30px;
+            }
+
+            .cta-buttons {
+                flex-direction: column;
+                gap: 15px;
+            }
+
+            .btn {
+                width: 100%;
+            }
+
+            .workshop-info {
+                padding: 25px;
+            }
+
+            .team-photo {
+                font-size: 100px;
+            }
+
+            footer {
+                padding: 30px 20px;
+            }
+
+            .footer-links {
+                display: flex;
+                flex-direction: column;
+                gap: 10px;
+            }
+
+            .footer-links a {
+                margin: 5px 0;
+            }
+        }
+    </style>
 </head>
 <body>
+    <!-- Header -->
+    <header>
+        <a href="../index.html" class="logo"><span>AZ</span> Custom Knives</a>
+    </header>
 
-  <!-- HEADER -->
-  <header class="header">
-    <div class="header__inner">
-      <a href="../index.html" class="header__logo-text">AZ Custom <span>Knives</span></a>
-      <nav class="nav">
-        <a href="../index.html" class="nav__link">Home</a>
-        <a href="about.html" class="nav__link active">About</a>
-        <a href="classes.html" class="nav__link">Classes & Services</a>
-        <a href="portfolio.html" class="nav__link">Portfolio</a>
-        <a href="quadfang.html" class="nav__link">QuadFang</a>
-        <a href="contact.html" class="nav__link">Contact</a>
-        <a href="https://shop.azcustomknives.com" class="btn btn--primary btn--small" target="_blank" rel="noopener">Shop</a>
-      </nav>
-      <button class="menu-toggle" aria-label="Menu"><span></span><span></span><span></span></button>
-    </div>
-  </header>
+    <!-- Navigation -->
+    <nav>
+        <ul>
+            <li><a href="booking.html#classes">Classes</a></li>
+            <li><a href="booking.html#services">Services</a></li>
+            <li><a href="booking.html#book">Book</a></li>
+            <li><a href="portfolio.html">Portfolio</a></li>
+            <li><a href="about.html" class="active">About</a></li>
+            <li><a href="contact.html">Contact</a></li>
+            <li><a href="https://shop.azcustomknives.com" target="_blank">Shop</a></li>
+        </ul>
+    </nav>
 
-  <!-- HERO -->
-  <section class="hero" style="min-height: 50vh;">
-    <div class="hero__bg" style="background-image: url('https://static.wixstatic.com/media/44b4b1_about_hero.jpg/v1/fill/w_1920,h_800,al_c,q_85/about-hero.jpg');"></div>
-    <div class="hero__overlay"></div>
-    <div class="hero__content">
-      <p class="hero__subtitle">Our Story</p>
-      <h1 class="hero__title">About AZCK</h1>
-    </div>
-  </section>
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="container">
+            <h1>The Story Behind the Steel</h1>
+            <div class="hero-image">📸</div>
+        </div>
+    </section>
 
-  <!-- ORIGIN STORY -->
-  <section class="section">
-    <div class="container">
-      <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 48px; align-items: start;">
-        <div class="fade-in">
-          <h2 style="margin-bottom: 20px;">From Switzerland<br>to the Peace Country</h2>
-          <div class="section__line" style="margin: 0 0 24px;"></div>
-          <p style="color: var(--text-light);">Alessio Zilli grew up in Switzerland and completed a rigorous 4-year apprenticeship as a blacksmith — earning the title of Journeyman Artistic Blacksmith. The training covered everything from traditional forging techniques to design, metallurgy, and fine art metalwork.</p>
-          <p style="color: var(--text-light);">After immigrating to Canada, Alessio settled in Grande Prairie, Alberta, where he founded AZ Custom Knives Ltd. What began as a passion for bladesmithing grew into a full-service operation covering custom knives, artistic blacksmithing, professional sharpening, and hands-on education.</p>
+    <!-- Alessio's Story -->
+    <section>
+        <div class="container">
+            <h2>Alessio's Journey</h2>
+            <div class="story-content">
+                <p>
+                    Born and raised in Switzerland, Alessio completed a rigorous 4-year apprenticeship as a Journeyman Artistic Blacksmith under master blacksmiths. That foundation of precision, discipline, and craft shaped everything he does.
+                </p>
+                <p>
+                    He moved to Canada and is now based in Grande Prairie, Alberta. Swiss precision meets Canadian ruggedness. Every blade he makes carries that dual identity — meticulous attention to detail combined with the toughness and authenticity that the Canadian wilderness demands.
+                </p>
+                <p>
+                    At AZCK, we don't make knives for everyone. We make knives for the person who will actually carry them. Custom, thoughtful, and built to last a lifetime.
+                </p>
+            </div>
         </div>
-        <div class="fade-in" style="text-align: center;">
-          <img src="https://static.wixstatic.com/media/44b4b1_a9e7e91e35a64cf5a735c26f6a2a5f2a~mv2.jpg/v1/fill/w_500,h_625,al_c,q_80/44b4b1_a9e7e91e35a64cf5a735c26f6a2a5f2a~mv2.jpg" alt="Alessio Zilli" style="max-width: 100%; border-radius: 2px; box-shadow: var(--shadow-md);" loading="lazy">
-        </div>
-      </div>
-    </div>
-  </section>
+    </section>
 
-  <!-- WHAT WE DO -->
-  <section class="section section--gray">
-    <div class="container">
-      <div class="section__header fade-in">
-        <h2>What We Do</h2>
-        <div class="section__line"></div>
-      </div>
-      <div class="grid grid--2 fade-in">
-        <div style="padding: 32px; background: var(--white); box-shadow: var(--shadow-sm);">
-          <h3 style="color: var(--forge-red); margin-bottom: 12px;">Custom Knives</h3>
-          <p style="color: var(--text-light);">Every blade is handmade — designed for the person who will carry it. From everyday carry to hunting knives, each reflects precision craftsmanship and purpose-driven design.</p>
+    <!-- What We Do -->
+    <section>
+        <div class="container">
+            <h2>What We Do</h2>
+            <div class="services">
+                <div class="service-card">
+                    <div class="service-icon">🗡️</div>
+                    <h3>Custom Knives</h3>
+                    <p>Handmade, one at a time, designed for the person who'll carry it. Built with precision and built to last.</p>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon">⚒️</div>
+                    <h3>Artistic Blacksmithing</h3>
+                    <p>Railings, gates, sculptures, fireplace tools, and custom hardware. Form and function meet artistry.</p>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon">🔪</div>
+                    <h3>Professional Sharpening</h3>
+                    <p>The best sharpening service in the Peace Country. We bring your edges back to life.</p>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon">✒️</div>
+                    <h3>Laser Engraving</h3>
+                    <p>Custom engraving on knives, tools, and personal items. Add your story to your steel.</p>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon">🎓</div>
+                    <h3>Classes & Events</h3>
+                    <p>Knife making, blacksmithing, team building, and family events. Learn the craft from a master.</p>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon">🎨</div>
+                    <h3>Sculptures & Fine Art</h3>
+                    <p>Stainless steel, tombac animals, and commissioned art. Functional beauty that tells a story.</p>
+                </div>
+            </div>
         </div>
-        <div style="padding: 32px; background: var(--white); box-shadow: var(--shadow-sm);">
-          <h3 style="color: var(--forge-red); margin-bottom: 12px;">Artistic Blacksmithing</h3>
-          <p style="color: var(--text-light);">Hand-forged railings, gates, sculptures, fireplace tools, and architectural hardware. Traditional techniques applied to modern projects with ingenuity and attention to detail.</p>
-        </div>
-        <div style="padding: 32px; background: var(--white); box-shadow: var(--shadow-sm);">
-          <h3 style="color: var(--forge-red); margin-bottom: 12px;">Professional Sharpening</h3>
-          <p style="color: var(--text-light);">Knives, scissors, chisels, specialty folders, and restorations. The best professional sharpening service in the Peace Country, trusted by professionals and hobbyists alike.</p>
-        </div>
-        <div style="padding: 32px; background: var(--white); box-shadow: var(--shadow-sm);">
-          <h3 style="color: var(--forge-red); margin-bottom: 12px;">Education & Classes</h3>
-          <p style="color: var(--text-light);">Corporate team building, blacksmithing courses, knife making, sheath making, and sharpening workshops. Alessio believes teaching is the highest form of mastery.</p>
-        </div>
-      </div>
-    </div>
-  </section>
+    </section>
 
-  <!-- PHILOSOPHY -->
-  <section class="section">
-    <div class="container" style="max-width: 720px; text-align: center;">
-      <div class="fade-in">
-        <h2 style="margin-bottom: 20px;">The Philosophy</h2>
-        <div class="section__line"></div>
-        <p style="color: var(--text-light); margin-top: 24px; font-size: 1.1rem; line-height: 1.9;">Craft over convenience. Purpose over production. Every piece that leaves the AZCK workshop — whether a knife, a railing, or a sculpture — is built to serve the person who commissioned it. Nothing generic, nothing rushed. The Swiss way.</p>
-      </div>
-    </div>
-  </section>
+    <!-- The Workshop -->
+    <section>
+        <div class="container">
+            <h2>The Workshop</h2>
+            <div class="workshop-info">
+                <p>
+                    This isn't a showroom. It's a working forge where the magic happens. You'll find the smell of hot steel, the sound of hammer on anvil, and the raw energy of a craft that's been perfected over thousands of years.
+                </p>
+                <div class="workshop-address">9602 115 Street #104</div>
+                <p style="margin: 0;">Grande Prairie, AB T8V 5W2</p>
+                <p style="margin-top: 20px; font-size: 14px; color: var(--dark-gray);">
+                    We're open by appointment. Call or email to book a visit, take a class, or discuss your custom knife.
+                </p>
+            </div>
+        </div>
+    </section>
 
-  <!-- CTA -->
-  <section class="section" style="background: var(--forge-red); color: #fff; text-align: center;">
-    <div class="container fade-in">
-      <h2 style="color: #fff; margin-bottom: 16px;">Work With Us</h2>
-      <p style="color: rgba(255,255,255,0.85); max-width: 500px; margin: 0 auto 28px;">Have a project in mind? Want to learn the craft? We'd love to hear from you.</p>
-      <div style="display: flex; gap: 16px; justify-content: center; flex-wrap: wrap;">
-        <a href="contact.html" class="btn btn--white-outline">Contact Us</a>
-        <a href="classes.html" class="btn" style="background: #fff; color: var(--forge-red); border: 2px solid #fff;">View Classes</a>
-      </div>
-    </div>
-  </section>
+    <!-- The Team -->
+    <section>
+        <div class="container">
+            <h2>The Team</h2>
+            <div class="team">
+                <div class="team-member">
+                    <div class="team-photo">📸</div>
+                    <h3>Alessio</h3>
+                    <p>Owner, Master Blacksmith & Instructor. Brings Swiss precision and Canadian grit to every piece. The forge is where Alessio comes alive.</p>
+                </div>
+                <div class="team-member">
+                    <div class="team-photo">📸</div>
+                    <h3>Reanna</h3>
+                    <p>Operations & Bookings. Reanna keeps the workshop running smoothly and makes sure your experience is seamless from start to finish.</p>
+                </div>
+            </div>
+        </div>
+    </section>
 
-  <!-- FOOTER -->
-  <footer class="footer">
-    <div class="container">
-      <div class="footer__grid">
-        <div>
-          <p class="header__logo-text" style="margin-bottom: 16px; font-size: 1.2rem;">AZ Custom <span>Knives</span></p>
-          <p class="footer__text">Swiss-trained craftsmanship in the heart of Alberta.</p>
+    <!-- CTA Section -->
+    <section class="cta">
+        <div class="container">
+            <h2>Ready to Visit the Forge?</h2>
+            <div class="cta-buttons">
+                <a href="booking.html#book" class="btn btn-primary">Book a Class</a>
+                <a href="contact.html" class="btn btn-secondary">Contact Us</a>
+            </div>
         </div>
-        <div>
-          <p class="footer__heading">Navigate</p>
-          <a href="about.html" class="footer__link">About</a>
-          <a href="classes.html" class="footer__link">Classes & Services</a>
-          <a href="portfolio.html" class="footer__link">Portfolio</a>
-          <a href="quadfang.html" class="footer__link">QuadFang</a>
-          <a href="https://shop.azcustomknives.com" class="footer__link" target="_blank">Shop</a>
-        </div>
-        <div>
-          <p class="footer__heading">Services</p>
-          <a href="classes.html#sharpening" class="footer__link">Knife Sharpening</a>
-          <a href="classes.html#classes" class="footer__link">Classes</a>
-          <a href="classes.html#restorations" class="footer__link">Restorations</a>
-          <a href="contact.html" class="footer__link">Custom Projects</a>
-        </div>
-        <div>
-          <p class="footer__heading">Contact</p>
-          <p class="footer__text">9602 115 Street #104<br>Grande Prairie, AB T8V 5W2</p>
-          <p class="footer__text" style="margin-top: 8px;">(780) 831-2987</p>
-          <a href="mailto:admin@azcustomknives.com" class="footer__link" style="margin-top: 4px;">admin@azcustomknives.com</a>
-        </div>
-      </div>
-      <div class="footer__bottom">
-        <p>&copy; 2026 AZ Custom Knives Ltd. All rights reserved.</p>
-        <div class="footer__socials">
-          <a href="https://www.facebook.com/azcustomknives" target="_blank" rel="noopener">FB</a>
-          <a href="https://www.instagram.com/azcustomknives" target="_blank" rel="noopener">IG</a>
-          <a href="https://www.youtube.com/@azcustomknives" target="_blank" rel="noopener">YT</a>
-          <a href="https://command.azcustomknives.com" class="footer__admin" aria-label="Admin">Admin</a>
-        </div>
-      </div>
-    </div>
-  </footer>
+    </section>
 
-  <script src="../js/main.js"></script>
+    <!-- Footer -->
+    <footer>
+        <div class="footer-content">
+            <div class="footer-contact">
+                <p><a href="tel:+17808312987">(780) 831-2987</a> | <a href="mailto:admin@azcustomknives.com">admin@azcustomknives.com</a></p>
+            </div>
+            <div class="footer-links">
+                <a href="booking.html#classes">Book a Class</a>
+                <a href="portfolio.html">Available Blanks</a>
+                <a href="contact.html">Waivers</a>
+            </div>
+            <p style="margin-top: 20px;">&copy; 2026 AZ Custom Knives Ltd. All rights reserved.</p>
+        </div>
+    </footer>
 </body>
 </html>
