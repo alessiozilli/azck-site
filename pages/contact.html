@@ -1,196 +1,597 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Contact | AZ Custom Knives Ltd.</title>
-  <meta name="description" content="Get in touch with AZ Custom Knives Ltd. in Grande Prairie, Alberta. Custom projects, sharpening, classes, and more.">
-  <link rel="stylesheet" href="../css/style.css">
-  <link rel="icon" href="../images/favicon.ico" type="image/x-icon">
-  <style>
-    .contact-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 48px; align-items: start; }
-    .form-group { margin-bottom: 20px; }
-    .form-group label {
-      display: block; font-family: 'Oswald', sans-serif; font-size: 0.8rem;
-      letter-spacing: 0.1em; text-transform: uppercase; color: var(--dark-gray);
-      margin-bottom: 6px;
-    }
-    .form-group input,
-    .form-group textarea,
-    .form-group select {
-      width: 100%; padding: 12px 16px; border: 1px solid #ddd;
-      font-family: inherit; font-size: 0.95rem; background: var(--white);
-      transition: border-color var(--transition);
-    }
-    .form-group input:focus,
-    .form-group textarea:focus,
-    .form-group select:focus {
-      outline: none; border-color: var(--forge-red);
-    }
-    .form-group textarea { resize: vertical; min-height: 120px; }
-    .info-block { margin-bottom: 28px; }
-    .info-block h3 { color: var(--forge-red); margin-bottom: 8px; font-size: 1rem; }
-    .info-block p { color: var(--text-light); font-size: 0.95rem; }
-    .hours-table { width: 100%; }
-    .hours-table td { padding: 4px 0; font-size: 0.9rem; color: var(--text-light); }
-    .hours-table td:first-child { font-weight: 500; color: var(--text); width: 100px; }
-    @media (max-width: 768px) { .contact-grid { grid-template-columns: 1fr; } }
-  </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact — AZ Custom Knives Ltd</title>
+    <style>
+        :root {
+            --forge-red: #990000;
+            --forge-red-hover: #770000;
+            --steel-gray: #78909C;
+            --black: #000;
+            --white: #FFF;
+            --off-white: #FAFAFA;
+            --light-gray: #F0F0F0;
+            --dark-gray: #333;
+            --text: #1a1a1a;
+            --max-width: 920px;
+            --header-height: 72px;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: "Effra", "Segoe UI", Arial, sans-serif;
+            color: var(--text);
+            line-height: 1.6;
+            background-color: var(--off-white);
+        }
+
+        /* Header */
+        header {
+            position: sticky;
+            top: 0;
+            background-color: var(--black);
+            padding: 0 20px;
+            height: var(--header-height);
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            z-index: 100;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+
+        .logo {
+            font-family: "Oswald", sans-serif;
+            font-size: 20px;
+            font-weight: 700;
+            color: var(--white);
+            text-decoration: none;
+            letter-spacing: 1px;
+        }
+
+        .logo span {
+            color: var(--forge-red);
+        }
+
+        /* Navigation */
+        nav {
+            display: flex;
+            gap: 30px;
+            align-items: center;
+        }
+
+        nav a {
+            color: var(--white);
+            text-decoration: none;
+            font-size: 13px;
+            font-weight: 500;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            transition: color 0.3s;
+        }
+
+        nav a:hover {
+            color: var(--forge-red);
+        }
+
+        nav a.active {
+            color: var(--forge-red);
+            font-weight: 700;
+        }
+
+        /* Main Content */
+        main {
+            max-width: var(--max-width);
+            margin: 0 auto;
+            padding: 60px 20px;
+        }
+
+        .page-title {
+            font-family: "Oswald", sans-serif;
+            font-size: 48px;
+            font-weight: 700;
+            margin-bottom: 40px;
+            color: var(--text);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        /* Quick Contact Cards */
+        .contact-cards {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+            margin-bottom: 60px;
+        }
+
+        .contact-card {
+            background-color: var(--white);
+            padding: 30px;
+            border-left: 4px solid var(--forge-red);
+            text-align: center;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .contact-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 4px 16px rgba(0,0,0,0.1);
+        }
+
+        .contact-card .icon {
+            font-size: 40px;
+            margin-bottom: 15px;
+        }
+
+        .contact-card h3 {
+            font-family: "Oswald", sans-serif;
+            font-size: 16px;
+            font-weight: 700;
+            text-transform: uppercase;
+            margin-bottom: 10px;
+            letter-spacing: 0.5px;
+        }
+
+        .contact-card p {
+            color: var(--dark-gray);
+            font-size: 15px;
+            line-height: 1.5;
+        }
+
+        .contact-card a {
+            color: var(--forge-red);
+            text-decoration: none;
+            font-weight: 600;
+            transition: color 0.3s;
+        }
+
+        .contact-card a:hover {
+            color: var(--forge-red-hover);
+        }
+
+        /* Contact Form Section */
+        .form-section {
+            background-color: var(--white);
+            padding: 40px;
+            margin-bottom: 60px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+        }
+
+        .form-section h2 {
+            font-family: "Oswald", sans-serif;
+            font-size: 28px;
+            font-weight: 700;
+            margin-bottom: 30px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        label {
+            display: block;
+            font-weight: 600;
+            margin-bottom: 8px;
+            font-size: 14px;
+            text-transform: uppercase;
+            letter-spacing: 0.3px;
+            color: var(--dark-gray);
+        }
+
+        input[type="text"],
+        input[type="email"],
+        input[type="tel"],
+        select,
+        textarea {
+            width: 100%;
+            padding: 12px 15px;
+            border: 1px solid var(--light-gray);
+            border-radius: 4px;
+            font-family: inherit;
+            font-size: 15px;
+            transition: border-color 0.3s, box-shadow 0.3s;
+        }
+
+        input[type="text"]:focus,
+        input[type="email"]:focus,
+        input[type="tel"]:focus,
+        select:focus,
+        textarea:focus {
+            outline: none;
+            border-color: var(--forge-red);
+            box-shadow: 0 0 0 3px rgba(153, 0, 0, 0.1);
+        }
+
+        textarea {
+            resize: vertical;
+            min-height: 150px;
+        }
+
+        .form-row {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+        }
+
+        button[type="submit"] {
+            background-color: var(--forge-red);
+            color: var(--white);
+            padding: 15px 40px;
+            border: none;
+            border-radius: 4px;
+            font-family: "Oswald", sans-serif;
+            font-size: 14px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            cursor: pointer;
+            transition: background-color 0.3s, transform 0.2s;
+        }
+
+        button[type="submit"]:hover {
+            background-color: var(--forge-red-hover);
+            transform: translateY(-2px);
+        }
+
+        button[type="submit"]:active {
+            transform: translateY(0);
+        }
+
+        /* Business Hours */
+        .hours-section {
+            background-color: var(--white);
+            padding: 40px;
+            margin-bottom: 60px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+            border-top: 4px solid var(--forge-red);
+        }
+
+        .hours-section h2 {
+            font-family: "Oswald", sans-serif;
+            font-size: 28px;
+            font-weight: 700;
+            margin-bottom: 20px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .hours-section p {
+            color: var(--dark-gray);
+            margin-bottom: 15px;
+            font-size: 15px;
+            line-height: 1.6;
+        }
+
+        .hours-highlight {
+            background-color: var(--light-gray);
+            padding: 15px;
+            border-left: 4px solid var(--forge-red);
+            margin: 20px 0;
+            font-size: 15px;
+        }
+
+        /* Map Placeholder */
+        .map-section {
+            background-color: var(--white);
+            padding: 40px;
+            margin-bottom: 60px;
+            text-align: center;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+        }
+
+        .map-placeholder {
+            font-size: 80px;
+            margin-bottom: 20px;
+        }
+
+        .map-section h2 {
+            font-family: "Oswald", sans-serif;
+            font-size: 28px;
+            font-weight: 700;
+            margin-bottom: 15px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .map-section p {
+            color: var(--dark-gray);
+            font-size: 15px;
+        }
+
+        /* Quick Links */
+        .quick-links {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+            margin-bottom: 60px;
+        }
+
+        .quick-link-card {
+            background-color: var(--white);
+            padding: 30px;
+            text-align: center;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+            border: 2px solid transparent;
+            transition: all 0.3s;
+            text-decoration: none;
+            display: block;
+            color: var(--text);
+        }
+
+        .quick-link-card:hover {
+            border-color: var(--forge-red);
+            transform: translateY(-4px);
+            box-shadow: 0 4px 16px rgba(0,0,0,0.1);
+        }
+
+        .quick-link-card .icon {
+            font-size: 40px;
+            margin-bottom: 15px;
+            display: block;
+        }
+
+        .quick-link-card h3 {
+            font-family: "Oswald", sans-serif;
+            font-size: 16px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        /* Footer */
+        footer {
+            background-color: var(--black);
+            color: var(--white);
+            padding: 40px 20px;
+            text-align: center;
+            border-top: 4px solid var(--forge-red);
+            margin-top: 60px;
+        }
+
+        footer p {
+            font-size: 13px;
+            margin-bottom: 15px;
+        }
+
+        footer a {
+            color: var(--forge-red);
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+
+        footer a:hover {
+            color: var(--white);
+        }
+
+        .footer-links {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            flex-wrap: wrap;
+            margin-top: 20px;
+            font-size: 13px;
+        }
+
+        /* Responsive */
+        @media (max-width: 640px) {
+            header {
+                flex-direction: column;
+                height: auto;
+                gap: 15px;
+                padding: 15px;
+            }
+
+            nav {
+                gap: 15px;
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+
+            nav a {
+                font-size: 12px;
+            }
+
+            .page-title {
+                font-size: 32px;
+                margin-bottom: 30px;
+            }
+
+            main {
+                padding: 30px 15px;
+            }
+
+            .form-section,
+            .hours-section,
+            .map-section {
+                padding: 25px 15px;
+            }
+
+            .form-section h2,
+            .hours-section h2,
+            .map-section h2 {
+                font-size: 20px;
+            }
+
+            .contact-cards {
+                grid-template-columns: 1fr;
+                gap: 15px;
+            }
+
+            .quick-links {
+                grid-template-columns: 1fr;
+                gap: 15px;
+            }
+
+            .map-placeholder {
+                font-size: 60px;
+            }
+
+            .footer-links {
+                gap: 10px;
+            }
+        }
+    </style>
 </head>
 <body>
+    <!-- Header -->
+    <header>
+        <a href="../index.html" class="logo"><span>AZ</span> Custom Knives</a>
+        <nav>
+            <a href="booking.html#classes">Classes</a>
+            <a href="booking.html#services">Services</a>
+            <a href="booking.html#book">Book</a>
+            <a href="portfolio.html">Portfolio</a>
+            <a href="about.html">About</a>
+            <a href="contact.html" class="active">Contact</a>
+            <a href="https://shop.azcustomknives.com" target="_blank">Shop</a>
+        </nav>
+    </header>
 
-  <!-- HEADER -->
-  <header class="header">
-    <div class="header__inner">
-      <a href="../index.html" class="header__logo-text">AZ Custom <span>Knives</span></a>
-      <nav class="nav">
-        <a href="../index.html" class="nav__link">Home</a>
-        <a href="about.html" class="nav__link">About</a>
-        <a href="classes.html" class="nav__link">Classes & Services</a>
-        <a href="portfolio.html" class="nav__link">Portfolio</a>
-        <a href="quadfang.html" class="nav__link">QuadFang</a>
-        <a href="contact.html" class="nav__link active">Contact</a>
-        <a href="https://shop.azcustomknives.com" class="btn btn--primary btn--small" target="_blank" rel="noopener">Shop</a>
-      </nav>
-      <button class="menu-toggle" aria-label="Menu"><span></span><span></span><span></span></button>
-    </div>
-  </header>
+    <!-- Main Content -->
+    <main>
+        <h1 class="page-title">Contact Us</h1>
 
-  <!-- HERO -->
-  <section class="hero" style="min-height: 40vh;">
-    <div class="hero__bg" style="background-image: url('https://static.wixstatic.com/media/44b4b1_contact_hero.jpg/v1/fill/w_1920,h_600,al_c,q_85/contact.jpg');"></div>
-    <div class="hero__overlay"></div>
-    <div class="hero__content">
-      <h1 class="hero__title">Contact Us</h1>
-    </div>
-  </section>
-
-  <!-- CONTACT CONTENT -->
-  <section class="section">
-    <div class="container">
-      <div class="contact-grid">
-        <!-- Form -->
-        <div class="fade-in">
-          <h2 style="margin-bottom: 8px;">Get in Touch</h2>
-          <p style="color: var(--text-light); margin-bottom: 28px;">Have a request for a custom project? Want to give us feedback? Let us know how we can be of service.</p>
-          <form action="#" method="POST" onsubmit="event.preventDefault(); alert('Form submissions will be connected once the site is live. For now, email admin@azcustomknives.com or call (780) 831-2987.');">
-            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 16px;">
-              <div class="form-group">
-                <label for="fname">First Name</label>
-                <input type="text" id="fname" name="fname" required>
-              </div>
-              <div class="form-group">
-                <label for="lname">Last Name</label>
-                <input type="text" id="lname" name="lname" required>
-              </div>
+        <!-- Quick Contact Cards -->
+        <div class="contact-cards">
+            <div class="contact-card">
+                <div class="icon">☎️</div>
+                <h3>Call Us</h3>
+                <p><a href="tel:+17808312987">(780) 831-2987</a></p>
             </div>
-            <div class="form-group">
-              <label for="email">Email</label>
-              <input type="email" id="email" name="email" required>
+            <div class="contact-card">
+                <div class="icon">📧</div>
+                <h3>Email</h3>
+                <p><a href="mailto:admin@azcustomknives.com">admin@azcustomknives.com</a></p>
             </div>
-            <div class="form-group">
-              <label for="phone">Phone (optional)</label>
-              <input type="tel" id="phone" name="phone">
+            <div class="contact-card">
+                <div class="icon">📍</div>
+                <h3>Visit</h3>
+                <p>9602 115 Street #104<br>Grande Prairie, AB T8V 5W2</p>
             </div>
-            <div class="form-group">
-              <label for="subject">Subject</label>
-              <select id="subject" name="subject">
-                <option value="">Select a topic...</option>
-                <option value="custom-knife">Custom Knife Request</option>
-                <option value="blacksmithing">Blacksmithing Project</option>
-                <option value="sharpening">Sharpening Service</option>
-                <option value="classes">Classes & Team Building</option>
-                <option value="restoration">Restoration / Regrind</option>
-                <option value="quadfang">QuadFang</option>
-                <option value="other">Other</option>
-              </select>
-            </div>
-            <div class="form-group">
-              <label for="message">Message</label>
-              <textarea id="message" name="message" rows="5" required></textarea>
-            </div>
-            <button type="submit" class="btn btn--primary">Send Message</button>
-          </form>
         </div>
 
-        <!-- Info -->
-        <div class="fade-in">
-          <div class="info-block">
-            <h3>Location</h3>
-            <p>9602 115 Street #104<br>Grande Prairie, Alberta T8V 5W2<br>Canada</p>
-          </div>
-          <div class="info-block">
-            <h3>Phone</h3>
-            <p><a href="tel:+17808312987" style="color: var(--forge-red);">(780) 831-2987</a></p>
-          </div>
-          <div class="info-block">
-            <h3>Email</h3>
-            <p><a href="mailto:admin@azcustomknives.com" style="color: var(--forge-red);">admin@azcustomknives.com</a></p>
-          </div>
-          <div class="info-block">
-            <h3>Hours</h3>
-            <table class="hours-table">
-              <tr><td>Monday</td><td>9am – 4pm</td></tr>
-              <tr><td>Tuesday</td><td>9am – 4pm</td></tr>
-              <tr><td>Wednesday</td><td>9am – 6pm</td></tr>
-              <tr><td>Thursday</td><td>9am – 4pm</td></tr>
-              <tr><td>Friday</td><td>9am – 6pm</td></tr>
-              <tr><td>Saturday</td><td>Closed</td></tr>
-              <tr><td>Sunday</td><td>Closed</td></tr>
-            </table>
-          </div>
+        <!-- Contact Form -->
+        <div class="form-section">
+            <h2>Send Us a Message</h2>
+            <form id="contact-form" onsubmit="handleSubmit(event)">
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="name">Name *</label>
+                        <input type="text" id="name" name="name" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="email">Email *</label>
+                        <input type="email" id="email" name="email" required>
+                    </div>
+                </div>
 
-          <!-- Google Maps Embed -->
-          <div style="margin-top: 16px;">
-            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2338.5!2d-118.7886!3d55.1707!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zNTXCsDEwJzE0LjUiTiAxMTjCsDQ3JzE5LjAiVw!5e0!3m2!1sen!2sca!4v1" width="100%" height="250" style="border: 0;" allowfullscreen loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="phone">Phone (Optional)</label>
+                        <input type="tel" id="phone" name="phone">
+                    </div>
+                    <div class="form-group">
+                        <label for="subject">Subject *</label>
+                        <select id="subject" name="subject" required>
+                            <option value="">-- Select a Subject --</option>
+                            <option value="general">General Inquiry</option>
+                            <option value="custom-knife">Custom Knife Project</option>
+                            <option value="class-booking">Class/Booking Question</option>
+                            <option value="sharpening">Sharpening/Restoration</option>
+                            <option value="engraving">Engraving</option>
+                            <option value="wholesale">Wholesale/Corporate</option>
+                            <option value="other">Other</option>
+                        </select>
+                    </div>
+                </div>
 
-  <!-- FOOTER -->
-  <footer class="footer">
-    <div class="container">
-      <div class="footer__grid">
-        <div>
-          <p class="header__logo-text" style="margin-bottom: 16px; font-size: 1.2rem;">AZ Custom <span>Knives</span></p>
-          <p class="footer__text">Swiss-trained craftsmanship in the heart of Alberta.</p>
+                <div class="form-group">
+                    <label for="message">Message *</label>
+                    <textarea id="message" name="message" required></textarea>
+                </div>
+
+                <button type="submit">Send Message</button>
+            </form>
         </div>
-        <div>
-          <p class="footer__heading">Navigate</p>
-          <a href="about.html" class="footer__link">About</a>
-          <a href="classes.html" class="footer__link">Classes & Services</a>
-          <a href="portfolio.html" class="footer__link">Portfolio</a>
-          <a href="quadfang.html" class="footer__link">QuadFang</a>
-          <a href="https://shop.azcustomknives.com" class="footer__link" target="_blank">Shop</a>
+
+        <!-- Business Hours -->
+        <div class="hours-section">
+            <h2>Business Hours</h2>
+            <p><strong>By Appointment Only</strong></p>
+            <p>We're a working forge, not a retail store. Please call or book online before visiting.</p>
+            <div class="hours-highlight">
+                <strong>Best Times to Reach Us:</strong><br>
+                Monday–Friday | 9:00 AM – 5:00 PM
+            </div>
+            <p>For urgent inquiries outside these hours, please leave a message and we'll get back to you as soon as possible.</p>
         </div>
-        <div>
-          <p class="footer__heading">Services</p>
-          <a href="classes.html#sharpening" class="footer__link">Knife Sharpening</a>
-          <a href="classes.html#classes" class="footer__link">Classes</a>
-          <a href="classes.html#restorations" class="footer__link">Restorations</a>
-          <a href="contact.html" class="footer__link">Custom Projects</a>
+
+        <!-- Map Placeholder -->
+        <div class="map-section">
+            <div class="map-placeholder">🗺️</div>
+            <h2>Visit Our Forge</h2>
+            <p>9602 115 Street #104, Grande Prairie, AB T8V 5W2</p>
+            <p style="margin-top: 15px; font-size: 13px; color: var(--steel-gray);">Interactive map coming soon</p>
         </div>
-        <div>
-          <p class="footer__heading">Contact</p>
-          <p class="footer__text">9602 115 Street #104<br>Grande Prairie, AB T8V 5W2</p>
-          <p class="footer__text" style="margin-top: 8px;">(780) 831-2987</p>
-          <a href="mailto:admin@azcustomknives.com" class="footer__link" style="margin-top: 4px;">admin@azcustomknives.com</a>
+
+        <!-- Quick Links -->
+        <h2 style="font-family: 'Oswald', sans-serif; font-size: 28px; font-weight: 700; text-transform: uppercase; margin-bottom: 30px; letter-spacing: 0.5px;">Quick Links</h2>
+        <div class="quick-links">
+            <a href="booking.html#classes" class="quick-link-card">
+                <span class="icon">📚</span>
+                <h3>Book a Class</h3>
+            </a>
+            <a href="mailto:admin@azcustomknives.com?subject=Custom%20Knife%20Quote" class="quick-link-card">
+                <span class="icon">✉️</span>
+                <h3>Get a Quote</h3>
+            </a>
+            <a href="booking.html#services" class="quick-link-card">
+                <span class="icon">🔪</span>
+                <h3>Sharpening Drop-off</h3>
+            </a>
+            <a href="gift-certificates.html" class="quick-link-card">
+                <span class="icon">🎁</span>
+                <h3>Gift Certificates</h3>
+            </a>
         </div>
-      </div>
-      <div class="footer__bottom">
+    </main>
+
+    <!-- Footer -->
+    <footer>
         <p>&copy; 2026 AZ Custom Knives Ltd. All rights reserved.</p>
-        <div class="footer__socials">
-          <a href="https://www.facebook.com/azcustomknives" target="_blank" rel="noopener">FB</a>
-          <a href="https://www.instagram.com/azcustomknives" target="_blank" rel="noopener">IG</a>
-          <a href="https://www.youtube.com/@azcustomknives" target="_blank" rel="noopener">YT</a>
-          <a href="https://command.azcustomknives.com" class="footer__admin" aria-label="Admin">Admin</a>
+        <p>Phone: <a href="tel:+17808312987">(780) 831-2987</a></p>
+        <div class="footer-links">
+            <a href="index.html">Home</a>
+            <a href="about.html">About</a>
+            <a href="portfolio.html">Portfolio</a>
+            <a href="booking.html">Book</a>
+            <a href="contact.html">Contact</a>
+            <a href="https://shop.azcustomknives.com" target="_blank">Shop</a>
         </div>
-      </div>
-    </div>
-  </footer>
+    </footer>
 
-  <script src="../js/main.js"></script>
+    <script>
+        function handleSubmit(event) {
+            event.preventDefault();
+            const name = document.getElementById('name').value;
+            const email = document.getElementById('email').value;
+            const subject = document.getElementById('subject').value;
+            const message = document.getElementById('message').value;
+            
+            // Test mode: show confirmation alert
+            alert(`Thank you, ${name}!\n\nYour message has been received.\nWe'll get back to you at ${email} soon.\n\nSubject: ${subject}`);
+            
+            // Reset form
+            document.getElementById('contact-form').reset();
+        }
+    </script>
 </body>
 </html>
