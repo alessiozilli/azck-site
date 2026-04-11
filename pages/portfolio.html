@@ -1,189 +1,585 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Portfolio | AZ Custom Knives Ltd.</title>
-  <meta name="description" content="Blacksmithing portfolio — hand-forged railings, gates, sculptures, stainless steel art, tombac animals, and copper range hoods by Alessio Zilli.">
-  <link rel="stylesheet" href="../css/style.css">
-  <link rel="icon" href="../images/favicon.ico" type="image/x-icon">
-  <style>
-    .gallery { display: grid; grid-template-columns: repeat(3, 1fr); gap: 8px; }
-    .gallery__item {
-      position: relative; overflow: hidden; aspect-ratio: 1/1; cursor: pointer;
-    }
-    .gallery__item img {
-      width: 100%; height: 100%; object-fit: cover;
-      transition: transform 0.4s ease;
-    }
-    .gallery__item:hover img { transform: scale(1.06); }
-    .gallery__item--wide { grid-column: span 2; aspect-ratio: 2/1; }
-    @media (max-width: 600px) {
-      .gallery { grid-template-columns: repeat(2, 1fr); }
-      .gallery__item--wide { grid-column: span 2; }
-    }
-  </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portfolio — AZ Custom Knives</title>
+    <style>
+        /* Design System */
+        :root {
+            --forge-red: #990000;
+            --forge-red-hover: #770000;
+            --steel-gray: #78909C;
+            --black: #000;
+            --white: #FFF;
+            --off-white: #FAFAFA;
+            --light-gray: #F0F0F0;
+            --dark-gray: #333;
+            --text: #1a1a1a;
+            --max-width: 1100px;
+            --header-height: 72px;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Effra', 'Segoe UI', Arial, sans-serif;
+            color: var(--text);
+            background-color: var(--off-white);
+            line-height: 1.6;
+        }
+
+        /* Header */
+        header {
+            position: sticky;
+            top: 0;
+            background-color: var(--black);
+            color: var(--white);
+            padding: 0 20px;
+            height: var(--header-height);
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            z-index: 1000;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+        }
+
+        .logo {
+            font-family: Oswald, sans-serif;
+            font-size: 24px;
+            font-weight: bold;
+            text-decoration: none;
+            color: var(--white);
+            letter-spacing: 1px;
+        }
+
+        .logo span {
+            color: var(--forge-red);
+        }
+
+        nav {
+            display: flex;
+            gap: 30px;
+            align-items: center;
+        }
+
+        nav a {
+            color: var(--white);
+            text-decoration: none;
+            font-size: 14px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            transition: color 0.3s ease;
+        }
+
+        nav a:hover {
+            color: var(--forge-red);
+        }
+
+        nav a.active {
+            color: var(--forge-red);
+            border-bottom: 2px solid var(--forge-red);
+            padding-bottom: 4px;
+        }
+
+        /* Main Container */
+        main {
+            max-width: var(--max-width);
+            margin: 0 auto;
+            padding: 60px 20px;
+        }
+
+        /* Intro Section */
+        .intro {
+            text-align: center;
+            margin-bottom: 60px;
+        }
+
+        .intro h1 {
+            font-family: Oswald, sans-serif;
+            font-size: 48px;
+            font-weight: bold;
+            margin-bottom: 20px;
+            color: var(--text);
+            letter-spacing: 1px;
+        }
+
+        .intro p {
+            font-size: 16px;
+            color: var(--steel-gray);
+            max-width: 700px;
+            margin: 0 auto;
+            line-height: 1.8;
+        }
+
+        /* Filter Tabs */
+        .filter-tabs {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            margin-bottom: 50px;
+            flex-wrap: wrap;
+        }
+
+        .filter-btn {
+            padding: 12px 24px;
+            background-color: var(--white);
+            border: 2px solid var(--steel-gray);
+            color: var(--text);
+            font-size: 14px;
+            font-weight: bold;
+            text-transform: uppercase;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            letter-spacing: 0.5px;
+        }
+
+        .filter-btn:hover {
+            border-color: var(--forge-red);
+            color: var(--forge-red);
+        }
+
+        .filter-btn.active {
+            background-color: var(--forge-red);
+            border-color: var(--forge-red);
+            color: var(--white);
+        }
+
+        /* Gallery Grid */
+        .gallery {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 30px;
+            margin-bottom: 60px;
+        }
+
+        .gallery-card {
+            background-color: var(--white);
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .gallery-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 4px 16px rgba(0, 0, 0, 0.15);
+        }
+
+        .gallery-card.hidden {
+            display: none;
+        }
+
+        .image-placeholder {
+            background-color: var(--light-gray);
+            height: 250px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 80px;
+            border-bottom: 2px solid var(--steel-gray);
+        }
+
+        .card-content {
+            padding: 20px;
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .card-content h3 {
+            font-family: Oswald, sans-serif;
+            font-size: 20px;
+            font-weight: bold;
+            margin-bottom: 10px;
+            color: var(--text);
+            letter-spacing: 0.5px;
+        }
+
+        .card-content p {
+            font-size: 14px;
+            color: var(--steel-gray);
+            margin-bottom: 15px;
+            flex-grow: 1;
+            line-height: 1.6;
+        }
+
+        .card-category {
+            display: inline-block;
+            background-color: var(--light-gray);
+            color: var(--text);
+            padding: 6px 12px;
+            font-size: 12px;
+            text-transform: uppercase;
+            font-weight: bold;
+            letter-spacing: 0.5px;
+            border-radius: 4px;
+            width: fit-content;
+        }
+
+        /* CTA Section */
+        .cta-section {
+            background-color: var(--light-gray);
+            padding: 50px 20px;
+            text-align: center;
+            border-radius: 8px;
+            margin-bottom: 60px;
+        }
+
+        .cta-section h2 {
+            font-family: Oswald, sans-serif;
+            font-size: 36px;
+            font-weight: bold;
+            margin-bottom: 30px;
+            color: var(--text);
+            letter-spacing: 1px;
+        }
+
+        .cta-buttons {
+            display: flex;
+            gap: 20px;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .cta-btn {
+            padding: 14px 32px;
+            background-color: var(--forge-red);
+            color: var(--white);
+            border: none;
+            font-size: 14px;
+            font-weight: bold;
+            text-transform: uppercase;
+            cursor: pointer;
+            text-decoration: none;
+            display: inline-block;
+            transition: background-color 0.3s ease;
+            letter-spacing: 0.5px;
+            border-radius: 4px;
+        }
+
+        .cta-btn:hover {
+            background-color: var(--forge-red-hover);
+        }
+
+        .cta-btn.secondary {
+            background-color: var(--white);
+            color: var(--forge-red);
+            border: 2px solid var(--forge-red);
+        }
+
+        .cta-btn.secondary:hover {
+            background-color: var(--forge-red);
+            color: var(--white);
+        }
+
+        /* Footer */
+        footer {
+            background-color: var(--black);
+            color: var(--white);
+            padding: 40px 20px;
+            text-align: center;
+            border-top: 2px solid var(--forge-red);
+        }
+
+        footer p {
+            font-size: 14px;
+            margin-bottom: 15px;
+        }
+
+        footer a {
+            color: var(--forge-red);
+            text-decoration: none;
+            margin: 0 15px;
+            transition: color 0.3s ease;
+        }
+
+        footer a:hover {
+            color: var(--white);
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .gallery {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 20px;
+            }
+
+            nav {
+                gap: 15px;
+            }
+
+            nav a {
+                font-size: 12px;
+            }
+
+            .intro h1 {
+                font-size: 36px;
+            }
+
+            .cta-section h2 {
+                font-size: 28px;
+            }
+        }
+
+        @media (max-width: 640px) {
+            .gallery {
+                grid-template-columns: 1fr;
+                gap: 15px;
+            }
+
+            header {
+                flex-direction: column;
+                height: auto;
+                padding: 15px;
+                gap: 15px;
+            }
+
+            nav {
+                flex-direction: column;
+                gap: 10px;
+                width: 100%;
+            }
+
+            nav a {
+                font-size: 13px;
+            }
+
+            main {
+                padding: 40px 15px;
+            }
+
+            .intro h1 {
+                font-size: 28px;
+            }
+
+            .intro p {
+                font-size: 14px;
+            }
+
+            .filter-tabs {
+                gap: 10px;
+            }
+
+            .filter-btn {
+                padding: 10px 18px;
+                font-size: 12px;
+            }
+
+            .cta-section {
+                padding: 35px 15px;
+            }
+
+            .cta-section h2 {
+                font-size: 22px;
+                margin-bottom: 20px;
+            }
+
+            .cta-buttons {
+                gap: 10px;
+            }
+
+            .cta-btn {
+                padding: 12px 24px;
+                font-size: 12px;
+            }
+
+            .image-placeholder {
+                font-size: 60px;
+                height: 200px;
+            }
+        }
+    </style>
 </head>
 <body>
+    <header>
+        <a href="../index.html" class="logo"><span>AZ</span> Custom Knives</a>
+        <nav>
+            <a href="booking.html#classes">Classes</a>
+            <a href="booking.html#services">Services</a>
+            <a href="booking.html#book">Book</a>
+            <a href="portfolio.html" class="active">Portfolio</a>
+            <a href="about.html">About</a>
+            <a href="contact.html">Contact</a>
+            <a href="https://shop.azcustomknives.com" class="shop" target="_blank" rel="noopener">Shop</a>
+        </nav>
+    </header>
 
-  <!-- HEADER -->
-  <header class="header">
-    <div class="header__inner">
-      <a href="../index.html" class="header__logo-text">AZ Custom <span>Knives</span></a>
-      <nav class="nav">
-        <a href="../index.html" class="nav__link">Home</a>
-        <a href="about.html" class="nav__link">About</a>
-        <a href="classes.html" class="nav__link">Classes & Services</a>
-        <a href="portfolio.html" class="nav__link active">Portfolio</a>
-        <a href="quadfang.html" class="nav__link">QuadFang</a>
-        <a href="contact.html" class="nav__link">Contact</a>
-        <a href="https://shop.azcustomknives.com" class="btn btn--primary btn--small" target="_blank" rel="noopener">Shop</a>
-      </nav>
-      <button class="menu-toggle" aria-label="Menu"><span></span><span></span><span></span></button>
-    </div>
-  </header>
+    <main>
+        <section class="intro">
+            <h1>Our Work</h1>
+            <p>Every piece tells a story. Custom knives, artistic blacksmithing, sculptures, and commissioned work — all handmade at the AZCK forge.</p>
+        </section>
 
-  <!-- HERO -->
-  <section class="hero" style="min-height: 50vh;">
-    <div class="hero__bg" style="background-image: url('https://static.wixstatic.com/media/44b4b1_portfolio_hero.jpg/v1/fill/w_1920,h_800,al_c,q_85/portfolio.jpg');"></div>
-    <div class="hero__overlay"></div>
-    <div class="hero__content">
-      <p class="hero__subtitle">Our Work</p>
-      <h1 class="hero__title">Portfolio</h1>
-    </div>
-  </section>
+        <div class="filter-tabs">
+            <button class="filter-btn active" data-filter="all">All</button>
+            <button class="filter-btn" data-filter="custom-knives">Custom Knives</button>
+            <button class="filter-btn" data-filter="blacksmithing">Blacksmithing</button>
+            <button class="filter-btn" data-filter="sculptures">Sculptures</button>
+            <button class="filter-btn" data-filter="engraving">Engraving</button>
+        </div>
 
-  <!-- BLACKSMITHING -->
-  <section class="section">
-    <div class="container">
-      <div class="section__header fade-in">
-        <h2>Artistic Blacksmithing</h2>
-        <div class="section__line"></div>
-        <p>Hand-forged with passion and attention to detail. Railings, gates, sculptures, hardware, and custom architectural elements.</p>
-      </div>
-
-      <!-- Hand-Forged Items -->
-      <div class="fade-in" style="margin-bottom: 48px;">
-        <h3 style="margin-bottom: 8px;">Hand-Forged Items</h3>
-        <p style="color: var(--text-light); margin-bottom: 24px;">Drawer pulls, doorknobs, door handles, fireplace doors, fireplace tools, BBQ tools, mirror frames, picture frames, dinner bells, candle holders, window gates, hinges, barn door latches, and more.</p>
         <div class="gallery">
-          <div class="gallery__item"><img src="https://static.wixstatic.com/media/44b4b1_bs1.jpg/v1/fill/w_400,h_400,al_c,q_80/bs1.jpg" alt="Hand-forged item" loading="lazy"></div>
-          <div class="gallery__item"><img src="https://static.wixstatic.com/media/44b4b1_bs2.jpg/v1/fill/w_400,h_400,al_c,q_80/bs2.jpg" alt="Hand-forged item" loading="lazy"></div>
-          <div class="gallery__item"><img src="https://static.wixstatic.com/media/44b4b1_bs3.jpg/v1/fill/w_400,h_400,al_c,q_80/bs3.jpg" alt="Hand-forged item" loading="lazy"></div>
-          <div class="gallery__item"><img src="https://static.wixstatic.com/media/44b4b1_bs4.jpg/v1/fill/w_400,h_400,al_c,q_80/bs4.jpg" alt="Hand-forged item" loading="lazy"></div>
-          <div class="gallery__item"><img src="https://static.wixstatic.com/media/44b4b1_bs5.jpg/v1/fill/w_400,h_400,al_c,q_80/bs5.jpg" alt="Hand-forged item" loading="lazy"></div>
-          <div class="gallery__item"><img src="https://static.wixstatic.com/media/44b4b1_bs6.jpg/v1/fill/w_400,h_400,al_c,q_80/bs6.jpg" alt="Hand-forged item" loading="lazy"></div>
-        </div>
-      </div>
+            <!-- Custom Knives -->
+            <div class="gallery-card" data-category="custom-knives">
+                <div class="image-placeholder">🗡️</div>
+                <div class="card-content">
+                    <h3>Bulldog Drop Point</h3>
+                    <p>A robust fixed blade designed for hunters and outdoor enthusiasts. Featuring a heat-treated stainless steel blade with a comfortable grip.</p>
+                    <span class="card-category">Custom Knives</span>
+                </div>
+            </div>
 
-      <!-- Railings & Gates -->
-      <div class="fade-in" style="margin-bottom: 48px;">
-        <h3 style="margin-bottom: 8px;">High-End Railings & Gates</h3>
-        <p style="color: var(--text-light); margin-bottom: 24px;">High quality railings approached with ingenuity and attention to detail, with the customer's vision in mind. The alternative to mass-produced aluminum.</p>
-        <div class="gallery">
-          <div class="gallery__item gallery__item--wide"><img src="https://static.wixstatic.com/media/44b4b1_rail1.jpg/v1/fill/w_800,h_400,al_c,q_80/railing.jpg" alt="Hand-forged railing" loading="lazy"></div>
-          <div class="gallery__item"><img src="https://static.wixstatic.com/media/44b4b1_rail2.jpg/v1/fill/w_400,h_400,al_c,q_80/railing2.jpg" alt="Hand-forged gate" loading="lazy"></div>
-          <div class="gallery__item"><img src="https://static.wixstatic.com/media/44b4b1_rail3.jpg/v1/fill/w_400,h_400,al_c,q_80/railing3.jpg" alt="Railing detail" loading="lazy"></div>
-          <div class="gallery__item"><img src="https://static.wixstatic.com/media/44b4b1_rail4.jpg/v1/fill/w_400,h_400,al_c,q_80/railing4.jpg" alt="Gate detail" loading="lazy"></div>
-        </div>
-      </div>
+            <div class="gallery-card" data-category="custom-knives">
+                <div class="image-placeholder">🗡️</div>
+                <div class="card-content">
+                    <h3>Chef's Knife</h3>
+                    <p>A precision kitchen blade crafted for professional chefs and home cooks. Hand-forged Damascus steel with an ergonomic handle.</p>
+                    <span class="card-category">Custom Knives</span>
+                </div>
+            </div>
 
-      <!-- Copper Range Hood -->
-      <div class="fade-in" style="margin-bottom: 48px;">
-        <h3 style="margin-bottom: 8px;">Featured: 60" Copper Range Hood</h3>
-        <p style="color: var(--text-light); margin-bottom: 24px;">Alessio hand-punched the five control emblems in the centre of the front. A high-end fan filters and vents the air. Nicely rusted steel strips give a brilliant contrast.</p>
-        <div class="gallery">
-          <div class="gallery__item gallery__item--wide"><img src="https://static.wixstatic.com/media/44b4b1_copper1.jpg/v1/fill/w_800,h_400,al_c,q_80/copper-hood.jpg" alt="Copper range hood" loading="lazy"></div>
-          <div class="gallery__item"><img src="https://static.wixstatic.com/media/44b4b1_copper2.jpg/v1/fill/w_400,h_400,al_c,q_80/copper-detail.jpg" alt="Hood detail" loading="lazy"></div>
-        </div>
-      </div>
-    </div>
-  </section>
+            <div class="gallery-card" data-category="custom-knives">
+                <div class="image-placeholder">🗡️</div>
+                <div class="card-content">
+                    <h3>EDC Folder</h3>
+                    <p>Compact folding knife perfect for everyday carry. Features a quick-open mechanism and corrosion-resistant blade steel.</p>
+                    <span class="card-category">Custom Knives</span>
+                </div>
+            </div>
 
-  <!-- ART / SCULPTURES -->
-  <section class="section section--gray">
-    <div class="container">
-      <div class="section__header fade-in">
-        <h2>Sculptures & Fine Art</h2>
-        <div class="section__line"></div>
-        <p>Precision in design and elegance in fabrication.</p>
-      </div>
+            <div class="gallery-card" data-category="custom-knives">
+                <div class="image-placeholder">🗡️</div>
+                <div class="card-content">
+                    <h3>Damascus Hunter</h3>
+                    <p>A stunning display of our craftsmanship. Damascus patterned blade with handmade leather sheath and custom grip.</p>
+                    <span class="card-category">Custom Knives</span>
+                </div>
+            </div>
 
-      <!-- Stainless Steel -->
-      <div class="fade-in" style="margin-bottom: 48px;">
-        <h3 style="margin-bottom: 8px;">Stainless Steel Sculptures</h3>
-        <p style="color: var(--text-light); margin-bottom: 24px;">The beauty of stainless steel is undeniable. Projects ranging from commissioned public art to personal studio pieces.</p>
-        <div class="gallery">
-          <div class="gallery__item"><img src="https://static.wixstatic.com/media/44b4b1_ss1.jpg/v1/fill/w_400,h_400,al_c,q_80/stainless1.jpg" alt="Stainless steel sculpture" loading="lazy"></div>
-          <div class="gallery__item"><img src="https://static.wixstatic.com/media/44b4b1_ss2.jpg/v1/fill/w_400,h_400,al_c,q_80/stainless2.jpg" alt="Stainless steel art" loading="lazy"></div>
-          <div class="gallery__item"><img src="https://static.wixstatic.com/media/44b4b1_ss3.jpg/v1/fill/w_400,h_400,al_c,q_80/stainless3.jpg" alt="Stainless steel piece" loading="lazy"></div>
-        </div>
-      </div>
+            <!-- Blacksmithing -->
+            <div class="gallery-card" data-category="blacksmithing">
+                <div class="image-placeholder">⚒️</div>
+                <div class="card-content">
+                    <h3>Wrought Iron Gate</h3>
+                    <p>Hand-forged decorative gate featuring intricate scrollwork and traditional blacksmithing techniques. A statement piece for any property.</p>
+                    <span class="card-category">Blacksmithing</span>
+                </div>
+            </div>
 
-      <!-- Tombac -->
-      <div class="fade-in">
-        <h3 style="margin-bottom: 8px;">Tombac Animals & More</h3>
-        <p style="color: var(--text-light); margin-bottom: 24px;">Profiling and hammering tombac into intricate shapes — a skill learned from master craftsmen. Proud to produce these detailed forms.</p>
-        <div class="gallery">
-          <div class="gallery__item"><img src="https://static.wixstatic.com/media/44b4b1_tb1.jpg/v1/fill/w_400,h_400,al_c,q_80/tombac1.jpg" alt="Tombac animal" loading="lazy"></div>
-          <div class="gallery__item"><img src="https://static.wixstatic.com/media/44b4b1_tb2.jpg/v1/fill/w_400,h_400,al_c,q_80/tombac2.jpg" alt="Tombac art" loading="lazy"></div>
-          <div class="gallery__item"><img src="https://static.wixstatic.com/media/44b4b1_tb3.jpg/v1/fill/w_400,h_400,al_c,q_80/tombac3.jpg" alt="Tombac piece" loading="lazy"></div>
-        </div>
-      </div>
-    </div>
-  </section>
+            <div class="gallery-card" data-category="blacksmithing">
+                <div class="image-placeholder">⚒️</div>
+                <div class="card-content">
+                    <h3>Fireplace Tool Set</h3>
+                    <p>Complete set of hand-forged tools including poker, shovel, and tongs. Each piece reflects traditional forge craftsmanship.</p>
+                    <span class="card-category">Blacksmithing</span>
+                </div>
+            </div>
 
-  <!-- CTA -->
-  <section class="section" style="background: var(--forge-red); color: #fff; text-align: center;">
-    <div class="container fade-in">
-      <h2 style="color: #fff; margin-bottom: 16px;">Have a Project in Mind?</h2>
-      <p style="color: rgba(255,255,255,0.85); max-width: 500px; margin: 0 auto 28px;">Every project starts with a conversation. Tell us what you're envisioning.</p>
-      <a href="contact.html" class="btn btn--white-outline">Get in Touch</a>
-    </div>
-  </section>
+            <div class="gallery-card" data-category="blacksmithing">
+                <div class="image-placeholder">⚒️</div>
+                <div class="card-content">
+                    <h3>Custom Railing</h3>
+                    <p>Bespoke staircase railing with flowing curves and ornamental details. Built to last for generations with authentic forging methods.</p>
+                    <span class="card-category">Blacksmithing</span>
+                </div>
+            </div>
 
-  <!-- FOOTER -->
-  <footer class="footer">
-    <div class="container">
-      <div class="footer__grid">
-        <div>
-          <p class="header__logo-text" style="margin-bottom: 16px; font-size: 1.2rem;">AZ Custom <span>Knives</span></p>
-          <p class="footer__text">Swiss-trained craftsmanship in the heart of Alberta.</p>
+            <!-- Sculptures -->
+            <div class="gallery-card" data-category="sculptures">
+                <div class="image-placeholder">🎨</div>
+                <div class="card-content">
+                    <h3>Stainless Steel Eagle</h3>
+                    <p>A majestic sculpture capturing the power and grace of an eagle in flight. Polished stainless steel with dynamic composition.</p>
+                    <span class="card-category">Sculptures</span>
+                </div>
+            </div>
+
+            <div class="gallery-card" data-category="sculptures">
+                <div class="image-placeholder">🎨</div>
+                <div class="card-content">
+                    <h3>Tombac Bear</h3>
+                    <p>A striking bear sculpture crafted from tombac bronze. Standing figure with intricate detail work and warm patina finish.</p>
+                    <span class="card-category">Sculptures</span>
+                </div>
+            </div>
+
+            <div class="gallery-card" data-category="sculptures">
+                <div class="image-placeholder">🎨</div>
+                <div class="card-content">
+                    <h3>Abstract Flame</h3>
+                    <p>A contemporary sculpture inspired by fire and movement. Mixed metal construction with dynamic curves and modern aesthetic.</p>
+                    <span class="card-category">Sculptures</span>
+                </div>
+            </div>
+
+            <!-- Engraving -->
+            <div class="gallery-card" data-category="engraving">
+                <div class="image-placeholder">✒️</div>
+                <div class="card-content">
+                    <h3>Corporate Logo Set</h3>
+                    <p>Custom engraved branding on award plaques and desk accessories. Precision engraving with company logos and personalization.</p>
+                    <span class="card-category">Engraving</span>
+                </div>
+            </div>
+
+            <div class="gallery-card" data-category="engraving">
+                <div class="image-placeholder">✒️</div>
+                <div class="card-content">
+                    <h3>Anniversary Knife</h3>
+                    <p>A commemorative blade with custom engraved dates and initials. Each letter hand-etched for timeless elegance.</p>
+                    <span class="card-category">Engraving</span>
+                </div>
+            </div>
         </div>
-        <div>
-          <p class="footer__heading">Navigate</p>
-          <a href="about.html" class="footer__link">About</a>
-          <a href="classes.html" class="footer__link">Classes & Services</a>
-          <a href="portfolio.html" class="footer__link">Portfolio</a>
-          <a href="quadfang.html" class="footer__link">QuadFang</a>
-          <a href="https://shop.azcustomknives.com" class="footer__link" target="_blank">Shop</a>
-        </div>
-        <div>
-          <p class="footer__heading">Services</p>
-          <a href="classes.html#sharpening" class="footer__link">Knife Sharpening</a>
-          <a href="classes.html#classes" class="footer__link">Classes</a>
-          <a href="classes.html#restorations" class="footer__link">Restorations</a>
-          <a href="contact.html" class="footer__link">Custom Projects</a>
-        </div>
-        <div>
-          <p class="footer__heading">Contact</p>
-          <p class="footer__text">9602 115 Street #104<br>Grande Prairie, AB T8V 5W2</p>
-          <p class="footer__text" style="margin-top: 8px;">(780) 831-2987</p>
-          <a href="mailto:admin@azcustomknives.com" class="footer__link" style="margin-top: 4px;">admin@azcustomknives.com</a>
-        </div>
-      </div>
-      <div class="footer__bottom">
+
+        <section class="cta-section">
+            <h2>Want something like this?</h2>
+            <div class="cta-buttons">
+                <a href="contact.html" class="cta-btn">Request a Custom Build</a>
+                <a href="booking.html#classes" class="cta-btn secondary">Book a Class</a>
+            </div>
+        </section>
+    </main>
+
+    <footer>
         <p>&copy; 2026 AZ Custom Knives Ltd. All rights reserved.</p>
-        <div class="footer__socials">
-          <a href="https://www.facebook.com/azcustomknives" target="_blank" rel="noopener">FB</a>
-          <a href="https://www.instagram.com/azcustomknives" target="_blank" rel="noopener">IG</a>
-          <a href="https://www.youtube.com/@azcustomknives" target="_blank" rel="noopener">YT</a>
-          <a href="https://command.azcustomknives.com" class="footer__admin" aria-label="Admin">Admin</a>
+        <div>
+            <a href="about.html">About</a>
+            <a href="contact.html">Contact</a>
+            <a href="#">Privacy</a>
+            <a href="#">Terms</a>
         </div>
-      </div>
-    </div>
-  </footer>
+    </footer>
 
-  <script src="../js/main.js"></script>
+    <script>
+        // Filter functionality
+        const filterBtns = document.querySelectorAll('.filter-btn');
+        const galleryCards = document.querySelectorAll('.gallery-card');
+
+        filterBtns.forEach(btn => {
+            btn.addEventListener('click', () => {
+                // Update active button
+                filterBtns.forEach(b => b.classList.remove('active'));
+                btn.classList.add('active');
+
+                // Filter cards
+                const filterValue = btn.getAttribute('data-filter');
+                galleryCards.forEach(card => {
+                    if (filterValue === 'all' || card.getAttribute('data-category') === filterValue) {
+                        card.classList.remove('hidden');
+                    } else {
+                        card.classList.add('hidden');
+                    }
+                });
+            });
+        });
+    </script>
 </body>
 </html>
