@@ -29,17 +29,47 @@
             padding: 24px;
             text-align: center;
             transition: transform 0.3s ease, border-color 0.3s ease;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
         }
         .product-card:hover {
             transform: translateY(-4px);
             border-color: rgba(255,255,255,0.15);
         }
-        .product-card img {
+        .product-card__image {
             width: 100%;
-            max-width: 200px;
-            height: auto;
-            margin: 0 auto 16px;
+            height: 180px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 16px;
+        }
+        .product-card__image img {
+            max-width: 100%;
+            max-height: 100%;
+            object-fit: contain;
             filter: drop-shadow(0 4px 16px rgba(0,0,0,0.4));
+        }
+        .product-card__status {
+            display: inline-block;
+            padding: 6px 16px;
+            font-family: 'Oswald', sans-serif;
+            font-size: 0.75rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            border-radius: 3px;
+            margin-bottom: 12px;
+        }
+        .product-card__status--coming-soon {
+            background: var(--forge-red);
+            color: #fff;
+        }
+        .product-card__status--future {
+            background: rgba(255,255,255,0.08);
+            color: rgba(255,255,255,0.5);
+            border: 1px solid rgba(255,255,255,0.12);
         }
         .product-card__name {
             font-family: 'Oswald', sans-serif;
@@ -111,32 +141,44 @@
 
             <div class="product-grid fade-in">
                 <div class="product-card">
-                    <img src="../images/quadfang/qf-product-side.png" alt="QuadFang 100 grain broadhead" loading="lazy">
+                    <div class="product-card__image">
+                        <img src="../images/quadfang/qf-product-side.png" alt="QuadFang 100 grain broadhead" loading="lazy">
+                    </div>
+                    <span class="product-card__status product-card__status--coming-soon">Coming Soon</span>
                     <p class="product-card__name">QF 100</p>
                     <p style="color: rgba(255,255,255,0.5); font-size: 0.85rem; margin-bottom: 4px;">100 Grain</p>
                     <p class="product-card__price">$89.00 CAD</p>
-                    <a href="https://quadfang.com/products/qf-100" class="btn btn--white-outline btn--small" target="_blank" rel="noopener">View</a>
+                    <a href="https://quadfang.com" class="btn btn--white-outline btn--small" target="_blank" rel="noopener">Coming Soon</a>
                 </div>
                 <div class="product-card">
-                    <img src="../images/quadfang/qf-render-v1.png" alt="QuadFang 125 grain broadhead" loading="lazy">
+                    <div class="product-card__image">
+                        <img src="../images/quadfang/qf-render-v1.png" alt="QuadFang 125 grain broadhead" loading="lazy">
+                    </div>
+                    <span class="product-card__status product-card__status--future">Future Release</span>
                     <p class="product-card__name">QF 125</p>
                     <p style="color: rgba(255,255,255,0.5); font-size: 0.85rem; margin-bottom: 4px;">125 Grain</p>
-                    <p class="product-card__price">$89.00 CAD</p>
-                    <a href="https://quadfang.com/products/qf-125" class="btn btn--white-outline btn--small" target="_blank" rel="noopener">View</a>
+                    <p class="product-card__price">TBD</p>
+                    <a href="https://quadfang.com" class="btn btn--white-outline btn--small" target="_blank" rel="noopener">Stay Tuned</a>
                 </div>
                 <div class="product-card">
-                    <img src="../images/quadfang/qf-product-back.png" alt="QuadFang 150 grain broadhead" loading="lazy">
+                    <div class="product-card__image">
+                        <img src="../images/quadfang/qf-product-back.png" alt="QuadFang 150 grain broadhead" loading="lazy">
+                    </div>
+                    <span class="product-card__status product-card__status--future">Future Release</span>
                     <p class="product-card__name">QF 150</p>
                     <p style="color: rgba(255,255,255,0.5); font-size: 0.85rem; margin-bottom: 4px;">150 Grain</p>
-                    <p class="product-card__price">$89.00 CAD</p>
-                    <a href="https://quadfang.com/products/qf-150" class="btn btn--white-outline btn--small" target="_blank" rel="noopener">View</a>
+                    <p class="product-card__price">TBD</p>
+                    <a href="https://quadfang.com" class="btn btn--white-outline btn--small" target="_blank" rel="noopener">Stay Tuned</a>
                 </div>
                 <div class="product-card">
-                    <img src="../images/quadfang/qf-emblem-shine.png" alt="QuadFang SaberTooth — Premium Series" loading="lazy">
+                    <div class="product-card__image">
+                        <img src="../images/quadfang/qf-emblem-shine.png" alt="QuadFang SaberTooth — Premium Series" loading="lazy">
+                    </div>
+                    <span class="product-card__status product-card__status--future">Future Release</span>
                     <p class="product-card__name">SaberTooth</p>
                     <p style="color: rgba(255,255,255,0.5); font-size: 0.85rem; margin-bottom: 4px;">Premium Series</p>
-                    <p class="product-card__price">$89.00 CAD</p>
-                    <a href="https://quadfang.com/products/sabertooth" class="btn btn--white-outline btn--small" target="_blank" rel="noopener">View</a>
+                    <p class="product-card__price">TBD</p>
+                    <a href="https://quadfang.com" class="btn btn--white-outline btn--small" target="_blank" rel="noopener">Stay Tuned</a>
                 </div>
             </div>
         </div>
@@ -193,10 +235,10 @@
                 </div>
                 <div>
                     <p class="footer__heading">QuadFang</p>
-                    <a href="https://quadfang.com/products/qf-100" class="footer__link" target="_blank">QF 100</a>
-                    <a href="https://quadfang.com/products/qf-125" class="footer__link" target="_blank">QF 125</a>
-                    <a href="https://quadfang.com/products/qf-150" class="footer__link" target="_blank">QF 150</a>
-                    <a href="https://quadfang.com/products/sabertooth" class="footer__link" target="_blank">SaberTooth</a>
+                    <a href="https://quadfang.com" class="footer__link" target="_blank">QF 100 — Coming Soon</a>
+                    <a href="https://quadfang.com" class="footer__link" target="_blank">QF 125 — Future Release</a>
+                    <a href="https://quadfang.com" class="footer__link" target="_blank">QF 150 — Future Release</a>
+                    <a href="https://quadfang.com" class="footer__link" target="_blank">SaberTooth — Future Release</a>
                 </div>
                 <div>
                     <p class="footer__heading">Contact</p>
