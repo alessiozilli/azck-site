@@ -279,6 +279,92 @@
             color: var(--white);
         }
 
+        /* Student Preview Section */
+        .student-preview {
+            margin-bottom: 60px;
+        }
+
+        .student-preview-header {
+            text-align: center;
+            margin-bottom: 40px;
+        }
+
+        .student-preview-header h2 {
+            font-family: Oswald, sans-serif;
+            font-size: 36px;
+            font-weight: bold;
+            color: var(--text);
+            letter-spacing: 1px;
+            margin-bottom: 12px;
+        }
+
+        .student-preview-header p {
+            font-size: 16px;
+            color: var(--steel-gray);
+            max-width: 600px;
+            margin: 0 auto;
+            line-height: 1.8;
+        }
+
+        .student-preview-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 30px;
+            margin-bottom: 30px;
+        }
+
+        .student-card {
+            background-color: var(--white);
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            border-top: 3px solid var(--forge-red);
+        }
+
+        .student-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 4px 16px rgba(0, 0, 0, 0.15);
+        }
+
+        .student-card .image-placeholder {
+            height: 220px;
+        }
+
+        .student-card .card-content h3 {
+            font-size: 18px;
+        }
+
+        .student-card .card-content .student-meta {
+            font-size: 13px;
+            color: var(--steel-gray);
+            margin-bottom: 0;
+        }
+
+        .student-preview-cta {
+            text-align: center;
+        }
+
+        .student-preview-cta a {
+            display: inline-block;
+            padding: 14px 36px;
+            background-color: var(--white);
+            color: var(--forge-red);
+            border: 2px solid var(--forge-red);
+            font-size: 14px;
+            font-weight: bold;
+            text-transform: uppercase;
+            text-decoration: none;
+            letter-spacing: 0.5px;
+            border-radius: 4px;
+            transition: all 0.3s ease;
+        }
+
+        .student-preview-cta a:hover {
+            background-color: var(--forge-red);
+            color: var(--white);
+        }
+
         /* Footer */
         footer {
             background-color: var(--black);
@@ -324,6 +410,15 @@
             }
 
             .cta-section h2 {
+                font-size: 28px;
+            }
+
+            .student-preview-grid {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 20px;
+            }
+
+            .student-preview-header h2 {
                 font-size: 28px;
             }
         }
@@ -394,6 +489,19 @@
                 font-size: 60px;
                 height: 200px;
             }
+
+            .student-preview-grid {
+                grid-template-columns: 1fr;
+                gap: 15px;
+            }
+
+            .student-preview-header h2 {
+                font-size: 22px;
+            }
+
+            .student-card .image-placeholder {
+                height: 180px;
+            }
         }
     </style>
 </head>
@@ -403,11 +511,11 @@
         <nav>
             <a href="booking.html#classes">Classes</a>
             <a href="booking.html#services">Services</a>
-            <a href="booking.html#book">Book</a>
             <a href="portfolio.html" class="active">Portfolio</a>
+            <a href="quadfang.html">QuadFang</a>
             <a href="about.html">About</a>
             <a href="contact.html">Contact</a>
-            <a href="https://shop.azcustomknives.com" class="shop" target="_blank" rel="noopener">Shop</a>
+            <a href="https://shop.azcustomknives.com" target="_blank">Shop</a>
         </nav>
     </header>
 
@@ -430,8 +538,8 @@
             <div class="gallery-card" data-category="custom-knives">
                 <div class="image-placeholder">🗡️</div>
                 <div class="card-content">
-                    <h3>Bulldog Drop Point</h3>
-                    <p>A robust fixed blade designed for hunters and outdoor enthusiasts. Featuring a heat-treated stainless steel blade with a comfortable grip.</p>
+                    <h3>The Bulldog</h3>
+                    <p>A robust drop point fixed blade built for serious outdoor use. Thick spine, full tang, and a grip that won't quit.</p>
                     <span class="card-category">Custom Knives</span>
                 </div>
             </div>
@@ -439,8 +547,8 @@
             <div class="gallery-card" data-category="custom-knives">
                 <div class="image-placeholder">🗡️</div>
                 <div class="card-content">
-                    <h3>Chef's Knife</h3>
-                    <p>A precision kitchen blade crafted for professional chefs and home cooks. Hand-forged Damascus steel with an ergonomic handle.</p>
+                    <h3>The Falcon</h3>
+                    <p>Sleek, fast, and precise. A versatile blade designed for those who demand performance and clean lines.</p>
                     <span class="card-category">Custom Knives</span>
                 </div>
             </div>
@@ -448,8 +556,8 @@
             <div class="gallery-card" data-category="custom-knives">
                 <div class="image-placeholder">🗡️</div>
                 <div class="card-content">
-                    <h3>EDC Folder</h3>
-                    <p>Compact folding knife perfect for everyday carry. Features a quick-open mechanism and corrosion-resistant blade steel.</p>
+                    <h3>The Badger</h3>
+                    <p>Compact and relentless. A working blade that handles everything you throw at it without complaint.</p>
                     <span class="card-category">Custom Knives</span>
                 </div>
             </div>
@@ -457,8 +565,26 @@
             <div class="gallery-card" data-category="custom-knives">
                 <div class="image-placeholder">🗡️</div>
                 <div class="card-content">
-                    <h3>Damascus Hunter</h3>
-                    <p>A stunning display of our craftsmanship. Damascus patterned blade with handmade leather sheath and custom grip.</p>
+                    <h3>The Defender</h3>
+                    <p>Purpose-built for reliability. A no-nonsense blade with the backbone to handle heavy-duty tasks.</p>
+                    <span class="card-category">Custom Knives</span>
+                </div>
+            </div>
+
+            <div class="gallery-card" data-category="custom-knives">
+                <div class="image-placeholder">🗡️</div>
+                <div class="card-content">
+                    <h3>Raptor Expert Slim</h3>
+                    <p>A 5.5-inch utility blade built for the kitchen. Light, balanced, and sharp enough to make prep work effortless.</p>
+                    <span class="card-category">Custom Knives</span>
+                </div>
+            </div>
+
+            <div class="gallery-card" data-category="custom-knives">
+                <div class="image-placeholder">🗡️</div>
+                <div class="card-content">
+                    <h3>The Mammoth</h3>
+                    <p>Big blade, bigger attitude. A cruiser blade built to be basically indestructible. When you need serious steel.</p>
                     <span class="card-category">Custom Knives</span>
                 </div>
             </div>
@@ -485,8 +611,17 @@
             <div class="gallery-card" data-category="blacksmithing">
                 <div class="image-placeholder">⚒️</div>
                 <div class="card-content">
-                    <h3>Custom Railing</h3>
-                    <p>Bespoke staircase railing with flowing curves and ornamental details. Built to last for generations with authentic forging methods.</p>
+                    <h3>Custom Staircase Railing</h3>
+                    <p>Bespoke railing with flowing curves and ornamental details. Built to last for generations with authentic forging methods.</p>
+                    <span class="card-category">Blacksmithing</span>
+                </div>
+            </div>
+
+            <div class="gallery-card" data-category="blacksmithing">
+                <div class="image-placeholder">⚒️</div>
+                <div class="card-content">
+                    <h3>Copper Range Hood</h3>
+                    <p>Hand-formed copper hood built to be the centrepiece of any kitchen. Forged details with a living patina that ages beautifully.</p>
                     <span class="card-category">Blacksmithing</span>
                 </div>
             </div>
@@ -495,26 +630,8 @@
             <div class="gallery-card" data-category="sculptures">
                 <div class="image-placeholder">🎨</div>
                 <div class="card-content">
-                    <h3>Stainless Steel Eagle</h3>
-                    <p>A majestic sculpture capturing the power and grace of an eagle in flight. Polished stainless steel with dynamic composition.</p>
-                    <span class="card-category">Sculptures</span>
-                </div>
-            </div>
-
-            <div class="gallery-card" data-category="sculptures">
-                <div class="image-placeholder">🎨</div>
-                <div class="card-content">
-                    <h3>Tombac Bear</h3>
-                    <p>A striking bear sculpture crafted from tombac bronze. Standing figure with intricate detail work and warm patina finish.</p>
-                    <span class="card-category">Sculptures</span>
-                </div>
-            </div>
-
-            <div class="gallery-card" data-category="sculptures">
-                <div class="image-placeholder">🎨</div>
-                <div class="card-content">
-                    <h3>Abstract Flame</h3>
-                    <p>A contemporary sculpture inspired by fire and movement. Mixed metal construction with dynamic curves and modern aesthetic.</p>
+                    <h3>Tombac Lizard</h3>
+                    <p>A detailed lizard sculpture crafted from tombac bronze. Intricate scale work and warm patina finish bring it to life.</p>
                     <span class="card-category">Sculptures</span>
                 </div>
             </div>
@@ -544,6 +661,44 @@
             <div class="cta-buttons">
                 <a href="contact.html" class="cta-btn">Request a Custom Build</a>
                 <a href="booking.html#classes" class="cta-btn secondary">Book a Class</a>
+            </div>
+        </section>
+
+        <!-- Student Work Preview -->
+        <section class="student-preview">
+            <div class="student-preview-header">
+                <h2>Inspired? Our Students Are Making Their Own.</h2>
+                <p>Every one of these was made by someone who'd never forged a knife before walking into our shop.</p>
+            </div>
+
+            <div class="student-preview-grid">
+                <div class="student-card">
+                    <div class="image-placeholder">🔪</div>
+                    <div class="card-content">
+                        <h3>Student Knife #1</h3>
+                        <p class="student-meta">Full Day Class — April 2026</p>
+                    </div>
+                </div>
+
+                <div class="student-card">
+                    <div class="image-placeholder">🗡️</div>
+                    <div class="card-content">
+                        <h3>Student Knife #2</h3>
+                        <p class="student-meta">Half Day Class — April 2026</p>
+                    </div>
+                </div>
+
+                <div class="student-card">
+                    <div class="image-placeholder">🔪</div>
+                    <div class="card-content">
+                        <h3>Student Knife #3</h3>
+                        <p class="student-meta">After Hours — March 2026</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="student-preview-cta">
+                <a href="student-gallery.html">See the Full Student Gallery</a>
             </div>
         </section>
     </main>
@@ -579,7 +734,4 @@
                     }
                 });
             });
-        });
-    </script>
-</body>
-</html>
+        }
