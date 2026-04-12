@@ -1,0 +1,405 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Laser Engraving Request | AZ Custom Knives Ltd.</title>
+    <meta name="description" content="Submit your custom laser engraving request. Upload your artwork, describe your project, and we'll send you a proof for approval before we start.">
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="icon" href="../images/favicon.ico" type="image/x-icon">
+    <style>
+        .engraving-hero {
+            padding: 160px 20px 60px;
+            text-align: center;
+            background: var(--color-bg-dark, #0a0a0a);
+        }
+        .engraving-hero h1 {
+            font-family: 'Oswald', sans-serif;
+            font-size: clamp(2rem, 5vw, 3rem);
+            color: #fff;
+            text-transform: uppercase;
+            letter-spacing: 0.04em;
+            margin-bottom: 12px;
+        }
+        .engraving-hero p {
+            color: rgba(255,255,255,0.6);
+            max-width: 600px;
+            margin: 0 auto;
+            line-height: 1.6;
+        }
+
+        .engraving-form-section {
+            background: #111;
+            padding: 60px 20px 80px;
+        }
+        .engraving-form {
+            max-width: 640px;
+            margin: 0 auto;
+            display: flex;
+            flex-direction: column;
+            gap: 24px;
+        }
+
+        .form-group {
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
+        .form-group label {
+            font-family: 'Oswald', sans-serif;
+            font-size: 0.95rem;
+            color: #fff;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+        .form-group .hint {
+            font-size: 0.82rem;
+            color: rgba(255,255,255,0.4);
+            margin-top: -4px;
+        }
+
+        .form-group input[type="text"],
+        .form-group input[type="email"],
+        .form-group input[type="tel"],
+        .form-group textarea,
+        .form-group select {
+            background: rgba(255,255,255,0.06);
+            border: 1px solid rgba(255,255,255,0.12);
+            border-radius: 6px;
+            padding: 14px 16px;
+            color: #fff;
+            font-family: 'Inter', sans-serif;
+            font-size: 1rem;
+            transition: border-color 0.2s;
+        }
+        .form-group input:focus,
+        .form-group textarea:focus,
+        .form-group select:focus {
+            outline: none;
+            border-color: var(--color-accent, #990000);
+        }
+        .form-group textarea {
+            min-height: 120px;
+            resize: vertical;
+        }
+        .form-group select {
+            cursor: pointer;
+        }
+        .form-group select option {
+            background: #1a1a1a;
+            color: #fff;
+        }
+
+        /* File upload area */
+        .file-upload {
+            border: 2px dashed rgba(255,255,255,0.15);
+            border-radius: 8px;
+            padding: 32px 20px;
+            text-align: center;
+            cursor: pointer;
+            transition: border-color 0.2s, background 0.2s;
+            position: relative;
+        }
+        .file-upload:hover {
+            border-color: var(--color-accent, #990000);
+            background: rgba(153,0,0,0.05);
+        }
+        .file-upload input[type="file"] {
+            position: absolute;
+            inset: 0;
+            opacity: 0;
+            cursor: pointer;
+        }
+        .file-upload__icon {
+            font-size: 2rem;
+            margin-bottom: 8px;
+        }
+        .file-upload__text {
+            color: rgba(255,255,255,0.6);
+            font-size: 0.95rem;
+        }
+        .file-upload__text strong {
+            color: var(--color-accent, #990000);
+        }
+        .file-upload__formats {
+            font-size: 0.8rem;
+            color: rgba(255,255,255,0.35);
+            margin-top: 8px;
+        }
+        .file-upload__preview {
+            margin-top: 12px;
+            font-size: 0.9rem;
+            color: var(--color-accent, #990000);
+            display: none;
+        }
+
+        .form-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+        }
+        @media (max-width: 560px) {
+            .form-row {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .form-submit {
+            font-family: 'Oswald', sans-serif;
+            font-size: 1.1rem;
+            text-transform: uppercase;
+            letter-spacing: 0.06em;
+            background: var(--color-accent, #990000);
+            color: #fff;
+            border: none;
+            border-radius: 6px;
+            padding: 16px 32px;
+            cursor: pointer;
+            transition: background 0.2s;
+            margin-top: 8px;
+        }
+        .form-submit:hover {
+            background: #b30000;
+        }
+
+        .form-note {
+            text-align: center;
+            color: rgba(255,255,255,0.4);
+            font-size: 0.85rem;
+            line-height: 1.6;
+            margin-top: -8px;
+        }
+
+        /* How it works */
+        .how-it-works {
+            background: #0a0a0a;
+            padding: 60px 20px;
+        }
+        .how-it-works__inner {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        .how-it-works h2 {
+            font-family: 'Oswald', sans-serif;
+            font-size: 1.6rem;
+            color: #fff;
+            text-transform: uppercase;
+            text-align: center;
+            margin-bottom: 40px;
+        }
+        .steps {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 32px;
+        }
+        @media (max-width: 640px) {
+            .steps {
+                grid-template-columns: 1fr;
+                gap: 24px;
+            }
+        }
+        .step {
+            text-align: center;
+        }
+        .step__number {
+            font-family: 'Oswald', sans-serif;
+            font-size: 2.2rem;
+            color: var(--color-accent, #990000);
+            font-weight: 700;
+            margin-bottom: 8px;
+        }
+        .step__title {
+            font-family: 'Oswald', sans-serif;
+            font-size: 1.05rem;
+            color: #fff;
+            text-transform: uppercase;
+            margin-bottom: 8px;
+        }
+        .step__desc {
+            color: rgba(255,255,255,0.5);
+            font-size: 0.9rem;
+            line-height: 1.5;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- HEADER -->
+    <header class="header" id="header">
+        <div class="header__inner">
+            <a href="../index.html" class="header__logo-text">AZ Custom <span>Knives</span></a>
+            <nav class="nav" id="nav">
+                <a href="booking.html#classes" class="nav__link">Classes</a>
+                <a href="booking.html#services" class="nav__link">Services</a>
+                <a href="portfolio.html" class="nav__link">Portfolio</a>
+                <a href="quadfang.html" class="nav__link">QuadFang</a>
+                <a href="about.html" class="nav__link">About</a>
+                <a href="contact.html" class="nav__link">Contact</a>
+                <a href="https://shop.azcustomknives.com" class="btn btn--primary btn--small" target="_blank" rel="noopener">Shop</a>
+            </nav>
+            <button class="menu-toggle" aria-label="Menu"><span></span><span></span><span></span></button>
+        </div>
+    </header>
+
+    <!-- HERO -->
+    <section class="engraving-hero">
+        <h1>Custom Laser Engraving</h1>
+        <p>Logos, names, artwork, serial numbers — if it can be etched, we can engrave it. Upload your design and we'll send you a proof before we touch your piece.</p>
+    </section>
+
+    <!-- HOW IT WORKS -->
+    <section class="how-it-works">
+        <div class="how-it-works__inner">
+            <h2>How It Works</h2>
+            <div class="steps">
+                <div class="step">
+                    <div class="step__number">01</div>
+                    <div class="step__title">Submit Your Request</div>
+                    <div class="step__desc">Fill out the form below with your details and upload your artwork or describe what you want engraved.</div>
+                </div>
+                <div class="step">
+                    <div class="step__number">02</div>
+                    <div class="step__title">Proof Approval</div>
+                    <div class="step__desc">We'll send you a digital proof showing exactly how the engraving will look. Nothing gets cut until you approve it.</div>
+                </div>
+                <div class="step">
+                    <div class="step__number">03</div>
+                    <div class="step__title">Engrave & Collect</div>
+                    <div class="step__desc">Once approved, we engrave your piece. Drop-off and pickup at our Grande Prairie shop, or ship it to us.</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FORM -->
+    <section class="engraving-form-section">
+        <form class="engraving-form" action="https://formspree.io/f/YOUR_FORM_ID" method="POST" enctype="multipart/form-data">
+
+            <div class="form-row">
+                <div class="form-group">
+                    <label for="name">Your Name *</label>
+                    <input type="text" id="name" name="name" required>
+                </div>
+                <div class="form-group">
+                    <label for="email">Email *</label>
+                    <input type="email" id="email" name="email" required>
+                </div>
+            </div>
+
+            <div class="form-row">
+                <div class="form-group">
+                    <label for="phone">Phone</label>
+                    <input type="tel" id="phone" name="phone">
+                </div>
+                <div class="form-group">
+                    <label for="engraving-type">What Are We Engraving? *</label>
+                    <select id="engraving-type" name="engraving_type" required>
+                        <option value="" disabled selected>Select an option</option>
+                        <option value="knife-blade">Knife Blade</option>
+                        <option value="knife-handle">Knife Handle</option>
+                        <option value="tool">Tool / Axe</option>
+                        <option value="corporate-logo">Corporate Logo (batch)</option>
+                        <option value="gift-personal">Gift / Personal Item</option>
+                        <option value="firearm">Firearm</option>
+                        <option value="other">Other</option>
+                    </select>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label for="description">Engraving Details *</label>
+                <textarea id="description" name="description" placeholder="Describe what you want engraved — text, logo, artwork, placement, size, etc." required></textarea>
+                <span class="hint">The more detail, the better the proof. Include dimensions if you know them.</span>
+            </div>
+
+            <div class="form-group">
+                <label>Upload Artwork</label>
+                <div class="file-upload" id="fileUploadArea">
+                    <div class="file-upload__icon">&#x1F4CE;</div>
+                    <div class="file-upload__text">Drag & drop or <strong>click to browse</strong></div>
+                    <div class="file-upload__formats">PNG, JPG, SVG, PDF, AI — max 10MB</div>
+                    <div class="file-upload__preview" id="filePreview"></div>
+                    <input type="file" id="artwork" name="artwork" accept=".png,.jpg,.jpeg,.svg,.pdf,.ai,.eps">
+                </div>
+                <span class="hint">No artwork yet? No problem — just describe it above and we'll work with you on the design.</span>
+            </div>
+
+            <div class="form-group">
+                <label for="timeline">Timeline</label>
+                <select id="timeline" name="timeline">
+                    <option value="" disabled selected>When do you need it?</option>
+                    <option value="no-rush">No rush</option>
+                    <option value="1-2-weeks">1–2 weeks</option>
+                    <option value="urgent">Urgent (under 1 week)</option>
+                </select>
+            </div>
+
+            <button type="submit" class="form-submit">Submit Engraving Request</button>
+
+            <p class="form-note">We'll review your request and send a proof within 1–2 business days.<br>No work begins until you approve the proof.</p>
+
+        </form>
+    </section>
+
+    <!-- FOOTER -->
+    <footer class="footer">
+        <div class="footer__inner">
+            <div class="footer__col">
+                <h3 class="footer__heading">AZ Custom Knives</h3>
+                <p class="footer__text">Swiss-trained Journeyman Artistic Blacksmith crafting custom knives and metalwork in Grande Prairie, Alberta.</p>
+            </div>
+            <div class="footer__col">
+                <h3 class="footer__heading">Quick Links</h3>
+                <a href="booking.html" class="footer__link">Book a Class</a>
+                <a href="portfolio.html" class="footer__link">Portfolio</a>
+                <a href="contact.html" class="footer__link">Contact</a>
+                <a href="https://shop.azcustomknives.com" class="footer__link" target="_blank" rel="noopener">Shop</a>
+            </div>
+            <div class="footer__col">
+                <h3 class="footer__heading">Contact</h3>
+                <a href="tel:+17808312987" class="footer__link">(780) 831-2987</a>
+                <a href="mailto:admin@azcustomknives.com" class="footer__link">admin@azcustomknives.com</a>
+                <p class="footer__text">Grande Prairie, AB</p>
+            </div>
+            <div class="footer__col">
+                <h3 class="footer__heading">Follow Us</h3>
+                <div class="footer__socials">
+                    <a href="https://www.instagram.com/az_custom_knives/" target="_blank" rel="noopener" class="footer__social-link">Instagram</a>
+                    <a href="https://www.facebook.com/AZCustomKnives" target="_blank" rel="noopener" class="footer__social-link">Facebook</a>
+                    <a href="https://www.youtube.com/channel/UCAV8Nd33PnuLJ8TRjyv20JA" target="_blank" rel="noopener" class="footer__social-link">YouTube</a>
+                </div>
+            </div>
+        </div>
+        <div class="footer__bottom">
+            <p>&copy; 2025 AZ Custom Knives Ltd. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script>
+        // Mobile menu toggle
+        const toggle = document.querySelector('.menu-toggle');
+        const nav = document.querySelector('.nav');
+        if (toggle && nav) {
+            toggle.addEventListener('click', () => {
+                nav.classList.toggle('nav--open');
+                toggle.classList.toggle('active');
+            });
+        }
+
+        // File upload preview
+        const fileInput = document.getElementById('artwork');
+        const filePreview = document.getElementById('filePreview');
+        if (fileInput && filePreview) {
+            fileInput.addEventListener('change', function() {
+                if (this.files && this.files[0]) {
+                    filePreview.textContent = this.files[0].name;
+                    filePreview.style.display = 'block';
+                } else {
+                    filePreview.style.display = 'none';
+                }
+            });
+        }
+    </script>
+
+</body>
+</html>
