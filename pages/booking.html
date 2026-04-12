@@ -5,6 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>AZCK — Book Your Experience</title>
 <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../css/components.css">
 <style>
 /* ══════════════════════════════════════════════
    AZCK DESIGN SYSTEM
@@ -291,10 +292,8 @@ footer a { color: var(--forge-red); text-decoration: none; }
 </head>
 <body>
 
-<!-- ═══════ HEADER ═══════ -->
-<header>
-  <a href="../index.html" class="logo"><span>AZ</span> Custom Knives</a>
-</header>
+<!-- SHARED HEADER -->
+<div id="site-header"></div>
 
 <!-- ═══════ PROGRESS BAR ═══════ -->
 <div class="progress-bar">
@@ -1263,10 +1262,8 @@ footer a { color: var(--forge-red); text-decoration: none; }
 
 </main>
 
-<footer>
-  <p>&copy; 2026 AZ Custom Knives Ltd. &mdash; <a href="https://azcustomknives.com">azcustomknives.com</a></p>
-  <p style="margin-top:8px;"><a href="waiver.html">Download Waivers</a> &middot; <a href="student-gallery.html">Student Gallery</a> &middot; <a href="blade-models.html">Blade Models</a></p>
-</footer>
+<!-- SHARED FOOTER -->
+<div id="site-footer"></div>
 
 <script>
 /* ══════════════════════════════════════════════
@@ -1990,5 +1987,6 @@ window.addEventListener('DOMContentLoaded', () => {
 });
 </script>
 
+<script src="../js/components.js"></script>
 </body>
 </html>

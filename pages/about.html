@@ -32,77 +32,6 @@
             line-height: 1.6;
         }
 
-        /* Header */
-        header {
-            background-color: var(--black);
-            height: var(--header-height);
-            position: sticky;
-            top: 0;
-            z-index: 1000;
-            display: flex;
-            align-items: center;
-            padding: 0 20px;
-            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-        }
-
-        .logo {
-            font-family: 'Oswald', sans-serif;
-            font-size: 24px;
-            font-weight: bold;
-            color: var(--white);
-            text-decoration: none;
-            transition: opacity 0.3s ease;
-        }
-
-        .logo:hover {
-            opacity: 0.8;
-        }
-
-        .logo span {
-            color: var(--forge-red);
-        }
-
-        /* Navigation */
-        nav {
-            background-color: var(--white);
-            border-bottom: 1px solid var(--light-gray);
-            padding: 0 20px;
-            display: flex;
-            justify-content: center;
-        }
-
-        nav ul {
-            list-style: none;
-            display: flex;
-            max-width: var(--max-width);
-            width: 100%;
-            flex-wrap: wrap;
-        }
-
-        nav li {
-            margin: 0;
-        }
-
-        nav a {
-            display: block;
-            padding: 16px 20px;
-            text-decoration: none;
-            color: var(--text);
-            font-size: 14px;
-            font-weight: 500;
-            transition: color 0.3s ease;
-            border-bottom: 2px solid transparent;
-        }
-
-        nav a:hover {
-            color: var(--forge-red);
-        }
-
-        nav a.active {
-            color: var(--forge-red);
-            border-bottom-color: var(--forge-red);
-        }
-
         /* Main Container */
         .container {
             max-width: var(--max-width);
@@ -301,64 +230,8 @@
             color: var(--forge-red);
         }
 
-        /* Footer */
-        footer {
-            background-color: var(--black);
-            color: var(--white);
-            padding: 40px 20px;
-            text-align: center;
-            font-size: 14px;
-        }
-
-        .footer-content {
-            max-width: var(--max-width);
-            margin: 0 auto;
-        }
-
-        .footer-links {
-            margin: 20px 0;
-        }
-
-        .footer-links a {
-            color: var(--white);
-            text-decoration: none;
-            margin: 0 15px;
-            transition: color 0.3s ease;
-        }
-
-        .footer-links a:hover {
-            color: var(--forge-red);
-        }
-
-        .footer-contact {
-            margin: 20px 0;
-            font-size: 14px;
-        }
-
-        .footer-contact a {
-            color: var(--forge-red);
-            text-decoration: none;
-        }
-
-        .footer-contact a:hover {
-            text-decoration: underline;
-        }
-
         /* Responsive */
         @media (max-width: 640px) {
-            .logo {
-                font-size: 18px;
-            }
-
-            nav ul {
-                flex-direction: column;
-            }
-
-            nav a {
-                padding: 12px 15px;
-                font-size: 13px;
-            }
-
             .hero h1 {
                 font-size: 32px;
             }
@@ -405,41 +278,12 @@
             .team-photo {
                 font-size: 100px;
             }
-
-            footer {
-                padding: 30px 20px;
-            }
-
-            .footer-links {
-                display: flex;
-                flex-direction: column;
-                gap: 10px;
-            }
-
-            .footer-links a {
-                margin: 5px 0;
-            }
         }
     </style>
+    <link rel="stylesheet" href="../css/components.css">
 </head>
 <body>
-    <!-- Header -->
-    <header>
-        <a href="../index.html" class="logo"><span>AZ</span> Custom Knives</a>
-    </header>
-
-    <!-- Navigation -->
-    <nav>
-        <ul>
-            <li><a href="booking.html#classes">Classes</a></li>
-            <li><a href="booking.html#services">Services</a></li>
-            <li><a href="booking.html#book">Book</a></li>
-            <li><a href="portfolio.html">Portfolio</a></li>
-            <li><a href="about.html" class="active">About</a></li>
-            <li><a href="contact.html">Contact</a></li>
-            <li><a href="https://shop.azcustomknives.com" target="_blank">Shop</a></li>
-        </ul>
-    </nav>
+    <div id="site-header"></div>
 
     <!-- Hero Section -->
     <section class="hero">
@@ -553,19 +397,8 @@
         </div>
     </section>
 
-    <!-- Footer -->
-    <footer>
-        <div class="footer-content">
-            <div class="footer-contact">
-                <p><a href="tel:+17808312987">(780) 831-2987</a> | <a href="mailto:admin@azcustomknives.com">admin@azcustomknives.com</a></p>
-            </div>
-            <div class="footer-links">
-                <a href="booking.html#classes">Book a Class</a>
-                <a href="portfolio.html">Available Blanks</a>
-                <a href="contact.html">Waivers</a>
-            </div>
-            <p style="margin-top: 20px;">&copy; 2026 AZ Custom Knives Ltd. All rights reserved.</p>
-        </div>
-    </footer>
+    <div id="site-footer"></div>
+
+    <script src="../js/components.js"></script>
 </body>
 </html>

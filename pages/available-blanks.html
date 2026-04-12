@@ -5,13 +5,11 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>AZCK — Available Blanks</title>
 <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../css/components.css">
 <style>
 :root{--forge-red:#990000;--forge-red-hover:#770000;--steel-gray:#78909C;--black:#000;--white:#FFF;--off-white:#FAFAFA;--light-gray:#F0F0F0;--dark-gray:#333;--text:#1a1a1a;--max-width:920px;--header-height:72px}
 *{margin:0;padding:0;box-sizing:border-box}
 body{font-family:'Effra','Segoe UI',Arial,sans-serif;font-size:15.2px;line-height:25.84px;color:var(--text);background:var(--off-white)}
-header{background:var(--black);height:var(--header-height);display:flex;align-items:center;justify-content:center;position:sticky;top:0;z-index:100}
-.logo{font-family:'Oswald',sans-serif;font-size:22px;font-weight:500;letter-spacing:3px;color:var(--white);text-transform:uppercase;text-decoration:none}
-.logo span{color:var(--forge-red)}
 main{max-width:var(--max-width);margin:0 auto;padding:40px 20px 80px}
 .section-tag{font-family:'Oswald',sans-serif;font-size:11.2px;letter-spacing:1.68px;text-transform:uppercase;color:var(--forge-red);margin-bottom:8px}
 h2{font-family:'Oswald',sans-serif;font-size:36px;font-weight:400;letter-spacing:1.5px;text-transform:uppercase;color:var(--text);margin-bottom:10px}
@@ -46,14 +44,12 @@ h2{font-family:'Oswald',sans-serif;font-size:36px;font-weight:400;letter-spacing
 
 .contact-bar{background:var(--white);border-top:1px solid var(--light-gray);padding:16px 20px;display:flex;align-items:center;justify-content:center;gap:24px;flex-wrap:wrap;font-size:13.5px;color:var(--steel-gray)}
 .contact-bar a{color:var(--forge-red);text-decoration:none;font-weight:500}
-footer{background:var(--black);padding:36px 20px;text-align:center;color:var(--steel-gray);font-size:13px}
-footer a{color:var(--forge-red);text-decoration:none}
 @media(max-width:640px){h2{font-size:26px}.blank-grid{grid-template-columns:1fr}}
 </style>
 </head>
 <body>
 
-<header><a href="../index.html" class="logo"><span>AZ</span> Custom Knives</a></header>
+<div id="site-header"></div>
 
 <div class="contact-bar">
   <span>Want a custom blank built to your specs?</span>
@@ -114,9 +110,8 @@ footer a{color:var(--forge-red);text-decoration:none}
   </div>
 </main>
 
-<footer>
-  <p>&copy; 2026 AZ Custom Knives Ltd. &mdash; <a href="https://azcustomknives.com">azcustomknives.com</a></p>
-  <p style="margin-top:8px;"><a href="booking.html">Book a Class</a> &middot; <a href="blade-models.html">Blade Models</a> &middot; <a href="student-gallery.html">Student Gallery</a></p>
-</footer>
+<div id="site-footer"></div>
+
+<script src="../js/components.js"></script>
 </body>
 </html>

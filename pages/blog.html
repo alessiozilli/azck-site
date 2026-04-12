@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>From the Forge - AZ Custom Knives</title>
     <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../css/components.css">
     <style>
         :root {
             --forge-red: #990000;
@@ -30,53 +31,6 @@
             color: var(--text);
             background-color: var(--off-white);
             line-height: 1.6;
-        }
-
-        /* Header */
-        header {
-            position: sticky;
-            top: 0;
-            background-color: var(--black);
-            color: var(--white);
-            padding: 0 2rem;
-            height: var(--header-height);
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            z-index: 100;
-            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
-        }
-
-        .logo {
-            font-family: Oswald, sans-serif;
-            font-size: 1.5rem;
-            font-weight: 700;
-            color: var(--white);
-            text-decoration: none;
-            letter-spacing: 1px;
-        }
-
-        .logo span {
-            color: var(--forge-red);
-        }
-
-        nav {
-            display: flex;
-            gap: 2rem;
-            align-items: center;
-        }
-
-        nav a {
-            color: var(--white);
-            text-decoration: none;
-            font-size: 0.9rem;
-            transition: color 0.3s ease;
-            font-family: Oswald, sans-serif;
-            font-weight: 500;
-        }
-
-        nav a:hover {
-            color: var(--forge-red);
         }
 
         /* Main Content */
@@ -200,53 +154,8 @@
             color: var(--text);
         }
 
-        /* Footer */
-        footer {
-            background-color: var(--black);
-            color: var(--white);
-            padding: 3rem 2rem;
-            text-align: center;
-            font-size: 0.9rem;
-        }
-
-        footer a {
-            color: var(--forge-red);
-            text-decoration: none;
-            transition: color 0.3s ease;
-        }
-
-        footer a:hover {
-            color: var(--forge-red-hover);
-        }
-
-        .footer-nav {
-            display: flex;
-            justify-content: center;
-            gap: 2rem;
-            margin: 1.5rem 0;
-            flex-wrap: wrap;
-            font-size: 0.85rem;
-        }
-
-        .footer-nav a {
-            color: var(--white);
-        }
-
-        .footer-contact {
-            margin: 1.5rem 0;
-            font-size: 0.9rem;
-        }
-
-        .footer-contact a {
-            color: var(--white);
-        }
-
         /* Responsive */
         @media (max-width: 768px) {
-            header {
-                padding: 0 1rem;
-            }
-
             nav {
                 gap: 1rem;
                 font-size: 0.8rem;
@@ -266,10 +175,6 @@
         }
 
         @media (max-width: 640px) {
-            .logo {
-                font-size: 1.2rem;
-            }
-
             nav {
                 gap: 0.8rem;
             }
@@ -289,18 +194,7 @@
     </style>
 </head>
 <body>
-    <header>
-        <a href="../index.html" class="logo"><span>AZ</span> Custom Knives</a>
-        <nav>
-            <a href="booking.html#classes">Classes</a>
-            <a href="booking.html#services">Services</a>
-            <a href="booking.html#book">Book</a>
-            <a href="portfolio.html">Portfolio</a>
-            <a href="about.html">About</a>
-            <a href="contact.html">Contact</a>
-            <a href="https://shop.azcustomknives.com" target="_blank">Shop</a>
-        </nav>
-    </header>
+    <div id="site-header"></div>
 
     <main>
         <div class="page-header">
@@ -355,22 +249,8 @@
         </div>
     </main>
 
-    <footer>
-        <p>&copy; 2026 AZ Custom Knives Ltd.</p>
-        <div class="footer-nav">
-            <a href="https://azcustomknives.com">azcustomknives.com</a>
-            <a href="booking.html#classes">Classes</a>
-            <a href="booking.html#services">Services</a>
-            <a href="booking.html#book">Book</a>
-            <a href="portfolio.html">Portfolio</a>
-            <a href="about.html">About</a>
-            <a href="contact.html">Contact</a>
-            <a href="https://shop.azcustomknives.com" target="_blank">Shop</a>
-        </div>
-        <div class="footer-contact">
-            <p>Phone: <a href="tel:+17808312987">(780) 831-2987</a></p>
-            <p>Email: <a href="mailto:admin@azcustomknives.com">admin@azcustomknives.com</a></p>
-        </div>
-    </footer>
+    <div id="site-footer"></div>
+
+    <script src="../js/components.js"></script>
 </body>
 </html>

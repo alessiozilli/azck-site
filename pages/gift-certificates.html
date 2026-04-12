@@ -5,6 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>AZCK — Gift Certificates & Gift Cards</title>
 <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../css/components.css">
 <style>
 :root{--forge-red:#990000;--forge-red-hover:#770000;--steel-gray:#78909C;--black:#000;--white:#FFF;--off-white:#FAFAFA;--light-gray:#F0F0F0;--dark-gray:#333;--text:#1a1a1a;--max-width:920px;--header-height:72px}
 *,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
@@ -71,7 +72,7 @@ footer a{color:var(--forge-red);text-decoration:none}
 </head>
 <body>
 
-<header><a href="../index.html" class="logo"><span>AZ</span> Custom Knives</a></header>
+<div id="site-header"></div>
 
 <div class="contact-bar">
   <span>Questions about gifts?</span>
@@ -294,10 +295,7 @@ footer a{color:var(--forge-red);text-decoration:none}
   </div>
 </main>
 
-<footer>
-  <p>&copy; 2026 AZ Custom Knives Ltd. &mdash; <a href="https://azcustomknives.com">azcustomknives.com</a></p>
-  <p style="margin-top:8px;"><a href="booking.html">Book a Class</a> &middot; <a href="available-blanks.html">Available Blanks</a> &middot; <a href="waiver.html">Waivers</a></p>
-</footer>
+<div id="site-footer"></div>
 
 <script>
 /* ══ Tab switching ══ */
@@ -388,5 +386,6 @@ window.addEventListener('DOMContentLoaded', () => {
   }
 });
 </script>
+<script src="../js/components.js"></script>
 </body>
 </html>
