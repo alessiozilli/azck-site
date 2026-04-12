@@ -1299,17 +1299,19 @@ const URLS = {
   '3full': 'https://shop.azcustomknives.com/booking-calendar/3-person-full-day-blacksmithing-class',
   // Workshop
   whetstone: 'https://shop.azcustomknives.com/booking-calendar/group-sharpening-workshop-whetstone',
-  // Team Building / Family — these need to be created in Wix
-  'tb-sharpsem': 'https://shop.azcustomknives.com/booking-calendar/team-building-sharpening-seminar',
-  'tb-assembly': 'https://shop.azcustomknives.com/booking-calendar/team-building-knife-assembly',
-  'tb-knifemaking': 'https://shop.azcustomknives.com/booking-calendar/team-building-knife-making',
-  'tb-blacksmithing': 'https://shop.azcustomknives.com/booking-calendar/team-building-blacksmithing',
-  'fam-sharpsem': 'https://shop.azcustomknives.com/booking-calendar/family-sharpening-seminar',
-  'fam-assembly': 'https://shop.azcustomknives.com/booking-calendar/family-knife-assembly',
-  'fam-knifemaking': 'https://shop.azcustomknives.com/booking-calendar/family-knife-making',
-  'fam-blacksmithing': 'https://shop.azcustomknives.com/booking-calendar/family-blacksmithing',
-  // Engraving — needs to be created in Wix
-  engraving: 'https://shop.azcustomknives.com/booking-calendar/laser-engraving-service',
+  // Team Building / Family — all go to one Wix service (sub-options handled there)
+  'tb-sharpsem': 'https://shop.azcustomknives.com/booking-calendar/team-building-client-appreciation',
+  'tb-assembly': 'https://shop.azcustomknives.com/booking-calendar/team-building-client-appreciation',
+  'tb-knifemaking': 'https://shop.azcustomknives.com/booking-calendar/team-building-client-appreciation',
+  'tb-blacksmithing': 'https://shop.azcustomknives.com/booking-calendar/team-building-client-appreciation',
+  'fam-sharpsem': 'https://shop.azcustomknives.com/booking-calendar/team-building-client-appreciation',
+  'fam-assembly': 'https://shop.azcustomknives.com/booking-calendar/team-building-client-appreciation',
+  'fam-knifemaking': 'https://shop.azcustomknives.com/booking-calendar/team-building-client-appreciation',
+  'fam-blacksmithing': 'https://shop.azcustomknives.com/booking-calendar/team-building-client-appreciation',
+  // Engraving — goes to standalone form with file upload
+  engraving: 'laser-engraving.html',
+  // Sheath Making
+  sheath: 'https://shop.azcustomknives.com/booking-calendar/sheath-making-class',
 };
 
 const PRICES = {
@@ -1874,13 +1876,11 @@ function updateBook() {
    ══════════════════════════════════════════════ */
 function doBook() {
   if (S._url) {
-    // In production, this redirects to Wix checkout
-    // For now, show confirmation and alert the URL
+    // Show confirmation then redirect to Wix checkout
     goStep(5);
     setTimeout(() => {
-      // window.location.href = S._url;
-      alert('REDIRECT TO:\n' + S._url + '\n\n(Test mode — no actual redirect)');
-    }, 500);
+      window.location.href = S._url;
+    }, 1500);
   }
 }
 
