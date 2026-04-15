@@ -5,7 +5,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>From the Forge - AZ Custom Knives</title>
     <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;500;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="../css/components.css">
     <style>
         :root {
             --forge-red: #990000;
@@ -33,7 +32,52 @@
             line-height: 1.6;
         }
 
-        /* Main Content */
+        header {
+            position: sticky;
+            top: 0;
+            background-color: var(--black);
+            color: var(--white);
+            padding: 0 2rem;
+            height: var(--header-height);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            z-index: 100;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+
+        .logo {
+            font-family: Oswald, sans-serif;
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--white);
+            text-decoration: none;
+            letter-spacing: 1px;
+        }
+
+        .logo span {
+            color: var(--forge-red);
+        }
+
+        nav {
+            display: flex;
+            gap: 2rem;
+            align-items: center;
+        }
+
+        nav a {
+            color: var(--white);
+            text-decoration: none;
+            font-size: 0.9rem;
+            transition: color 0.3s ease;
+            font-family: Oswald, sans-serif;
+            font-weight: 500;
+        }
+
+        nav a:hover {
+            color: var(--forge-red);
+        }
+
         main {
             max-width: 920px;
             margin: 0 auto;
@@ -61,7 +105,6 @@
             margin: 0 auto;
         }
 
-        /* Blog Grid */
         .blog-grid {
             display: grid;
             grid-template-columns: repeat(2, 1fr);
@@ -139,7 +182,6 @@
             color: var(--forge-red-hover);
         }
 
-        /* Footer Note */
         .footer-note {
             background: var(--white);
             padding: 2rem;
@@ -154,8 +196,51 @@
             color: var(--text);
         }
 
-        /* Responsive */
+        footer {
+            background-color: var(--black);
+            color: var(--white);
+            padding: 3rem 2rem;
+            text-align: center;
+            font-size: 0.9rem;
+        }
+
+        footer a {
+            color: var(--forge-red);
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        footer a:hover {
+            color: var(--forge-red-hover);
+        }
+
+        .footer-nav {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            margin: 1.5rem 0;
+            flex-wrap: wrap;
+            font-size: 0.85rem;
+        }
+
+        .footer-nav a {
+            color: var(--white);
+        }
+
+        .footer-contact {
+            margin: 1.5rem 0;
+            font-size: 0.9rem;
+        }
+
+        .footer-contact a {
+            color: var(--white);
+        }
+
         @media (max-width: 768px) {
+            header {
+                padding: 0 1rem;
+            }
+
             nav {
                 gap: 1rem;
                 font-size: 0.8rem;
@@ -175,6 +260,10 @@
         }
 
         @media (max-width: 640px) {
+            .logo {
+                font-size: 1.2rem;
+            }
+
             nav {
                 gap: 0.8rem;
             }
@@ -194,7 +283,18 @@
     </style>
 </head>
 <body>
-    <div id="site-header"></div>
+    <header>
+        <a href="../index.html" class="logo"><span>AZ</span> Custom Knives</a>
+        <nav>
+            <a href="booking.html#classes">Classes</a>
+            <a href="booking.html#services">Services</a>
+            <a href="booking.html#book">Book</a>
+            <a href="portfolio.html">Portfolio</a>
+            <a href="about.html">About</a>
+            <a href="contact.html">Contact</a>
+            <a href="https://shop.azcustomknives.com" target="_blank">Shop</a>
+        </nav>
+    </header>
 
     <main>
         <div class="page-header">
@@ -209,7 +309,7 @@
                     <span class="blog-date">March 2026</span>
                     <h3>Why 1084 Steel?</h3>
                     <p class="blog-excerpt">The steel we use most and why it's perfect for beginners and pros alike.</p>
-                    <a href="#" class="blog-link">Read More →</a>
+                    <a href="https://www.instagram.com/az_custom_knives/" target="_blank" class="blog-link">Follow on Instagram →</a>
                 </div>
             </article>
 
@@ -219,7 +319,7 @@
                     <span class="blog-date">February 2026</span>
                     <h3>Behind the Bulldog</h3>
                     <p class="blog-excerpt">How our signature blade model came to be.</p>
-                    <a href="#" class="blog-link">Read More →</a>
+                    <a href="https://www.instagram.com/az_custom_knives/" target="_blank" class="blog-link">Follow on Instagram →</a>
                 </div>
             </article>
 
@@ -229,7 +329,7 @@
                     <span class="blog-date">January 2026</span>
                     <h3>Sharpening Myths Debunked</h3>
                     <p class="blog-excerpt">5 things most people get wrong about knife sharpening.</p>
-                    <a href="#" class="blog-link">Read More →</a>
+                    <a href="https://www.instagram.com/az_custom_knives/" target="_blank" class="blog-link">Follow on Instagram →</a>
                 </div>
             </article>
 
@@ -239,18 +339,32 @@
                     <span class="blog-date">January 2026</span>
                     <h3>First Class of 2026</h3>
                     <p class="blog-excerpt">A look back at our first knife making class of the year.</p>
-                    <a href="#" class="blog-link">Read More →</a>
+                    <a href="https://www.instagram.com/az_custom_knives/" target="_blank" class="blog-link">Follow on Instagram →</a>
                 </div>
             </article>
         </div>
 
         <div class="footer-note">
-            <p><strong>More posts coming soon.</strong> Follow us on Instagram <strong>@azcustomknives</strong> for daily updates.</p>
+            <p><strong>Full posts coming soon.</strong> Follow us on Instagram <strong><a href="https://www.instagram.com/az_custom_knives/" target="_blank" style="color:var(--forge-red);text-decoration:none;">@az_custom_knives</a></strong> for daily updates from the workshop.</p>
         </div>
     </main>
 
-    <div id="site-footer"></div>
-
-    <script src="../js/components.js"></script>
+    <footer>
+        <p>&copy; 2026 AZ Custom Knives Ltd.</p>
+        <div class="footer-nav">
+            <a href="https://azcustomknives.com">azcustomknives.com</a>
+            <a href="booking.html#classes">Classes</a>
+            <a href="booking.html#services">Services</a>
+            <a href="booking.html#book">Book</a>
+            <a href="portfolio.html">Portfolio</a>
+            <a href="about.html">About</a>
+            <a href="contact.html">Contact</a>
+            <a href="https://shop.azcustomknives.com" target="_blank">Shop</a>
+        </div>
+        <div class="footer-contact">
+            <p>Phone: <a href="tel:+17808312987">(780) 831-2987</a></p>
+            <p>Email: <a href="mailto:admin@azcustomknives.com">admin@azcustomknives.com</a></p>
+        </div>
+    </footer>
 </body>
 </html>
