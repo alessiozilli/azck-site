@@ -5,7 +5,6 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>AZCK — Waivers & Safety</title>
 <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;500;600&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="../css/components.css">
 <style>
 :root{--forge-red:#990000;--forge-red-hover:#770000;--steel-gray:#78909C;--black:#000;--white:#FFF;--off-white:#FAFAFA;--light-gray:#F0F0F0;--dark-gray:#333;--text:#1a1a1a;--max-width:920px;--header-height:72px}
 *{margin:0;padding:0;box-sizing:border-box}
@@ -54,7 +53,7 @@ footer a{color:var(--forge-red);text-decoration:none}
 </head>
 <body>
 
-<div id="site-header"></div>
+<header><a href="../index.html" class="logo"><span>AZ</span> Custom Knives</a></header>
 
 <div class="contact-bar">
   <span>Questions about our safety policies?</span>
@@ -67,7 +66,7 @@ footer a{color:var(--forge-red);text-decoration:none}
   <h2>Waivers & Safety Information</h2>
   <p class="subtitle">Your safety is our priority. Review the waiver for your activity below. You'll agree to these terms during booking, and receive a formal copy for signature after purchase.</p>
 
-  <div class="info">You do not need to print or sign anything before booking. The booking wizard includes checkboxes for agreement. After purchase, you'll receive a formal waiver document by email. If you prefer to read the waiver before booking, you can review the full text below.</div>
+  <div class="info">You do not need to print or sign anything before booking. The booking wizard includes checkboxes for agreement. After purchase, you'll receive a formal waiver document by email. If you prefer to read the waiver before booking, you can review the full text below or download the PDF.</div>
 
   <!-- Drop-Off Services -->
   <div class="waiver-section" id="w-sharp">
@@ -81,8 +80,8 @@ footer a{color:var(--forge-red);text-decoration:none}
         <p><strong>LIABILITY:</strong> AZCK is not liable for pre-existing damage, defects in the blade, or items left beyond 30 days of completion notification.</p>
       </div>
       <div class="ws-dl">
-        <a href="#">Download PDF</a>
-        <span>(Available after booking)</span>
+        <a href="../assets/waivers/2026%20AZCK%20Student%20Liability%20Waiver.pdf" target="_blank">Download PDF</a>
+        <span>(Preview — formal copy sent after purchase)</span>
       </div>
     </div>
   </div>
@@ -103,8 +102,8 @@ footer a{color:var(--forge-red);text-decoration:none}
         <p><strong>GOVERNING LAW:</strong> This waiver is governed by the laws of the Province of Alberta, Canada.</p>
       </div>
       <div class="ws-dl">
-        <a href="#">Download PDF</a>
-        <span>(Available after booking)</span>
+        <a href="../assets/waivers/2026%20AZCK%20Student%20Liability%20Waiver.pdf" target="_blank">Download PDF</a>
+        <span>(Preview — formal copy sent after purchase)</span>
       </div>
     </div>
   </div>
@@ -125,8 +124,8 @@ footer a{color:var(--forge-red);text-decoration:none}
         <p><strong>GOVERNING LAW:</strong> This waiver is governed by the laws of the Province of Alberta, Canada.</p>
       </div>
       <div class="ws-dl">
-        <a href="#">Download PDF</a>
-        <span>(Available after booking)</span>
+        <a href="../assets/waivers/2026%20AZCK%20Student%20Liability%20Waiver.pdf" target="_blank">Download PDF</a>
+        <span>(Preview — formal copy sent after purchase)</span>
       </div>
     </div>
   </div>
@@ -146,8 +145,8 @@ footer a{color:var(--forge-red);text-decoration:none}
         <p><strong>GOVERNING LAW:</strong> This waiver is governed by the laws of the Province of Alberta, Canada.</p>
       </div>
       <div class="ws-dl">
-        <a href="#">Download PDF</a>
-        <span>(Available after booking)</span>
+        <a href="../assets/waivers/2026%20AZCK%20Student%20Liability%20Waiver.pdf" target="_blank">Download PDF</a>
+        <span>(Preview — formal copy sent after purchase)</span>
       </div>
     </div>
   </div>
@@ -185,6 +184,7 @@ footer a{color:var(--forge-red);text-decoration:none}
     <p><strong>1. Acknowledgment of Risk:</strong> The parent/guardian confirms they understand the specific risks involved in the activity (sharp tools, hot materials, heavy equipment, rotating machinery).</p>
     <p><strong>2. Indemnity Agreement:</strong> The parent/guardian agrees to indemnify AZCK against any claims arising from the minor's participation.</p>
     <p>No adult is required to be on-site during the activity, provided these agreements have been completed.</p>
+    <p style="margin-top:14px;"><a href="../assets/waivers/AZ_Custom_Knives_Youth_Waiver.pdf" target="_blank" style="font-family:'Oswald',sans-serif;font-size:12px;letter-spacing:1px;text-transform:uppercase;color:var(--forge-red);text-decoration:none;font-weight:500;">Download Youth Waiver PDF →</a></p>
     <p style="margin-bottom:0;"><em style="color:var(--steel-gray);font-size:13px;">Note: We recommend having this clause reviewed by a lawyer before relying on it. This is our best-effort approach based on Alberta law.</em></p>
   </div>
 
@@ -194,11 +194,13 @@ footer a{color:var(--forge-red);text-decoration:none}
   </div>
 </main>
 
-<div id="site-footer"></div>
+<footer>
+  <p>&copy; 2026 AZ Custom Knives Ltd. &mdash; <a href="https://azcustomknives.com">azcustomknives.com</a></p>
+  <p style="margin-top:8px;"><a href="booking.html">Book a Class</a> &middot; <a href="blade-models.html">Blade Models</a> &middot; <a href="student-gallery.html">Student Gallery</a></p>
+</footer>
 
 <script>
 function toggle(id) { document.getElementById(id).classList.toggle('open'); }
 </script>
-<script src="../js/components.js"></script>
 </body>
 </html>
