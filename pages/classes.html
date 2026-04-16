@@ -6,12 +6,26 @@
     <title>Classes & Services | AZ Custom Knives Ltd.</title>
     <meta name="description" content="Blacksmithing classes, team building, knife making courses, professional sharpening, restorations, and regrinds in Grande Prairie, Alberta.">
     <link rel="stylesheet" href="../css/style.css">
-    <link rel="stylesheet" href="../css/components.css">
     <link rel="icon" href="../images/favicon.ico" type="image/x-icon">
 </head>
 <body>
 
-    <div id="site-header"></div>
+    <!-- HEADER -->
+    <header class="header">
+        <div class="header__inner">
+            <a href="../index.html" class="header__logo-text">AZ Custom <span>Knives</span></a>
+            <nav class="nav">
+                <a href="../index.html" class="nav__link">Home</a>
+                <a href="about.html" class="nav__link">About</a>
+                <a href="classes.html" class="nav__link active">Classes & Services</a>
+                <a href="portfolio.html" class="nav__link">Portfolio</a>
+                <a href="quadfang.html" class="nav__link">QuadFang</a>
+                <a href="contact.html" class="nav__link">Contact</a>
+                <a href="https://shop.azcustomknives.com" class="btn btn--primary btn--small" target="_blank" rel="noopener">Shop</a>
+            </nav>
+            <button class="menu-toggle" aria-label="Menu"><span></span><span></span><span></span></button>
+        </div>
+    </header>
 
     <!-- HERO -->
     <section class="hero" style="min-height: 50vh;">
@@ -82,8 +96,8 @@
                     <div class="card__body">
                         <p class="card__tag">Workshop</p>
                         <h3 class="card__title">Sheath Making</h3>
-                        <p class="card__desc">Learn to craft a custom leather sheath for your blade. Measure, cut, stitch, and finish — all by hand.</p>
-                        <a href="contact.html" class="btn btn--primary btn--small" style="margin-top: 16px;">Contact to Book</a>
+                        <p class="card__desc">Learn to craft a custom sheath for your blade — leather or Kydex. Measure, cut, shape, and finish — all by hand. 2-hour hands-on course.</p>
+                        <a href="https://shop.azcustomknives.com/booking-calendar/sheath-making-class" class="btn btn--primary btn--small" style="margin-top: 16px;">Book Now</a>
                     </div>
                 </div>
 
@@ -168,9 +182,48 @@
         </div>
     </section>
 
-    <div id="site-footer"></div>
+    <!-- FOOTER -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer__grid">
+                <div>
+                    <p class="header__logo-text" style="margin-bottom: 16px; font-size: 1.2rem;">AZ Custom <span>Knives</span></p>
+                    <p class="footer__text">Swiss-trained craftsmanship in the heart of Alberta.</p>
+                </div>
+                <div>
+                    <p class="footer__heading">Navigate</p>
+                    <a href="about.html" class="footer__link">About</a>
+                    <a href="classes.html" class="footer__link">Classes & Services</a>
+                    <a href="portfolio.html" class="footer__link">Portfolio</a>
+                    <a href="quadfang.html" class="footer__link">QuadFang</a>
+                    <a href="https://shop.azcustomknives.com" class="footer__link" target="_blank">Shop</a>
+                </div>
+                <div>
+                    <p class="footer__heading">Services</p>
+                    <a href="classes.html#sharpening" class="footer__link">Knife Sharpening</a>
+                    <a href="classes.html#classes" class="footer__link">Classes</a>
+                    <a href="classes.html#restorations" class="footer__link">Restorations</a>
+                    <a href="contact.html" class="footer__link">Custom Projects</a>
+                </div>
+                <div>
+                    <p class="footer__heading">Contact</p>
+                    <p class="footer__text">9602 115 Street #104<br>Grande Prairie, AB T8V 5W2</p>
+                    <p class="footer__text" style="margin-top: 8px;">(780) 831-2987</p>
+                    <a href="mailto:admin@azcustomknives.com" class="footer__link" style="margin-top: 4px;">admin@azcustomknives.com</a>
+                </div>
+            </div>
+            <div class="footer__bottom">
+                <p>&copy; 2026 AZ Custom Knives Ltd. All rights reserved.</p>
+                <div class="footer__socials">
+                    <a href="https://www.facebook.com/azcustomknives" target="_blank" rel="noopener">FB</a>
+                    <a href="https://www.instagram.com/az_custom_knives" target="_blank" rel="noopener">IG</a>
+                    <a href="https://www.youtube.com/channel/UCAV8Nd33PnuLJ8TRjyv20JA" target="_blank" rel="noopener">YT</a>
+                    <a href="https://command.azcustomknives.com" class="footer__admin" aria-label="Admin">Admin</a>
+                </div>
+            </div>
+        </div>
+    </footer>
 
-    <script src="../js/components.js"></script>
     <script src="../js/main.js"></script>
 </body>
 </html>
