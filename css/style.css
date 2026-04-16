@@ -455,18 +455,17 @@ p { margin-bottom: 1rem; }
 /* --- Animations --- */
 /* Fade-in with CSS-only fallback: content auto-reveals after 0.5s
    even if IntersectionObserver hasn't fired (layout shift race condition).
-   When the observer DOES fire, .visible cancels the fallback animation
-   and applies the transition-based reveal instead. */
+   Transition lives on .visible only — keeps it out of the animation's way. */
 .fade-in {
   opacity: 0;
   transform: translateY(24px);
-  transition: opacity 0.6s ease, transform 0.6s ease;
   animation: fadeInSafe 0.8s ease 0.5s forwards;
 }
 .fade-in.visible {
   animation: none;
   opacity: 1;
   transform: translateY(0);
+  transition: opacity 0.6s ease, transform 0.6s ease;
 }
 @keyframes fadeInSafe {
   to {
