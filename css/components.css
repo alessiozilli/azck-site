@@ -3,8 +3,8 @@
    Consistent nav and footer across all pages.
    Brand: Black #000, Forge Red #990000, White #FFF
 
-   Phase 1 update: Added footer admin link styles.
-   Tightened nav padding for 8-item nav.
+   Phase 1: Footer admin link. Tightened nav for 8 items.
+   Phase 3: Newsletter signup in footer.
    ======================================== */
 
 /* ========== FONTS ========== */
@@ -160,6 +160,12 @@
   max-width: 1200px;
   margin: 0 auto;
   display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.azck-footer__row {
+  display: flex;
   align-items: center;
   justify-content: space-between;
   flex-wrap: wrap;
@@ -190,6 +196,82 @@
   color: #990000;
 }
 
+/* Newsletter Signup */
+.azck-footer__newsletter {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  flex-wrap: wrap;
+  padding: 12px 0;
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.azck-footer__newsletter-label {
+  color: rgba(255, 255, 255, 0.6);
+  font-family: 'Oswald', sans-serif;
+  font-size: 13px;
+  font-weight: 400;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  margin: 0;
+  white-space: nowrap;
+}
+
+.azck-footer__newsletter-form {
+  display: flex;
+  gap: 0;
+  flex-grow: 1;
+  max-width: 360px;
+}
+
+.azck-footer__newsletter-input {
+  flex: 1;
+  padding: 8px 14px;
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  border-right: none;
+  border-radius: 4px 0 0 4px;
+  background: rgba(255, 255, 255, 0.06);
+  color: #FFF;
+  font-family: 'Segoe UI', Arial, sans-serif;
+  font-size: 13px;
+  outline: none;
+  transition: border-color 0.3s ease;
+}
+
+.azck-footer__newsletter-input::placeholder {
+  color: rgba(255, 255, 255, 0.3);
+}
+
+.azck-footer__newsletter-input:focus {
+  border-color: rgba(153, 0, 0, 0.6);
+}
+
+.azck-footer__newsletter-btn {
+  padding: 8px 18px;
+  background: #990000;
+  color: #FFF;
+  border: 1px solid #990000;
+  border-radius: 0 4px 4px 0;
+  font-family: 'Oswald', sans-serif;
+  font-size: 13px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  white-space: nowrap;
+}
+
+.azck-footer__newsletter-btn:hover {
+  background: #770000;
+}
+
+.azck-footer__newsletter-msg {
+  font-family: 'Segoe UI', Arial, sans-serif;
+  font-size: 13px;
+  margin: 0;
+}
+
 /* Admin Link — subtle, right side */
 .azck-footer__admin {
   font-family: 'Oswald', sans-serif;
@@ -200,6 +282,7 @@
   text-transform: uppercase;
   letter-spacing: 0.1em;
   transition: color 0.3s ease;
+  align-self: flex-end;
 }
 
 .azck-footer__admin:hover {
@@ -253,10 +336,24 @@
     text-align: center;
   }
 
-  .azck-footer__inner {
+  .azck-footer__row {
     flex-direction: column;
     text-align: center;
     gap: 16px;
+  }
+
+  .azck-footer__newsletter {
+    flex-direction: column;
+    align-items: stretch;
+    text-align: center;
+  }
+
+  .azck-footer__newsletter-label {
+    white-space: normal;
+  }
+
+  .azck-footer__newsletter-form {
+    max-width: 100%;
   }
 }
 
