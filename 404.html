@@ -1,105 +1,131 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>404 - Page Not Found - AZ Custom Knives</title>
-  <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;500;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="/css/components.css">
-  <link rel="icon" href="/images/favicon.ico" type="image/x-icon">
-  <style>
-    :root {
-      --forge-red: #990000;
-      --forge-red-hover: #770000;
-      --steel-gray: #78909C;
-      --black: #000;
-      --white: #FFF;
-      --off-white: #FAFAFA;
-      --light-gray: #F0F0F0;
-      --dark-gray: #333;
-      --text: #1a1a1a;
-      --header-height: 80px;
-    }
-    * { margin: 0; padding: 0; box-sizing: border-box; }
-    body {
-      font-family: Effra, "Segoe UI", Arial, sans-serif;
-      color: var(--text);
-      background-color: var(--off-white);
-      min-height: 100vh;
-      display: flex;
-      flex-direction: column;
-    }
-    .error-wrap {
-      flex: 1;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      padding: 2rem;
-    }
-    .error-container {
-      text-align: center;
-      background: var(--white);
-      padding: 3rem;
-      border-radius: 8px;
-      box-shadow: 0 2px 12px rgba(0,0,0,0.1);
-      max-width: 500px;
-      width: 100%;
-    }
-    .error-emoji {
-      font-size: 4rem;
-      margin-bottom: 1.5rem;
-      display: block;
-    }
-    h1 {
-      font-family: Oswald, sans-serif;
-      font-size: 2.5rem;
-      font-weight: 700;
-      color: var(--text);
-      margin-bottom: 1rem;
-      letter-spacing: 1px;
-    }
-    .subtitle {
-      font-size: 1.1rem;
-      color: var(--steel-gray);
-      margin-bottom: 2rem;
-    }
-    .help-link {
-      display: inline-block;
-      background-color: var(--forge-red);
-      color: var(--white);
-      padding: 0.85rem 2rem;
-      border-radius: 4px;
-      text-decoration: none;
-      font-weight: 600;
-      font-family: Oswald, sans-serif;
-      letter-spacing: 0.5px;
-      transition: background-color 0.3s ease;
-    }
-    .help-link:hover {
-      background-color: var(--forge-red-hover);
-    }
-    @media (max-width: 640px) {
-      .error-container { padding: 2rem; }
-      h1 { font-size: 2rem; }
-      .error-emoji { font-size: 3rem; }
-    }
-  </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>404 - Page Not Found - AZ Custom Knives</title>
+    <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/components.css">
+    <style>
+        :root {
+            --forge-red: #990000;
+            --forge-red-hover: #770000;
+            --steel-gray: #78909C;
+            --black: #000;
+            --white: #FFF;
+            --off-white: #FAFAFA;
+            --light-gray: #F0F0F0;
+            --dark-gray: #333;
+            --text: #1a1a1a;
+            --header-height: 72px;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Effra, "Segoe UI", Arial, sans-serif;
+            color: var(--text);
+            background-color: var(--off-white);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh;
+            padding: 2rem;
+        }
+
+        .error-container {
+            text-align: center;
+            background: var(--white);
+            padding: 3rem;
+            border-radius: 8px;
+            box-shadow: 0 2px 12px rgba(0,0,0,0.1);
+            max-width: 500px;
+        }
+
+        .error-emoji {
+            font-size: 4rem;
+            margin-bottom: 1.5rem;
+            display: block;
+        }
+
+        .error-logo {
+            font-family: Oswald, sans-serif;
+            font-size: 1.2rem;
+            font-weight: 700;
+            color: var(--text);
+            margin-bottom: 1.5rem;
+            letter-spacing: 1px;
+        }
+
+        .error-logo span {
+            color: var(--forge-red);
+        }
+
+        h1 {
+            font-family: Oswald, sans-serif;
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: var(--text);
+            margin-bottom: 1rem;
+            letter-spacing: 1px;
+        }
+
+        .subtitle {
+            font-size: 1.1rem;
+            color: var(--steel-gray);
+            margin-bottom: 2rem;
+        }
+
+        .help-link {
+            display: inline-block;
+            background-color: var(--forge-red);
+            color: var(--white);
+            padding: 0.85rem 2rem;
+            border-radius: 4px;
+            text-decoration: none;
+            font-weight: 600;
+            font-family: Oswald, sans-serif;
+            transition: background-color 0.3s ease;
+            margin-top: 2rem;
+        }
+
+        .help-link:hover {
+            background-color: var(--forge-red-hover);
+        }
+
+        @media (max-width: 640px) {
+            .error-container {
+                padding: 2rem;
+            }
+
+            h1 {
+                font-size: 2rem;
+            }
+
+            .error-emoji {
+                font-size: 3rem;
+            }
+        }
+    </style>
 </head>
 <body>
+    <div id="site-header"></div>
 
-  <div id="site-header"></div>
-
-  <div class="error-wrap">
     <div class="error-container">
-      <span class="error-emoji">&#9876;</span>
-      <h1>404</h1>
-      <p class="subtitle">This blade never made it off the anvil.</p>
-      <a href="index.html" class="help-link">Back to the Shop</a>
+        <span class="error-emoji">⚒️</span>
+        <div class="error-logo"><span>AZ</span> Custom Knives</div>
+        <h1>404</h1>
+        <p class="subtitle">The page you're looking for doesn't exist or has been moved.</p>
+        
+        <a href="index.html" class="help-link">Go Home</a>
     </div>
-  </div>
 
-  <div id="site-footer"></div>
-  <script src="/js/components.js"></script>
+    <div id="site-footer"></div>
 
+    <script src="js/components.js"></script>
 </body>
 </html>
