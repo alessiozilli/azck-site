@@ -4,7 +4,6 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Contact — AZ Custom Knives Ltd</title>
-    <link rel="stylesheet" href="../css/components.css">
     <style>
         :root {
             --forge-red: #990000;
@@ -31,6 +30,59 @@
             color: var(--text);
             line-height: 1.6;
             background-color: var(--off-white);
+        }
+
+        /* Header */
+        header {
+            position: sticky;
+            top: 0;
+            background-color: var(--black);
+            padding: 0 20px;
+            height: var(--header-height);
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            z-index: 100;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+
+        .logo {
+            font-family: "Oswald", sans-serif;
+            font-size: 20px;
+            font-weight: 700;
+            color: var(--white);
+            text-decoration: none;
+            letter-spacing: 1px;
+        }
+
+        .logo span {
+            color: var(--forge-red);
+        }
+
+        /* Navigation */
+        nav {
+            display: flex;
+            gap: 30px;
+            align-items: center;
+        }
+
+        nav a {
+            color: var(--white);
+            text-decoration: none;
+            font-size: 13px;
+            font-weight: 500;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            transition: color 0.3s;
+        }
+
+        nav a:hover {
+            color: var(--forge-red);
+        }
+
+        nav a.active {
+            color: var(--forge-red);
+            font-weight: 700;
         }
 
         /* Main Content */
@@ -294,8 +346,59 @@
             letter-spacing: 0.5px;
         }
 
+        /* Footer */
+        footer {
+            background-color: var(--black);
+            color: var(--white);
+            padding: 40px 20px;
+            text-align: center;
+            border-top: 4px solid var(--forge-red);
+            margin-top: 60px;
+        }
+
+        footer p {
+            font-size: 13px;
+            margin-bottom: 15px;
+        }
+
+        footer a {
+            color: var(--forge-red);
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+
+        footer a:hover {
+            color: var(--white);
+        }
+
+        .footer-links {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            flex-wrap: wrap;
+            margin-top: 20px;
+            font-size: 13px;
+        }
+
         /* Responsive */
         @media (max-width: 640px) {
+            header {
+                flex-direction: column;
+                height: auto;
+                gap: 15px;
+                padding: 15px;
+            }
+
+            nav {
+                gap: 15px;
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+
+            nav a {
+                font-size: 12px;
+            }
+
             .page-title {
                 font-size: 32px;
                 margin-bottom: 30px;
@@ -330,11 +433,27 @@
             .map-placeholder {
                 font-size: 60px;
             }
+
+            .footer-links {
+                gap: 10px;
+            }
         }
     </style>
 </head>
 <body>
-    <div id="site-header"></div>
+    <!-- Header -->
+    <header>
+        <a href="../index.html" class="logo"><span>AZ</span> Custom Knives</a>
+        <nav>
+            <a href="booking.html#classes">Classes</a>
+            <a href="booking.html#services">Services</a>
+            <a href="booking.html#book">Book</a>
+            <a href="portfolio.html">Portfolio</a>
+            <a href="about.html">About</a>
+            <a href="contact.html" class="active">Contact</a>
+            <a href="https://shop.azcustomknives.com" target="_blank">Shop</a>
+        </nav>
+    </header>
 
     <!-- Main Content -->
     <main>
@@ -406,13 +525,16 @@
         <!-- Business Hours -->
         <div class="hours-section">
             <h2>Business Hours</h2>
-            <p><strong>By Appointment Only</strong></p>
-            <p>We're a working forge, not a retail store. Please call or book online before visiting.</p>
-            <div class="hours-highlight">
-                <strong>Best Times to Reach Us:</strong><br>
-                Monday–Friday | 9:00 AM – 5:00 PM
+            <div class="hours-highlight" style="text-align:left;">
+                <strong>Monday</strong> &nbsp; 9:00 AM – 4:00 PM<br>
+                <strong>Tuesday</strong> &nbsp; 9:00 AM – 4:00 PM<br>
+                <strong>Wednesday</strong> &nbsp; 9:00 AM – 6:00 PM<br>
+                <strong>Thursday</strong> &nbsp; 9:00 AM – 4:00 PM<br>
+                <strong>Friday</strong> &nbsp; 9:00 AM – 6:00 PM<br>
+                <strong>Saturday</strong> &nbsp; By Appointment Only<br>
+                <strong>Sunday</strong> &nbsp; Closed
             </div>
-            <p>For urgent inquiries outside these hours, please leave a message and we'll get back to you as soon as possible.</p>
+            <p style="margin-top:12px;">We're a working forge — please call or book online before visiting. For inquiries outside these hours, leave a message and we'll get back to you as soon as possible.</p>
         </div>
 
         <!-- Map Placeholder -->
@@ -445,9 +567,20 @@
         </div>
     </main>
 
-    <div id="site-footer"></div>
+    <!-- Footer -->
+    <footer>
+        <p>&copy; 2026 AZ Custom Knives Ltd. All rights reserved.</p>
+        <p>Phone: <a href="tel:+17808312987">(780) 831-2987</a></p>
+        <div class="footer-links">
+            <a href="index.html">Home</a>
+            <a href="about.html">About</a>
+            <a href="portfolio.html">Portfolio</a>
+            <a href="booking.html">Book</a>
+            <a href="contact.html">Contact</a>
+            <a href="https://shop.azcustomknives.com" target="_blank">Shop</a>
+        </div>
+    </footer>
 
-    <script src="../js/components.js"></script>
     <script>
         function handleSubmit(event) {
             event.preventDefault();
@@ -457,7 +590,7 @@
             const message = document.getElementById('message').value;
             
             // Test mode: show confirmation alert
-            alert(`Thank you, ${name}!\\n\\nYour message has been received.\\nWe'll get back to you at ${email} soon.\\n\\nSubject: ${subject}`);
+            alert(`Thank you, ${name}!\n\nYour message has been received.\nWe'll get back to you at ${email} soon.\n\nSubject: ${subject}`);
             
             // Reset form
             document.getElementById('contact-form').reset();
