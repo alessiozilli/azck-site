@@ -2,6 +2,9 @@
    AZCK Shared Components — Header + Footer
    Consistent nav and footer across all pages.
    Brand: Black #000, Forge Red #990000, White #FFF
+
+   Phase 1 update: Added footer admin link styles.
+   Tightened nav padding for 8-item nav.
    ======================================== */
 
 /* ========== FONTS ========== */
@@ -9,240 +12,256 @@
 
 /* ========== HEADER ========== */
 .azck-header {
-    position: sticky;
-    top: 0;
-    z-index: 1000;
-    background-color: #000;
-    height: 72px;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-    transition: box-shadow 0.3s ease;
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  background-color: #000;
+  height: 72px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  transition: box-shadow 0.3s ease;
 }
 
 .azck-header--scrolled {
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
 }
 
 .azck-header__inner {
-    max-width: 1200px;
-    margin: 0 auto;
-    height: 100%;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    padding: 0 24px;
+  max-width: 1200px;
+  margin: 0 auto;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 24px;
 }
 
 /* Logo */
 .azck-header__logo {
-    font-family: 'Oswald', sans-serif;
-    font-size: 22px;
-    font-weight: 700;
-    color: #FFF;
-    text-decoration: none;
-    text-transform: uppercase;
-    letter-spacing: 0.03em;
-    white-space: nowrap;
-    transition: opacity 0.3s ease;
+  font-family: 'Oswald', sans-serif;
+  font-size: 22px;
+  font-weight: 700;
+  color: #FFF;
+  text-decoration: none;
+  text-transform: uppercase;
+  letter-spacing: 0.03em;
+  white-space: nowrap;
+  transition: opacity 0.3s ease;
 }
 
 .azck-header__logo:hover {
-    opacity: 0.85;
+  opacity: 0.85;
 }
 
 .azck-header__logo span {
-    color: #990000;
+  color: #990000;
 }
 
 /* Navigation */
 .azck-nav {
-    display: flex;
-    align-items: center;
-    gap: 4px;
+  display: flex;
+  align-items: center;
+  gap: 2px;
 }
 
 .azck-nav__link {
-    font-family: 'Oswald', sans-serif;
-    font-size: 14px;
-    font-weight: 500;
-    color: rgba(255, 255, 255, 0.75);
-    text-decoration: none;
-    text-transform: uppercase;
-    letter-spacing: 0.06em;
-    padding: 8px 14px;
-    border-radius: 4px;
-    transition: color 0.3s ease, background-color 0.3s ease;
+  font-family: 'Oswald', sans-serif;
+  font-size: 13px;
+  font-weight: 500;
+  color: rgba(255, 255, 255, 0.75);
+  text-decoration: none;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  padding: 8px 10px;
+  border-radius: 4px;
+  transition: color 0.3s ease, background-color 0.3s ease;
 }
 
 .azck-nav__link:hover {
-    color: #FFF;
-    background-color: rgba(255, 255, 255, 0.08);
+  color: #FFF;
+  background-color: rgba(255, 255, 255, 0.08);
 }
 
 .azck-nav__link--active {
-    color: #FFF;
-    position: relative;
+  color: #FFF;
+  position: relative;
 }
 
 .azck-nav__link--active::after {
-    content: '';
-    position: absolute;
-    bottom: 0;
-    left: 14px;
-    right: 14px;
-    height: 2px;
-    background: #990000;
-    border-radius: 1px;
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 10px;
+  right: 10px;
+  height: 2px;
+  background: #990000;
+  border-radius: 1px;
 }
 
 /* Shop Button */
 .azck-nav__shop {
-    font-family: 'Oswald', sans-serif;
-    font-size: 13px;
-    font-weight: 600;
-    color: #FFF;
-    text-decoration: none;
-    text-transform: uppercase;
-    letter-spacing: 0.06em;
-    padding: 8px 20px;
-    background: #990000;
-    border-radius: 4px;
-    margin-left: 8px;
-    transition: background-color 0.3s ease;
+  font-family: 'Oswald', sans-serif;
+  font-size: 13px;
+  font-weight: 600;
+  color: #FFF;
+  text-decoration: none;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  padding: 8px 20px;
+  background: #990000;
+  border-radius: 4px;
+  margin-left: 8px;
+  transition: background-color 0.3s ease;
 }
 
 .azck-nav__shop:hover {
-    background: #770000;
+  background: #770000;
 }
 
 /* Hamburger Toggle */
 .azck-menu-toggle {
-    display: none;
-    background: none;
-    border: none;
-    cursor: pointer;
-    padding: 8px;
-    z-index: 1001;
+  display: none;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 8px;
+  z-index: 1001;
 }
 
 .azck-menu-toggle span {
-    display: block;
-    width: 24px;
-    height: 2px;
-    background: #FFF;
-    margin: 5px 0;
-    border-radius: 2px;
-    transition: transform 0.3s ease, opacity 0.3s ease;
+  display: block;
+  width: 24px;
+  height: 2px;
+  background: #FFF;
+  margin: 5px 0;
+  border-radius: 2px;
+  transition: transform 0.3s ease, opacity 0.3s ease;
 }
 
 .azck-menu-toggle--active span:nth-child(1) {
-    transform: rotate(45deg) translate(5px, 5px);
+  transform: rotate(45deg) translate(5px, 5px);
 }
 
 .azck-menu-toggle--active span:nth-child(2) {
-    opacity: 0;
+  opacity: 0;
 }
 
 .azck-menu-toggle--active span:nth-child(3) {
-    transform: rotate(-45deg) translate(5px, -5px);
+  transform: rotate(-45deg) translate(5px, -5px);
 }
 
 /* ========== FOOTER ========== */
 .azck-footer {
-    background-color: #000;
-    padding: 24px 24px;
-    border-top: 1px solid #1a1a1a;
+  background-color: #000;
+  padding: 24px 24px;
+  border-top: 1px solid #1a1a1a;
 }
 
 .azck-footer__inner {
-    max-width: 1200px;
-    margin: 0 auto;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    flex-wrap: wrap;
-    gap: 12px;
+  max-width: 1200px;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 12px;
 }
 
 .azck-footer__copy {
-    color: rgba(255, 255, 255, 0.5);
-    font-family: 'Segoe UI', Arial, sans-serif;
-    font-size: 13px;
-    margin: 0;
+  color: rgba(255, 255, 255, 0.5);
+  font-family: 'Segoe UI', Arial, sans-serif;
+  font-size: 13px;
+  margin: 0;
 }
 
 .azck-footer__socials {
-    display: flex;
-    gap: 16px;
-    align-items: center;
+  display: flex;
+  gap: 16px;
+  align-items: center;
 }
 
 .azck-footer__social {
-    color: rgba(255, 255, 255, 0.5);
-    transition: color 0.3s ease;
-    display: flex;
-    align-items: center;
+  color: rgba(255, 255, 255, 0.5);
+  transition: color 0.3s ease;
+  display: flex;
+  align-items: center;
 }
 
 .azck-footer__social:hover {
-    color: #990000;
+  color: #990000;
+}
+
+/* Admin Link — subtle, right side */
+.azck-footer__admin {
+  font-family: 'Oswald', sans-serif;
+  font-size: 11px;
+  font-weight: 400;
+  color: rgba(255, 255, 255, 0.2);
+  text-decoration: none;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  transition: color 0.3s ease;
+}
+
+.azck-footer__admin:hover {
+  color: rgba(255, 255, 255, 0.5);
 }
 
 /* ========== RESPONSIVE ========== */
 @media (max-width: 768px) {
-    .azck-header__inner {
-        padding: 0 16px;
-    }
+  .azck-header__inner {
+    padding: 0 16px;
+  }
 
-    .azck-menu-toggle {
-        display: block;
-    }
+  .azck-menu-toggle {
+    display: block;
+  }
 
-    .azck-nav {
-        display: none;
-        position: absolute;
-        top: 72px;
-        left: 0;
-        right: 0;
-        background: #000;
-        flex-direction: column;
-        padding: 8px 0 16px;
-        border-top: 1px solid #1a1a1a;
-        box-shadow: 0 8px 24px rgba(0, 0, 0, 0.4);
-    }
+  .azck-nav {
+    display: none;
+    position: absolute;
+    top: 72px;
+    left: 0;
+    right: 0;
+    background: #000;
+    flex-direction: column;
+    padding: 8px 0 16px;
+    border-top: 1px solid #1a1a1a;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.4);
+  }
 
-    .azck-nav--open {
-        display: flex;
-    }
+  .azck-nav--open {
+    display: flex;
+  }
 
-    .azck-nav__link {
-        padding: 12px 24px;
-        font-size: 15px;
-        border-radius: 0;
-    }
+  .azck-nav__link {
+    padding: 12px 24px;
+    font-size: 15px;
+    border-radius: 0;
+  }
 
-    .azck-nav__link--active::after {
-        left: 24px;
-        right: auto;
-        width: 3px;
-        height: auto;
-        top: 12px;
-        bottom: 12px;
-    }
+  .azck-nav__link--active::after {
+    left: 24px;
+    right: auto;
+    width: 3px;
+    height: auto;
+    top: 12px;
+    bottom: 12px;
+  }
 
-    .azck-nav__shop {
-        margin: 8px 24px 0;
-        text-align: center;
-    }
+  .azck-nav__shop {
+    margin: 8px 24px 0;
+    text-align: center;
+  }
 
-    .azck-footer__inner {
-        flex-direction: column;
-        text-align: center;
-        gap: 16px;
-    }
+  .azck-footer__inner {
+    flex-direction: column;
+    text-align: center;
+    gap: 16px;
+  }
 }
 
 @media (max-width: 480px) {
-    .azck-header__logo {
-        font-size: 18px;
-    }
+  .azck-header__logo {
+    font-size: 18px;
+  }
 }
