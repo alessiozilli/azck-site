@@ -6,12 +6,12 @@
     <title>QuadFang | AZ Custom Knives Ltd.</title>
     <meta name="description" content="QuadFang — purpose-built broadheads for ethical hunters. Precision engineered for a clean kill. Built to Kill Clean.">
     <link rel="stylesheet" href="../css/style.css">
-    <link rel="stylesheet" href="../css/components.css">
-    <link rel="icon" href="../images/favicon.ico" type="image/x-icon">
+    <link rel="icon" href="images-quadfang/qf-emblem.png" type="image/png">
     <style>
-        /* QuadFang Dark Overrides */
+        /* QuadFang dark body + section overrides. Header stays canonical — identical black bar across whole site. */
         body { background: #0A0A0A; color: #E0E0E0; }
         .section--dark { background: #111; }
+        .footer { background: #050505; }
 
         .product-grid {
             display: grid;
@@ -90,14 +90,29 @@
 </head>
 <body>
 
-    <div id="site-header"></div>
+    <!-- HEADER — canonical, identical across all pages. Only .active marker changes per page. -->
+    <header class="header" id="header">
+        <div class="header__inner">
+            <a href="../index.html" class="header__logo-text">AZ Custom <span>Knives</span></a>
+            <nav class="nav" id="nav">
+                <a href="booking.html#classes" class="nav__link" data-page="classes">Classes</a>
+                <a href="booking.html#services" class="nav__link" data-page="services">Services</a>
+                <a href="portfolio.html" class="nav__link" data-page="portfolio">Portfolio</a>
+                <a href="quadfang.html" class="nav__link active" data-page="quadfang">QuadFang</a>
+                <a href="about.html" class="nav__link" data-page="about">About</a>
+                <a href="contact.html" class="nav__link" data-page="contact">Contact</a>
+                <a href="https://shop.azcustomknives.com" class="btn btn--primary btn--small" target="_blank" rel="noopener">Shop</a>
+            </nav>
+            <button class="menu-toggle" aria-label="Menu"><span></span><span></span><span></span></button>
+        </div>
+    </header>
 
     <!-- HERO -->
     <section class="hero" style="min-height: 80vh;">
         <div class="hero__bg" style="background: linear-gradient(180deg, #0A0A0A 0%, #1a1a1a 50%, #0A0A0A 100%);"></div>
         <div class="hero__content" style="max-width: 800px;">
             <div style="margin-bottom: 24px;">
-                <img src="../images/quadfang/qf-logo.png" alt="QuadFang Broadheads by AZ" style="max-width: 360px; width: 100%; height: auto; margin: 0 auto; display: block; filter: drop-shadow(0 4px 24px rgba(0,0,0,0.6));" loading="lazy">
+                <img src="images-quadfang/qf-logo.png" alt="QuadFang Broadheads by AZ" style="max-width: 360px; width: 100%; height: auto; margin: 0 auto; display: block; filter: drop-shadow(0 4px 24px rgba(0,0,0,0.6));" loading="lazy">
             </div>
             <p style="font-family: 'Oswald', sans-serif; font-size: 1.3rem; letter-spacing: 0.15em; text-transform: uppercase; color: rgba(255,255,255,0.8); margin-bottom: 24px;">Built to Kill Clean.</p>
             <p class="hero__desc" style="color: rgba(255,255,255,0.6);">Purpose-built broadheads for ethical hunters who demand precision, durability, and a clean kill.</p>
@@ -105,7 +120,7 @@
                 <a href="https://quadfang.com" class="btn btn--white-outline" target="_blank" rel="noopener">Shop QuadFang</a>
             </div>
             <div style="margin-top: 40px;">
-                <img src="../images/quadfang/qf-render-v1.png" alt="QuadFang broadhead render" style="max-width: 500px; width: 100%; height: auto; margin: 0 auto; display: block; filter: drop-shadow(0 8px 40px rgba(0,0,0,0.6));" loading="lazy">
+                <img src="images-quadfang/qf-render-v1.png" alt="QuadFang broadhead render" style="max-width: 500px; width: 100%; height: auto; margin: 0 auto; display: block; filter: drop-shadow(0 8px 40px rgba(0,0,0,0.6));" loading="lazy">
             </div>
         </div>
     </section>
@@ -122,7 +137,7 @@
             <div class="product-grid fade-in">
                 <div class="product-card">
                     <div class="product-card__image">
-                        <img src="../images/quadfang/qf-product-side.png" alt="QuadFang 100 grain broadhead" loading="lazy">
+                        <img src="images-quadfang/qf-product-side.png" alt="QuadFang 100 grain broadhead" loading="lazy">
                     </div>
                     <span class="product-card__status product-card__status--coming-soon">Coming Soon</span>
                     <p class="product-card__name">QF 100</p>
@@ -132,7 +147,7 @@
                 </div>
                 <div class="product-card">
                     <div class="product-card__image">
-                        <img src="../images/quadfang/qf-render-v1.png" alt="QuadFang 125 grain broadhead" loading="lazy">
+                        <img src="images-quadfang/qf-render-v1.png" alt="QuadFang 125 grain broadhead" loading="lazy">
                     </div>
                     <span class="product-card__status product-card__status--future">Future Release</span>
                     <p class="product-card__name">QF 125</p>
@@ -142,7 +157,7 @@
                 </div>
                 <div class="product-card">
                     <div class="product-card__image">
-                        <img src="../images/quadfang/qf-product-back.png" alt="QuadFang 150 grain broadhead" loading="lazy">
+                        <img src="images-quadfang/qf-product-back.png" alt="QuadFang 150 grain broadhead" loading="lazy">
                     </div>
                     <span class="product-card__status product-card__status--future">Future Release</span>
                     <p class="product-card__name">QF 150</p>
@@ -152,7 +167,7 @@
                 </div>
                 <div class="product-card">
                     <div class="product-card__image">
-                        <img src="../images/quadfang/qf-emblem-shine.png" alt="QuadFang SaberTooth — Premium Series" loading="lazy">
+                        <img src="images-quadfang/qf-emblem-shine.png" alt="QuadFang SaberTooth — Premium Series" loading="lazy">
                     </div>
                     <span class="product-card__status product-card__status--future">Future Release</span>
                     <p class="product-card__name">SaberTooth</p>
@@ -197,9 +212,49 @@
         </div>
     </section>
 
-    <div id="site-footer"></div>
+    <!-- FOOTER — canonical, matches index.html -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer__grid">
+                <div>
+                    <p class="header__logo-text" style="margin-bottom: 16px; font-size: 1.2rem;">AZ Custom <span>Knives</span></p>
+                    <p class="footer__text">Swiss-trained craftsmanship in the heart of Alberta. Custom knives, artistic blacksmithing, professional sharpening, and hands-on classes.</p>
+                </div>
+                <div>
+                    <p class="footer__heading">Navigate</p>
+                    <a href="booking.html#classes" class="footer__link">Classes</a>
+                    <a href="booking.html#services" class="footer__link">Services</a>
+                    <a href="portfolio.html" class="footer__link">Portfolio</a>
+                    <a href="quadfang.html" class="footer__link">QuadFang</a>
+                    <a href="about.html" class="footer__link">About</a>
+                    <a href="https://shop.azcustomknives.com" class="footer__link" target="_blank" rel="noopener">Shop</a>
+                </div>
+                <div>
+                    <p class="footer__heading">Quick Links</p>
+                    <a href="booking.html#sharpening" class="footer__link">Knife Sharpening</a>
+                    <a href="booking.html#engraving" class="footer__link">Laser Engraving</a>
+                    <a href="gift-certificates.html" class="footer__link">Gift Certificates</a>
+                    <a href="contact.html" class="footer__link">Custom Projects</a>
+                </div>
+                <div>
+                    <p class="footer__heading">Contact</p>
+                    <p class="footer__text">9602 115 Street #104<br>Grande Prairie, AB T8V 5W2</p>
+                    <p class="footer__text" style="margin-top: 8px;">(780) 831-2987</p>
+                    <a href="mailto:admin@azcustomknives.com" class="footer__link" style="margin-top: 4px;">admin@azcustomknives.com</a>
+                </div>
+            </div>
+            <div class="footer__bottom">
+                <p>&copy; 2026 AZ Custom Knives Ltd. All rights reserved.</p>
+                <div class="footer__socials">
+                    <a href="https://www.facebook.com/azcustomknives" target="_blank" rel="noopener" aria-label="Facebook">FB</a>
+                    <a href="https://www.instagram.com/az_custom_knives" target="_blank" rel="noopener" aria-label="Instagram">IG</a>
+                    <a href="https://www.youtube.com/channel/UCAV8Nd33PnuLJ8TRjyv20JA" target="_blank" rel="noopener" aria-label="YouTube">YT</a>
+                    <a href="https://command.azcustomknives.com" class="footer__admin" aria-label="Admin">Admin</a>
+                </div>
+            </div>
+        </div>
+    </footer>
 
-    <script src="../js/components.js"></script>
     <script src="../js/main.js"></script>
 </body>
 </html>

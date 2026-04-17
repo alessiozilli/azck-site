@@ -3,24 +3,24 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Knife Making Workshop | AZ Custom Knives Ltd.</title>
-    <meta name="description" content="Full-day knife making workshop in Grande Prairie, Alberta. 1-on-1, group, or after-hours formats. Build your own knife from raw steel with a Swiss-trained Journeyman Artistic Blacksmith.">
+    <title data-bind="meta.title">Knife Making Workshop | AZ Custom Knives Ltd.</title>
+    <meta name="description" data-bind-attr="meta.description" content="Full-day knife making workshop in Grande Prairie, Alberta. 1-on-1, group, or after-hours formats. Build your own knife from raw steel with a Swiss-trained Journeyman Artistic Blacksmith.">
     <link rel="stylesheet" href="../css/style.css">
     <link rel="icon" href="../images/favicon.ico" type="image/x-icon">
 </head>
 <body>
 
-    <!-- HEADER -->
-    <header class="header">
+    <!-- HEADER — canonical, identical across all pages. Only .active marker changes per page. -->
+    <header class="header" id="header">
         <div class="header__inner">
             <a href="../index.html" class="header__logo-text">AZ Custom <span>Knives</span></a>
-            <nav class="nav">
-                <a href="../index.html" class="nav__link">Home</a>
-                <a href="about.html" class="nav__link">About</a>
-                <a href="classes.html" class="nav__link active">Classes & Services</a>
-                <a href="portfolio.html" class="nav__link">Portfolio</a>
-                <a href="quadfang.html" class="nav__link">QuadFang</a>
-                <a href="contact.html" class="nav__link">Contact</a>
+            <nav class="nav" id="nav">
+                <a href="booking.html#classes" class="nav__link active" data-page="classes">Classes</a>
+                <a href="booking.html#services" class="nav__link" data-page="services">Services</a>
+                <a href="portfolio.html" class="nav__link" data-page="portfolio">Portfolio</a>
+                <a href="quadfang.html" class="nav__link" data-page="quadfang">QuadFang</a>
+                <a href="about.html" class="nav__link" data-page="about">About</a>
+                <a href="contact.html" class="nav__link" data-page="contact">Contact</a>
                 <a href="https://shop.azcustomknives.com" class="btn btn--primary btn--small" target="_blank" rel="noopener">Shop</a>
             </nav>
             <button class="menu-toggle" aria-label="Menu"><span></span><span></span><span></span></button>
@@ -29,11 +29,11 @@
 
     <!-- HERO -->
     <section class="hero" style="min-height: 50vh;">
-        <div class="hero__bg" style="background: linear-gradient(135deg, #1a1a1a 0%, #2a1a1a 50%, #1a1a1a 100%);"></div>
+        <div class="hero__bg" data-bg-bind="hero.bgGradient" style="background: linear-gradient(135deg, #1a1a1a 0%, #2a1a1a 50%, #1a1a1a 100%);"></div>
         <div class="hero__overlay"></div>
         <div class="hero__content">
-            <p class="hero__subtitle">Full Workshop</p>
-            <h1 class="hero__title">Knife Making</h1>
+            <p class="hero__subtitle" data-bind="hero.subtitle">Full Workshop</p>
+            <h1 class="hero__title" data-bind="hero.title">Knife Making</h1>
         </div>
     </section>
 
@@ -44,93 +44,60 @@
                 <div style="width:100%;max-width:600px;aspect-ratio:4/3;background:linear-gradient(160deg,#0d0d0d 0%,#1a1a1a 40%,#1f1210 100%);display:flex;flex-direction:column;align-items:center;justify-content:center;position:relative;overflow:hidden;border:1px solid rgba(153,0,0,0.3);">
                     <div style="position:absolute;top:0;left:0;right:0;height:3px;background:linear-gradient(90deg,transparent 0%,#990000 50%,transparent 100%);"></div>
                     <div style="display:flex;gap:28px;align-items:center;margin-bottom:20px;">
-                        <span style="font-size:2.8rem;opacity:0.55;">⚙️</span>
-                        <span style="font-size:4.5rem;filter:drop-shadow(0 4px 12px rgba(153,0,0,0.3));">🗡️</span>
+                        <span data-bind="previewCard.emojis.0" style="font-size:2.8rem;opacity:0.55;">⚙️</span>
+                        <span data-bind="previewCard.emojis.1" style="font-size:4.5rem;filter:drop-shadow(0 4px 12px rgba(153,0,0,0.3));">🗡️</span>
                     </div>
                     <div style="width:60px;height:1px;background:linear-gradient(90deg,transparent,#78909C,transparent);margin:14px 0;"></div>
-                    <span style="font-family:'Oswald',sans-serif;font-weight:300;font-size:0.8rem;letter-spacing:0.25em;color:#78909C;text-transform:uppercase;">Full Workshop</span>
-                    <span style="font-family:'Oswald',sans-serif;font-weight:400;font-size:1.1rem;letter-spacing:0.15em;color:#990000;text-transform:uppercase;margin-top:8px;">Knife Making</span>
+                    <span data-bind="previewCard.label" style="font-family:'Oswald',sans-serif;font-weight:300;font-size:0.8rem;letter-spacing:0.25em;color:#78909C;text-transform:uppercase;">Full Workshop</span>
+                    <span data-bind="previewCard.tagline" style="font-family:'Oswald',sans-serif;font-weight:400;font-size:1.1rem;letter-spacing:0.15em;color:#990000;text-transform:uppercase;margin-top:8px;">Knife Making</span>
                 </div>
             </div>
 
             <div class="section__header">
-                <h2>Build Your Own Knife</h2>
+                <h2 data-bind="overview.heading">Build Your Own Knife</h2>
                 <div class="section__line"></div>
-                <p>Shape raw steel into a finished blade in one day, guided by a Swiss-trained Journeyman Artistic Blacksmith. Walk in empty-handed, walk out with a one-of-a-kind knife you made yourself.</p>
+                <p data-bind="overview.intro">Shape raw steel into a finished blade in one day, guided by a Swiss-trained Journeyman Artistic Blacksmith. Walk in empty-handed, walk out with a one-of-a-kind knife you made yourself.</p>
             </div>
 
-            <div class="grid grid--3" style="margin-top: 32px;">
-                <div style="padding: 32px; background: var(--white); box-shadow: var(--shadow-sm); text-align: center;">
-                    <h3 style="color: var(--forge-red); margin-bottom: 12px;">Forge & Grind</h3>
-                    <p style="color: var(--text-light);">Heat, shape, and grind the blade. Learn bevel geometry, heat treatment, and the finishing steps that turn steel into an edge.</p>
-                </div>
-                <div style="padding: 32px; background: var(--white); box-shadow: var(--shadow-sm); text-align: center;">
-                    <h3 style="color: var(--forge-red); margin-bottom: 12px;">Handle Work</h3>
-                    <p style="color: var(--text-light);">Select your handle material, shape the scales, and fit them to the tang. The part that makes the knife yours.</p>
-                </div>
-                <div style="padding: 32px; background: var(--white); box-shadow: var(--shadow-sm); text-align: center;">
-                    <h3 style="color: var(--forge-red); margin-bottom: 12px;">Take It Home</h3>
-                    <p style="color: var(--text-light);">Your finished, sharpened knife goes home with you the same day. One-of-a-kind, made by your own hands.</p>
-                </div>
+            <div class="grid grid--3" data-render="overview.cards" style="margin-top: 32px;">
+                <!-- overview cards rendered from JSON -->
             </div>
         </div>
     </section>
 
-    <!-- FORMATS -->
-    <section class="section section--gray">
+    <!-- OFFERINGS (optional — hidden if empty) -->
+    <section class="section section--gray" data-show-if="offerings.items">
         <div class="container" style="max-width: 900px;">
             <div class="section__header">
-                <h2>Three Ways to Book</h2>
+                <h2 data-bind="offerings.heading">Three Ways to Book</h2>
                 <div class="section__line"></div>
-                <p>Pick the format that fits your schedule and your group.</p>
+                <p data-bind="offerings.intro"></p>
             </div>
-            <div class="grid grid--3" style="margin-top: 32px;">
-                <div style="padding: 32px; background: var(--white); box-shadow: var(--shadow-sm);">
-                    <p class="card__tag">The Premium Experience</p>
-                    <h3 style="color: var(--forge-red); margin: 8px 0 12px;">1-on-1</h3>
-                    <p style="color: var(--text-light);">Private full-day session. Your vision, your steel, your knife. Choose 1084, 80CrV2, or upgrade to Damascus VG10.</p>
-                </div>
-                <div style="padding: 32px; background: var(--white); box-shadow: var(--shadow-sm);">
-                    <p class="card__tag">Shared Experience</p>
-                    <h3 style="color: var(--forge-red); margin: 8px 0 12px;">Group Class</h3>
-                    <p style="color: var(--text-light);">2–5 people. Pre-made blanks. Everyone finishes a knife by end of day.</p>
-                </div>
-                <div style="padding: 32px; background: var(--white); box-shadow: var(--shadow-sm);">
-                    <p class="card__tag">Can't Take a Full Day Off?</p>
-                    <h3 style="color: var(--forge-red); margin: 8px 0 12px;">After Hours Program</h3>
-                    <p style="color: var(--text-light);">3–5 people. Six evening sessions over three weeks. Same knife, same result — spread across evenings.</p>
-                </div>
+            <div class="grid grid--3" data-render="offerings.items" style="margin-top: 32px;">
+                <!-- offering cards rendered from JSON -->
             </div>
         </div>
     </section>
 
-    <!-- COURSE DETAILS -->
+    <!-- DETAILS -->
     <section class="section">
         <div class="container" style="max-width: 800px;">
             <div class="section__header">
-                <h2>Course Details</h2>
+                <h2 data-bind="details.heading">Course Details</h2>
                 <div class="section__line"></div>
             </div>
-            <div class="grid grid--2" style="margin-top: 32px;">
-                <div style="padding: 24px; background: var(--white); box-shadow: var(--shadow-sm);">
-                    <p class="card__tag">Duration</p>
-                    <p style="color: var(--text-light); margin-top: 8px;">Full day — 10 hours (1-on-1 or group)</p>
-                </div>
-                <div style="padding: 24px; background: var(--white); box-shadow: var(--shadow-sm);">
-                    <p class="card__tag">Included Steel</p>
-                    <p style="color: var(--text-light); margin-top: 8px;">1084 or 80CrV2 carbon steel</p>
-                </div>
-                <div style="padding: 24px; background: var(--white); box-shadow: var(--shadow-sm);">
-                    <p class="card__tag">Premium Upgrade</p>
-                    <p style="color: var(--text-light); margin-top: 8px;">Damascus VG10 — bar sizes from $100</p>
-                </div>
-                <div style="padding: 24px; background: var(--white); box-shadow: var(--shadow-sm);">
-                    <p class="card__tag">Location</p>
-                    <p style="color: var(--text-light); margin-top: 8px;">AZCK Shop, Grande Prairie</p>
-                </div>
+            <div class="grid grid--2" data-render="details.items" style="margin-top: 32px;">
+                <!-- detail rows rendered from JSON -->
             </div>
-            <div style="margin-top: 24px; padding: 20px 24px; background: #f7f3ed; border-left: 4px solid var(--forge-red); font-size: 0.95rem; color: var(--text-light);">
-                <strong>The promise:</strong> A basic knife is always finishable in one 10-hour day with 1084 or 80CrV2. Want CruWear or MagnaCut? We'll plan that in a free consultation after booking.
+        </div>
+    </section>
+
+    <!-- CALLOUT (optional) -->
+    <section class="section section--gray" data-show-if="callout.heading">
+        <div class="container" style="max-width: 800px;">
+            <div style="padding: 36px; background: var(--white); border-left: 4px solid var(--forge-red); box-shadow: var(--shadow-sm);">
+                <h3 data-bind="callout.heading" style="color: var(--forge-red); margin-bottom: 12px;"></h3>
+                <p data-bind="callout.body" style="color: var(--text-light);"></p>
             </div>
         </div>
     </section>
@@ -138,33 +105,34 @@
     <!-- CTA -->
     <section class="section" style="background: linear-gradient(135deg, #990000 0%, #660000 100%);">
         <div class="container" style="text-align: center;">
-            <h2 style="color: #fff; margin-bottom: 16px;">Ready to build your own knife?</h2>
-            <p style="color: rgba(255,255,255,0.85); max-width: 500px; margin: 0 auto 28px;">Pick your format, choose your steel, book your day at the forge.</p>
-            <a href="booking.html#knifemaking" class="btn btn--white-outline">Book Knife Making</a>
+            <h2 data-bind="cta.heading" style="color: #fff; margin-bottom: 16px;">Ready to build your own knife?</h2>
+            <p data-bind="cta.body" style="color: rgba(255,255,255,0.85); max-width: 500px; margin: 0 auto 28px;">Pick your format, choose your steel, book your day at the forge.</p>
+            <a data-bind-href="cta.bookingHref" data-bind="cta.buttonText" href="booking.html#knifemaking" class="btn btn--white-outline">Book Knife Making</a>
         </div>
     </section>
 
-    <!-- FOOTER -->
+    <!-- FOOTER — canonical, matches index.html -->
     <footer class="footer">
         <div class="container">
             <div class="footer__grid">
                 <div>
                     <p class="header__logo-text" style="margin-bottom: 16px; font-size: 1.2rem;">AZ Custom <span>Knives</span></p>
-                    <p class="footer__text">Swiss-trained craftsmanship in the heart of Alberta.</p>
+                    <p class="footer__text">Swiss-trained craftsmanship in the heart of Alberta. Custom knives, artistic blacksmithing, professional sharpening, and hands-on classes.</p>
                 </div>
                 <div>
                     <p class="footer__heading">Navigate</p>
-                    <a href="about.html" class="footer__link">About</a>
-                    <a href="classes.html" class="footer__link">Classes & Services</a>
+                    <a href="booking.html#classes" class="footer__link">Classes</a>
+                    <a href="booking.html#services" class="footer__link">Services</a>
                     <a href="portfolio.html" class="footer__link">Portfolio</a>
                     <a href="quadfang.html" class="footer__link">QuadFang</a>
-                    <a href="https://shop.azcustomknives.com" class="footer__link" target="_blank">Shop</a>
+                    <a href="about.html" class="footer__link">About</a>
+                    <a href="https://shop.azcustomknives.com" class="footer__link" target="_blank" rel="noopener">Shop</a>
                 </div>
                 <div>
-                    <p class="footer__heading">Services</p>
-                    <a href="classes.html#sharpening" class="footer__link">Knife Sharpening</a>
-                    <a href="classes.html#classes" class="footer__link">Classes</a>
-                    <a href="classes.html#restorations" class="footer__link">Restorations</a>
+                    <p class="footer__heading">Quick Links</p>
+                    <a href="booking.html#sharpening" class="footer__link">Knife Sharpening</a>
+                    <a href="booking.html#engraving" class="footer__link">Laser Engraving</a>
+                    <a href="gift-certificates.html" class="footer__link">Gift Certificates</a>
                     <a href="contact.html" class="footer__link">Custom Projects</a>
                 </div>
                 <div>
@@ -177,14 +145,192 @@
             <div class="footer__bottom">
                 <p>&copy; 2026 AZ Custom Knives Ltd. All rights reserved.</p>
                 <div class="footer__socials">
-                    <a href="https://www.facebook.com/azcustomknives" target="_blank" rel="noopener">FB</a>
-                    <a href="https://www.instagram.com/az_custom_knives" target="_blank" rel="noopener">IG</a>
-                    <a href="https://www.youtube.com/channel/UCAV8Nd33PnuLJ8TRjyv20JA" target="_blank" rel="noopener">YT</a>
+                    <a href="https://www.facebook.com/azcustomknives" target="_blank" rel="noopener" aria-label="Facebook">FB</a>
+                    <a href="https://www.instagram.com/az_custom_knives" target="_blank" rel="noopener" aria-label="Instagram">IG</a>
+                    <a href="https://www.youtube.com/channel/UCAV8Nd33PnuLJ8TRjyv20JA" target="_blank" rel="noopener" aria-label="YouTube">YT</a>
                     <a href="https://command.azcustomknives.com" class="footer__admin" aria-label="Admin">Admin</a>
                 </div>
             </div>
         </div>
     </footer>
+
+    <!-- DATA BLOCK — edit JSON below to change page content. -->
+    <script id="preview-data" type="application/json">
+    {
+        "meta": {
+            "title": "Knife Making Workshop | AZ Custom Knives Ltd.",
+            "description": "Full-day knife making workshop in Grande Prairie, Alberta. 1-on-1, group, or after-hours formats. Build your own knife from raw steel with a Swiss-trained Journeyman Artistic Blacksmith."
+        },
+        "hero": {
+            "subtitle": "Full Workshop",
+            "title": "Knife Making",
+            "bgGradient": "linear-gradient(135deg, #1a1a1a 0%, #2a1a1a 50%, #1a1a1a 100%)"
+        },
+        "previewCard": {
+            "emojis": ["⚙️", "🗡️"],
+            "label": "Full Workshop",
+            "tagline": "Knife Making"
+        },
+        "overview": {
+            "heading": "Build Your Own Knife",
+            "intro": "Shape raw steel into a finished blade in one day, guided by a Swiss-trained Journeyman Artistic Blacksmith. Walk in empty-handed, walk out with a one-of-a-kind knife you made yourself.",
+            "cards": [
+                {
+                    "title": "Forge & Grind",
+                    "body": "Heat, shape, and grind the blade. Learn bevel geometry, heat treatment, and the finishing steps that turn steel into an edge."
+                },
+                {
+                    "title": "Handle Work",
+                    "body": "Select your handle material, shape the scales, and fit them to the tang. The part that makes the knife yours."
+                },
+                {
+                    "title": "Take It Home",
+                    "body": "Your finished, sharpened knife goes home with you the same day. One-of-a-kind, made by your own hands."
+                }
+            ]
+        },
+        "offerings": {
+            "heading": "Three Ways to Book",
+            "intro": "Pick the format that fits your schedule and your group.",
+            "items": [
+                {
+                    "tag": "The Premium Experience",
+                    "title": "1-on-1",
+                    "description": "Private full-day session. Your vision, your steel, your knife. Choose 1084, 80CrV2, or upgrade to Damascus VG10."
+                },
+                {
+                    "tag": "Shared Experience",
+                    "title": "Group Class",
+                    "description": "2–5 people. Pre-made blanks. Everyone finishes a knife by end of day."
+                },
+                {
+                    "tag": "Can't Take a Full Day Off?",
+                    "title": "After Hours Program",
+                    "description": "3–5 people. Six evening sessions over three weeks. Same knife, same result — spread across evenings."
+                }
+            ]
+        },
+        "details": {
+            "heading": "Course Details",
+            "items": [
+                { "label": "Duration", "value": "Full day — 10 hours (1-on-1 or group)" },
+                { "label": "Included Steel", "value": "1084 or 80CrV2 carbon steel" },
+                { "label": "Premium Upgrade", "value": "Damascus VG10 — bar sizes from $100" },
+                { "label": "Location", "value": "AZCK Shop, Grande Prairie" }
+            ]
+        },
+        "callout": {
+            "heading": "The promise",
+            "body": "A basic knife is always finishable in one 10-hour day with 1084 or 80CrV2. Want CruWear or MagnaCut? We'll plan that in a free consultation after booking."
+        },
+        "cta": {
+            "heading": "Ready to build your own knife?",
+            "body": "Pick your format, choose your steel, book your day at the forge.",
+            "buttonText": "Book Knife Making",
+            "bookingHref": "booking.html#knifemaking"
+        }
+    }
+    </script>
+
+    <!-- RENDERER — shared across all preview pages. -->
+    <script>
+    (function(){
+        'use strict';
+        var raw = document.getElementById('preview-data');
+        if (!raw) return;
+        var data;
+        try { data = JSON.parse(raw.textContent); }
+        catch (e) { console.error('preview-data JSON parse error:', e); return; }
+
+        function get(path) {
+            if (!path) return undefined;
+            var parts = path.split('.');
+            var val = data;
+            for (var i = 0; i < parts.length; i++) {
+                if (val == null) return undefined;
+                val = val[parts[i]];
+            }
+            return val;
+        }
+
+        function isEmpty(v){
+            if (v == null) return true;
+            if (Array.isArray(v)) return v.length === 0;
+            if (typeof v === 'string') return v.trim() === '';
+            return false;
+        }
+
+        document.querySelectorAll('[data-bind]').forEach(function(el){
+            var val = get(el.getAttribute('data-bind'));
+            if (val !== undefined && val !== null) el.textContent = val;
+        });
+
+        document.querySelectorAll('[data-bind-attr]').forEach(function(el){
+            var val = get(el.getAttribute('data-bind-attr'));
+            if (val !== undefined && val !== null) el.setAttribute('content', val);
+        });
+
+        document.querySelectorAll('[data-bind-href]').forEach(function(el){
+            var val = get(el.getAttribute('data-bind-href'));
+            if (val) el.setAttribute('href', val);
+        });
+
+        document.querySelectorAll('[data-bg-bind]').forEach(function(el){
+            var val = get(el.getAttribute('data-bg-bind'));
+            if (val) el.style.background = val;
+        });
+
+        if (data.meta && data.meta.title) document.title = data.meta.title;
+
+        document.querySelectorAll('[data-render="overview.cards"]').forEach(function(container){
+            var items = get('overview.cards') || [];
+            container.innerHTML = items.map(function(c){
+                return '<div style="padding: 32px; background: var(--white); box-shadow: var(--shadow-sm); text-align: center;">'
+                    + '<h3 style="color: var(--forge-red); margin-bottom: 12px;">' + escapeHtml(c.title) + '</h3>'
+                    + '<p style="color: var(--text-light);">' + escapeHtml(c.body) + '</p>'
+                    + '</div>';
+            }).join('');
+        });
+
+        document.querySelectorAll('[data-render="offerings.items"]').forEach(function(container){
+            var items = get('offerings.items') || [];
+            container.innerHTML = items.map(function(o){
+                var tagLine = o.tag ? '<p class="card__tag">' + escapeHtml(o.tag) + '</p>' : '';
+                var priceLine = o.price
+                    ? '<p style="color: var(--forge-red); font-weight: 600; margin-top: 14px; font-family: \'Oswald\', sans-serif; letter-spacing: 0.05em;">' + escapeHtml(o.price) + '</p>'
+                    : '';
+                return '<div style="padding: 28px; background: var(--white); box-shadow: var(--shadow-sm); border-top: 3px solid var(--forge-red);">'
+                    + tagLine
+                    + '<h3 style="margin: 8px 0 10px;">' + escapeHtml(o.title) + '</h3>'
+                    + '<p style="color: var(--text-light);">' + escapeHtml(o.description) + '</p>'
+                    + priceLine
+                    + '</div>';
+            }).join('');
+        });
+
+        document.querySelectorAll('[data-render="details.items"]').forEach(function(container){
+            var items = get('details.items') || [];
+            container.innerHTML = items.map(function(d){
+                return '<div style="padding: 24px; background: var(--white); box-shadow: var(--shadow-sm);">'
+                    + '<p class="card__tag">' + escapeHtml(d.label) + '</p>'
+                    + '<p style="color: var(--text-light); margin-top: 8px;">' + escapeHtml(d.value) + '</p>'
+                    + '</div>';
+            }).join('');
+        });
+
+        document.querySelectorAll('[data-show-if]').forEach(function(el){
+            var val = get(el.getAttribute('data-show-if'));
+            if (isEmpty(val)) el.style.display = 'none';
+        });
+
+        function escapeHtml(s){
+            if (s == null) return '';
+            return String(s).replace(/[&<>"']/g, function(c){
+                return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c];
+            });
+        }
+    })();
+    </script>
 
     <script src="../js/main.js"></script>
 </body>

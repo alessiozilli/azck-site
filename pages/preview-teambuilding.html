@@ -3,24 +3,24 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Team Building | AZ Custom Knives Ltd.</title>
-    <meta name="description" content="Corporate team building events at AZ Custom Knives in Grande Prairie, Alberta. Hands-on experiences at the forge — sharpening, blacksmithing, knife making. Catering available.">
+    <title data-bind="meta.title">Team Building | AZ Custom Knives Ltd.</title>
+    <meta name="description" data-bind-attr="meta.description" content="Corporate team building events at AZ Custom Knives in Grande Prairie, Alberta. Hands-on experiences at the forge — sharpening, blacksmithing, knife making. Catering available.">
     <link rel="stylesheet" href="../css/style.css">
     <link rel="icon" href="../images/favicon.ico" type="image/x-icon">
 </head>
 <body>
 
-    <!-- HEADER -->
-    <header class="header">
+    <!-- HEADER — canonical, identical across all pages. Only .active marker changes per page. -->
+    <header class="header" id="header">
         <div class="header__inner">
             <a href="../index.html" class="header__logo-text">AZ Custom <span>Knives</span></a>
-            <nav class="nav">
-                <a href="../index.html" class="nav__link">Home</a>
-                <a href="about.html" class="nav__link">About</a>
-                <a href="classes.html" class="nav__link active">Classes & Services</a>
-                <a href="portfolio.html" class="nav__link">Portfolio</a>
-                <a href="quadfang.html" class="nav__link">QuadFang</a>
-                <a href="contact.html" class="nav__link">Contact</a>
+            <nav class="nav" id="nav">
+                <a href="booking.html#classes" class="nav__link active" data-page="classes">Classes</a>
+                <a href="booking.html#services" class="nav__link" data-page="services">Services</a>
+                <a href="portfolio.html" class="nav__link" data-page="portfolio">Portfolio</a>
+                <a href="quadfang.html" class="nav__link" data-page="quadfang">QuadFang</a>
+                <a href="about.html" class="nav__link" data-page="about">About</a>
+                <a href="contact.html" class="nav__link" data-page="contact">Contact</a>
                 <a href="https://shop.azcustomknives.com" class="btn btn--primary btn--small" target="_blank" rel="noopener">Shop</a>
             </nav>
             <button class="menu-toggle" aria-label="Menu"><span></span><span></span><span></span></button>
@@ -29,11 +29,11 @@
 
     <!-- HERO -->
     <section class="hero" style="min-height: 50vh;">
-        <div class="hero__bg" style="background: linear-gradient(135deg, #1a1a1a 0%, #2a1a1a 50%, #1a1a1a 100%);"></div>
+        <div class="hero__bg" data-bg-bind="hero.bgGradient" style="background: linear-gradient(135deg, #1a1a1a 0%, #2a1a1a 50%, #1a1a1a 100%);"></div>
         <div class="hero__overlay"></div>
         <div class="hero__content">
-            <p class="hero__subtitle">Corporate</p>
-            <h1 class="hero__title">Team Building</h1>
+            <p class="hero__subtitle" data-bind="hero.subtitle">Corporate</p>
+            <h1 class="hero__title" data-bind="hero.title">Team Building</h1>
         </div>
     </section>
 
@@ -44,84 +44,38 @@
                 <div style="width:100%;max-width:600px;aspect-ratio:4/3;background:linear-gradient(160deg,#0d0d0d 0%,#1a1a1a 40%,#1f1210 100%);display:flex;flex-direction:column;align-items:center;justify-content:center;position:relative;overflow:hidden;border:1px solid rgba(153,0,0,0.3);">
                     <div style="position:absolute;top:0;left:0;right:0;height:3px;background:linear-gradient(90deg,transparent 0%,#990000 50%,transparent 100%);"></div>
                     <div style="display:flex;gap:28px;align-items:center;margin-bottom:20px;">
-                        <span style="font-size:2.8rem;opacity:0.55;">🏢</span>
-                        <span style="font-size:4.5rem;filter:drop-shadow(0 4px 12px rgba(153,0,0,0.3));">🤝</span>
-                        <span style="font-size:2.8rem;opacity:0.55;">⚒️</span>
+                        <span data-bind="previewCard.emojis.0" style="font-size:2.8rem;opacity:0.55;">🏢</span>
+                        <span data-bind="previewCard.emojis.1" style="font-size:4.5rem;filter:drop-shadow(0 4px 12px rgba(153,0,0,0.3));">🤝</span>
+                        <span data-bind="previewCard.emojis.2" style="font-size:2.8rem;opacity:0.55;">⚒️</span>
                     </div>
                     <div style="width:60px;height:1px;background:linear-gradient(90deg,transparent,#78909C,transparent);margin:14px 0;"></div>
-                    <span style="font-family:'Oswald',sans-serif;font-weight:300;font-size:0.8rem;letter-spacing:0.25em;color:#78909C;text-transform:uppercase;">Corporate</span>
-                    <span style="font-family:'Oswald',sans-serif;font-weight:400;font-size:1.1rem;letter-spacing:0.15em;color:#990000;text-transform:uppercase;margin-top:8px;">Team Building</span>
+                    <span data-bind="previewCard.label" style="font-family:'Oswald',sans-serif;font-weight:300;font-size:0.8rem;letter-spacing:0.25em;color:#78909C;text-transform:uppercase;">Corporate</span>
+                    <span data-bind="previewCard.tagline" style="font-family:'Oswald',sans-serif;font-weight:400;font-size:1.1rem;letter-spacing:0.15em;color:#990000;text-transform:uppercase;margin-top:8px;">Team Building</span>
                 </div>
             </div>
 
             <div class="section__header">
-                <h2>An Experience Your Team Won't Forget</h2>
+                <h2 data-bind="overview.heading">An Experience Your Team Won't Forget</h2>
                 <div class="section__line"></div>
-                <p>Corporate events, client appreciation days, and team retreats — at the forge. Hands-on, memorable, and nothing like another conference room. Catering available.</p>
+                <p data-bind="overview.intro">Corporate events, client appreciation days, and team retreats — at the forge. Hands-on, memorable, and nothing like another conference room. Catering available.</p>
             </div>
 
-            <div class="grid grid--3" style="margin-top: 32px;">
-                <div style="padding: 32px; background: var(--white); box-shadow: var(--shadow-sm); text-align: center;">
-                    <h3 style="color: var(--forge-red); margin-bottom: 12px;">Hands-On</h3>
-                    <p style="color: var(--text-light);">Every person on your team walks away with something they made themselves. Real steel, real work, real craftsmanship.</p>
-                </div>
-                <div style="padding: 32px; background: var(--white); box-shadow: var(--shadow-sm); text-align: center;">
-                    <h3 style="color: var(--forge-red); margin-bottom: 12px;">Scalable</h3>
-                    <p style="color: var(--text-light);">From intimate 4-person groups to 20-person seminars. Pick the activity, set your headcount, we handle the rest.</p>
-                </div>
-                <div style="padding: 32px; background: var(--white); box-shadow: var(--shadow-sm); text-align: center;">
-                    <h3 style="color: var(--forge-red); margin-bottom: 12px;">Full-Service</h3>
-                    <p style="color: var(--text-light);">Optional catering from Subway, Jeffrey's Cafe Co, or a custom menu. Show up, have a great day, leave with memories.</p>
-                </div>
+            <div class="grid grid--3" data-render="overview.cards" style="margin-top: 32px;">
+                <!-- overview cards rendered from JSON -->
             </div>
         </div>
     </section>
 
-    <!-- ACTIVITIES -->
-    <section class="section section--gray">
+    <!-- OFFERINGS (optional — hidden if empty) -->
+    <section class="section section--gray" data-show-if="offerings.items">
         <div class="container" style="max-width: 900px;">
             <div class="section__header">
-                <h2>Pick Your Activity</h2>
+                <h2 data-bind="offerings.heading">Pick Your Activity</h2>
                 <div class="section__line"></div>
-                <p>Five ways to spend the day at the forge. Pricing is per person.</p>
+                <p data-bind="offerings.intro"></p>
             </div>
-            <div class="grid grid--3" style="margin-top: 32px;">
-                <div style="padding: 32px; background: var(--white); box-shadow: var(--shadow-sm);">
-                    <p class="card__tag">4 Hours · Up to 20 People</p>
-                    <h3 style="color: var(--forge-red); margin: 8px 0 12px;">Sharpening Seminar</h3>
-                    <p style="color: var(--text-light); margin-bottom: 12px;">Everyone learns proper sharpening technique they'll use for life.</p>
-                    <p style="font-family:'Oswald',sans-serif; color: #111; font-weight: 500;">$260 / person</p>
-                </div>
-                <div style="padding: 32px; background: var(--white); box-shadow: var(--shadow-sm);">
-                    <p class="card__tag">5–6 Hours · Up to 15 People</p>
-                    <h3 style="color: var(--forge-red); margin: 8px 0 12px;">Knife Assembly</h3>
-                    <p style="color: var(--text-light); margin-bottom: 12px;">Assemble a real knife from a pre-made blank. Everyone takes one home.</p>
-                    <p style="font-family:'Oswald',sans-serif; color: #111; font-weight: 500;">$450 / person</p>
-                </div>
-                <div style="padding: 32px; background: var(--white); box-shadow: var(--shadow-sm);">
-                    <p class="card__tag">10 Hours · Up to 6 / Day</p>
-                    <h3 style="color: var(--forge-red); margin: 8px 0 12px;">Knife Making</h3>
-                    <p style="color: var(--text-light); margin-bottom: 12px;">The full experience. Forge, grind, handle, sharpen. Start to finish.</p>
-                    <p style="font-family:'Oswald',sans-serif; color: #111; font-weight: 500;">$650 / person</p>
-                </div>
-                <div style="padding: 32px; background: var(--white); box-shadow: var(--shadow-sm);">
-                    <p class="card__tag">4 Hours · Up to 6 People</p>
-                    <h3 style="color: var(--forge-red); margin: 8px 0 12px;">Blacksmithing</h3>
-                    <p style="color: var(--text-light); margin-bottom: 12px;">Hot steel, hammer, anvil. Unforgettable hands-on time at the forge.</p>
-                    <p style="font-family:'Oswald',sans-serif; color: #111; font-weight: 500;">$350 / person</p>
-                </div>
-                <div style="padding: 32px; background: var(--white); box-shadow: var(--shadow-sm);">
-                    <p class="card__tag">2 Hours · Up to 8 People</p>
-                    <h3 style="color: var(--forge-red); margin: 8px 0 12px;">Sheath Making</h3>
-                    <p style="color: var(--text-light); margin-bottom: 12px;">Craft a custom leather or Kydex sheath. Great add-on or standalone.</p>
-                    <p style="font-family:'Oswald',sans-serif; color: #111; font-weight: 500;">$200 / person</p>
-                </div>
-                <div style="padding: 32px; background: var(--white); box-shadow: var(--shadow-sm);">
-                    <p class="card__tag">Optional</p>
-                    <h3 style="color: var(--forge-red); margin: 8px 0 12px;">Catering</h3>
-                    <p style="color: var(--text-light); margin-bottom: 12px;">Subway ($20–$40 pp), Jeffrey's Cafe Co ($40–$70 pp), or custom menu on request.</p>
-                    <p style="font-family:'Oswald',sans-serif; color: #111; font-weight: 500;">Add at booking</p>
-                </div>
+            <div class="grid grid--3" data-render="offerings.items" style="margin-top: 32px;">
+                <!-- offering cards rendered from JSON -->
             </div>
         </div>
     </section>
@@ -130,29 +84,21 @@
     <section class="section">
         <div class="container" style="max-width: 800px;">
             <div class="section__header">
-                <h2>Event Details</h2>
+                <h2 data-bind="details.heading">Event Details</h2>
                 <div class="section__line"></div>
             </div>
-            <div class="grid grid--2" style="margin-top: 32px;">
-                <div style="padding: 24px; background: var(--white); box-shadow: var(--shadow-sm);">
-                    <p class="card__tag">Group Size</p>
-                    <p style="color: var(--text-light); margin-top: 8px;">4–20 people depending on activity</p>
-                </div>
-                <div style="padding: 24px; background: var(--white); box-shadow: var(--shadow-sm);">
-                    <p class="card__tag">Starting From</p>
-                    <p style="color: var(--text-light); margin-top: 8px;">$260 / person</p>
-                </div>
-                <div style="padding: 24px; background: var(--white); box-shadow: var(--shadow-sm);">
-                    <p class="card__tag">Catering</p>
-                    <p style="color: var(--text-light); margin-top: 8px;">Optional — 3 tiers available</p>
-                </div>
-                <div style="padding: 24px; background: var(--white); box-shadow: var(--shadow-sm);">
-                    <p class="card__tag">Location</p>
-                    <p style="color: var(--text-light); margin-top: 8px;">AZCK Shop, Grande Prairie</p>
-                </div>
+            <div class="grid grid--2" data-render="details.items" style="margin-top: 32px;">
+                <!-- detail rows rendered from JSON -->
             </div>
-            <div style="margin-top: 24px; padding: 20px 24px; background: #f7f3ed; border-left: 4px solid var(--forge-red); font-size: 0.95rem; color: var(--text-light);">
-                <strong>Planning something special?</strong> Every team is different. Call or email to customise the agenda, ask questions, or get a feel for the space before booking.
+        </div>
+    </section>
+
+    <!-- CALLOUT (optional) -->
+    <section class="section section--gray" data-show-if="callout.heading">
+        <div class="container" style="max-width: 800px;">
+            <div style="padding: 36px; background: var(--white); border-left: 4px solid var(--forge-red); box-shadow: var(--shadow-sm);">
+                <h3 data-bind="callout.heading" style="color: var(--forge-red); margin-bottom: 12px;"></h3>
+                <p data-bind="callout.body" style="color: var(--text-light);"></p>
             </div>
         </div>
     </section>
@@ -160,33 +106,34 @@
     <!-- CTA -->
     <section class="section" style="background: linear-gradient(135deg, #990000 0%, #660000 100%);">
         <div class="container" style="text-align: center;">
-            <h2 style="color: #fff; margin-bottom: 16px;">Ready to book your team event?</h2>
-            <p style="color: rgba(255,255,255,0.85); max-width: 500px; margin: 0 auto 28px;">Pick your activity, set your headcount, add catering. We handle the rest.</p>
-            <a href="booking.html#teambuilding" class="btn btn--white-outline">Book Team Building</a>
+            <h2 data-bind="cta.heading" style="color: #fff; margin-bottom: 16px;">Ready to book your team event?</h2>
+            <p data-bind="cta.body" style="color: rgba(255,255,255,0.85); max-width: 500px; margin: 0 auto 28px;">Pick your activity, set your headcount, add catering. We handle the rest.</p>
+            <a data-bind-href="cta.bookingHref" data-bind="cta.buttonText" href="booking.html#teambuilding" class="btn btn--white-outline">Book Team Building</a>
         </div>
     </section>
 
-    <!-- FOOTER -->
+    <!-- FOOTER — canonical, matches index.html -->
     <footer class="footer">
         <div class="container">
             <div class="footer__grid">
                 <div>
                     <p class="header__logo-text" style="margin-bottom: 16px; font-size: 1.2rem;">AZ Custom <span>Knives</span></p>
-                    <p class="footer__text">Swiss-trained craftsmanship in the heart of Alberta.</p>
+                    <p class="footer__text">Swiss-trained craftsmanship in the heart of Alberta. Custom knives, artistic blacksmithing, professional sharpening, and hands-on classes.</p>
                 </div>
                 <div>
                     <p class="footer__heading">Navigate</p>
-                    <a href="about.html" class="footer__link">About</a>
-                    <a href="classes.html" class="footer__link">Classes & Services</a>
+                    <a href="booking.html#classes" class="footer__link">Classes</a>
+                    <a href="booking.html#services" class="footer__link">Services</a>
                     <a href="portfolio.html" class="footer__link">Portfolio</a>
                     <a href="quadfang.html" class="footer__link">QuadFang</a>
-                    <a href="https://shop.azcustomknives.com" class="footer__link" target="_blank">Shop</a>
+                    <a href="about.html" class="footer__link">About</a>
+                    <a href="https://shop.azcustomknives.com" class="footer__link" target="_blank" rel="noopener">Shop</a>
                 </div>
                 <div>
-                    <p class="footer__heading">Services</p>
-                    <a href="classes.html#sharpening" class="footer__link">Knife Sharpening</a>
-                    <a href="classes.html#classes" class="footer__link">Classes</a>
-                    <a href="classes.html#restorations" class="footer__link">Restorations</a>
+                    <p class="footer__heading">Quick Links</p>
+                    <a href="booking.html#sharpening" class="footer__link">Knife Sharpening</a>
+                    <a href="booking.html#engraving" class="footer__link">Laser Engraving</a>
+                    <a href="gift-certificates.html" class="footer__link">Gift Certificates</a>
                     <a href="contact.html" class="footer__link">Custom Projects</a>
                 </div>
                 <div>
@@ -199,14 +146,213 @@
             <div class="footer__bottom">
                 <p>&copy; 2026 AZ Custom Knives Ltd. All rights reserved.</p>
                 <div class="footer__socials">
-                    <a href="https://www.facebook.com/azcustomknives" target="_blank" rel="noopener">FB</a>
-                    <a href="https://www.instagram.com/az_custom_knives" target="_blank" rel="noopener">IG</a>
-                    <a href="https://www.youtube.com/channel/UCAV8Nd33PnuLJ8TRjyv20JA" target="_blank" rel="noopener">YT</a>
+                    <a href="https://www.facebook.com/azcustomknives" target="_blank" rel="noopener" aria-label="Facebook">FB</a>
+                    <a href="https://www.instagram.com/az_custom_knives" target="_blank" rel="noopener" aria-label="Instagram">IG</a>
+                    <a href="https://www.youtube.com/channel/UCAV8Nd33PnuLJ8TRjyv20JA" target="_blank" rel="noopener" aria-label="YouTube">YT</a>
                     <a href="https://command.azcustomknives.com" class="footer__admin" aria-label="Admin">Admin</a>
                 </div>
             </div>
         </div>
     </footer>
+
+    <!-- DATA BLOCK — edit JSON below to change page content. -->
+    <script id="preview-data" type="application/json">
+    {
+        "meta": {
+            "title": "Team Building | AZ Custom Knives Ltd.",
+            "description": "Corporate team building events at AZ Custom Knives in Grande Prairie, Alberta. Hands-on experiences at the forge — sharpening, blacksmithing, knife making. Catering available."
+        },
+        "hero": {
+            "subtitle": "Corporate",
+            "title": "Team Building",
+            "bgGradient": "linear-gradient(135deg, #1a1a1a 0%, #2a1a1a 50%, #1a1a1a 100%)"
+        },
+        "previewCard": {
+            "emojis": ["🏢", "🤝", "⚒️"],
+            "label": "Corporate",
+            "tagline": "Team Building"
+        },
+        "overview": {
+            "heading": "An Experience Your Team Won't Forget",
+            "intro": "Corporate events, client appreciation days, and team retreats — at the forge. Hands-on, memorable, and nothing like another conference room. Catering available.",
+            "cards": [
+                {
+                    "title": "Hands-On",
+                    "body": "Every person on your team walks away with something they made themselves. Real steel, real work, real craftsmanship."
+                },
+                {
+                    "title": "Scalable",
+                    "body": "From intimate 4-person groups to 20-person seminars. Pick the activity, set your headcount, we handle the rest."
+                },
+                {
+                    "title": "Full-Service",
+                    "body": "Optional catering from Subway, Jeffrey's Cafe Co, or a custom menu. Show up, have a great day, leave with memories."
+                }
+            ]
+        },
+        "offerings": {
+            "heading": "Pick Your Activity",
+            "intro": "Six ways to spend the day at the forge. Pricing is per person.",
+            "items": [
+                {
+                    "tag": "4 Hours · Up to 20 People",
+                    "title": "Sharpening Seminar",
+                    "description": "Everyone learns proper sharpening technique they'll use for life.",
+                    "price": "$260 / person"
+                },
+                {
+                    "tag": "5–6 Hours · Up to 15 People",
+                    "title": "Knife Assembly",
+                    "description": "Assemble a real knife from a pre-made blank. Everyone takes one home.",
+                    "price": "$450 / person"
+                },
+                {
+                    "tag": "10 Hours · Up to 6 / Day",
+                    "title": "Knife Making",
+                    "description": "The full experience. Forge, grind, handle, sharpen. Start to finish.",
+                    "price": "$650 / person"
+                },
+                {
+                    "tag": "4 Hours · Up to 6 People",
+                    "title": "Blacksmithing",
+                    "description": "Hot steel, hammer, anvil. Unforgettable hands-on time at the forge.",
+                    "price": "$350 / person"
+                },
+                {
+                    "tag": "2 Hours · Up to 8 People",
+                    "title": "Sheath Making",
+                    "description": "Craft a custom leather or Kydex sheath. Great add-on or standalone.",
+                    "price": "$200 / person"
+                },
+                {
+                    "tag": "Optional",
+                    "title": "Catering",
+                    "description": "Subway ($20–$40 pp), Jeffrey's Cafe Co ($40–$70 pp), or custom menu on request.",
+                    "price": "Add at booking"
+                }
+            ]
+        },
+        "details": {
+            "heading": "Event Details",
+            "items": [
+                { "label": "Group Size", "value": "4–20 people depending on activity" },
+                { "label": "Starting From", "value": "$260 / person" },
+                { "label": "Catering", "value": "Optional — 3 tiers available" },
+                { "label": "Location", "value": "AZCK Shop, Grande Prairie" }
+            ]
+        },
+        "callout": {
+            "heading": "Planning something special?",
+            "body": "Every team is different. Call or email to customise the agenda, ask questions, or get a feel for the space before booking."
+        },
+        "cta": {
+            "heading": "Ready to book your team event?",
+            "body": "Pick your activity, set your headcount, add catering. We handle the rest.",
+            "buttonText": "Book Team Building",
+            "bookingHref": "booking.html#teambuilding"
+        }
+    }
+    </script>
+
+    <!-- RENDERER — shared across all preview pages. -->
+    <script>
+    (function(){
+        'use strict';
+        var raw = document.getElementById('preview-data');
+        if (!raw) return;
+        var data;
+        try { data = JSON.parse(raw.textContent); }
+        catch (e) { console.error('preview-data JSON parse error:', e); return; }
+
+        function get(path) {
+            if (!path) return undefined;
+            var parts = path.split('.');
+            var val = data;
+            for (var i = 0; i < parts.length; i++) {
+                if (val == null) return undefined;
+                val = val[parts[i]];
+            }
+            return val;
+        }
+
+        function isEmpty(v){
+            if (v == null) return true;
+            if (Array.isArray(v)) return v.length === 0;
+            if (typeof v === 'string') return v.trim() === '';
+            return false;
+        }
+
+        document.querySelectorAll('[data-bind]').forEach(function(el){
+            var val = get(el.getAttribute('data-bind'));
+            if (val !== undefined && val !== null) el.textContent = val;
+        });
+
+        document.querySelectorAll('[data-bind-attr]').forEach(function(el){
+            var val = get(el.getAttribute('data-bind-attr'));
+            if (val !== undefined && val !== null) el.setAttribute('content', val);
+        });
+
+        document.querySelectorAll('[data-bind-href]').forEach(function(el){
+            var val = get(el.getAttribute('data-bind-href'));
+            if (val) el.setAttribute('href', val);
+        });
+
+        document.querySelectorAll('[data-bg-bind]').forEach(function(el){
+            var val = get(el.getAttribute('data-bg-bind'));
+            if (val) el.style.background = val;
+        });
+
+        if (data.meta && data.meta.title) document.title = data.meta.title;
+
+        document.querySelectorAll('[data-render="overview.cards"]').forEach(function(container){
+            var items = get('overview.cards') || [];
+            container.innerHTML = items.map(function(c){
+                return '<div style="padding: 32px; background: var(--white); box-shadow: var(--shadow-sm); text-align: center;">'
+                    + '<h3 style="color: var(--forge-red); margin-bottom: 12px;">' + escapeHtml(c.title) + '</h3>'
+                    + '<p style="color: var(--text-light);">' + escapeHtml(c.body) + '</p>'
+                    + '</div>';
+            }).join('');
+        });
+
+        document.querySelectorAll('[data-render="offerings.items"]').forEach(function(container){
+            var items = get('offerings.items') || [];
+            container.innerHTML = items.map(function(o){
+                var tagLine = o.tag ? '<p class="card__tag">' + escapeHtml(o.tag) + '</p>' : '';
+                var priceLine = o.price
+                    ? '<p style="color: var(--forge-red); font-weight: 600; margin-top: 14px; font-family: \'Oswald\', sans-serif; letter-spacing: 0.05em;">' + escapeHtml(o.price) + '</p>'
+                    : '';
+                return '<div style="padding: 28px; background: var(--white); box-shadow: var(--shadow-sm); border-top: 3px solid var(--forge-red);">'
+                    + tagLine
+                    + '<h3 style="margin: 8px 0 10px;">' + escapeHtml(o.title) + '</h3>'
+                    + '<p style="color: var(--text-light);">' + escapeHtml(o.description) + '</p>'
+                    + priceLine
+                    + '</div>';
+            }).join('');
+        });
+
+        document.querySelectorAll('[data-render="details.items"]').forEach(function(container){
+            var items = get('details.items') || [];
+            container.innerHTML = items.map(function(d){
+                return '<div style="padding: 24px; background: var(--white); box-shadow: var(--shadow-sm);">'
+                    + '<p class="card__tag">' + escapeHtml(d.label) + '</p>'
+                    + '<p style="color: var(--text-light); margin-top: 8px;">' + escapeHtml(d.value) + '</p>'
+                    + '</div>';
+            }).join('');
+        });
+
+        document.querySelectorAll('[data-show-if]').forEach(function(el){
+            var val = get(el.getAttribute('data-show-if'));
+            if (isEmpty(val)) el.style.display = 'none';
+        });
+
+        function escapeHtml(s){
+            if (s == null) return '';
+            return String(s).replace(/[&<>"']/g, function(c){
+                return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c];
+            });
+        }
+    })();
+    </script>
 
     <script src="../js/main.js"></script>
 </body>

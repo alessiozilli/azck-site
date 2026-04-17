@@ -4,14 +4,15 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>AZCK — Gift Certificates & Gift Cards</title>
+<meta name="description" content="Gift cards and gift certificates from AZ Custom Knives Ltd. — redeemable on classes, sharpening, engraving, and products online or in-shop. Choose a dollar amount or gift a specific experience.">
+<link rel="stylesheet" href="../css/style.css">
+<link rel="icon" href="../images/favicon.ico" type="image/x-icon">
 <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;500;600&display=swap" rel="stylesheet">
 <style>
 :root{--forge-red:#990000;--forge-red-hover:#770000;--steel-gray:#78909C;--black:#000;--white:#FFF;--off-white:#FAFAFA;--light-gray:#F0F0F0;--dark-gray:#333;--text:#1a1a1a;--max-width:920px;--header-height:72px}
 *,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
 body{font-family:'Effra','Segoe UI',Arial,sans-serif;font-size:15.2px;line-height:25.84px;color:var(--text);background:var(--off-white)}
-header{background:var(--black);height:var(--header-height);display:flex;align-items:center;justify-content:center;position:sticky;top:0;z-index:100}
-.logo{font-family:'Oswald',sans-serif;font-size:22px;font-weight:500;letter-spacing:3px;color:var(--white);text-transform:uppercase;text-decoration:none}
-.logo span{color:var(--forge-red)}
+/* Header + footer handled by canonical ../css/style.css */
 main{max-width:var(--max-width);margin:0 auto;padding:40px 20px 80px}
 .section-tag{font-family:'Oswald',sans-serif;font-size:11.2px;letter-spacing:1.68px;text-transform:uppercase;color:var(--forge-red);margin-bottom:8px}
 h2{font-family:'Oswald',sans-serif;font-size:36px;font-weight:400;letter-spacing:1.5px;text-transform:uppercase;color:var(--text);margin-bottom:10px}
@@ -38,16 +39,14 @@ h2{font-family:'Oswald',sans-serif;font-size:36px;font-weight:400;letter-spacing
 .radio-opt{flex:1;padding:14px;border:2px solid var(--light-gray);cursor:pointer;text-align:center;transition:all .2s;font-family:'Oswald',sans-serif;font-size:13px;letter-spacing:1px;text-transform:uppercase;color:var(--dark-gray)}
 .radio-opt:hover{border-color:var(--steel-gray)}
 .radio-opt.selected{border-color:var(--forge-red);color:var(--forge-red);background:#fdf5f5}
-.btn{font-family:'Oswald',sans-serif;font-size:13.6px;font-weight:500;text-transform:uppercase;letter-spacing:1.2px;border:none;padding:12px 28px;cursor:pointer;transition:background .2s;display:inline-block;text-align:center;text-decoration:none}
-.btn-p{background:var(--forge-red);color:var(--white)}
-.btn-p:hover{background:var(--forge-red-hover)}
-.btn-p:disabled{background:var(--steel-gray);cursor:not-allowed;opacity:.5}
-.btn-s{background:transparent;color:var(--dark-gray);border:1px solid var(--steel-gray)}
+.gc-btn{font-family:'Oswald',sans-serif;font-size:13.6px;font-weight:500;text-transform:uppercase;letter-spacing:1.2px;border:none;padding:12px 28px;cursor:pointer;transition:background .2s;display:inline-block;text-align:center;text-decoration:none}
+.gc-btn-p{background:var(--forge-red);color:var(--white)}
+.gc-btn-p:hover{background:var(--forge-red-hover)}
+.gc-btn-p:disabled{background:var(--steel-gray);cursor:not-allowed;opacity:.5}
+.gc-btn-s{background:transparent;color:var(--dark-gray);border:1px solid var(--steel-gray)}
 .info{border-left:4px solid var(--forge-red);padding:12px 16px;background:#fdf5f5;margin:14px 0;font-size:13px;line-height:20px;color:var(--dark-gray)}
 .contact-bar{background:var(--white);border-top:1px solid var(--light-gray);padding:16px 20px;display:flex;align-items:center;justify-content:center;gap:24px;flex-wrap:wrap;font-size:13.5px;color:var(--steel-gray)}
 .contact-bar a{color:var(--forge-red);text-decoration:none;font-weight:500}
-footer{background:var(--black);padding:36px 20px;text-align:center;color:var(--steel-gray);font-size:13px}
-footer a{color:var(--forge-red);text-decoration:none}
 .share-btn{display:inline-flex;align-items:center;gap:6px;background:none;border:1px solid var(--steel-gray);padding:6px 14px;cursor:pointer;font-family:'Oswald',sans-serif;font-size:11px;letter-spacing:1.2px;text-transform:uppercase;color:var(--steel-gray);transition:all .2s}
 .share-btn:hover{border-color:var(--forge-red);color:var(--forge-red)}
 /* Amount selector */
@@ -71,7 +70,22 @@ footer a{color:var(--forge-red);text-decoration:none}
 </head>
 <body>
 
-<header><a href="../index.html" class="logo"><span>AZ</span> Custom Knives</a></header>
+<!-- HEADER — canonical, identical across all pages. Only .active marker changes per page. -->
+<header class="header" id="header">
+    <div class="header__inner">
+        <a href="../index.html" class="header__logo-text">AZ Custom <span>Knives</span></a>
+        <nav class="nav" id="nav">
+            <a href="booking.html#classes" class="nav__link" data-page="classes">Classes</a>
+            <a href="booking.html#services" class="nav__link" data-page="services">Services</a>
+            <a href="portfolio.html" class="nav__link" data-page="portfolio">Portfolio</a>
+            <a href="quadfang.html" class="nav__link" data-page="quadfang">QuadFang</a>
+            <a href="about.html" class="nav__link" data-page="about">About</a>
+            <a href="contact.html" class="nav__link" data-page="contact">Contact</a>
+            <a href="https://shop.azcustomknives.com" class="btn btn--primary btn--small" target="_blank" rel="noopener">Shop</a>
+        </nav>
+        <button class="menu-toggle" aria-label="Menu"><span></span><span></span><span></span></button>
+    </div>
+</header>
 
 <div class="contact-bar">
   <span>Questions about gifts?</span>
@@ -160,8 +174,8 @@ footer a{color:var(--forge-red);text-decoration:none}
       </div>
 
       <div style="display:flex;justify-content:space-between;align-items:center;margin-top:20px;gap:12px;flex-wrap:wrap;">
-        <a href="booking.html" class="btn btn-s">&#8592; Book for Yourself Instead</a>
-        <button class="btn btn-p" onclick="buyCard()">Purchase Gift Card 🎁</button>
+        <a href="booking.html" class="gc-btn gc-btn-s">&#8592; Book for Yourself Instead</a>
+        <button class="gc-btn gc-btn-p" onclick="buyCard()">Purchase Gift Card 🎁</button>
       </div>
     </div>
   </div>
@@ -270,8 +284,8 @@ footer a{color:var(--forge-red);text-decoration:none}
       <div class="info">🎟️ You'll receive a branded PDF gift certificate with a unique redemption code. The recipient uses this code when booking — it pre-fills the service and applies the credit.</div>
 
       <div style="display:flex;justify-content:space-between;align-items:center;margin-top:20px;gap:12px;flex-wrap:wrap;">
-        <a href="booking.html" class="btn btn-s">&#8592; Book for Yourself Instead</a>
-        <button class="btn btn-p" onclick="buyGift()">Purchase Gift Certificate 🎟️</button>
+        <a href="booking.html" class="gc-btn gc-btn-s">&#8592; Book for Yourself Instead</a>
+        <button class="gc-btn gc-btn-p" onclick="buyGift()">Purchase Gift Certificate 🎟️</button>
       </div>
     </div>
   </div>
@@ -294,9 +308,47 @@ footer a{color:var(--forge-red);text-decoration:none}
   </div>
 </main>
 
-<footer>
-  <p>&copy; 2026 AZ Custom Knives Ltd. &mdash; <a href="https://azcustomknives.com">azcustomknives.com</a></p>
-  <p style="margin-top:8px;"><a href="booking.html">Book a Class</a> &middot; <a href="available-blanks.html">Available Blanks</a> &middot; <a href="waiver.html">Waivers</a></p>
+<!-- FOOTER — canonical, identical across all pages -->
+<footer class="footer">
+    <div class="container">
+        <div class="footer__grid">
+            <div>
+                <p class="header__logo-text" style="margin-bottom: 16px; font-size: 1.2rem;">AZ Custom <span>Knives</span></p>
+                <p class="footer__text">Swiss-trained craftsmanship in the heart of Alberta. Custom knives, artistic blacksmithing, professional sharpening, and hands-on classes.</p>
+            </div>
+            <div>
+                <p class="footer__heading">Navigate</p>
+                <a href="booking.html#classes" class="footer__link">Classes</a>
+                <a href="booking.html#services" class="footer__link">Services</a>
+                <a href="portfolio.html" class="footer__link">Portfolio</a>
+                <a href="quadfang.html" class="footer__link">QuadFang</a>
+                <a href="about.html" class="footer__link">About</a>
+                <a href="https://shop.azcustomknives.com" class="footer__link" target="_blank" rel="noopener">Shop</a>
+            </div>
+            <div>
+                <p class="footer__heading">Quick Links</p>
+                <a href="booking.html#sharpening" class="footer__link">Knife Sharpening</a>
+                <a href="booking.html#engraving" class="footer__link">Laser Engraving</a>
+                <a href="gift-certificates.html" class="footer__link">Gift Certificates</a>
+                <a href="contact.html" class="footer__link">Custom Projects</a>
+            </div>
+            <div>
+                <p class="footer__heading">Contact</p>
+                <p class="footer__text">9602 115 Street #104<br>Grande Prairie, AB T8V 5W2</p>
+                <p class="footer__text" style="margin-top: 8px;">(780) 831-2987</p>
+                <a href="mailto:admin@azcustomknives.com" class="footer__link" style="margin-top: 4px;">admin@azcustomknives.com</a>
+            </div>
+        </div>
+        <div class="footer__bottom">
+            <p>&copy; 2026 AZ Custom Knives Ltd. All rights reserved.</p>
+            <div class="footer__socials">
+                <a href="https://www.facebook.com/azcustomknives" target="_blank" rel="noopener" aria-label="Facebook">FB</a>
+                <a href="https://www.instagram.com/az_custom_knives" target="_blank" rel="noopener" aria-label="Instagram">IG</a>
+                <a href="https://www.youtube.com/channel/UCAV8Nd33PnuLJ8TRjyv20JA" target="_blank" rel="noopener" aria-label="YouTube">YT</a>
+                <a href="https://command.azcustomknives.com" class="footer__admin" aria-label="Admin">Admin</a>
+            </div>
+        </div>
+    </div>
 </footer>
 
 <script>

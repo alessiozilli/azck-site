@@ -10,17 +10,17 @@
 </head>
 <body>
 
-    <!-- HEADER -->
-    <header class="header">
+    <!-- HEADER — canonical, identical across all pages. Only .active marker changes per page. -->
+    <header class="header" id="header">
         <div class="header__inner">
             <a href="../index.html" class="header__logo-text">AZ Custom <span>Knives</span></a>
-            <nav class="nav">
-                <a href="../index.html" class="nav__link">Home</a>
-                <a href="about.html" class="nav__link">About</a>
-                <a href="classes.html" class="nav__link active">Classes &amp; Services</a>
-                <a href="portfolio.html" class="nav__link">Portfolio</a>
-                <a href="quadfang.html" class="nav__link">QuadFang</a>
-                <a href="contact.html" class="nav__link">Contact</a>
+            <nav class="nav" id="nav">
+                <a href="booking.html#classes" class="nav__link active" data-page="classes">Classes</a>
+                <a href="booking.html#services" class="nav__link" data-page="services">Services</a>
+                <a href="portfolio.html" class="nav__link" data-page="portfolio">Portfolio</a>
+                <a href="quadfang.html" class="nav__link" data-page="quadfang">QuadFang</a>
+                <a href="about.html" class="nav__link" data-page="about">About</a>
+                <a href="contact.html" class="nav__link" data-page="contact">Contact</a>
                 <a href="https://shop.azcustomknives.com" class="btn btn--primary btn--small" target="_blank" rel="noopener">Shop</a>
             </nav>
             <button class="menu-toggle" aria-label="Menu"><span></span><span></span><span></span></button>
