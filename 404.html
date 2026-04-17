@@ -3,9 +3,11 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>404 - Page Not Found - AZ Custom Knives</title>
+    <title>404 — Page Not Found — AZ Custom Knives</title>
+    <meta name="description" content="The page you're looking for doesn't exist or has been moved. Return to AZ Custom Knives home, booking, contact, or shop.">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="icon" href="images/favicon.ico" type="image/x-icon">
     <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;500;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="css/components.css">
     <style>
         :root {
             --forge-red: #990000;
@@ -15,28 +17,20 @@
             --white: #FFF;
             --off-white: #FAFAFA;
             --light-gray: #F0F0F0;
-            --dark-gray: #333;
             --text: #1a1a1a;
-            --header-height: 72px;
         }
-
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
         body {
             font-family: Effra, "Segoe UI", Arial, sans-serif;
             color: var(--text);
             background-color: var(--off-white);
+        }
+        .error-wrap {
+            min-height: 70vh;
             display: flex;
             align-items: center;
             justify-content: center;
-            min-height: 100vh;
             padding: 2rem;
         }
-
         .error-container {
             text-align: center;
             background: var(--white);
@@ -45,27 +39,12 @@
             box-shadow: 0 2px 12px rgba(0,0,0,0.1);
             max-width: 500px;
         }
-
         .error-emoji {
             font-size: 4rem;
             margin-bottom: 1.5rem;
             display: block;
         }
-
-        .error-logo {
-            font-family: Oswald, sans-serif;
-            font-size: 1.2rem;
-            font-weight: 700;
-            color: var(--text);
-            margin-bottom: 1.5rem;
-            letter-spacing: 1px;
-        }
-
-        .error-logo span {
-            color: var(--forge-red);
-        }
-
-        h1 {
+        .error-container h1 {
             font-family: Oswald, sans-serif;
             font-size: 2.5rem;
             font-weight: 700;
@@ -73,13 +52,17 @@
             margin-bottom: 1rem;
             letter-spacing: 1px;
         }
-
-        .subtitle {
+        .error-container .subtitle {
             font-size: 1.1rem;
             color: var(--steel-gray);
             margin-bottom: 2rem;
         }
-
+        .link-list {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+            margin-top: 2rem;
+        }
         .help-link {
             display: inline-block;
             background-color: var(--forge-red);
@@ -90,42 +73,91 @@
             font-weight: 600;
             font-family: Oswald, sans-serif;
             transition: background-color 0.3s ease;
-            margin-top: 2rem;
         }
-
-        .help-link:hover {
-            background-color: var(--forge-red-hover);
-        }
-
+        .help-link:hover { background-color: var(--forge-red-hover); }
+        .help-link-secondary { background-color: var(--light-gray); color: var(--text); }
+        .help-link-secondary:hover { background-color: #e0e0e0; }
         @media (max-width: 640px) {
-            .error-container {
-                padding: 2rem;
-            }
-
-            h1 {
-                font-size: 2rem;
-            }
-
-            .error-emoji {
-                font-size: 3rem;
-            }
+            .error-container { padding: 2rem; }
+            .error-container h1 { font-size: 2rem; }
+            .error-emoji { font-size: 3rem; }
         }
     </style>
 </head>
 <body>
-    <div id="site-header"></div>
 
-    <div class="error-container">
-        <span class="error-emoji">⚒️</span>
-        <div class="error-logo"><span>AZ</span> Custom Knives</div>
-        <h1>404</h1>
-        <p class="subtitle">The page you're looking for doesn't exist or has been moved.</p>
-        
-        <a href="index.html" class="help-link">Go Home</a>
-    </div>
+    <!-- HEADER — canonical, identical across all pages. (Root-depth paths — this file lives at /404.html) -->
+    <header class="header" id="header">
+        <div class="header__inner">
+            <a href="index.html" class="header__logo-text">AZ Custom <span>Knives</span></a>
+            <nav class="nav" id="nav">
+                <a href="pages/booking.html#classes" class="nav__link" data-page="classes">Classes</a>
+                <a href="pages/booking.html#services" class="nav__link" data-page="services">Services</a>
+                <a href="pages/portfolio.html" class="nav__link" data-page="portfolio">Portfolio</a>
+                <a href="pages/quadfang.html" class="nav__link" data-page="quadfang">QuadFang</a>
+                <a href="pages/about.html" class="nav__link" data-page="about">About</a>
+                <a href="pages/contact.html" class="nav__link" data-page="contact">Contact</a>
+                <a href="https://shop.azcustomknives.com" class="btn btn--primary btn--small" target="_blank" rel="noopener">Shop</a>
+            </nav>
+            <button class="menu-toggle" aria-label="Menu"><span></span><span></span><span></span></button>
+        </div>
+    </header>
 
-    <div id="site-footer"></div>
+    <main class="error-wrap">
+        <div class="error-container">
+            <span class="error-emoji">🔨</span>
+            <h1>404</h1>
+            <p class="subtitle">The page you're looking for doesn't exist or has been moved.</p>
+            <div class="link-list">
+                <a href="index.html" class="help-link">Home</a>
+                <a href="pages/booking.html" class="help-link help-link-secondary">Book a Class</a>
+                <a href="pages/contact.html" class="help-link help-link-secondary">Contact Us</a>
+                <a href="https://shop.azcustomknives.com" target="_blank" class="help-link help-link-secondary">Shop</a>
+            </div>
+        </div>
+    </main>
 
-    <script src="js/components.js"></script>
+    <!-- FOOTER — canonical, identical across all pages. (Root-depth paths — pages/ prefix on page links) -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer__grid">
+                <div>
+                    <p class="header__logo-text" style="margin-bottom: 16px; font-size: 1.2rem;">AZ Custom <span>Knives</span></p>
+                    <p class="footer__text">Swiss-trained craftsmanship in the heart of Alberta. Custom knives, artistic blacksmithing, professional sharpening, and hands-on classes.</p>
+                </div>
+                <div>
+                    <p class="footer__heading">Navigate</p>
+                    <a href="pages/booking.html#classes" class="footer__link">Classes</a>
+                    <a href="pages/booking.html#services" class="footer__link">Services</a>
+                    <a href="pages/portfolio.html" class="footer__link">Portfolio</a>
+                    <a href="pages/quadfang.html" class="footer__link">QuadFang</a>
+                    <a href="pages/about.html" class="footer__link">About</a>
+                    <a href="https://shop.azcustomknives.com" class="footer__link" target="_blank" rel="noopener">Shop</a>
+                </div>
+                <div>
+                    <p class="footer__heading">Quick Links</p>
+                    <a href="pages/booking.html#sharpening" class="footer__link">Knife Sharpening</a>
+                    <a href="pages/booking.html#engraving" class="footer__link">Laser Engraving</a>
+                    <a href="pages/gift-certificates.html" class="footer__link">Gift Certificates</a>
+                    <a href="pages/contact.html" class="footer__link">Custom Projects</a>
+                </div>
+                <div>
+                    <p class="footer__heading">Contact</p>
+                    <p class="footer__text">9602 115 Street #104<br>Grande Prairie, AB T8V 5W2</p>
+                    <p class="footer__text" style="margin-top: 8px;">(780) 831-2987</p>
+                    <a href="mailto:admin@azcustomknives.com" class="footer__link" style="margin-top: 4px;">admin@azcustomknives.com</a>
+                </div>
+            </div>
+            <div class="footer__bottom">
+                <p>&copy; 2026 AZ Custom Knives Ltd. All rights reserved.</p>
+                <div class="footer__socials">
+                    <a href="https://www.facebook.com/azcustomknives" target="_blank" rel="noopener" aria-label="Facebook">FB</a>
+                    <a href="https://www.instagram.com/az_custom_knives" target="_blank" rel="noopener" aria-label="Instagram">IG</a>
+                    <a href="https://www.youtube.com/channel/UCAV8Nd33PnuLJ8TRjyv20JA" target="_blank" rel="noopener" aria-label="YouTube">YT</a>
+                    <a href="https://command.azcustomknives.com" class="footer__admin" aria-label="Admin">Admin</a>
+                </div>
+            </div>
+        </div>
+    </footer>
 </body>
 </html>
