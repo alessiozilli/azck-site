@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>QuadFang | AZ Custom Knives Ltd.</title>
     <meta name="description" content="QuadFang — purpose-built broadheads for ethical hunters. Precision engineered for a clean kill. Built to Kill Clean.">
+    <link rel="stylesheet" href="../css/components.css">
     <link rel="stylesheet" href="../css/style.css">
     <link rel="icon" href="images-quadfang/qf-emblem.png" type="image/png">
     <style>
@@ -90,22 +91,8 @@
 </head>
 <body>
 
-    <!-- HEADER — canonical, identical across all pages. Only .active marker changes per page. -->
-    <header class="header" id="header">
-        <div class="header__inner">
-            <a href="../index.html" class="header__logo-text">AZ Custom <span>Knives</span></a>
-            <nav class="nav" id="nav">
-                <a href="booking.html#classes" class="nav__link" data-page="classes">Classes</a>
-                <a href="booking.html#services" class="nav__link" data-page="services">Services</a>
-                <a href="portfolio.html" class="nav__link" data-page="portfolio">Portfolio</a>
-                <a href="quadfang.html" class="nav__link active" data-page="quadfang">QuadFang</a>
-                <a href="about.html" class="nav__link" data-page="about">About</a>
-                <a href="contact.html" class="nav__link" data-page="contact">Contact</a>
-                <a href="https://shop.azcustomknives.com" class="btn btn--primary btn--small" target="_blank" rel="noopener">Shop</a>
-            </nav>
-            <button class="menu-toggle" aria-label="Menu"><span></span><span></span><span></span></button>
-        </div>
-    </header>
+    <!-- Header injected by /js/components.js — single source of truth for all pages -->
+    <div id="site-header"></div>
 
     <!-- HERO -->
     <section class="hero" style="min-height: 80vh;">
@@ -212,48 +199,10 @@
         </div>
     </section>
 
-    <!-- FOOTER — canonical, matches index.html -->
-    <footer class="footer">
-        <div class="container">
-            <div class="footer__grid">
-                <div>
-                    <p class="header__logo-text" style="margin-bottom: 16px; font-size: 1.2rem;">AZ Custom <span>Knives</span></p>
-                    <p class="footer__text">Swiss-trained craftsmanship in the heart of Alberta. Custom knives, artistic blacksmithing, professional sharpening, and hands-on classes.</p>
-                </div>
-                <div>
-                    <p class="footer__heading">Navigate</p>
-                    <a href="booking.html#classes" class="footer__link">Classes</a>
-                    <a href="booking.html#services" class="footer__link">Services</a>
-                    <a href="portfolio.html" class="footer__link">Portfolio</a>
-                    <a href="quadfang.html" class="footer__link">QuadFang</a>
-                    <a href="about.html" class="footer__link">About</a>
-                    <a href="https://shop.azcustomknives.com" class="footer__link" target="_blank" rel="noopener">Shop</a>
-                </div>
-                <div>
-                    <p class="footer__heading">Quick Links</p>
-                    <a href="booking.html#sharpening" class="footer__link">Knife Sharpening</a>
-                    <a href="booking.html#engraving" class="footer__link">Laser Engraving</a>
-                    <a href="gift-certificates.html" class="footer__link">Gift Certificates</a>
-                    <a href="contact.html" class="footer__link">Custom Projects</a>
-                </div>
-                <div>
-                    <p class="footer__heading">Contact</p>
-                    <p class="footer__text">9602 115 Street #104<br>Grande Prairie, AB T8V 5W2</p>
-                    <p class="footer__text" style="margin-top: 8px;">(780) 831-2987</p>
-                    <a href="mailto:admin@azcustomknives.com" class="footer__link" style="margin-top: 4px;">admin@azcustomknives.com</a>
-                </div>
-            </div>
-            <div class="footer__bottom">
-                <p>&copy; 2026 AZ Custom Knives Ltd. All rights reserved.</p>
-                <div class="footer__socials">
-                    <a href="https://www.facebook.com/azcustomknives" target="_blank" rel="noopener" aria-label="Facebook">FB</a>
-                    <a href="https://www.instagram.com/az_custom_knives" target="_blank" rel="noopener" aria-label="Instagram">IG</a>
-                    <a href="https://www.youtube.com/channel/UCAV8Nd33PnuLJ8TRjyv20JA" target="_blank" rel="noopener" aria-label="YouTube">YT</a>
-                    <a href="https://command.azcustomknives.com" class="footer__admin" aria-label="Admin">Admin</a>
-                </div>
-            </div>
-        </div>
-    </footer>
+    <!-- Footer injected by /js/components.js -->
+    <div id="site-footer"></div>
+
+    <script src="../js/components.js"></script>
 
     <script src="../js/main.js"></script>
 </body>

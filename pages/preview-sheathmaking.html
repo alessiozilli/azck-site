@@ -5,27 +5,14 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title data-bind="meta.title">Sheath Making | AZ Custom Knives Ltd.</title>
     <meta name="description" data-bind-attr="meta.description" content="2-hour hands-on sheath making course in Grande Prairie. Leather or Kydex — same price, your choice. Custom-fit to your own blade.">
+    <link rel="stylesheet" href="../css/components.css">
     <link rel="stylesheet" href="../css/style.css">
     <link rel="icon" href="../images/favicon.ico" type="image/x-icon">
 </head>
 <body>
 
-    <!-- HEADER — canonical, identical across all pages. Only .active marker changes per page. -->
-    <header class="header" id="header">
-        <div class="header__inner">
-            <a href="../index.html" class="header__logo-text">AZ Custom <span>Knives</span></a>
-            <nav class="nav" id="nav">
-                <a href="booking.html#classes" class="nav__link active" data-page="classes">Classes</a>
-                <a href="booking.html#services" class="nav__link" data-page="services">Services</a>
-                <a href="portfolio.html" class="nav__link" data-page="portfolio">Portfolio</a>
-                <a href="quadfang.html" class="nav__link" data-page="quadfang">QuadFang</a>
-                <a href="about.html" class="nav__link" data-page="about">About</a>
-                <a href="contact.html" class="nav__link" data-page="contact">Contact</a>
-                <a href="https://shop.azcustomknives.com" class="btn btn--primary btn--small" target="_blank" rel="noopener">Shop</a>
-            </nav>
-            <button class="menu-toggle" aria-label="Menu"><span></span><span></span><span></span></button>
-        </div>
-    </header>
+    <!-- Header injected by /js/components.js — single source of truth for all pages -->
+    <div id="site-header"></div>
 
     <!-- HERO -->
     <section class="hero" style="min-height: 50vh;">
@@ -111,47 +98,10 @@
         </div>
     </section>
 
-    <!-- FOOTER -->
-    <footer class="footer">
-        <div class="container">
-            <div class="footer__grid">
-                <div>
-                    <p class="header__logo-text" style="margin-bottom: 16px; font-size: 1.2rem;">AZ Custom <span>Knives</span></p>
-                    <p class="footer__text">Swiss-trained craftsmanship in the heart of Alberta.</p>
-                </div>
-                <div>
-                    <p class="footer__heading">Navigate</p>
-                    <a href="about.html" class="footer__link">About</a>
-                    <a href="classes.html" class="footer__link">Classes &amp; Services</a>
-                    <a href="portfolio.html" class="footer__link">Portfolio</a>
-                    <a href="quadfang.html" class="footer__link">QuadFang</a>
-                    <a href="https://shop.azcustomknives.com" class="footer__link" target="_blank">Shop</a>
-                </div>
-                <div>
-                    <p class="footer__heading">Services</p>
-                    <a href="preview-sharpening.html" class="footer__link">Knife Sharpening</a>
-                    <a href="preview-blacksmithing.html" class="footer__link">Blacksmithing</a>
-                    <a href="preview-knifemaking.html" class="footer__link">Knife Making</a>
-                    <a href="preview-sheathmaking.html" class="footer__link">Sheath Making</a>
-                </div>
-                <div>
-                    <p class="footer__heading">Contact</p>
-                    <p class="footer__text">9602 115 Street #104<br>Grande Prairie, AB T8V 5W2</p>
-                    <p class="footer__text" style="margin-top: 8px;">(780) 831-2987</p>
-                    <a href="mailto:admin@azcustomknives.com" class="footer__link" style="margin-top: 4px;">admin@azcustomknives.com</a>
-                </div>
-            </div>
-            <div class="footer__bottom">
-                <p>&copy; 2026 AZ Custom Knives Ltd. All rights reserved.</p>
-                <div class="footer__socials">
-                    <a href="https://www.facebook.com/azcustomknives" target="_blank" rel="noopener">FB</a>
-                    <a href="https://www.instagram.com/az_custom_knives" target="_blank" rel="noopener">IG</a>
-                    <a href="https://www.youtube.com/channel/UCAV8Nd33PnuLJ8TRjyv20JA" target="_blank" rel="noopener">YT</a>
-                    <a href="https://command.azcustomknives.com" class="footer__admin" aria-label="Admin">Admin</a>
-                </div>
-            </div>
-        </div>
-    </footer>
+    <!-- Footer injected by /js/components.js -->
+    <div id="site-footer"></div>
+
+    <script src="../js/components.js"></script>
 
     <!-- ============================================================
          DATA BLOCK — edit JSON below to change page content.
