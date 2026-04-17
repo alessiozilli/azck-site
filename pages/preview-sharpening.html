@@ -1,0 +1,344 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title data-bind="meta.title">Sharpening | AZ Custom Knives Ltd.</title>
+    <meta name="description" data-bind-attr="meta.description" content="Professional sharpening services and whetstone seminars in Grande Prairie, Alberta. Knives, scissors, axes, and restorations — checked by a Swiss Journeyman.">
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="icon" href="../images/favicon.ico" type="image/x-icon">
+</head>
+<body>
+
+    <!-- HEADER -->
+    <header class="header">
+        <div class="header__inner">
+            <a href="../index.html" class="header__logo-text">AZ Custom <span>Knives</span></a>
+            <nav class="nav">
+                <a href="../index.html" class="nav__link">Home</a>
+                <a href="about.html" class="nav__link">About</a>
+                <a href="classes.html" class="nav__link active">Classes &amp; Services</a>
+                <a href="portfolio.html" class="nav__link">Portfolio</a>
+                <a href="quadfang.html" class="nav__link">QuadFang</a>
+                <a href="contact.html" class="nav__link">Contact</a>
+                <a href="https://shop.azcustomknives.com" class="btn btn--primary btn--small" target="_blank" rel="noopener">Shop</a>
+            </nav>
+            <button class="menu-toggle" aria-label="Menu"><span></span><span></span><span></span></button>
+        </div>
+    </header>
+
+    <!-- HERO -->
+    <section class="hero" style="min-height: 50vh;">
+        <div class="hero__bg" data-bg-bind="hero.bgGradient" style="background: linear-gradient(135deg, #1a1a1a 0%, #2a1a1a 50%, #1a1a1a 100%);"></div>
+        <div class="hero__overlay"></div>
+        <div class="hero__content">
+            <p class="hero__subtitle" data-bind="hero.subtitle">Sharpening Services &amp; Seminars</p>
+            <h1 class="hero__title" data-bind="hero.title">Sharpening</h1>
+        </div>
+    </section>
+
+    <!-- PREVIEW CARD + OVERVIEW -->
+    <section class="section">
+        <div class="container" style="max-width: 900px;">
+            <div style="display:flex;justify-content:center;margin-bottom:48px;">
+                <div style="width:100%;max-width:600px;aspect-ratio:4/3;background:linear-gradient(160deg,#0d0d0d 0%,#1a1a1a 40%,#1f1210 100%);display:flex;flex-direction:column;align-items:center;justify-content:center;position:relative;overflow:hidden;border:1px solid rgba(153,0,0,0.3);">
+                    <div style="position:absolute;top:0;left:0;right:0;height:3px;background:linear-gradient(90deg,transparent 0%,#990000 50%,transparent 100%);"></div>
+                    <div style="display:flex;gap:28px;align-items:center;margin-bottom:20px;">
+                        <span data-bind="previewCard.emojis.0" style="font-size:2.8rem;opacity:0.55;">🔪</span>
+                        <span data-bind="previewCard.emojis.1" style="font-size:4.5rem;filter:drop-shadow(0 4px 12px rgba(153,0,0,0.3));">✨</span>
+                    </div>
+                    <div style="width:60px;height:1px;background:linear-gradient(90deg,transparent,#78909C,transparent);margin:14px 0;"></div>
+                    <span data-bind="previewCard.label" style="font-family:'Oswald',sans-serif;font-weight:300;font-size:0.8rem;letter-spacing:0.25em;color:#78909C;text-transform:uppercase;">Services &amp; Seminars</span>
+                    <span data-bind="previewCard.tagline" style="font-family:'Oswald',sans-serif;font-weight:400;font-size:1.1rem;letter-spacing:0.15em;color:#990000;text-transform:uppercase;margin-top:8px;">Sharpening</span>
+                </div>
+            </div>
+
+            <div class="section__header">
+                <h2 data-bind="overview.heading">Sharpening — Two Ways</h2>
+                <div class="section__line"></div>
+                <p data-bind="overview.intro">Drop off your tools for professional sharpening, or learn to sharpen them yourself. Same shop, same standards.</p>
+            </div>
+
+            <div class="grid grid--3" data-render="overview.cards" style="margin-top: 32px;">
+                <!-- overview cards rendered from JSON -->
+            </div>
+        </div>
+    </section>
+
+    <!-- SERVICES GRID -->
+    <section class="section section--gray">
+        <div class="container" style="max-width: 900px;">
+            <div class="section__header">
+                <h2 data-bind="offerings.heading">Services</h2>
+                <div class="section__line"></div>
+                <p data-bind="offerings.intro">Bring it in or drop it off — we'll put an edge on it.</p>
+            </div>
+            <div class="grid grid--2" data-render="offerings.items" style="margin-top: 32px;">
+                <!-- offering cards rendered from JSON -->
+            </div>
+        </div>
+    </section>
+
+    <!-- DETAILS -->
+    <section class="section">
+        <div class="container" style="max-width: 800px;">
+            <div class="section__header">
+                <h2 data-bind="details.heading">Service Details</h2>
+                <div class="section__line"></div>
+            </div>
+            <div class="grid grid--2" data-render="details.items" style="margin-top: 32px;">
+                <!-- detail rows rendered from JSON -->
+            </div>
+        </div>
+    </section>
+
+    <!-- CALLOUT -->
+    <section class="section section--gray" data-show-if="callout">
+        <div class="container" style="max-width: 800px;">
+            <div style="padding: 36px; background: var(--white); border-left: 4px solid var(--forge-red); box-shadow: var(--shadow-sm);">
+                <h3 data-bind="callout.heading" style="color: var(--forge-red); margin-bottom: 12px;">Also want to learn?</h3>
+                <p data-bind="callout.body" style="color: var(--text-light);">Our whetstone sharpening seminars teach you proper technique.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA -->
+    <section class="section" style="background: linear-gradient(135deg, #990000 0%, #660000 100%);">
+        <div class="container" style="text-align: center;">
+            <h2 data-bind="cta.heading" style="color: #fff; margin-bottom: 16px;">Ready to get a sharper edge?</h2>
+            <p data-bind="cta.body" style="color: rgba(255,255,255,0.85); max-width: 500px; margin: 0 auto 28px;">Book a sharpening service or seminar online — we'll handle the rest.</p>
+            <a data-bind-href="cta.bookingHref" data-bind="cta.buttonText" href="booking.html#sharpening" class="btn btn--white-outline">Book Sharpening</a>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer__grid">
+                <div>
+                    <p class="header__logo-text" style="margin-bottom: 16px; font-size: 1.2rem;">AZ Custom <span>Knives</span></p>
+                    <p class="footer__text">Swiss-trained craftsmanship in the heart of Alberta.</p>
+                </div>
+                <div>
+                    <p class="footer__heading">Navigate</p>
+                    <a href="about.html" class="footer__link">About</a>
+                    <a href="classes.html" class="footer__link">Classes &amp; Services</a>
+                    <a href="portfolio.html" class="footer__link">Portfolio</a>
+                    <a href="quadfang.html" class="footer__link">QuadFang</a>
+                    <a href="https://shop.azcustomknives.com" class="footer__link" target="_blank">Shop</a>
+                </div>
+                <div>
+                    <p class="footer__heading">Services</p>
+                    <a href="preview-sharpening.html" class="footer__link">Knife Sharpening</a>
+                    <a href="preview-blacksmithing.html" class="footer__link">Blacksmithing</a>
+                    <a href="preview-knifemaking.html" class="footer__link">Knife Making</a>
+                    <a href="contact.html" class="footer__link">Custom Projects</a>
+                </div>
+                <div>
+                    <p class="footer__heading">Contact</p>
+                    <p class="footer__text">9602 115 Street #104<br>Grande Prairie, AB T8V 5W2</p>
+                    <p class="footer__text" style="margin-top: 8px;">(780) 831-2987</p>
+                    <a href="mailto:admin@azcustomknives.com" class="footer__link" style="margin-top: 4px;">admin@azcustomknives.com</a>
+                </div>
+            </div>
+            <div class="footer__bottom">
+                <p>&copy; 2026 AZ Custom Knives Ltd. All rights reserved.</p>
+                <div class="footer__socials">
+                    <a href="https://www.facebook.com/azcustomknives" target="_blank" rel="noopener">FB</a>
+                    <a href="https://www.instagram.com/az_custom_knives" target="_blank" rel="noopener">IG</a>
+                    <a href="https://www.youtube.com/channel/UCAV8Nd33PnuLJ8TRjyv20JA" target="_blank" rel="noopener">YT</a>
+                    <a href="https://command.azcustomknives.com" class="footer__admin" aria-label="Admin">Admin</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- ============================================================
+         DATA BLOCK — edit JSON below to change page content.
+         Do NOT touch the HTML engine above or the renderer below.
+         ============================================================ -->
+    <script id="preview-data" type="application/json">
+    {
+        "meta": {
+            "title": "Sharpening | AZ Custom Knives Ltd.",
+            "description": "Professional sharpening services and whetstone seminars in Grande Prairie, Alberta. Knives, scissors, axes, and full blade restorations — checked by a Swiss Journeyman."
+        },
+        "hero": {
+            "subtitle": "Services & Seminars",
+            "title": "Sharpening",
+            "bgGradient": "linear-gradient(135deg, #1a1a1a 0%, #2a1a1a 50%, #1a1a1a 100%)"
+        },
+        "previewCard": {
+            "emojis": ["🔪", "✨"],
+            "label": "Services & Seminars",
+            "tagline": "Sharpening"
+        },
+        "overview": {
+            "heading": "Sharpening — Two Ways",
+            "intro": "Drop off your tools for professional sharpening, or learn to sharpen them yourself in a seminar. Same shop, same standards.",
+            "cards": [
+                {
+                    "title": "Drop-Off Service",
+                    "body": "Bring your knives, scissors, or axes. We sharpen, you pick up. Fast turnaround, any steel — from kitchen carbon to MagnaCut."
+                },
+                {
+                    "title": "Expert Edge",
+                    "body": "Every edge checked by a Swiss-trained Journeyman Bladesmith. Thirty-plus years of making and grinding behind every hand-finished blade."
+                },
+                {
+                    "title": "Learn to Sharpen",
+                    "body": "Private or group whetstone seminars. Four hours, hands-on — leave knowing how to keep every edge in your kitchen sharp for life."
+                }
+            ]
+        },
+        "offerings": {
+            "heading": "What We Sharpen",
+            "intro": "Bring it in or drop it off — we'll put an edge on it.",
+            "items": [
+                {
+                    "title": "Knife Sharpening",
+                    "description": "Kitchen, pocket, hunting, tactical — any knife, any steel. Honed, polished, and tested sharp before you pick it up."
+                },
+                {
+                    "title": "Scissor Sharpening",
+                    "description": "Household, salon, or professional shears. Re-ground and re-aligned so they cut clean again."
+                },
+                {
+                    "title": "Axe Sharpening",
+                    "description": "Hatchets, felling axes, splitting mauls. Proper bevel geometry restored — not just a wire edge."
+                },
+                {
+                    "title": "Blade Regrind & Restoration",
+                    "description": "Full restoration for chipped, broken, or neglected blades. Regrind, re-profile, polish, and reshape back to working order."
+                }
+            ]
+        },
+        "details": {
+            "heading": "Service Details",
+            "items": [
+                { "label": "Format", "value": "Drop-off service + whetstone seminars" },
+                { "label": "Turnaround", "value": "3–5 business days (typical)" },
+                { "label": "Location", "value": "AZCK Shop, Grande Prairie" },
+                { "label": "Pricing", "value": "Per service — see booking" }
+            ]
+        },
+        "callout": {
+            "heading": "Also want to learn?",
+            "body": "Our whetstone sharpening seminars teach you proper technique end-to-end. Four hours, hands-on, small groups — great for team building or just leveling up your kitchen skills."
+        },
+        "cta": {
+            "heading": "Ready to get a sharper edge?",
+            "body": "Book a sharpening service or seminar online — we'll handle the rest.",
+            "buttonText": "Book Sharpening",
+            "bookingHref": "booking.html#sharpening"
+        }
+    }
+    </script>
+
+    <!-- ============================================================
+         RENDERER — reads DATA BLOCK above, populates HTML engine.
+         Safe to copy between preview pages. Do not edit content here.
+         ============================================================ -->
+    <script>
+    (function(){
+        'use strict';
+        var raw = document.getElementById('preview-data');
+        if (!raw) return;
+        var data;
+        try { data = JSON.parse(raw.textContent); }
+        catch (e) { console.error('preview-data JSON parse error:', e); return; }
+
+        // Resolve dotted path "a.b.c" or "a.b.0" against data
+        function get(path) {
+            if (!path) return undefined;
+            var parts = path.split('.');
+            var val = data;
+            for (var i = 0; i < parts.length; i++) {
+                if (val == null) return undefined;
+                val = val[parts[i]];
+            }
+            return val;
+        }
+
+        // data-bind: set textContent from JSON path
+        document.querySelectorAll('[data-bind]').forEach(function(el){
+            var val = get(el.getAttribute('data-bind'));
+            if (val !== undefined && val !== null) el.textContent = val;
+        });
+
+        // data-bind-attr: set content attribute (e.g. meta description)
+        document.querySelectorAll('[data-bind-attr]').forEach(function(el){
+            var val = get(el.getAttribute('data-bind-attr'));
+            if (val !== undefined && val !== null) el.setAttribute('content', val);
+        });
+
+        // data-bind-href: set href attribute
+        document.querySelectorAll('[data-bind-href]').forEach(function(el){
+            var val = get(el.getAttribute('data-bind-href'));
+            if (val) el.setAttribute('href', val);
+        });
+
+        // data-bg-bind: set inline background style
+        document.querySelectorAll('[data-bg-bind]').forEach(function(el){
+            var val = get(el.getAttribute('data-bg-bind'));
+            if (val) el.style.background = val;
+        });
+
+        // Set <title> tag from meta.title
+        if (data.meta && data.meta.title) document.title = data.meta.title;
+
+        // data-render="overview.cards" — render cards from array
+        document.querySelectorAll('[data-render="overview.cards"]').forEach(function(container){
+            var items = get('overview.cards') || [];
+            container.innerHTML = items.map(function(c){
+                return '<div style="padding: 32px; background: var(--white); box-shadow: var(--shadow-sm); text-align: center;">'
+                    + '<h3 style="color: var(--forge-red); margin-bottom: 12px;">' + escapeHtml(c.title) + '</h3>'
+                    + '<p style="color: var(--text-light);">' + escapeHtml(c.body) + '</p>'
+                    + '</div>';
+            }).join('');
+        });
+
+        // data-render="offerings.items" — render offerings grid (supports optional price)
+        document.querySelectorAll('[data-render="offerings.items"]').forEach(function(container){
+            var items = get('offerings.items') || [];
+            container.innerHTML = items.map(function(o){
+                var priceLine = o.price
+                    ? '<p style="color: var(--forge-red); font-weight: 600; margin-top: 14px; font-family: \'Oswald\', sans-serif; letter-spacing: 0.05em;">' + escapeHtml(o.price) + '</p>'
+                    : '';
+                return '<div style="padding: 28px; background: var(--white); box-shadow: var(--shadow-sm); border-top: 3px solid var(--forge-red);">'
+                    + '<h3 style="margin-bottom: 10px;">' + escapeHtml(o.title) + '</h3>'
+                    + '<p style="color: var(--text-light);">' + escapeHtml(o.description) + '</p>'
+                    + priceLine
+                    + '</div>';
+            }).join('');
+        });
+
+        // data-render="details.items" — render details grid
+        document.querySelectorAll('[data-render="details.items"]').forEach(function(container){
+            var items = get('details.items') || [];
+            container.innerHTML = items.map(function(d){
+                return '<div style="padding: 24px; background: var(--white); box-shadow: var(--shadow-sm);">'
+                    + '<p class="card__tag">' + escapeHtml(d.label) + '</p>'
+                    + '<p style="color: var(--text-light); margin-top: 8px;">' + escapeHtml(d.value) + '</p>'
+                    + '</div>';
+            }).join('');
+        });
+
+        // data-show-if: hide section if data path is null/empty
+        document.querySelectorAll('[data-show-if]').forEach(function(el){
+            var val = get(el.getAttribute('data-show-if'));
+            if (val == null || val === '') el.style.display = 'none';
+        });
+
+        function escapeHtml(s){
+            if (s == null) return '';
+            return String(s).replace(/[&<>"']/g, function(c){
+                return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c];
+            });
+        }
+    })();
+    </script>
+
+    <script src="../js/main.js"></script>
+</body>
+</html>
