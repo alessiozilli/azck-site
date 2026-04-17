@@ -6,7 +6,7 @@
 <title>AZCK — Book Your Experience</title>
 <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;500;600&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="../css/components.css">
-<style>
+    <style>
 /* ══════════════════════════════════════════════
    AZCK DESIGN SYSTEM
    Fonts: Oswald (headings/buttons), Effra→Arial (body)
@@ -33,11 +33,6 @@ body {
 }
 
 /* ── Header ── */
-header {
-  background: var(--black); height: var(--header-height);
-  display: flex; align-items: center; justify-content: center;
-  position: sticky; top: 0; z-index: 100;
-}
 .logo {
   font-family: 'Oswald', sans-serif; font-size: 22px; font-weight: 500;
   letter-spacing: 3px; color: var(--white); text-transform: uppercase;
@@ -265,10 +260,6 @@ h2 {
 .gift-banner a { color: var(--forge-red); text-decoration: none; font-weight: 600; }
 
 /* ── Footer ── */
-footer {
-  background: var(--black); padding: 36px 20px; text-align: center;
-  color: var(--steel-gray); font-size: 13px;
-}
 footer a { color: var(--forge-red); text-decoration: none; }
 
 /* ── Wizard steps ── */
@@ -292,8 +283,9 @@ footer a { color: var(--forge-red); text-decoration: none; }
 </head>
 <body>
 
-<!-- SHARED HEADER -->
-<div id="site-header"></div>
+<!-- ═══════ HEADER ═══════ -->
+<!-- HEADER injected by /js/components.js -->
+    <div id="site-header"></div>
 
 <!-- ═══════ PROGRESS BAR ═══════ -->
 <div class="progress-bar">
@@ -341,6 +333,12 @@ footer a { color: var(--forge-red); text-decoration: none; }
         <div class="card-title">Blacksmithing</div>
         <div class="card-desc">Forge hot steel into functional art. The real deal — fire, hammer, anvil.</div>
         <div class="card-price">From $350</div>
+      </div>
+      <div class="card" onclick="pickCat('sheathmaking')" data-cat="sheathmaking">
+        <div class="card-icon">🛡️</div>
+        <div class="card-title">Sheath Making</div>
+        <div class="card-desc">Craft a custom sheath for your blade — leather or Kydex. 2-hour hands-on course.</div>
+        <div class="card-price">From $200 / person</div>
       </div>
       <div class="card" onclick="pickCat('teambuilding')" data-cat="teambuilding">
         <div class="card-icon">🏢</div>
@@ -399,6 +397,11 @@ footer a { color: var(--forge-red); text-decoration: none; }
         <div class="card-icon">⚒️</div>
         <div class="card-title">Blacksmithing</div>
         <div class="card-price">From $350</div>
+      </div>
+      <div class="card" onclick="pickCat('sheathmaking')" data-cat="sheathmaking">
+        <div class="card-icon">🛡️</div>
+        <div class="card-title">Sheath Making</div>
+        <div class="card-price">From $200/person</div>
       </div>
       <div class="card" onclick="pickCat('teambuilding')" data-cat="teambuilding">
         <div class="card-icon">🏢</div>
@@ -540,8 +543,36 @@ footer a { color: var(--forge-red); text-decoration: none; }
           <div class="od">Better edge retention. Chromium + vanadium. Still one day.</div>
           <div class="otag">Upgrade</div>
         </div>
+        <div class="opt-btn" onclick="pickSteel('damascus', this)">
+          <div class="ot">Damascus (VG10)</div>
+          <div class="od">Layered steel with striking pattern. Select your bar size below.</div>
+          <div class="otag">Premium Add-On</div>
+        </div>
       </div>
-      <div class="info">A basic knife is always finishable in one 10-hour day with 1084 or 80CrV2 — that's our promise. Want premium steels like Cruwear, MagnaCut, or Damascus? We'll plan that in your free consultation after booking.</div>
+
+      <!-- Damascus bar size selector -->
+      <div id="damascus-bar-config" style="display:none; margin-top:14px;">
+        <div class="config-label">Damascus Bar Size</div>
+        <div class="opt-row">
+          <div class="opt-btn selected" onclick="pickDamascusBar('20', this)">
+            <div class="ot">20″ Bar</div>
+            <div class="od">3mm × 50mm — full-size blades</div>
+            <div class="otag" style="color:var(--forge-red);">+$250</div>
+          </div>
+          <div class="opt-btn" onclick="pickDamascusBar('12', this)">
+            <div class="ot">12″ Bar</div>
+            <div class="od">3mm × 50mm — medium blades</div>
+            <div class="otag" style="color:var(--forge-red);">+$150</div>
+          </div>
+          <div class="opt-btn" onclick="pickDamascusBar('8', this)">
+            <div class="ot">8″ Bar</div>
+            <div class="od">3mm × 50mm — smaller blades</div>
+            <div class="otag" style="color:var(--forge-red);">+$100</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="info">A basic knife is always finishable in one 10-hour day with 1084 or 80CrV2 — that's our promise. Want premium steels like CruWear or MagnaCut? We'll plan that in your free consultation after booking.</div>
 
       <div class="config-label" style="margin-top:18px;">Blade Style</div>
       <p style="font-size:12.5px; color:var(--steel-gray); margin-bottom:10px;">Pick a proven design or bring your own idea. <a href="blade-models.html" style="color:var(--forge-red);">Learn more about each model</a></p>
@@ -782,6 +813,67 @@ footer a { color: var(--forge-red); text-decoration: none; }
   </div>
 </div>
 
+<!-- ── 2C2: Sheath Making ── -->
+<div class="wiz" id="step2-sheathmaking">
+  <div class="section-tag">Sheath Making</div>
+  <h2>Choose Your Group Size</h2>
+  <p class="subtitle">Craft a custom sheath — leather or Kydex. 2-hour hands-on course. Same price for both materials.</p>
+
+  <div class="cards" id="sm-cards">
+    <div class="card" onclick="pickSmSize('1', this)">
+      <div class="card-title">1 Person</div>
+      <div class="card-desc">Private 1-on-1 session with the instructor.</div>
+      <div class="card-price">$300</div>
+    </div>
+    <div class="card" onclick="pickSmSize('2', this)">
+      <div class="card-title">2 People</div>
+      <div class="card-desc">Bring a friend. Full hands-on attention.</div>
+      <div class="card-price">$500 ($250/person)</div>
+    </div>
+    <div class="card" onclick="pickSmSize('3', this)">
+      <div class="card-title">3 People</div>
+      <div class="card-desc">Small group. Great experience.</div>
+      <div class="card-price">$600 ($200/person)</div>
+    </div>
+    <div class="card" onclick="pickSmSize('4plus', this)">
+      <div class="card-title">4+ People</div>
+      <div class="card-desc">Larger group — $200/person. Max 8 per session.</div>
+      <div class="card-price">$200 / person</div>
+    </div>
+  </div>
+
+  <!-- 4+ headcount config -->
+  <div id="sm-4plus-config" style="display:none; margin-top:18px;">
+    <div class="config-label">How Many People?</div>
+    <div class="hc-row">
+      <button class="hc-btn" onclick="smHc(-1)">−</button>
+      <span class="hc-val" id="sm-hc-val">4</span>
+      <button class="hc-btn" onclick="smHc(1)">+</button>
+    </div>
+    <div id="sm-hc-msg" style="margin-top:8px; font-size:13px;"></div>
+    <div class="sum-line" style="margin-top:12px;">
+      <span class="sl">Estimated Total</span>
+      <span class="sv" id="sm-total">$800</span>
+    </div>
+  </div>
+
+  <div class="info" style="margin-top:16px;">
+    <strong>What's included:</strong> All materials (leather or Kydex — your choice at the session), tools, and expert instruction. You'll leave with a finished, custom-fit sheath for your blade. Bring your knife if you have one — we'll size the sheath to it.
+  </div>
+
+  <div style="text-align:right; margin-top:8px;">
+    <button class="share-btn" onclick="shareThis('Check out the sheath making courses at AZ Custom Knives!', '#sheathmaking')">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 12v8a2 2 0 002 2h12a2 2 0 002-2v-8"/><polyline points="16 6 12 2 8 6"/><line x1="12" y1="2" x2="12" y2="15"/></svg>
+      Share
+    </button>
+  </div>
+
+  <div class="btn-row">
+    <button class="btn btn-s" onclick="goBack()">&#8592; Back</button>
+    <button class="btn btn-p" id="sm-next" disabled onclick="goStep(3)">Review Your Booking &#8594;</button>
+  </div>
+</div>
+
 <!-- ── 2D: Team Building ── -->
 <div class="wiz" id="step2-teambuilding">
   <div class="section-tag">Corporate Team Building</div>
@@ -809,6 +901,11 @@ footer a { color: var(--forge-red); text-decoration: none; }
       <div class="card-title">Blacksmithing</div>
       <div class="card-desc">4 hours. Hot steel, hammer, anvil. Unforgettable.</div>
       <div class="card-price">$350 / person — up to 6 people</div>
+    </div>
+    <div class="card" onclick="pickTbAct('sheathmaking', this)">
+      <div class="card-title">Sheath Making</div>
+      <div class="card-desc">2 hours. Craft a custom leather or Kydex sheath.</div>
+      <div class="card-price">$200 / person — up to 8 people</div>
     </div>
   </div>
 
@@ -906,6 +1003,11 @@ footer a { color: var(--forge-red); text-decoration: none; }
       <div class="card-title">Blacksmithing</div>
       <div class="card-desc">4 hours. Hot steel, hammer, anvil.</div>
       <div class="card-price">$350 / person — up to 6 people</div>
+    </div>
+    <div class="card" onclick="pickFamAct('sheathmaking', this)">
+      <div class="card-title">Sheath Making</div>
+      <div class="card-desc">2 hours. Craft a custom leather or Kydex sheath.</div>
+      <div class="card-price">$200 / person — up to 8 people</div>
     </div>
   </div>
 
@@ -1262,8 +1364,8 @@ footer a { color: var(--forge-red); text-decoration: none; }
 
 </main>
 
-<!-- SHARED FOOTER -->
-<div id="site-footer"></div>
+<!-- FOOTER injected by /js/components.js -->
+    <div id="site-footer"></div>
 
 <script>
 /* ══════════════════════════════════════════════
@@ -1305,6 +1407,8 @@ const URLS = {
   'fam-assembly': 'https://shop.azcustomknives.com/booking-calendar/team-building-client-appreciation',
   'fam-knifemaking': 'https://shop.azcustomknives.com/booking-calendar/team-building-client-appreciation',
   'fam-blacksmithing': 'https://shop.azcustomknives.com/booking-calendar/team-building-client-appreciation',
+  'tb-sheathmaking': 'https://shop.azcustomknives.com/booking-calendar/sheath-making-class',
+  'fam-sheathmaking': 'https://shop.azcustomknives.com/booking-calendar/sheath-making-class',
   // Engraving — goes to standalone form with file upload
   engraving: 'laser-engraving.html',
   // Sheath Making
@@ -1318,15 +1422,20 @@ const PRICES = {
   whetstone: 260,
 };
 
-const TB_PRICES = { sharpsem: 260, assembly: 450, knifemaking: 650, blacksmithing: 350 };
-const TB_MAX = { sharpsem: 20, assembly: 15, knifemaking: 6, blacksmithing: 6 };
-const TB_WARN = { sharpsem: 10, assembly: 10, knifemaking: 3, blacksmithing: 3 };
-const TB_HARD = { knifemaking: true, blacksmithing: true };  // hard-capped activities
-const TB_NAMES = { sharpsem: 'Sharpening Seminar', assembly: 'Knife Assembly', knifemaking: 'Knife Making', blacksmithing: 'Blacksmithing' };
+const SM_PRICES = { '1': 300, '2': 500, '3': 600 };
+const SM_NAMES = { '1': '1 Person', '2': '2 People', '3': '3 People', '4plus': '4+ People' };
+
+const TB_PRICES = { sharpsem: 260, assembly: 450, knifemaking: 650, blacksmithing: 350, sheathmaking: 200 };
+const TB_MAX = { sharpsem: 20, assembly: 15, knifemaking: 6, blacksmithing: 6, sheathmaking: 8 };
+const TB_WARN = { sharpsem: 10, assembly: 10, knifemaking: 3, blacksmithing: 3, sheathmaking: 3 };
+const TB_HARD = { knifemaking: true, blacksmithing: true, sheathmaking: true };  // hard-capped activities
+const TB_NAMES = { sharpsem: 'Sharpening Seminar', assembly: 'Knife Assembly', knifemaking: 'Knife Making', blacksmithing: 'Blacksmithing', sheathmaking: 'Sheath Making' };
 const CATER_EST = { subway: 30, jeffreys: 55, custom: 0 };
 const CATER_NAMES = { subway: 'Subway', jeffreys: "Jeffrey's Cafe Co", custom: 'Custom (quote)' };
 
-const STEEL_NAMES = { '1084': '1084 Carbon Steel', '80crv2': '80CrV2' };
+const STEEL_NAMES = { '1084': '1084 Carbon Steel', '80crv2': '80CrV2', 'damascus': 'Damascus (VG10)' };
+const DAMASCUS_PRICES = { '20': 250, '12': 150, '8': 100 };
+const DAMASCUS_NAMES = { '20': '20″ Bar (3mm × 50mm)', '12': '12″ Bar (3mm × 50mm)', '8': '8″ Bar (3mm × 50mm)' };
 const BLADE_NAMES = { bulldog: 'Bulldog', falcon: 'Falcon', badger: 'Badger', custom: 'Custom (Consultation)' };
 const SVC_NAMES = {
   fullday: 'Full Day (10hrs)', halfday: 'Half Day Project', continuation: 'Continuation',
@@ -1357,6 +1466,10 @@ const WAIVERS = {
     waiver: `<p><strong>CONSIDERATION:</strong> In consideration of being permitted to participate in group activities at AZ Custom Knives Ltd ("AZCK"), I acknowledge and agree to the following terms.</p><p><strong>DETAILS OF ACTIVITY:</strong> Activities may include knife sharpening, blade assembly, knife making, and/or blacksmithing depending on the event package selected. Each involves workshop tools and materials that present inherent risks.</p><p><strong>ASSUMPTION OF RISK:</strong> I understand the risks involved in workshop activities and voluntarily assume all risks associated with participation.</p><p><strong>RELEASE OF LIABILITY:</strong> I release, waive, and discharge AZCK, its owners, employees, and agents from any and all liability arising from my or my group's participation.</p><p><strong>GOVERNING LAW:</strong> This waiver is governed by the laws of the Province of Alberta, Canada.</p>`,
     instructions: `<p><strong>WHAT TO WEAR:</strong> Closed-toe shoes, long pants, natural fibre clothing. Specific requirements depend on the activity selected and will be confirmed after booking.</p><p><strong>WHAT TO BRING:</strong> Water bottles for all participants. Catering is available if selected.</p><p><strong>ARRIVAL:</strong> Please arrive 15 minutes early as a group so we can do a safety briefing before starting.</p>`
   },
+  sheathmaking: {
+    waiver: `<p><strong>CONSIDERATION:</strong> In consideration of being permitted to participate in sheath making activities at AZ Custom Knives Ltd ("AZCK"), I acknowledge and agree to the following terms.</p><p><strong>DETAILS OF ACTIVITY:</strong> Activities include cutting, stitching, riveting, and finishing leather and Kydex sheaths using sharp tools, heat guns, and workshop equipment. Participants may be exposed to sharp edges, hot materials, and other workshop hazards.</p><p><strong>ASSUMPTION OF RISK:</strong> I understand that sheath making involves inherent risks of injury including cuts, burns, and other bodily harm. I voluntarily assume all risks.</p><p><strong>RELEASE OF LIABILITY:</strong> I release, waive, and discharge AZCK, its owners, employees, and agents from any and all liability, claims, and demands arising from my participation.</p><p><strong>FITNESS TO PARTICIPATE:</strong> I confirm that I am physically and mentally fit to participate and have disclosed any relevant medical conditions.</p><p><strong>GOVERNING LAW:</strong> This waiver is governed by the laws of the Province of Alberta, Canada.</p>`,
+    instructions: `<p><strong>WHAT TO WEAR:</strong> Comfortable clothing you don't mind getting dirty. Closed-toe shoes recommended.</p><p><strong>WHAT TO BRING:</strong> If you have a knife that needs a sheath, bring it along so we can size the sheath to your blade. Otherwise we'll provide a template blade.</p><p><strong>WHAT TO EXPECT:</strong> A 2-hour hands-on course. You'll measure, cut, shape, and finish your own custom sheath — leather or Kydex, your choice.</p><p><strong>ARRIVAL:</strong> Please arrive 5 minutes early so we can get you set up.</p>`
+  },
   engraving: {
     waiver: `<p><strong>AUTHORIZATION:</strong> By submitting an item for laser engraving at AZ Custom Knives Ltd ("AZCK"), I authorize AZCK to perform laser engraving on my property as described in the approved proof.</p><p><strong>PROOF APPROVAL:</strong> No engraving work will begin until I have reviewed and approved a digital proof. By approving the proof, I confirm that the design, text, spelling, positioning, and orientation are correct. AZCK is not responsible for errors present in the approved proof.</p><p><strong>POSITIONING ACCURACY:</strong> Laser positioning is accurate to approximately ±2–3 mm of the approved proof. Minor variations are inherent to the process and do not constitute a defect.</p><p><strong>PERMANENT PROCESS:</strong> Laser engraving is permanent and irreversible. Once started, it cannot be undone or removed without potentially damaging the item.</p><p><strong>EQUIPMENT RISK:</strong> Laser engraving equipment, while professionally maintained, may occasionally produce results that differ from the proof due to equipment behaviour, material properties, or factors beyond AZCK's reasonable control.</p><p><strong>LIABILITY:</strong> AZCK's total liability for any engraving error is strictly limited to the cost of the engraving service (setup fee + per-piece fee). AZCK is not liable for the replacement value, sentimental value, or any other value of the item being engraved. I proceed at my own risk.</p><p><strong>HIGH-VALUE ITEMS:</strong> For items of significant value, AZCK recommends testing on a sample piece first. Proceeding on high-value items is entirely at my own risk.</p><p><strong>GOVERNING LAW:</strong> This disclaimer is governed by the laws of the Province of Alberta, Canada.</p>`,
     instructions: `<p><strong>DROP-OFF:</strong> Bring your item clean and dry. If there's a specific area for engraving, mark it with masking tape.</p><p><strong>PROOF PROCESS:</strong> We photograph your item on the laser table, prepare a digital proof, and send you a link to review. No work starts until you approve.</p><p><strong>TURNAROUND:</strong> Standard turnaround is 3–5 business days after proof approval, depending on workload.</p><p><strong>PICKUP:</strong> You'll receive a notification when your item is ready. Please collect within 30 days.</p>`
@@ -1370,6 +1483,7 @@ const CAT_NAMES = {
   sharpening: 'Sharpening',
   knifemaking: 'Knife Making',
   blacksmithing: 'Blacksmithing',
+  sheathmaking: 'Sheath Making',
   teambuilding: 'Team Building',
   family: 'Family Events',
   special: 'Special Events',
@@ -1384,13 +1498,15 @@ let S = {
   // Knife Making
   kmType: '1on1',    // 1on1, group
   kmPath: 'scratch', // scratch, blank
-  steel: '1084',
+  steel: '1084', damascusBar: '20',
   blade: 'bulldog',
   km1Svc: 'fullday',
   grpBlade: 'bulldog',
   kmGrpSvc: '2person',
   // Blacksmithing
   bsSvc: null,
+  // Sheath Making
+  smSize: null, smHc: 4,
   // Team Building / Family
   tbAct: null, tbHc: 4, tbCatering: false, tbCater: 'subway',
   famAct: null, famHc: 4, famCatering: false, famCater: 'subway',
@@ -1512,6 +1628,15 @@ function pickSteel(steel, el) {
   S.steel = steel;
   el.parentElement.querySelectorAll('.opt-btn').forEach(b => b.classList.remove('selected'));
   el.classList.add('selected');
+  // Show/hide Damascus bar selector
+  const dCfg = document.getElementById('damascus-bar-config');
+  if (dCfg) dCfg.style.display = steel === 'damascus' ? 'block' : 'none';
+}
+
+function pickDamascusBar(size, el) {
+  S.damascusBar = size;
+  el.parentElement.querySelectorAll('.opt-btn').forEach(b => b.classList.remove('selected'));
+  el.classList.add('selected');
 }
 
 function pickBlade(blade, el) {
@@ -1546,6 +1671,41 @@ function pickBs(svc, el) {
   document.querySelectorAll('#bs-cards .card').forEach(c => c.classList.remove('selected'));
   el.classList.add('selected');
   document.getElementById('bs-next').disabled = false;
+}
+
+/* ══════════════════════════════════════════════
+   STEP 2C2 — SHEATH MAKING
+   ══════════════════════════════════════════════ */
+function pickSmSize(size, el) {
+  S.smSize = size;
+  document.querySelectorAll('#sm-cards .card').forEach(c => c.classList.remove('selected'));
+  el.classList.add('selected');
+  document.getElementById('sm-next').disabled = false;
+  document.getElementById('sm-4plus-config').style.display = size === '4plus' ? 'block' : 'none';
+  if (size !== '4plus') {
+    updateSmNote();
+  }
+}
+
+function smHc(d) {
+  S.smHc = Math.max(4, S.smHc + d);
+  document.getElementById('sm-hc-val').textContent = S.smHc;
+  updateSmNote();
+}
+
+function updateSmNote() {
+  const msg = document.getElementById('sm-hc-msg');
+  if (!msg) return;
+  if (S.smSize === '4plus' && S.smHc > 8) {
+    msg.innerHTML = '<span class="hc-warn">Max 8 per session. Your group of ' + S.smHc + ' will be split across ' + Math.ceil(S.smHc / 8) + ' sessions.</span>';
+  } else if (S.smSize === '4plus' || (S.smSize && parseInt(S.smSize) > 3)) {
+    msg.innerHTML = '<span style="color:#e65100;">Groups larger than 3 will have less 1-on-1 time with the instructor.</span>';
+  } else {
+    msg.textContent = '';
+  }
+  if (S.smSize === '4plus') {
+    document.getElementById('sm-total').textContent = '$' + (S.smHc * 200).toLocaleString();
+  }
 }
 
 /* ══════════════════════════════════════════════
@@ -1722,6 +1882,11 @@ function buildReview() {
       line('Starting Point', S.kmPath === 'scratch' ? 'From Scratch' : 'Premium Blank');
       if (S.kmPath === 'scratch') {
         line('Steel', STEEL_NAMES[S.steel]);
+        if (S.steel === 'damascus') {
+          line('Damascus Bar', DAMASCUS_NAMES[S.damascusBar]);
+          line('Damascus Add-On', '+$' + DAMASCUS_PRICES[S.damascusBar]);
+          total += DAMASCUS_PRICES[S.damascusBar];
+        }
         line('Blade Style', BLADE_NAMES[S.blade]);
       } else {
         line('Steel', 'Based on blank selection');
@@ -1753,6 +1918,20 @@ function buildReview() {
     line('Activity', 'Blacksmithing');
     total = PRICES[S.bsSvc];
     url = URLS[S.bsSvc];
+
+  } else if (S.cat === 'sheathmaking') {
+    line('Course', 'Sheath Making — 2 Hour Hands-On');
+    line('Material', 'Leather or Kydex (your choice)');
+    if (S.smSize === '4plus') {
+      line('Group Size', S.smHc + ' people');
+      total = S.smHc * 200;
+      if (S.smHc > 3) line('Note', 'Groups larger than 3 will have less 1-on-1 time with the instructor.');
+      if (S.smHc > 8) line('Schedule', Math.ceil(S.smHc / 8) + ' sessions (max 8 per session)');
+    } else {
+      line('Group Size', SM_NAMES[S.smSize]);
+      total = SM_PRICES[S.smSize];
+    }
+    url = URLS['sheath'];
 
   } else if (S.cat === 'teambuilding' || S.cat === 'family') {
     const prefix = S.cat === 'teambuilding' ? 'tb' : 'fam';
@@ -1814,6 +1993,7 @@ function getWaiverCat() {
   if (S.cat === 'sharpening') return 'sharpening';
   if (S.cat === 'knifemaking') return 'knifemaking';
   if (S.cat === 'blacksmithing') return 'blacksmithing';
+  if (S.cat === 'sheathmaking') return 'sheathmaking';
   if (S.cat === 'engraving') return 'engraving';
   return 'events';
 }
@@ -1960,7 +2140,7 @@ function applyEntryMode(mode) {
 }
 
 window.addEventListener('DOMContentLoaded', () => {
-  const hash = window.location.hash.replace('#', '');
+  let hash = window.location.hash.replace('#', '');
 
   // Entry mode hashes
   if (hash === 'classes') {
@@ -1971,8 +2151,10 @@ window.addEventListener('DOMContentLoaded', () => {
     applyEntryMode('book');
   }
   // Direct category deep links
-  else if (['sharpening', 'knifemaking', 'blacksmithing', 'teambuilding', 'family', 'special', 'engraving'].includes(hash)) {
+  else if (['sharpening', 'knifemaking', 'blacksmithing', 'sheathmaking', 'sheath-making', 'teambuilding', 'family', 'special', 'engraving'].includes(hash)) {
     deepLinked = true;
+    // Normalize hyphenated aliases
+    if (hash === 'sheath-making') hash = 'sheathmaking';
     pickCat(hash);
   }
 
@@ -1987,6 +2169,6 @@ window.addEventListener('DOMContentLoaded', () => {
 });
 </script>
 
-<script src="../js/components.js"></script>
+    <script src="../js/components.js"></script>
 </body>
 </html>
