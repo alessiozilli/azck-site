@@ -1,0 +1,354 @@
+<!DOCTYPE html>
+<!--
+  pages/post.html — Single Post Engine
+
+  Routing: ?post=<slug>  (URLSearchParams.get('post'), URL-decoded, lowercased before compare)
+    - empty / missing  → redirect to blog.html
+    - no match         → inline 404-style message + "← Back to Blog" link
+    - match            → render post
+
+  Default <title> below is "From the Forge — AZ Custom Knives".
+  When a post is matched, the script overrides it to "<post.title> — AZ Custom Knives"
+  and rewrites <meta name="description">, OpenGraph tags, canonical URL, and JSON-LD.
+
+  Adding a post = append to /js/blog-posts.js. This file does not change.
+-->
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>From the Forge — AZ Custom Knives</title>
+    <meta name="description" content="Stories, tips, and behind-the-scenes from the AZCK workshop.">
+    <link rel="canonical" id="post-canonical" href="https://azcustomknives.com/pages/post.html">
+    <meta property="og:title" id="og-title" content="From the Forge — AZ Custom Knives">
+    <meta property="og:description" id="og-description" content="Stories, tips, and behind-the-scenes from the AZCK workshop.">
+    <meta property="og:type" content="article">
+    <meta property="og:url" id="og-url" content="https://azcustomknives.com/pages/post.html">
+    <meta name="twitter:card" content="summary_large_image">
+    <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../css/components.css">
+    <style>
+        :root {
+            --forge-red: #990000;
+            --forge-red-hover: #770000;
+            --steel-gray: #78909C;
+            --black: #000;
+            --white: #FFF;
+            --off-white: #FAFAFA;
+            --light-gray: #F0F0F0;
+            --dark-gray: #333;
+            --text: #1a1a1a;
+            --header-height: 72px;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            font-family: Effra, "Segoe UI", Arial, sans-serif;
+            color: var(--text);
+            background-color: var(--off-white);
+            line-height: 1.7;
+        }
+
+        main {
+            max-width: 760px;
+            margin: 0 auto;
+            padding: 3rem 2rem;
+        }
+
+        .post-back {
+            display: inline-block;
+            color: var(--forge-red);
+            text-decoration: none;
+            font-family: Oswald, sans-serif;
+            font-weight: 600;
+            margin-bottom: 2rem;
+            letter-spacing: 0.5px;
+        }
+
+        .post-back:hover { color: var(--forge-red-hover); }
+
+        .post-meta {
+            display: flex;
+            gap: 1rem;
+            color: var(--steel-gray);
+            font-size: 0.85rem;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            margin-bottom: 0.75rem;
+        }
+
+        .post-title {
+            font-family: Oswald, sans-serif;
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: var(--text);
+            line-height: 1.2;
+            letter-spacing: 1px;
+            margin-bottom: 2rem;
+        }
+
+        .post-hero {
+            width: 100%;
+            min-height: 280px;
+            border-radius: 8px;
+            overflow: hidden;
+            background: linear-gradient(135deg, var(--light-gray) 0%, #e0e0e0 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 6rem;
+            margin-bottom: 2rem;
+            background-size: cover;
+            background-position: center;
+        }
+
+        .post-body {
+            font-size: 1.05rem;
+            color: var(--dark-gray);
+        }
+
+        .post-body p { margin-bottom: 1.25rem; }
+        .post-body h2 {
+            font-family: Oswald, sans-serif;
+            font-size: 1.6rem;
+            color: var(--text);
+            margin: 2rem 0 1rem;
+            letter-spacing: 0.5px;
+        }
+        .post-body h3 {
+            font-family: Oswald, sans-serif;
+            font-size: 1.25rem;
+            color: var(--text);
+            margin: 1.5rem 0 0.75rem;
+        }
+        .post-body a { color: var(--forge-red); }
+        .post-body a:hover { color: var(--forge-red-hover); }
+        .post-body ul, .post-body ol {
+            margin: 1rem 0 1.25rem 1.5rem;
+        }
+        .post-body li { margin-bottom: 0.5rem; }
+        .post-body img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 8px;
+            margin: 1.5rem 0;
+        }
+        .post-body blockquote {
+            border-left: 4px solid var(--forge-red);
+            padding: 0.5rem 1.25rem;
+            margin: 1.5rem 0;
+            color: var(--dark-gray);
+            font-style: italic;
+            background: var(--white);
+        }
+
+        .post-empty-body {
+            background: var(--white);
+            border-left: 4px solid var(--steel-gray);
+            padding: 1.5rem;
+            border-radius: 8px;
+            color: var(--steel-gray);
+            margin-bottom: 2rem;
+        }
+
+        .not-found {
+            background: var(--white);
+            padding: 3rem 2rem;
+            border-radius: 8px;
+            text-align: center;
+            color: var(--steel-gray);
+            margin: 2rem 0;
+        }
+
+        .not-found h1 {
+            font-family: Oswald, sans-serif;
+            font-size: 2rem;
+            color: var(--text);
+            margin-bottom: 1rem;
+        }
+
+        .not-found a {
+            color: var(--forge-red);
+            text-decoration: none;
+            font-family: Oswald, sans-serif;
+            font-weight: 600;
+        }
+
+        .post-footer-cta {
+            background: var(--white);
+            padding: 2rem;
+            border-radius: 8px;
+            text-align: center;
+            color: var(--steel-gray);
+            margin: 3rem 0 1rem;
+            border-left: 4px solid var(--forge-red);
+        }
+
+        .post-footer-cta a { color: var(--forge-red); text-decoration: none; }
+
+        .admin-gear {
+            display: block;
+            text-align: right;
+            margin-top: 2rem;
+            opacity: 0.4;
+            font-size: 1rem;
+            text-decoration: none;
+            transition: opacity 0.3s ease;
+        }
+
+        .admin-gear:hover { opacity: 1; }
+
+        @media (max-width: 768px) {
+            .post-title { font-size: 1.75rem; }
+            main { padding: 2rem 1rem; }
+            .post-hero { min-height: 200px; font-size: 4rem; }
+        }
+    </style>
+</head>
+<body>
+    <!-- HEADER injected by /js/components.js -->
+    <div id="site-header"></div>
+
+    <main>
+        <noscript>
+            <div class="not-found">
+                <h1>Posts unavailable</h1>
+                <p>Enable JavaScript or follow us on Instagram <a href="https://www.instagram.com/az_custom_knives/" target="_blank" rel="noopener">@az_custom_knives</a>.</p>
+                <p style="margin-top:1rem;"><a href="blog.html">← Back to Blog</a></p>
+            </div>
+        </noscript>
+
+        <div id="post-root"></div>
+
+        <a class="admin-gear" href="https://command.azcustomknives.com/" aria-label="Admin">⚙️</a>
+    </main>
+
+    <!-- FOOTER injected by /js/components.js -->
+    <div id="site-footer"></div>
+
+    <script src="../js/blog-posts.js"></script>
+    <script src="../js/components.js"></script>
+    <script>
+        (function renderPost() {
+            var root = document.getElementById('post-root');
+            if (!root) return;
+
+            try {
+                // Slug routing contract:
+                //   URL-decode → lowercase compare → empty = redirect to blog.html
+                //   no match = 404-style + nav back
+                var rawSlug = '';
+                try {
+                    rawSlug = new URLSearchParams(window.location.search).get('post') || '';
+                } catch (e) {
+                    rawSlug = '';
+                }
+
+                var slug = decodeURIComponent(rawSlug).trim().toLowerCase();
+                if (!slug) {
+                    window.location.replace('blog.html');
+                    return;
+                }
+
+                var posts = window.BLOG_POSTS || [];
+                var post = null;
+                for (var i = 0; i < posts.length; i++) {
+                    if (String(posts[i].slug || '').toLowerCase() === slug) {
+                        post = posts[i];
+                        break;
+                    }
+                }
+
+                var escapeHTML = function (str) {
+                    return String(str == null ? '' : str)
+                        .replace(/&/g, '&amp;')
+                        .replace(/</g, '&lt;')
+                        .replace(/>/g, '&gt;')
+                        .replace(/"/g, '&quot;')
+                        .replace(/'/g, '&#39;');
+                };
+
+                if (!post) {
+                    root.innerHTML = [
+                        '<a class="post-back" href="blog.html">← Back to Blog</a>',
+                        '<div class="not-found">',
+                            '<h1>Post not found</h1>',
+                            '<p>The post <strong>' + escapeHTML(slug) + '</strong> doesn\'t exist (yet).</p>',
+                            '<p style="margin-top:1.5rem;"><a href="blog.html">← Back to all posts</a></p>',
+                        '</div>'
+                    ].join('');
+                    document.title = 'Post not found — AZ Custom Knives';
+                    return;
+                }
+
+                // SEO overrides
+                var fullTitle = (post.title || 'From the Forge') + ' — AZ Custom Knives';
+                document.title = fullTitle;
+
+                var setMeta = function (selector, attr, value) {
+                    var el = document.querySelector(selector);
+                    if (el && value != null) el.setAttribute(attr, value);
+                };
+                setMeta('meta[name="description"]', 'content', post.excerpt || '');
+                setMeta('#og-title', 'content', fullTitle);
+                setMeta('#og-description', 'content', post.excerpt || '');
+                var canonicalUrl = 'https://azcustomknives.com/pages/post.html?post=' + encodeURIComponent(post.slug || '');
+                setMeta('#post-canonical', 'href', canonicalUrl);
+                setMeta('#og-url', 'content', canonicalUrl);
+
+                // JSON-LD Article
+                try {
+                    var ld = document.createElement('script');
+                    ld.type = 'application/ld+json';
+                    ld.textContent = JSON.stringify({
+                        '@context': 'https://schema.org',
+                        '@type': 'Article',
+                        headline: post.title || '',
+                        datePublished: post.date || '',
+                        articleSection: post.category || '',
+                        author: { '@type': 'Organization', name: 'AZ Custom Knives' },
+                        publisher: { '@type': 'Organization', name: 'AZ Custom Knives' },
+                        mainEntityOfPage: canonicalUrl,
+                        description: post.excerpt || ''
+                    });
+                    document.head.appendChild(ld);
+                } catch (e) { /* ignore */ }
+
+                // Render
+                var heroStyle = post.heroImage
+                    ? 'style="background-image:url(\'' + escapeHTML(post.heroImage) + '\');"'
+                    : '';
+                var heroIcon = post.heroImage ? '' : escapeHTML(post.icon || '📝');
+                var bodyHTML = (post.content && String(post.content).trim().length > 0)
+                    ? post.content
+                    : '<div class="post-empty-body"><strong>Coming soon.</strong> This post is being written. Follow <a href="https://www.instagram.com/az_custom_knives/" target="_blank" rel="noopener" style="color:#990000;">@az_custom_knives</a> for updates.</div>';
+
+                root.innerHTML = [
+                    '<a class="post-back" href="blog.html">← Back to Blog</a>',
+                    '<article>',
+                        '<div class="post-meta">',
+                            '<span>' + escapeHTML(post.dateDisplay || '') + '</span>',
+                            '<span>' + escapeHTML(post.category || '') + '</span>',
+                        '</div>',
+                        '<h1 class="post-title">' + escapeHTML(post.title || 'Untitled') + '</h1>',
+                        '<div class="post-hero" ' + heroStyle + '>' + heroIcon + '</div>',
+                        '<div class="post-body">' + bodyHTML + '</div>',
+                    '</article>',
+                    '<div class="post-footer-cta">',
+                        '<p><strong>Enjoyed this?</strong> Follow us on Instagram <a href="https://www.instagram.com/az_custom_knives/" target="_blank" rel="noopener">@az_custom_knives</a> for daily updates from the workshop.</p>',
+                    '</div>'
+                ].join('');
+            } catch (err) {
+                root.innerHTML = [
+                    '<a class="post-back" href="blog.html">← Back to Blog</a>',
+                    '<div class="not-found">',
+                        '<h1>Posts unavailable</h1>',
+                        '<p>Something went wrong loading this post. Follow <a href="https://www.instagram.com/az_custom_knives/" target="_blank" rel="noopener">@az_custom_knives</a> for updates.</p>',
+                    '</div>'
+                ].join('');
+            }
+        })();
+    </script>
+</body>
+</html>
