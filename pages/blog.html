@@ -1,9 +1,24 @@
 <!DOCTYPE html>
+<!--
+  pages/blog.html — Blog Engine (grid)
+
+  Reads window.BLOG_POSTS from /js/blog-posts.js and renders cards dynamically.
+  Sorted by `date` descending. Each card links to post.html?post=<slug>.
+
+  Adding a post = edit /js/blog-posts.js. This file does not change.
+-->
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>From the Forge - AZ Custom Knives</title>
+    <title>From the Forge — AZ Custom Knives</title>
+    <meta name="description" content="Stories, tips, and behind-the-scenes from the AZCK workshop.">
+    <link rel="canonical" href="https://azcustomknives.com/pages/blog.html">
+    <meta property="og:title" content="From the Forge — AZ Custom Knives">
+    <meta property="og:description" content="Stories, tips, and behind-the-scenes from the AZCK workshop.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://azcustomknives.com/pages/blog.html">
+    <meta name="twitter:card" content="summary">
     <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;500;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="../css/components.css">
     <style>
@@ -20,11 +35,7 @@
             --header-height: 72px;
         }
 
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
 
         body {
             font-family: Effra, "Segoe UI", Arial, sans-serif;
@@ -33,36 +44,6 @@
             line-height: 1.6;
         }
 
-        /* Header */
-
-        .logo {
-            font-family: Oswald, sans-serif;
-            font-size: 1.5rem;
-            font-weight: 700;
-            color: var(--white);
-            text-decoration: none;
-            letter-spacing: 1px;
-        }
-
-        .logo span {
-            color: var(--forge-red);
-        }
-
-
-        nav a {
-            color: var(--white);
-            text-decoration: none;
-            font-size: 0.9rem;
-            transition: color 0.3s ease;
-            font-family: Oswald, sans-serif;
-            font-weight: 500;
-        }
-
-        nav a:hover {
-            color: var(--forge-red);
-        }
-
-        /* Main Content */
         main {
             max-width: 920px;
             margin: 0 auto;
@@ -90,7 +71,6 @@
             margin: 0 auto;
         }
 
-        /* Blog Grid */
         .blog-grid {
             display: grid;
             grid-template-columns: repeat(2, 1fr);
@@ -106,6 +86,8 @@
             transition: transform 0.3s ease, box-shadow 0.3s ease;
             display: flex;
             flex-direction: column;
+            text-decoration: none;
+            color: inherit;
         }
 
         .blog-card:hover {
@@ -122,6 +104,8 @@
             justify-content: center;
             font-size: 4rem;
             border-bottom: 1px solid var(--light-gray);
+            background-size: cover;
+            background-position: center;
         }
 
         .blog-content {
@@ -131,12 +115,15 @@
             flex-direction: column;
         }
 
-        .blog-date {
+        .blog-meta {
             font-size: 0.85rem;
             color: var(--steel-gray);
             margin-bottom: 0.5rem;
             text-transform: uppercase;
             letter-spacing: 0.5px;
+            display: flex;
+            justify-content: space-between;
+            gap: 1rem;
         }
 
         .blog-card h3 {
@@ -164,11 +151,10 @@
             align-self: flex-start;
         }
 
-        .blog-link:hover {
+        .blog-card:hover .blog-link {
             color: var(--forge-red-hover);
         }
 
-        /* Footer Note */
         .footer-note {
             background: var(--white);
             padding: 2rem;
@@ -179,78 +165,39 @@
             border-left: 4px solid var(--forge-red);
         }
 
-        .footer-note strong {
-            color: var(--text);
+        .footer-note strong { color: var(--text); }
+        .footer-note a { color: var(--forge-red); text-decoration: none; }
+
+        .empty-state {
+            background: var(--white);
+            padding: 3rem 2rem;
+            border-radius: 8px;
+            text-align: center;
+            color: var(--steel-gray);
+            margin-bottom: 3rem;
         }
 
-        /* Footer */
-
-        footer a {
-            color: var(--forge-red);
+        .admin-gear {
+            display: block;
+            text-align: right;
+            margin-top: 2rem;
+            opacity: 0.4;
+            font-size: 1rem;
             text-decoration: none;
-            transition: color 0.3s ease;
+            transition: opacity 0.3s ease;
         }
 
-        footer a:hover {
-            color: var(--forge-red-hover);
-        }
+        .admin-gear:hover { opacity: 1; }
 
-        .footer-nav {
-            display: flex;
-            justify-content: center;
-            gap: 2rem;
-            margin: 1.5rem 0;
-            flex-wrap: wrap;
-            font-size: 0.85rem;
-        }
-
-        .footer-nav a {
-            color: var(--white);
-        }
-
-        .footer-contact {
-            margin: 1.5rem 0;
-            font-size: 0.9rem;
-        }
-
-        .footer-contact a {
-            color: var(--white);
-        }
-
-        /* Responsive */
         @media (max-width: 768px) {
-
-
-            h1 {
-                font-size: 2rem;
-            }
-
-            .blog-grid {
-                grid-template-columns: 1fr;
-            }
-
-            main {
-                padding: 2rem 1rem;
-            }
+            h1 { font-size: 2rem; }
+            .blog-grid { grid-template-columns: 1fr; }
+            main { padding: 2rem 1rem; }
         }
 
         @media (max-width: 640px) {
-            .logo {
-                font-size: 1.2rem;
-            }
-
-
-            nav a {
-                font-size: 0.8rem;
-            }
-
-            h1 {
-                font-size: 1.5rem;
-            }
-
-            .subtitle {
-                font-size: 1rem;
-            }
+            h1 { font-size: 1.5rem; }
+            .subtitle { font-size: 1rem; }
         }
     </style>
 </head>
@@ -264,55 +211,75 @@
             <p class="subtitle">Stories, tips, and behind-the-scenes from the AZCK workshop.</p>
         </div>
 
-        <div class="blog-grid">
-            <article class="blog-card">
-                <div class="blog-image">📸</div>
-                <div class="blog-content">
-                    <span class="blog-date">March 2026</span>
-                    <h3>Why 1084 Steel?</h3>
-                    <p class="blog-excerpt">The steel we use most and why it's perfect for beginners and pros alike.</p>
-                    <a href="#" class="blog-link">Read More →</a>
-                </div>
-            </article>
+        <noscript>
+            <div class="footer-note">
+                <p><strong>Posts unavailable.</strong> Enable JavaScript or follow us on Instagram <a href="https://www.instagram.com/az_custom_knives/" target="_blank" rel="noopener">@az_custom_knives</a> for daily updates.</p>
+            </div>
+        </noscript>
 
-            <article class="blog-card">
-                <div class="blog-image">📸</div>
-                <div class="blog-content">
-                    <span class="blog-date">February 2026</span>
-                    <h3>Behind the Bulldog</h3>
-                    <p class="blog-excerpt">How our signature blade model came to be.</p>
-                    <a href="#" class="blog-link">Read More →</a>
-                </div>
-            </article>
-
-            <article class="blog-card">
-                <div class="blog-image">📸</div>
-                <div class="blog-content">
-                    <span class="blog-date">January 2026</span>
-                    <h3>Sharpening Myths Debunked</h3>
-                    <p class="blog-excerpt">5 things most people get wrong about knife sharpening.</p>
-                    <a href="#" class="blog-link">Read More →</a>
-                </div>
-            </article>
-
-            <article class="blog-card">
-                <div class="blog-image">📸</div>
-                <div class="blog-content">
-                    <span class="blog-date">January 2026</span>
-                    <h3>First Class of 2026</h3>
-                    <p class="blog-excerpt">A look back at our first knife making class of the year.</p>
-                    <a href="#" class="blog-link">Read More →</a>
-                </div>
-            </article>
-        </div>
+        <div id="blog-grid" class="blog-grid"></div>
 
         <div class="footer-note">
-            <p><strong>More posts coming soon.</strong> Follow us on Instagram <a href="https://www.instagram.com/az_custom_knives/" target="_blank" style="color:#990000;text-decoration:none;">@az_custom_knives</a> for daily updates.</p>
+            <p><strong>More posts coming soon.</strong> Follow us on Instagram <a href="https://www.instagram.com/az_custom_knives/" target="_blank" rel="noopener">@az_custom_knives</a> for daily updates.</p>
         </div>
+
+        <a class="admin-gear" href="https://command.azcustomknives.com/" aria-label="Admin">⚙️</a>
     </main>
 
     <!-- FOOTER injected by /js/components.js -->
     <div id="site-footer"></div>
+
+    <script src="../js/blog-posts.js"></script>
     <script src="../js/components.js"></script>
+    <script>
+        (function renderBlogGrid() {
+            var grid = document.getElementById('blog-grid');
+            if (!grid) return;
+
+            try {
+                var posts = (window.BLOG_POSTS || []).slice().sort(function (a, b) {
+                    return (b.date || '').localeCompare(a.date || '');
+                });
+
+                if (posts.length === 0) {
+                    grid.outerHTML = '<div class="empty-state"><strong>No posts yet.</strong><br>Check back soon — or follow <a href="https://www.instagram.com/az_custom_knives/" target="_blank" rel="noopener" style="color:#990000;">@az_custom_knives</a> for daily updates.</div>';
+                    return;
+                }
+
+                var escapeHTML = function (str) {
+                    return String(str == null ? '' : str)
+                        .replace(/&/g, '&amp;')
+                        .replace(/</g, '&lt;')
+                        .replace(/>/g, '&gt;')
+                        .replace(/"/g, '&quot;')
+                        .replace(/'/g, '&#39;');
+                };
+
+                grid.innerHTML = posts.map(function (post) {
+                    var slug = encodeURIComponent(post.slug || '');
+                    var image = post.heroImage
+                        ? 'style="background-image:url(\'' + escapeHTML(post.heroImage) + '\');"'
+                        : '';
+                    var iconHTML = post.heroImage ? '' : escapeHTML(post.icon || '📝');
+                    return [
+                        '<a class="blog-card" href="post.html?post=' + slug + '">',
+                            '<div class="blog-image" ' + image + '>' + iconHTML + '</div>',
+                            '<div class="blog-content">',
+                                '<div class="blog-meta">',
+                                    '<span>' + escapeHTML(post.dateDisplay || '') + '</span>',
+                                    '<span>' + escapeHTML(post.category || '') + '</span>',
+                                '</div>',
+                                '<h3>' + escapeHTML(post.title || 'Untitled') + '</h3>',
+                                '<p class="blog-excerpt">' + escapeHTML(post.excerpt || '') + '</p>',
+                                '<span class="blog-link">Read More →</span>',
+                            '</div>',
+                        '</a>'
+                    ].join('');
+                }).join('');
+            } catch (err) {
+                grid.outerHTML = '<div class="empty-state"><strong>Posts unavailable.</strong> Follow us on Instagram <a href="https://www.instagram.com/az_custom_knives/" target="_blank" rel="noopener" style="color:#990000;">@az_custom_knives</a>.</div>';
+            }
+        })();
+    </script>
 </body>
 </html>
