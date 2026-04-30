@@ -49,6 +49,13 @@ h2{font-family:'Oswald',sans-serif;font-size:36px;font-weight:400;letter-spacing
 .contact-bar{background:var(--white);border-top:1px solid var(--light-gray);padding:16px 20px;display:flex;align-items:center;justify-content:center;gap:24px;flex-wrap:wrap;font-size:13.5px;color:var(--steel-gray)}
 .contact-bar a{color:var(--forge-red);text-decoration:none;font-weight:500}
 @media(max-width:640px){h2{font-size:26px}}
+.u18-toggle{padding:16px 24px;border-top:1px solid var(--light-gray);background:var(--off-white)}
+.u18-toggle p{font-size:14px;margin-bottom:10px;font-weight:600}
+.u18-btns{display:flex;gap:8px}
+.u18-btn{font-family:'Oswald',sans-serif;font-size:12px;letter-spacing:1px;text-transform:uppercase;padding:8px 20px;border:2px solid var(--light-gray);background:transparent;cursor:pointer;transition:all .2s;font-family:inherit}
+.u18-btn:hover{border-color:var(--forge-red)}
+.u18-btn.active{background:var(--forge-red);color:var(--white);border-color:var(--forge-red)}
+.u18-supplement{padding:16px 24px;border-top:1px solid var(--light-gray)}
 </style>
 </head>
 <body>
@@ -145,6 +152,22 @@ h2{font-family:'Oswald',sans-serif;font-size:36px;font-weight:400;letter-spacing
         <p><strong>RELEASE OF LIABILITY:</strong> I release, waive, and discharge AZCK, its owners, employees, and agents from any and all liability arising from my or my group's participation.</p>
         <p><strong>GOVERNING LAW:</strong> This waiver is governed by the laws of the Province of Alberta, Canada.</p>
       </div>
+      <div class="u18-toggle">
+        <p>Do any participants include anyone under 18?</p>
+        <div class="u18-btns">
+          <button class="u18-btn active" id="u18-no" onclick="setU18(false)">No</button>
+          <button class="u18-btn" id="u18-yes" onclick="setU18(true)">Yes</button>
+        </div>
+      </div>
+      <div class="u18-supplement" id="u18-supplement" style="display:none">
+        <div class="info" style="border-color:var(--forge-red)">
+          <strong>Under-18 Supplement — Parent/Guardian Required</strong><br><br>
+          A parent or legal guardian must complete the following <em>before</em> the event:<br><br>
+          <strong>1. Acknowledgment of Risk:</strong> The parent/guardian confirms they understand the specific risks involved — sharp tools, hot materials, heavy equipment, rotating machinery.<br><br>
+          <strong>2. Indemnity Agreement:</strong> The parent/guardian agrees to indemnify AZCK against any claims arising from the minor's participation.<br><br>
+          No adult is required to be on-site during the activity once these agreements are in place.
+        </div>
+      </div>
       <div class="ws-dl">
         <a href="#">Download PDF</a>
         <span>(Available after booking)</span>
@@ -201,6 +224,11 @@ h2{font-family:'Oswald',sans-serif;font-size:36px;font-weight:400;letter-spacing
 
 <script>
 function toggle(id) { document.getElementById(id).classList.toggle('open'); }
+function setU18(yes) {
+  document.getElementById('u18-yes').classList.toggle('active', yes);
+  document.getElementById('u18-no').classList.toggle('active', !yes);
+  document.getElementById('u18-supplement').style.display = yes ? 'block' : 'none';
+}
 </script>
 </body>
 </html>
